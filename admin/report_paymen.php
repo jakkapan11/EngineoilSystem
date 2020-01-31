@@ -74,41 +74,47 @@ $enddate    = tochristyear($_POST['enddate']);
                 </td>
                 </tr>";
 
-        $sql_order = "SELECT * FROM orders 
-                LEFT JOIN customers ON orders.cus_id = customers.cus_id
-                RIGHT JOIN receipt  ON orders.order_id = receipt.order_id 
-                LEFT JOIN invoice  ON orders.order_id = invoice.order_id 
+        $sql_order = "SELECT *
+                FROM receipt
+                LEFT JOIN invoice ON receipt.invoice_id = invoice.invoice_id
                 WHERE date(receipt_date) = '" . $result_date['date(receipt_date)'] . "'";
         $query_order = mysqli_query($link, $sql_order) or die(mysqli_error($link));
 
         while ($result_order = mysqli_fetch_array($query_order)) {
-            $sum_1 += $result_order['order_total'];
-            $sum_2 += $result_order['order_deliverycost'];
-            $sum_3 += ($result_order['order_total'] + $result_order['order_deliverycost']);
+            $sql_order2 = "SELECT * FROM orders 
+            LEFT JOIN customers ON orders.cus_id = customers.cus_id
+            WHERE order_id = '" . $result_order['receipt_id'] . "'";
+            $query_order2 = mysqli_query($link, $sql_order2) or die(mysqli_error($link));
+            $result_order2 = mysqli_fetch_assoc($query_order2);
+
+
+            $sum_1 += $result_order2['order_total'];
+            $sum_2 += $result_order2['order_deliverycost'];
+            $sum_3 += ($result_order2['order_total'] + $result_order2['order_deliverycost']);
 
             switch ($result_order['receipt_tye']) {
                 case 0:
                     $receipt_tye = "<font color='CC6666'>เงินสด</font>";
-                    $order_totalprice = "<font color='CC6666'>" . number_format($result_order['order_deliverycost'] + $result_order['order_total'], 2) . "</font>";
-                    $sum_a += $result_order['order_deliverycost'] + $result_order['order_total'];
+                    $order_totalprice = "<font color='CC6666'>" . number_format($result_order2['order_deliverycost'] + $result_order2['order_total'], 2) . "</font>";
+                    $sum_a += $result_order2['order_deliverycost'] + $result_order2['order_total'];
 
                     break;
                 case 1:
                     $receipt_tye = "<font color='339999'>โอน</font>";
-                    $order_totalprice = "<font color='339999'>" . number_format($result_order['order_deliverycost'] + $result_order['order_total'], 2) . "</font>";
-                    $sum_b += $result_order['order_deliverycost'] + $result_order['order_total'];
+                    $order_totalprice = "<font color='339999'>" . number_format($result_order2['order_deliverycost'] + $result_order2['order_total'], 2) . "</font>";
+                    $sum_b += $result_order2['order_deliverycost'] + $result_order2['order_total'];
 
                     break;
                 case 2:
                     $receipt_tye = "<font color='FF9999'>บัตรเดบิต</font>";
-                    $order_totalprice = "<font color='FF9999'>" . number_format($result_order['order_deliverycost'] + $result_order['order_total'], 2) . "</font>";
-                    $sum_c += $result_order['order_deliverycost'] + $result_order['order_total'];
+                    $order_totalprice = "<font color='FF9999'>" . number_format($result_order2['order_deliverycost'] + $result_order2['order_total'], 2) . "</font>";
+                    $sum_c += $result_order2['order_deliverycost'] + $result_order2['order_total'];
 
                     break;
                 case 3:
                     $receipt_tye = "<font color='0000DD'>บัตรเครดิต</font>";
-                    $order_totalprice = "<font color='0000DD'>" . number_format($result_order['order_deliverycost'] + $result_order['order_total'], 2) . "</font>";
-                    $sum_d += $result_order['order_deliverycost'] + $result_order['order_total'];
+                    $order_totalprice = "<font color='0000DD'>" . number_format($result_order2['order_deliverycost'] + $result_order2['order_total'], 2) . "</font>";
+                    $sum_d += $result_order2['order_deliverycost'] + $result_order2['order_total'];
 
                     break;
                 default:
@@ -120,15 +126,18 @@ $enddate    = tochristyear($_POST['enddate']);
             <tr height="20px">
                 <td></td>
                 <td align="center"><?= $result_order['receipt_id'] ?></td>
-                <td align="center"><?= short_datetime_thai($result_order['order_date']) ?></td>
-                <td align="center"><?= $result_order['order_id'] ?></td>
+                <td align="center"><?= short_datetime_thai($result_order2['order_date']) ?></td>
+                <td align="center"><?= $result_order2['order_id'] ?></td>
                 <td><?= $receipt_tye ?></td>
-                <td align="left"><?= $result_order['cus_name'] ?></td>
+                <td align="left"><?= $result_order2['cus_name'] ?></td>
                 <td align="center"><?= $result_order['invoice_credit'] ?></td>
-                <td align="center"><?= $result_order['invoice_id'] ?></td>
+                <td align="center"><?php
+                                    if (!empty($result_order['invoice_id']))
+                                        echo $result_order['invoice_id'];
+                                    else echo "-" ?></td>
                 <td align="center"><?= short_datetime_thai($result_order['invoice_paymendate']) ?></td>
-                <td align="right"><?= number_format($result_order['order_total'], 2) ?></td>
-                <td align="right"><?= $result_order['order_deliverycost'] ?></td>
+                <td align="right"><?= number_format($result_order2['order_total'], 2) ?></td>
+                <td align="right"><?= $result_order2['order_deliverycost'] ?></td>
                 <td align="right"><?= $order_totalprice ?></td>
             </tr>
 
@@ -145,12 +154,12 @@ $enddate    = tochristyear($_POST['enddate']);
     <?php
     }
     ?>
-      <tr>
+    <tr>
         <td colspan="7"></td>
         <td align="right" colspan="2" style="color:Black;"><b>รวมหมดทั้งหมด(บาท)</b></td>
-        <td align="right" colspan="3" style="color:Black;"></b></td>
+        <td align="right" colspan="3" style="color:Black;"><b><?= number_format($sum_a + $sum_b + $sum_c, 2) ?></b></td>
     </tr>
-   <tr>
+    <tr>
         <td colspan="7"></td>
         <td align="right" colspan="2" style="color:CC6666;"><b>รวมเงินสดทั้งหมดทั้งหมด(บาท)</b></td>
         <td align="right" colspan="3" style="color:CC6666;"><b><?= number_format($sum_a, 2) ?></b></td>
