@@ -1,0 +1,64 @@
+<head>
+  <title>ติดต่อ</title>
+  <?php
+  include("conf/head.php");
+  include("conf/connection.php");
+  ?>
+
+</head>
+
+<body>
+  <h2 class="page-header text-center" style="padding-top:80px;">ติดต่อเรา</h2>
+  <hr>
+  <div class="container">
+    <div class="row">
+      <div class="col-sm-12 col-md-6 col-lg-3 my-5">
+        <div class="card border-0">
+          <div class="card-body text-center">
+            <i class="" aria-hidden="true"></i>
+            <img src="image/รูป1.6.jpg" width="100" class="rounded" alt="...">
+            <p></p>
+            <h3 class="text-uppercase mb-5">สถานที่ตั้ง</h3>
+            <address>32/2 หมู่ 2 ตำบลแหลมงอบ อำเภอแหลมงอบ
+              จังหวัดตราด 23120</address>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-6 col-lg-3 my-5">
+        <div class="card border-0">
+          <div class="card-body text-center">
+            <i class="" aria-hidden="true"></i>
+            <img src="image/รูป1.5.jpg" width="100" class="rounded" alt="...">
+            <p></p>
+            <h3 class="text-uppercase mb-5">เวลาทําการ</h3>
+            <p>8.00 น.-17.00 น.</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-6 col-lg-3 my-5">
+        <div class="card border-0">
+          <div class="card-body text-center">
+            <i class="" aria-hidden="true"></i>
+            <img src="image/รูป1.2.jpg" width="100" class="rounded" alt="...">
+            <p></p>
+            <h3 class="text-uppercase mb-5">เบอร์โทรศัพท์</h3>
+            <p>096-792-5485</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-sm-12 col-md-6 col-lg-3 my-5">
+        <div class="card border-0">
+          <div class="card-body text-center">
+            <i class="" aria-hidden="true"></i>
+            <img src="image/รูป1.1.jpg" width="100" class="rounded" alt="...">
+            <p></p>
+            <h3 class="text-uppercase mb-5">email</h3>
+            <p>natthamon.phro@bumail.net</p>
+          </div>
+        </div>
+      </div>
+      </section>
+    </div>
+  </div>
+  </div>
+</body>

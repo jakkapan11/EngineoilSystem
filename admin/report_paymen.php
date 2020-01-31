@@ -1,0 +1,176 @@
+<head>
+    <title>รายงานการรับชําระประจําวัน <?= $_POST['startdate'] ?> ถึงวันที่ <?= $_POST['enddate'] ?></title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="shortcut icon" href="favicon.ico" />
+    <?php
+
+    include("config/connect.php");
+    include_once("config/etc_funct_admin.php");
+    include("config/mali.php");
+    include("config/thdate.php");
+
+    if (!isset($_SESSION)) {
+        session_start();
+    }
+    if (!isset($_SESSION['emp_id'])) {
+        echo "<script>window.location.assign('login.php')</script>";
+        exit();
+    }
+    ?>
+</head>
+<?php
+$startdate  = tochristyear($_POST['startdate']);
+$enddate    = tochristyear($_POST['enddate']);
+?>
+
+<h4 align="center" class="page-header text-center" style="padding-top:40px;">อู่ชัยยานยนต์</h4>
+<h4 align="center" class="page-header text-center" style="padding-top:1px;">รายงานการรับชําระประจําวัน</h4>
+<h4 align="center" class=" text-center" style="padding-top:1px;">ตั้งแต่วันที่ <?= DateThai($startdate) ?> ถึงวันที่ <?= DateThai($enddate) ?></h4>
+
+<table border="0" width="1450px" align="center">
+
+    <tr>
+        <td colspan="12" align="right" style="border-bottom:1px solid;">
+            <?php
+            echo "<meta charset='utf-8'>";
+            date_default_timezone_set("Asia/Bangkok");
+            echo ThDate(); // วันที่แสดง
+            ?>
+        </td>
+    </tr>
+
+    <tr style="border-bottom:1px solid; height:30px; ">
+        <th style="text-align:center; width:100px;">วันที่ชําระ</th>
+        <th style="text-align:center; width:100px;">เลขที่ใบเสร็จ</th>
+        <th style="text-align:center; width:120px;">วันที่สั่งซื้อ</th>
+        <th style="text-align:left; padding-left:15px; width:100px;">รหัสสั่งซื้อ</th>
+        <th style="text-align:left; width:130px;">ประเภทการชําระ</th>
+        <th style="text-align:left; width:120px;">ชื่อลูกค้า</th>
+        <th style="text-align:center; width:100px;">เครดิต(วัน)</th>
+        <th style="text-align:center; width:110px;">เลขที่ใบแจ้งหี้</th>
+        <th style="text-align:center; width:130px;">วันกําหนดชําระ</th>
+        <th style="text-align:right; width:120px;">ราคารวม(บาท)</th>
+        <th style="text-align:right; width:115px;">ค่าส่ง(บาท)</th>
+        <th style="text-align:right; width:125px;">รวมสุทธิ(บาท)</th>
+    </tr>
+
+
+    <?php
+    $sql_date = "SELECT DISTINCT date(receipt_date) FROM receipt WHERE (date(receipt.payment_date) >= date('" . tochristyear($_POST['startdate']) . "') AND date(receipt.payment_date) <= date('" . tochristyear($_POST['enddate']) . "'))";
+    $query_date = mysqli_query($link, $sql_date) or die(mysqli_error($link));
+    $sum_a = $sum_b = $sum_c = $sum_d = 0;
+
+    if (mysqli_num_rows($query_date) == 0) {
+        echo "<script>alert('ไม่พบข้อมูลที่ค้นหา'); window.close();</script>";
+        exit();
+    }
+
+    while ($result_date = mysqli_fetch_array($query_date)) {
+        $sum_1 = $sum_2 = $sum_3 = 0;
+        echo "
+                <tr height='25px'>
+                <td align='center'>
+                 " . short_datetime_thai($result_date['date(receipt_date)']) . "
+                </td>
+                </tr>";
+
+        $sql_order = "SELECT * FROM orders 
+                LEFT JOIN customers ON orders.cus_id = customers.cus_id
+                RIGHT JOIN receipt  ON orders.order_id = receipt.order_id 
+                LEFT JOIN invoice  ON orders.order_id = invoice.order_id 
+                WHERE date(receipt_date) = '" . $result_date['date(receipt_date)'] . "'";
+        $query_order = mysqli_query($link, $sql_order) or die(mysqli_error($link));
+
+        while ($result_order = mysqli_fetch_array($query_order)) {
+            $sum_1 += $result_order['order_total'];
+            $sum_2 += $result_order['order_deliverycost'];
+            $sum_3 += ($result_order['order_total'] + $result_order['order_deliverycost']);
+
+            switch ($result_order['receipt_tye']) {
+                case 0:
+                    $receipt_tye = "<font color='CC6666'>เงินสด</font>";
+                    $order_totalprice = "<font color='CC6666'>" . number_format($result_order['order_deliverycost'] + $result_order['order_total'], 2) . "</font>";
+                    $sum_a += $result_order['order_deliverycost'] + $result_order['order_total'];
+
+                    break;
+                case 1:
+                    $receipt_tye = "<font color='339999'>โอน</font>";
+                    $order_totalprice = "<font color='339999'>" . number_format($result_order['order_deliverycost'] + $result_order['order_total'], 2) . "</font>";
+                    $sum_b += $result_order['order_deliverycost'] + $result_order['order_total'];
+
+                    break;
+                case 2:
+                    $receipt_tye = "<font color='FF9999'>บัตรเดบิต</font>";
+                    $order_totalprice = "<font color='FF9999'>" . number_format($result_order['order_deliverycost'] + $result_order['order_total'], 2) . "</font>";
+                    $sum_c += $result_order['order_deliverycost'] + $result_order['order_total'];
+
+                    break;
+                case 3:
+                    $receipt_tye = "<font color='0000DD'>บัตรเครดิต</font>";
+                    $order_totalprice = "<font color='0000DD'>" . number_format($result_order['order_deliverycost'] + $result_order['order_total'], 2) . "</font>";
+                    $sum_d += $result_order['order_deliverycost'] + $result_order['order_total'];
+
+                    break;
+                default:
+                    $ordereceipt_tyer_status = "-";
+            }
+
+
+    ?>
+            <tr height="20px">
+                <td></td>
+                <td align="center"><?= $result_order['receipt_id'] ?></td>
+                <td align="center"><?= short_datetime_thai($result_order['order_date']) ?></td>
+                <td align="center"><?= $result_order['order_id'] ?></td>
+                <td><?= $receipt_tye ?></td>
+                <td align="left"><?= $result_order['cus_name'] ?></td>
+                <td align="center"><?= $result_order['invoice_credit'] ?></td>
+                <td align="center"><?= $result_order['invoice_id'] ?></td>
+                <td align="center"><?= short_datetime_thai($result_order['invoice_paymendate']) ?></td>
+                <td align="right"><?= number_format($result_order['order_total'], 2) ?></td>
+                <td align="right"><?= $result_order['order_deliverycost'] ?></td>
+                <td align="right"><?= $order_totalprice ?></td>
+            </tr>
+
+        <?php
+        }
+        ?>
+        <tr style="border-top:1px solid; border-bottom:1px solid;">
+            <td colspan="8"></td>
+            <td align="right"><b>รวม</b></td>
+            <td align="right"><b><?= number_format($sum_1, 2) ?></b></td>
+            <td align="right"><b><?= number_format($sum_2, 2) ?></b></td>
+            <td align="right"><b><?= number_format($sum_3, 2) ?></b></td>
+        </tr>
+    <?php
+    }
+    ?>
+      <tr>
+        <td colspan="7"></td>
+        <td align="right" colspan="2" style="color:Black;"><b>รวมหมดทั้งหมด(บาท)</b></td>
+        <td align="right" colspan="3" style="color:Black;"></b></td>
+    </tr>
+   <tr>
+        <td colspan="7"></td>
+        <td align="right" colspan="2" style="color:CC6666;"><b>รวมเงินสดทั้งหมดทั้งหมด(บาท)</b></td>
+        <td align="right" colspan="3" style="color:CC6666;"><b><?= number_format($sum_a, 2) ?></b></td>
+    </tr>
+    <tr>
+        <td colspan="7"></td>
+        <td align="right" colspan="2" style="color:339999;"><b>รวมเงินโอนทั้งหมด(บาท)</b></td>
+        <td align="right" colspan="3" style="color:339999;"><b><?= number_format($sum_b, 2) ?></b></td>
+    </tr>
+    <tr>
+        <td colspan="7"></td>
+        <td align="right" colspan="2" style="color:FF9999;"><b>รวมบัตรเดบิตทั้งหมด(บาท)</b></td>
+        <td align="right" colspan="3" style="color:FF9999;"><b><?= number_format($sum_c, 2) ?></b></td>
+    </tr>
+    <tr style="border-bottom:1px solid;">
+        <td colspan="7"></td>
+        <td align="right" colspan="2" style="color:0000DD;"><b>รวมบัตรเครดิตทั้งหมด(บาท)</b></td>
+        <td align="right" colspan="3" style="color:0000DD;"><b><?= number_format($sum_d, 2) ?></b></td>
+    </tr>
+
+
+</table>
+</body>
