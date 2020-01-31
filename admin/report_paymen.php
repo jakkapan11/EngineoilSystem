@@ -97,30 +97,38 @@ $enddate    = tochristyear($_POST['enddate']);
                     $receipt_tye = "<font color='CC6666'>เงินสด</font>";
                     $order_totalprice = "<font color='CC6666'>" . number_format($result_order2['order_deliverycost'] + $result_order2['order_total'], 2) . "</font>";
                     $sum_a += $result_order2['order_deliverycost'] + $result_order2['order_total'];
-
+                    $order_deliverycost = "<font color='CC6666'>" . number_format($result_order2['order_deliverycost'], 2) . "</font>";
+                    $order_total = "<font color='CC6666'>". number_format($result_order2['order_total'], 2) . "</font>";
                     break;
                 case 1:
                     $receipt_tye = "<font color='339999'>โอน</font>";
-                    $order_totalprice = "<font color='339999'>" . number_format($result_order2['order_deliverycost'] + $result_order2['order_total'], 2) . "</font>";
-                    $sum_b += $result_order2['order_deliverycost'] + $result_order2['order_total'];
-
+                    $order_totalprice = "<font color='339999'>" . number_format($result_order2['order_deliverycost'] + $result_order2['order_total'], 2) . "</font>"; //รวมสุทธิ
+                    $sum_b += $result_order2['order_deliverycost'] + $result_order2['order_total'];  // รวมสถานะ
+                    $order_deliverycost = "<font color='339999'>" . number_format($result_order2['order_deliverycost'], 2) . "</font>"; // ค่าส่ง
+                    $order_total = "<font color='339999'>". number_format($result_order2['order_total'], 2) . "</font>"; //ราคารวม
                     break;
                 case 2:
                     $receipt_tye = "<font color='FF9999'>บัตรเดบิต</font>";
                     $order_totalprice = "<font color='FF9999'>" . number_format($result_order2['order_deliverycost'] + $result_order2['order_total'], 2) . "</font>";
                     $sum_c += $result_order2['order_deliverycost'] + $result_order2['order_total'];
-
+                    $order_deliverycost = "<font color='FF9999'>" . number_format($result_order2['order_deliverycost'], 2) . "</font>";
+                    $order_total = "<font color='FF9999'>". number_format($result_order2['order_total'], 2) . "</font>";
                     break;
                 case 3:
                     $receipt_tye = "<font color='0000DD'>บัตรเครดิต</font>";
                     $order_totalprice = "<font color='0000DD'>" . number_format($result_order2['order_deliverycost'] + $result_order2['order_total'], 2) . "</font>";
                     $sum_d += $result_order2['order_deliverycost'] + $result_order2['order_total'];
-
+                    $order_deliverycost = "<font color='0000DD'>" . number_format($result_order2['order_deliverycost'], 2) . "</font>";
+                    $order_total = "<font color='0000DD'>". number_format($result_order2['order_total'], 2) . "</font>";
                     break;
                 default:
                     $ordereceipt_tyer_status = "-";
             }
 
+
+            if ($result_order['invoice_paymendate'] == "0000-00-00")
+                $invoice_paymendate = "";
+            else $invoice_paymendate = short_datetime_thai($result_order['invoice_paymendate']);
 
     ?>
             <tr height="20px">
@@ -130,14 +138,21 @@ $enddate    = tochristyear($_POST['enddate']);
                 <td align="center"><?= $result_order2['order_id'] ?></td>
                 <td><?= $receipt_tye ?></td>
                 <td align="left"><?= $result_order2['cus_name'] ?></td>
-                <td align="center"><?= $result_order['invoice_credit'] ?></td>
+                <td align="center"><?php
+                                    if (!empty($result_order['invoice_credit']))
+                                        echo $result_order['invoice_credit'];
+                                    else echo "-" ?></td>
                 <td align="center"><?php
                                     if (!empty($result_order['invoice_id']))
                                         echo $result_order['invoice_id'];
                                     else echo "-" ?></td>
-                <td align="center"><?= short_datetime_thai($result_order['invoice_paymendate']) ?></td>
-                <td align="right"><?= number_format($result_order2['order_total'], 2) ?></td>
-                <td align="right"><?= $result_order2['order_deliverycost'] ?></td>
+                <td align="center"><?php
+                                    if (short_datetime_thai($result_order['invoice_paymendate']))
+                                        echo short_datetime_thai($result_order['invoice_paymendate']);
+                                    else echo "-" ?></td>
+                </td>
+                <td align="right"><?= $order_total ?></td>
+                <td align="right"><?= $order_deliverycost ?></td>
                 <td align="right"><?= $order_totalprice ?></td>
             </tr>
 
