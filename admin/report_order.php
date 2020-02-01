@@ -26,7 +26,7 @@ $enddate    = tochristyear($_POST['enddate']);
 ?>
 <h4 align="center" class="page-header text-center" style="padding-top:40px;">อู่ชัยยานยนต์</h4>
 <h4 align="center" class="page-header text-center" style="padding-top:1px;">รายงานการสั่งซื้อประจําวัน</4h>
-<h4 align="center" class=" text-center" style="padding-top:1px;">ตั้งแต่วันที่ <?= DateThai($startdate) ?> ถึงวันที่ <?= DateThai($enddate) ?></h4>
+    <h4 align="center" class=" text-center" style="padding-top:1px;">ตั้งแต่วันที่ <?= DateThai($startdate) ?> ถึงวันที่ <?= DateThai($enddate) ?></h4>
 
 
     <table border="0" width="1850px" align="center">
@@ -192,7 +192,7 @@ $enddate    = tochristyear($_POST['enddate']);
         <tr>
             <td colspan="4"></td>
             <td align="right" colspan="2" style="color:Black;"><b>รวมทั้งหมด(บาท)</b></td>
-            <td align="right" colspan="3" style="color:Black;"><b></b></td>
+            <td align="right" colspan="3" style="color:Black;"><b><?= number_format($sum_a + $sum_b + $sum_c + $sum_d + $sum_e, 2) ?></b></td>
         </tr>
         <tr>
             <td colspan="4"></td>
