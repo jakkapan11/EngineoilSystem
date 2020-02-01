@@ -173,7 +173,7 @@ $enddate    = tochristyear($_POST['enddate']);
     <tr>
         <td colspan="7"></td>
         <td align="right" colspan="2" style="color:Black;"><b>รวมหมดทั้งหมด(บาท)</b></td>
-        <td align="right" colspan="3" style="color:Black;"><b><?= number_format($sum_a + $sum_b + $sum_c, 2) ?></b></td>
+        <td align="right" colspan="3" style="color:Black;"><b><?= number_format($sum_a + $sum_b + $sum_c + $sum_d, 2) ?></b></td>
     </tr>
     <tr>
         <td colspan="7"></td>
