@@ -227,3 +227,4 @@ $enddate    = tochristyear($_POST['enddate']);
 
     </table>
     </body>
+   <br>
