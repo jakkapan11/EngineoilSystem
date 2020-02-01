@@ -37,7 +37,7 @@
                     </select></td>
                 <td width="100" height="50" align="right"><strong>ปี พ.ศ. :</strong><span style="color:red;">*</span></td>
                 <td><label for="select"></label>
-                    <select name="month" style="width:300px; " class="form-control" id="month" required>
+                    <select name="year" style="width:300px; " class="form-control" id="year" required>
                         <option value="" selected disabled>-- กรุณาเลือกปี พ.ศ. ที่ต้องการ --</option>
                         <option value="2019">2562</option>
                         <option value="2020">2563</option>
