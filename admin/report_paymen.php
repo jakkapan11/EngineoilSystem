@@ -57,7 +57,7 @@ $enddate    = tochristyear($_POST['enddate']);
     <?php
     $sql_date = "SELECT DISTINCT date(receipt_date) FROM receipt 
     WHERE (date(receipt.payment_date) >= date('" . tochristyear($_POST['startdate']) . "') AND date(receipt.payment_date) <= date('" . tochristyear($_POST['enddate']) . "'))
-    ORDER BY date(receipt_date) ASCg";
+    ORDER BY date(receipt_date) ASC";
     $query_date = mysqli_query($link, $sql_date) or die(mysqli_error($link));
     $sum_a = $sum_b = $sum_c = $sum_d = 0;
 
