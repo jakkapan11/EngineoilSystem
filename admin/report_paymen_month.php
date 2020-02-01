@@ -56,7 +56,8 @@
 
     <?php
     $sql_date = "SELECT DISTINCT date(receipt_date) FROM receipt
-                WHERE month(receipt_date) = '$month' AND year(receipt_date) = '$year'";
+                WHERE month(receipt_date) = '$month' AND year(receipt_date) = '$year'
+                ORDER BY date(receipt_date) ASC";
     $query_date = mysqli_query($link, $sql_date) or die(mysqli_error($link));
     $sum_a = $sum_b = $sum_c = $sum_d = $sum_e = 0;
 
@@ -172,7 +173,7 @@
     <?php
     }
     ?>
- <tr>
+    <tr>
         <td colspan="9"></td>
         <td align="right" colspan="2" style="color:Black;"><b>รวมทั้งหมด(บาท)</b></td>
         <td align="right" colspan="3" style="color:Black;"><b><?= number_format($sum_a + $sum_b + $sum_c + $sum_d, 2) ?></b></td>
