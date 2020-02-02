@@ -42,8 +42,8 @@ $enddate    = tochristyear($_POST['enddate']);
         </td>
     </tr>
     <tr style="border-bottom:1px solid; height:30px; ">
-        <th style="text-align:center; width:110px;">วันที่เปลี่ยน</th>
-        <th style="text-align:center; width:140px;">รหัสการเปลี่ยน</th>
+        <th style="text-align:center; width:110px;">วันที่จัดส่ง</th>
+        <th style="text-align:center; width:140px;">หมายเลขการจัดส่ง</th>
         <th style="text-align:left; padding-left:10px; width:110px;">ประเภทจัดส่ง</td>
         <th style="text-align:center; width:115px;">วันที่กําหนดส่ง</td>
         <th style="text-align:center; width:117px;">วันที่สั่งซื้อ</th>

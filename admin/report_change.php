@@ -28,7 +28,7 @@ $enddate    = tochristyear($_POST['enddate']);
 <h4 align="center" class=" text-center" style="padding-top:1px;">ตั้งแต่วันที่ <?= DateThai($startdate) ?> ถึงวันที่ <?= DateThai($enddate) ?></h4>
 
 
-<table border="1" width="1750px" align="center">
+<table border="0" width="1650px" align="center">
     <tr>
         <td colspan="14" align="right" style="border-bottom:1px solid;">
             <?php
@@ -39,16 +39,16 @@ $enddate    = tochristyear($_POST['enddate']);
         </td>
     </tr>
     <tr style="border-bottom:1px solid; height:30px; ">
-        <th style="text-align:center; width:110px;">วันที่เปลี่ยน</th>
+        <th style="text-align:center; width:120px;">วันที่เปลี่ยน</th>
         <th style="text-align:center; width:140px;">รหัสการเปลี่ยน</th>
-        <th style="text-align:left; padding-left:10px; width:110px;">วันที่สั่งซื้อ</th>
+        <th style="text-align:center;  width:110px;">วันที่สั่งซื้อ</th>
         <th style="text-align:center; width:95px;">รหัสสั่งซื้อ</th>
         <th style="text-align:center; width:115px;">เลขที่ใบเสร็จ</th>
         <th style="text-align:center; width:115px;">วันที่ออกใบเสร็จ</th>
         <th style="text-align:left; padding-left:15px;width:200px;">ชื่อลูกค้า</th>
         <th style="text-align:left;width:260px;">รายการสินค้า</th>
         <th style="text-align:right; width:90px;">จํานวนซื้อ</th>
-        <th style="text-align:center; width:90px;">จํานวนเปลี่ยน</th>
+        <th style="text-align:right; width:110px;">จํานวนเปลี่ยน</th>
         <th style="text-align:center; width:90px;">หน่วยนับ</th>
         <th style="text-align:center; width:110px;">หมายเหตุ</th>
     </tr>
@@ -58,10 +58,10 @@ $enddate    = tochristyear($_POST['enddate']);
     $sql_date = "SELECT DISTINCT date(change_date) FROM amount_change WHERE (date(amount_change.change_date) >= date('" . tochristyear($_POST['startdate']) . "') AND date(amount_change.change_date) <= date('" . tochristyear($_POST['enddate']) . "'))";
     $query_date = mysqli_query($link, $sql_date) or die(mysqli_error($link));
 
-    $sum_a = $sum_b = $sum_c = $sum_d = $sum_e = 0;
-    $sum_f = $sum_g = $sum_h = $sum_i = $sum_j = 0; // รวมราคารวมทั้งหมด
-    $sum_k = $sum_l = $sum_m = $sum_n = $sum_o = 0; // รวมค่าจัดส่งทั้งหมด
-
+    //$sum_a = $sum_b = $sum_c = $sum_d = $sum_e = 0;
+    //$sum_f = $sum_g = $sum_h = $sum_i = $sum_j = 0; // รวมราคารวมทั้งหมด
+    //$sum_k = $sum_l = $sum_m = $sum_n = $sum_o = 0; // รวมค่าจัดส่งทั้งหมด
+    $total = 0; // รวมรายการทั้งหมด
     if (mysqli_num_rows($query_date) == 0) {
         echo "<script>alert('ไม่พบข้อมูลที่ค้นหา'); window.close();</script>";
         exit();
@@ -84,6 +84,8 @@ $enddate    = tochristyear($_POST['enddate']);
          
           WHERE date(change_date) = '" . $result_date['date(change_date)'] . "'";
         $query_change = mysqli_query($link, $sql_change) or die(mysqli_error($link));
+        $row_order = 1;
+        $count_day = 0;
 
         $row_change = 1;
         while ($result_change = mysqli_fetch_array($query_change)) {
@@ -93,16 +95,16 @@ $enddate    = tochristyear($_POST['enddate']);
             }
     ?>
             <td align="center"><?= $result_change['change_id'] ?></td>
-            <td align="left"><?= short_datetime_thai($result_change['order_date']) ?></td>
+            <td align="center"><?= short_datetime_thai($result_change['order_date']) ?></td>
             <td align="center"><?= $result_change['order_id'] ?></td>
             <td align="center"><?= $result_change['receipt_id'] ?></td>
-            <td align="left"><?= short_datetime_thai($result_change['receipt_date']) ?></td>
-            <td align="left"><?= $result_change['cus_name'] ?></td>
+            <td align="center"><?= short_datetime_thai($result_change['receipt_date']) ?></td>
+            <td align="left" style="padding-left:15px;"><?= $result_change['cus_name'] ?></td>
             <td align="left"><?= $result_change['product_name'] ?></td>
             <td align="right"><?= $result_change['od_amount'] ?></td>
             <td align="right"><?= $result_change['change_Amount'] ?></td>
-            <td align="left"><?= $result_change['product_unit'] ?></td>
-            <td align="left"><?= $result_change['change_notes'] ?></td>
+            <td align="center"><?= $result_change['product_unit'] ?></td>
+            <td align="center"><?= $result_change['change_notes'] ?></td>
            
             <?php
             $sql_orderlist = "SELECT * FROM orderlist 
@@ -113,17 +115,33 @@ $enddate    = tochristyear($_POST['enddate']);
 
 
         <?php
+         $count_day++; $total++;
             $row_change++;
         }
         ?>
-
+<tr style="border-top:1px solid; border-bottom:1px solid;">
+            <td colspan="7"></td>
+            <td align="right"><b>รวม</b></td>
+           
+        
+            <td align="right"><b><?= $count_day ?></b></td>
+            <td align="center"><b>รายการ</b></td>
+            <td align="right"><b></b></td>
+            <td align="right"><b></b></td>
+        </tr>
     <?php
     }
     ?>
+    <tr style="border-bottom:1px solid;">
+        <td colspan="5"></td>
+        <td align="right" colspan="3" style="color:Black;"><b>รวมทั้งหมด</b></td>
+        
+            <td align="right"><b><?= $total ?></b></td>
+            <td align="center"><b>รายการ</b></td>
+            <td align="right"><b></b></td>
+            <td align="right"><b></b></td>
+        </tr>
 
-
-
-
-    <?php
-
-    ?>
+</table>
+</body>
+<br>
