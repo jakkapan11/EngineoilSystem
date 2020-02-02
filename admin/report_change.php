@@ -75,72 +75,55 @@ $enddate    = tochristyear($_POST['enddate']);
            </td>
           ";
 
-        $sql_order = "SELECT * FROM orders 
-          LEFT JOIN customers ON orders.cus_id = customers.cus_id
-          RIGHT JOIN receipt  ON orders.order_id = receipt.order_id
+        $sql_change = "SELECT * FROM amount_change
+            LEFT JOIN orderlist ON amount_change.od_id = orderlist.od_id
+            LEFT JOIN product ON orderlist.product_id = product.product_id
+            LEFT JOIN orders ON orderlist.order_id = orders.order_id
+            LEFT JOIN customers ON orders.cus_id = customers.cus_id
+            LEFT JOIN receipt ON receipt.order_id = orders.order_id 
          
           WHERE date(change_date) = '" . $result_date['date(change_date)'] . "'";
-        $query_order = mysqli_query($link, $sql_order) or die(mysqli_error($link));
+        $query_change = mysqli_query($link, $sql_change) or die(mysqli_error($link));
 
-        $row_order = 1;
-        while ($result_order = mysqli_fetch_array($query_order)) {
+        $row_change = 1;
+        while ($result_change = mysqli_fetch_array($query_change)) {
 
-            if ($row_order > 1) {
+            if ($row_change > 1) {
                 echo "</tr><tr><td></td>";
             }
-
-            $sum_1 += $result_order['order_total'];
-            $sum_2 += $result_order['order_deliverycost'];
-            $sum_3 += ($result_order['order_total'] + $result_order['order_deliverycost']);
-
-            switch ($result_order['order_status']) {
-                case 0:
-                    $order_status = "<font color='orange'>ยังไม่แจ้งชำระ</font>";
-                    $order_totalprice = "<font color='Black'>" . number_format($result_order['order_deliverycost'] + $result_order['order_total'], 2) . "</font>";
-                    $sum_f += $result_order['order_total'];
-                    $sum_a += $result_order['order_deliverycost'] + $result_order['order_total'];
-                    $sum_k += $result_order['order_deliverycost'];
-                    break;
-                case 1:
-                    $order_status = "<font color='3366CC'>รอการตรวจสอบ</font>";
-                    $order_totalprice = "<font color='Black'>" . number_format($result_order['order_deliverycost'] + $result_order['order_total'], 2) . "</font>";
-                    $sum_g += $result_order['order_total'];
-                    $sum_b += $result_order['order_deliverycost'] + $result_order['order_total'];
-                    $sum_l += $result_order['order_deliverycost'];
-                    break;
-                case 2:
-                    $order_status = "<font color='54BD54'>ชำระแล้ว</font>";
-                    $order_totalprice = "<font color='Black'>" . number_format($result_order['order_deliverycost'] + $result_order['order_total'], 2) . "</font>";
-                    $sum_h += $result_order['order_total'];
-                    $sum_c += $result_order['order_deliverycost'] + $result_order['order_total'];
-                    $sum_m += $result_order['order_deliverycost'];
-                    break;
-                case 3:
-                    $order_status = "<font color='9900FF'>ค้างชําระ</font>";
-                    $order_totalprice = "<font color='Black'>" . number_format($result_order['order_deliverycost'] + $result_order['order_total'], 2) . "</font>";
-                    $sum_i += $result_order['order_total'];
-                    $sum_d += $result_order['order_deliverycost'] + $result_order['order_total'];
-                    $sum_n += $result_order['order_deliverycost'];
-                    break;
-                case 4:
-                    $order_status = "<font color='red'>ยกเลิก</font>";
-                    $order_totalprice = "<font color='Black'>" . number_format($result_order['order_deliverycost'] + $result_order['order_total'], 2) . "</font>";
-                    $sum_j += $result_order['order_total'];
-                    $sum_e += $result_order['order_deliverycost'] + $result_order['order_total'];
-                    $sum_o += $result_order['order_deliverycost'];
-                    break;
-                default:
-                    $order_status = "-";
-            }
     ?>
+            <td align="center"><?= $result_change['change_id'] ?></td>
+            <td align="left"><?= short_datetime_thai($result_change['order_date']) ?></td>
+            <td align="center"><?= $result_change['order_id'] ?></td>
+            <td align="center"><?= $result_change['receipt_id'] ?></td>
+            <td align="left"><?= short_datetime_thai($result_change['receipt_date']) ?></td>
+            <td align="left"><?= $result_change['cus_name'] ?></td>
+            <td align="left"><?= $result_change['product_name'] ?></td>
+            <td align="right"><?= $result_change['od_amount'] ?></td>
+            <td align="right"><?= $result_change['change_Amount'] ?></td>
+            <td align="left"><?= $result_change['product_unit'] ?></td>
+            <td align="left"><?= $result_change['change_notes'] ?></td>
+           
+            <?php
+            $sql_orderlist = "SELECT * FROM orderlist 
+                LEFT JOIN product ON orderlist.product_id = product.product_id
+                "
+
+            ?>
+
 
         <?php
+            $row_change++;
         }
         ?>
+
+    <?php
+    }
+    ?>
 
 
 
 
     <?php
-    }
+
     ?>
