@@ -188,6 +188,7 @@ $enddate    = tochristyear($_POST['enddate']);
             </tr>
         <?php
         }
+
         ?>
         <tr>
             <td colspan="4"></td>

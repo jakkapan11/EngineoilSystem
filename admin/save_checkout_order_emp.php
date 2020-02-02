@@ -126,7 +126,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   } elseif ($_POST['order_status'] == 3) {
     echo '<script>  
     $(document).ready(function() {
-      alert("บันทึกการสั่งซื้อเรียบร้อย\nรหัสการสั่งซื้อ ' . str_pad($last_orderid, 5, 0, STR_PAD_LEFT) .  '"); 
+      alert("บันทึกการสั่งซื้อเรียบร้อย\nรหัสการสั่งซื้อ ' . str_pad($last_orderid, 5, 0, STR_PAD_LEFT) .  ' เลขที่ใบแจ้งหนี้ ' . str_pad($last_invoice, 5, 0, STR_PAD_LEFT) .   '"); 
       window.open("invoice.php?orderid=' . str_pad($last_orderid, 5, 0, STR_PAD_LEFT) . '","_blank"); 
       window.location.assign("orderhistory.php");
     });
