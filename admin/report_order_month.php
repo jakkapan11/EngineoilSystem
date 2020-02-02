@@ -148,7 +148,7 @@
                
                     <td align="center"><?= $result_order['order_id'] ?></td>
                     <td align="left"><?= $result_order['cus_name'] ?></td>
-                    <td style="padding-left:15px;"><?= $order_status ?></td>
+                    <td><?= $order_status ?></td>
                     <td align="center"><?php if ($order_deadline_date != "") {
                                             echo $order_deadline_date;
                                         } else {
