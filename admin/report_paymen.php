@@ -73,21 +73,26 @@ $enddate    = tochristyear($_POST['enddate']);
                 <td align='center'>
                  " . short_datetime_thai($result_date['date(receipt_date)']) . "
                 </td>
-                </tr>";
+                ";
 
         $sql_order = "SELECT *
                 FROM receipt
                 LEFT JOIN invoice ON receipt.invoice_id = invoice.invoice_id
                 WHERE date(receipt_date) = '" . $result_date['date(receipt_date)'] . "'";
         $query_order = mysqli_query($link, $sql_order) or die(mysqli_error($link));
-
+       
+        $row_order = 1;
         while ($result_order = mysqli_fetch_array($query_order)) {
+
             $sql_order2 = "SELECT * FROM orders 
             LEFT JOIN customers ON orders.cus_id = customers.cus_id
             WHERE order_id = '" . $result_order['receipt_id'] . "'";
             $query_order2 = mysqli_query($link, $sql_order2) or die(mysqli_error($link));
             $result_order2 = mysqli_fetch_assoc($query_order2);
 
+            if ($row_order > 1) {
+                echo "</tr><tr><td></td>";
+            }
 
             $sum_1 += $result_order2['order_total'];
             $sum_2 += $result_order2['order_deliverycost'];
@@ -99,28 +104,28 @@ $enddate    = tochristyear($_POST['enddate']);
                     $order_totalprice = "<font color='CC6666'>" . number_format($result_order2['order_deliverycost'] + $result_order2['order_total'], 2) . "</font>";
                     $sum_a += $result_order2['order_deliverycost'] + $result_order2['order_total'];
                     $order_deliverycost = "<font color='CC6666'>" . number_format($result_order2['order_deliverycost'], 2) . "</font>";
-                    $order_total = "<font color='CC6666'>". number_format($result_order2['order_total'], 2) . "</font>";
+                    $order_total = "<font color='CC6666'>" . number_format($result_order2['order_total'], 2) . "</font>";
                     break;
                 case 1:
                     $receipt_tye = "<font color='339999'>โอน</font>";
                     $order_totalprice = "<font color='339999'>" . number_format($result_order2['order_deliverycost'] + $result_order2['order_total'], 2) . "</font>"; //รวมสุทธิ
                     $sum_b += $result_order2['order_deliverycost'] + $result_order2['order_total'];  // รวมสถานะ
                     $order_deliverycost = "<font color='339999'>" . number_format($result_order2['order_deliverycost'], 2) . "</font>"; // ค่าส่ง
-                    $order_total = "<font color='339999'>". number_format($result_order2['order_total'], 2) . "</font>"; //ราคารวม
+                    $order_total = "<font color='339999'>" . number_format($result_order2['order_total'], 2) . "</font>"; //ราคารวม
                     break;
                 case 2:
                     $receipt_tye = "<font color='FF9999'>บัตรเดบิต</font>";
                     $order_totalprice = "<font color='FF9999'>" . number_format($result_order2['order_deliverycost'] + $result_order2['order_total'], 2) . "</font>";
                     $sum_c += $result_order2['order_deliverycost'] + $result_order2['order_total'];
                     $order_deliverycost = "<font color='FF9999'>" . number_format($result_order2['order_deliverycost'], 2) . "</font>";
-                    $order_total = "<font color='FF9999'>". number_format($result_order2['order_total'], 2) . "</font>";
+                    $order_total = "<font color='FF9999'>" . number_format($result_order2['order_total'], 2) . "</font>";
                     break;
                 case 3:
                     $receipt_tye = "<font color='0000DD'>บัตรเครดิต</font>";
                     $order_totalprice = "<font color='0000DD'>" . number_format($result_order2['order_deliverycost'] + $result_order2['order_total'], 2) . "</font>";
                     $sum_d += $result_order2['order_deliverycost'] + $result_order2['order_total'];
                     $order_deliverycost = "<font color='0000DD'>" . number_format($result_order2['order_deliverycost'], 2) . "</font>";
-                    $order_total = "<font color='0000DD'>". number_format($result_order2['order_total'], 2) . "</font>";
+                    $order_total = "<font color='0000DD'>" . number_format($result_order2['order_total'], 2) . "</font>";
                     break;
                 default:
                     $ordereceipt_tyer_status = "-";
@@ -132,8 +137,7 @@ $enddate    = tochristyear($_POST['enddate']);
             else $invoice_paymendate = short_datetime_thai($result_order['invoice_paymendate']);
 
     ?>
-            <tr height="20px">
-                <td></td>
+            
                 <td align="center"><?= $result_order['receipt_id'] ?></td>
                 <td align="center"><?= short_datetime_thai($result_order2['order_date']) ?></td>
                 <td align="center"><?= $result_order2['order_id'] ?></td>
@@ -158,6 +162,7 @@ $enddate    = tochristyear($_POST['enddate']);
             </tr>
 
         <?php
+            $row_order++;
         }
         ?>
         <tr style="border-top:1px solid; border-bottom:1px solid;">

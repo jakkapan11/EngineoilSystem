@@ -72,7 +72,7 @@
                         <td align='center'>
                          " . short_datetime_thai($result_date['date(receipt_date)']) . "
                         </td>
-                        </tr>";
+                        ";
 
         $sql_order = "SELECT *
                         FROM receipt
@@ -81,7 +81,13 @@
                         WHERE date(receipt_date) = '" . $result_date['date(receipt_date)'] . "'";
         $query_order = mysqli_query($link, $sql_order) or die(mysqli_error($link));
 
+        $row_order = 1; //แถว
         while ($result_order = mysqli_fetch_array($query_order)) {
+
+            if ($row_order > 1) {
+                echo "</tr><tr><td></td>";
+            }
+
             $sql_order2 = "SELECT * FROM orders 
                     LEFT JOIN customers ON orders.cus_id = customers.cus_id
                     WHERE order_id = '" . $result_order['receipt_id'] . "'";
@@ -133,8 +139,7 @@
 
 
     ?>
-            <tr height="20px">
-                <td></td>
+            
                 <td style="padding-left:15px;"><?= $receipt_tye ?></td>
                 <td align="center"><?= $result_order['receipt_id'] ?></td>
                 <td align="center"><?= short_datetime_thai($result_order2['order_date']) ?></td>
@@ -160,6 +165,7 @@
             </tr>
 
         <?php
+            $row_order++;
         }
         ?>
         <tr style="border-top:1px solid; border-bottom:1px solid;">

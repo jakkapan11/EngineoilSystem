@@ -69,15 +69,20 @@
                <td align='center'>
                 " . short_datetime_thai($result_date['date(order_date)']) . "
                </td>
-               </tr>";
+               ";
 
             $sql_order = "SELECT * FROM orders 
                LEFT JOIN customers ON orders.cus_id = customers.cus_id
                WHERE date(order_date) = '" . $result_date['date(order_date)'] . "'";
             $query_order = mysqli_query($link, $sql_order) or die(mysqli_error($link));
 
-
+            $row_order = 1;
             while ($result_order = mysqli_fetch_array($query_order)) {
+
+                if ($row_order > 1) {
+                    echo "</tr><tr><td></td>";
+                }
+
                 $sum_1 += $result_order['order_total'];
                 $sum_2 += $result_order['order_deliverycost'];
                 $sum_3 += ($result_order['order_total'] + $result_order['order_deliverycost']);
@@ -140,8 +145,7 @@
 
 
         ?>
-                <tr height="20px">
-                    <td></td>
+               
                     <td align="center"><?= $result_order['order_id'] ?></td>
                     <td align="left"><?= $result_order['cus_name'] ?></td>
                     <td style="padding-left:15px;"><?= $order_status ?></td>
@@ -156,6 +160,7 @@
                     <td align="right"><?= $order_totalprice ?></td>
                 </tr>
             <?php
+                $row_order++;
             }
             ?>
             <tr style="border-top:1px solid; border-bottom:1px solid;">
@@ -168,32 +173,37 @@
         <?php
         }
         ?>
+      <tr>
+            <td colspan="4"></td>
+            <td align="right" colspan="2" style="color:Black;"><b>รวมทั้งหมด(บาท)</b></td>
+            <td align="right" colspan="3" style="color:Black;"><b><?= number_format($sum_a + $sum_b + $sum_c + $sum_d + $sum_e, 2) ?></b></td>
+        </tr>
         <tr>
             <td colspan="4"></td>
             <td align="right" colspan="2" style="color:orange;"><b>รวมยังไม่แจ้งชำระทั้งหมด(บาท)</b></td>
-            <td align="right" colspan="3"style="color:orange;"><b><?= number_format($sum_a, 2) ?></b></td>
+            <td align="right" colspan="3" style="color:orange;"><b><?= number_format($sum_a, 2) ?></b></td>
         </tr>
         <tr>
             <td colspan="4"></td>
             <td align="right" colspan="2" style="color:3366CC;"><b>รวมรอการตรวจสอบทั้งหมด(บาท)</b></td>
-            <td align="right" colspan="3"style="color:3366CC;"><b><?= number_format($sum_b, 2) ?></b></td>
+            <td align="right" colspan="3" style="color:3366CC;"><b><?= number_format($sum_b, 2) ?></b></td>
         </tr>
         <tr>
             <td colspan="4"></td>
             <td align="right" colspan="2" style="color:54BD54;"><b>รวมยังชำระทั้งหมด(บาท)</b></td>
-            <td align="right" colspan="3"style="color:54BD54;"><b><?= number_format($sum_c, 2) ?></b></td>
+            <td align="right" colspan="3" style="color:54BD54;"><b><?= number_format($sum_c, 2) ?></b></td>
         </tr>
         <tr>
             <td colspan="4"></td>
             <td align="right" colspan="2" style="color:9900FF;"><b>รวมค้างชําระทั้งหมด(บาท)</b></td>
-            <td align="right" colspan="3"style="color:9900FF;"><b><?= number_format($sum_d, 2) ?></b></td>
+            <td align="right" colspan="3" style="color:9900FF;"><b><?= number_format($sum_d, 2) ?></b></td>
         </tr>
         <tr style="border-bottom:1px solid;">
             <td colspan="4"></td>
             <td align="right" colspan="2" style="color:red;"><b>รวมยกเลิกทั้งหมด(บาท)</b></td>
-            <td align="right" colspan="3"style="color:red;"><b><?= number_format($sum_e, 2) ?></b></td>
+            <td align="right" colspan="3" style="color:red;"><b><?= number_format($sum_e, 2) ?></b></td>
         </tr>
-   
-   
+
+
     </table>
     <br>

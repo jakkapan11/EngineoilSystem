@@ -68,13 +68,13 @@
 
     while ($result_date = mysqli_fetch_array($query_date)) {
         $sum_1 = $sum_2 = $sum_3 = 0;
-        
+
         echo "
                <tr height='25px'>
                <td align='center'>
                 " . short_datetime_thai($result_date['date(invoice_paymendate)']) . "
                </td>
-               </tr>";
+               ";
 
         $sql_order = "SELECT * FROM invoice
                LEFT JOIN orders ON invoice.order_id = orders.order_id
@@ -82,7 +82,12 @@
                WHERE date(invoice_paymendate) = '" . $result_date['date(invoice_paymendate)'] . "'";
         $query_order = mysqli_query($link, $sql_order) or die(mysqli_error($link));
 
+        $row_order = 1;
         while ($result_order = mysqli_fetch_array($query_order)) {
+
+            if ($row_order > 1) {
+                echo "</tr><tr><td></td>";
+            }
 
             $sum_1 += $result_order['order_total'];
             $sum_2 += $result_order['order_deliverycost'];
@@ -96,7 +101,7 @@
                     $sum_a += $result_order['order_deliverycost'] + $result_order['order_total'];
                     $sum_f += $result_order['order_total'];
                     $sum_k += $result_order['order_deliverycost'];
-                break;
+                    break;
                 case 1:
                     $order_status = "<font color='3366CC'>รอการตรวจสอบ</font>";
                     $order_totalprice = "<font color='Black'>" . number_format($result_order['order_deliverycost'] + $result_order['order_total'], 2) . "</font>";
@@ -141,8 +146,7 @@
 
 
     ?>
-            <tr height="20px">
-                <td></td>
+
                 <td align="center"><?= short_datetime_thai($result_order['invoice_issued_date']) ?></td>
                 <td align="center"><?= $result_order['invoice_id'] ?></td>
                 <td align="center"><?= $result_order['order_id'] ?></td>
@@ -154,6 +158,7 @@
                 <td align="right"><?= $order_totalprice ?></td>
 
             <?php
+            $row_order++;
         }
             ?>
             <tr style="border-top:1px solid; border-bottom:1px solid;">
@@ -176,4 +181,4 @@
         </tr>
 
 </table>
-<br> 
+<br>
