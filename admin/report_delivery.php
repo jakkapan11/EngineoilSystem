@@ -65,6 +65,7 @@ $enddate    = tochristyear($_POST['enddate']);
     $sum_a = $sum_b = $sum_c = $sum_d = $sum_e = 0;
     $sum_f = $sum_g = $sum_h = $sum_i = $sum_j = 0; // รวมราคารวมทั้งหมด
     $sum_k = $sum_l = $sum_m = $sum_n = $sum_o = 0; // รวมค่าจัดส่งทั้งหมด
+    $total = 0; // รวมรายการทั้งหมด
 
     if (mysqli_num_rows($query_date) == 0) {
         echo "<script>alert('ไม่พบข้อมูลที่ค้นหา'); window.close();</script>";
@@ -86,6 +87,7 @@ $enddate    = tochristyear($_POST['enddate']);
         $query_order = mysqli_query($link, $sql_order) or die(mysqli_error($link));
 
         $row_order = 1;
+        $count_day = 0;
         while ($result_order = mysqli_fetch_array($query_order)) {
 
             if ($row_order > 1) {
@@ -182,6 +184,7 @@ $enddate    = tochristyear($_POST['enddate']);
                 <td align="center"><?= $result_orderdet['product_unit'] ?></td>
                 </tr>
         <?php
+                $count_day++; $total++;
                 $row_orderdet++;
             }
         }
@@ -195,7 +198,7 @@ $enddate    = tochristyear($_POST['enddate']);
             <td align="right"><b></b></td>
             <td align="right"><b></b></td>
             <td right="right"><b>รายการ</b></td>
-            <td align="right"><b></b></td>
+            <td align="right"><b><?= $count_day ?></b></td>
             <td align="right"><b></b></td>
         </tr>
 
@@ -211,7 +214,7 @@ $enddate    = tochristyear($_POST['enddate']);
             <td align="right"><b></b></td>
             <td align="right"><b></b></td>
             <td right="right"><b>รายการ</b></td>
-            <td align="right"><b></b></td>
+            <td align="right"><b><?= $total ?></b></td>
             <td align="right"><b></b></td>
         </tr>
 
