@@ -1,5 +1,5 @@
 <head>
-    <title>รายงานการเปลี่ยนสินค้าประจําวัน</title>
+    <title>รายงานการเปลี่ยนสินค้าประจําวัน ตั้งแต่วันที่ <?= $_POST['startdate'] ?> ถึงวันที่ <?= $_POST['enddate'] ?></title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="shortcut icon" href="favicon.ico" />
     <?php
@@ -24,7 +24,7 @@ $enddate    = tochristyear($_POST['enddate']);
 ?>
 
 <h4 align="center" class="page-header text-center" style="padding-top:40px;">อู่ชัยยานยนต์</h4>
-<h3 align="center" class="page-header text-center" style="padding-top:1px;">รายงานการเปลี่ยนสินค้าประจําวัน</h3>
+<h4 align="center" class="page-header text-center" style="padding-top:1px;">รายงานการเปลี่ยนสินค้าประจําวัน</h4>
 <h4 align="center" class=" text-center" style="padding-top:1px;">ตั้งแต่วันที่ <?= DateThai($startdate) ?> ถึงวันที่ <?= DateThai($enddate) ?></h4>
 
 

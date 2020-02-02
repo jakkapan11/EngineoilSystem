@@ -197,9 +197,9 @@ $enddate    = tochristyear($_POST['enddate']);
             <td align="right"><b><?= number_format($sum_3, 2) ?></b></td>
             <td align="right"><b></b></td>
             <td align="right"><b></b></td>
-            <td right="right"><b>รายการ</b></td>
-            <td align="right"><b><?= $count_day ?></b></td>
             <td align="right"><b></b></td>
+            <td align="right"><b><?= $count_day ?></b></td>
+            <td align="center"><b>รายการ</b></td>
         </tr>
 
     <?php
@@ -213,9 +213,9 @@ $enddate    = tochristyear($_POST['enddate']);
             <td align="right" style="color:Black;"><b><?= number_format($sum_a + $sum_b + $sum_c + $sum_d, 2) ?></b></td>
             <td align="right"><b></b></td>
             <td align="right"><b></b></td>
-            <td right="right"><b>รายการ</b></td>
-            <td align="right"><b><?= $total ?></b></td>
             <td align="right"><b></b></td>
+            <td align="right"><b><?= $total ?></b></td>
+            <td align="center"><b>รายการ</b></td>
         </tr>
 
 </table>
