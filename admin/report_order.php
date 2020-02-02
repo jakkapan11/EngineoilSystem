@@ -29,7 +29,7 @@ $enddate    = tochristyear($_POST['enddate']);
     <h4 align="center" class=" text-center" style="padding-top:1px;">ตั้งแต่วันที่ <?= DateThai($startdate) ?> ถึงวันที่ <?= DateThai($enddate) ?></h4>
 
 
-    <table border="0" width="1850px" align="center">
+    <table border="1" width="1860px" align="center">
 
         <tr>
             <td colspan="14" align="right" style="border-bottom:1px solid;">
@@ -44,7 +44,7 @@ $enddate    = tochristyear($_POST['enddate']);
         <tr style="border-bottom:1px solid; height:30px; ">
             <th style="text-align:center; width:100px;">วันที่สั่งซื้อ</th>
             <th style="text-align:center; width:100px;">รหัสสั่งซื้อ</th>
-            <th style="text-align:right; width:100px;">รหัสลูกค้า</th>
+            <th style="text-align:right; width:80px;">รหัสลูกค้า</th>
             <th style="text-align:left; padding-left:15px; width:150px;">ชื่อลูกค้า</th>
             <th style="text-align:left; width:130px;">ประเภทการชําระ</th>
             <th style="text-align:left; padding-left:15px;width:125px;">สถานะสั่งซื้อ</th>
@@ -164,15 +164,33 @@ $enddate    = tochristyear($_POST['enddate']);
                     <td align="right"><?= number_format($result_order['order_total'], 2) ?></td>
                     <td align="right"><?= $result_order['order_deliverycost'] ?></td>
                     <td align="right"><?= $order_totalprice ?></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                    <td></td>
+                    
                     <td align="right"></td>
                 </tr>
 
+                <?php
+
+                $sql_orderdet = "SELECT * FROM orderlist 
+                    LEFT JOIN product ON orderlist.product_id = product.product_id
+                    WHERE orderlist.order_id = '" . $result_order['order_id'] . "'";
+                $query_orderdet = mysqli_query($link, $sql_orderdet) or die(mysqli_error($link));
+
+                while ($result_orderdet = mysqli_fetch_array($query_orderdet)) { ?>
+                   
+                   <tr style="height: 25px;">
+                        <td colspan="10"></td>
+                        <td style="padding-left:20px;"><?= $result_orderdet['product_name'] ?></td>
+                        <td align="right"><?= $result_orderdet['od_price_unit'] ?></td>
+                        <td align="right"><?= $result_orderdet['od_amount'] ?></td>
+                        <td align="right"><?=  number_format ($result_orderdet['od_amount'] *  $result_orderdet['od_price_unit'], 2) ?></td>
+                   
+                        
+                    </tr>
             <?php
+                }
             }
+            // $total += $sum_per_date;
+
             ?>
             <tr style="border-top:1px solid; border-bottom:1px solid;">
                 <td colspan="5"></td>
@@ -228,4 +246,4 @@ $enddate    = tochristyear($_POST['enddate']);
 
     </table>
     </body>
-   <br>
+    <br>
