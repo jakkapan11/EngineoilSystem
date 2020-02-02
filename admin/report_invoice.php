@@ -54,7 +54,8 @@
 
     <?php
     $sql_date = "SELECT DISTINCT date(invoice_paymendate) FROM invoice
-                WHERE month(invoice_paymendate) = '$month' AND year(invoice_paymendate) = '$year'";
+                WHERE month(invoice_paymendate) = '$month' AND year(invoice_paymendate) = '$year'
+                ORDER BY date(invoice_paymendate) ASC";
     $query_date = mysqli_query($link, $sql_date) or die(mysqli_error($link));
     $sum_a = $sum_b = $sum_c = $sum_d = $sum_e = 0;
     $sum_f = $sum_g = $sum_h = $sum_i = $sum_j = 0; // รวมราคารวมทั้งหมด

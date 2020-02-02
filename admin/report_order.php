@@ -29,7 +29,7 @@ $enddate    = tochristyear($_POST['enddate']);
     <h4 align="center" class=" text-center" style="padding-top:1px;">ตั้งแต่วันที่ <?= DateThai($startdate) ?> ถึงวันที่ <?= DateThai($enddate) ?></h4>
 
 
-    <table border="1" width="1860px" align="center">
+    <table border="0" width="1860px" align="center">
 
         <tr>
             <td colspan="14" align="right" style="border-bottom:1px solid;">
@@ -75,7 +75,7 @@ $enddate    = tochristyear($_POST['enddate']);
                <td align='center'>
                 " . short_datetime_thai($result_date['date(order_date)']) . "
                </td>
-               </tr>";
+              ";
 
             $sql_order = "SELECT * FROM orders 
                LEFT JOIN customers ON orders.cus_id = customers.cus_id
@@ -84,7 +84,13 @@ $enddate    = tochristyear($_POST['enddate']);
                WHERE date(order_date) = '" . $result_date['date(order_date)'] . "'";
             $query_order = mysqli_query($link, $sql_order) or die(mysqli_error($link));
 
+            $row_order = 1;
             while ($result_order = mysqli_fetch_array($query_order)) {
+
+                if ($row_order > 1) {
+                    echo "</tr><tr><td></td>";
+                }
+
                 $sum_1 += $result_order['order_total'];
                 $sum_2 += $result_order['order_deliverycost'];
                 $sum_3 += ($result_order['order_total'] + $result_order['order_deliverycost']);
@@ -148,46 +154,49 @@ $enddate    = tochristyear($_POST['enddate']);
 
 
         ?>
-                <tr height="20px">
-                    <td></td>
-                    <td align="center"><?= $result_order['order_id'] ?></td>
-                    <td align="right"><?= $result_order['cus_id'] ?></td>
-                    <td align="left" style="padding-left:15px;"><?= $result_order['cus_name'] ?></td>
-                    <td align="left">
-                        <?php
-                        if ($result_order['order_status'] != 3)
-                            echo $receipt_tye;
-                        else
-                            echo "-"
-                        ?>
-                    <td style="padding-left:15px;"><?= $order_status ?></td>
-                    <td align="right"><?= number_format($result_order['order_total'], 2) ?></td>
-                    <td align="right"><?= $result_order['order_deliverycost'] ?></td>
-                    <td align="right"><?= $order_totalprice ?></td>
-                    
-                    <td align="right"></td>
-                </tr>
+
+                <td align="center"><?= $result_order['order_id'] ?></td>
+                <td align="right"><?= $result_order['cus_id'] ?></td>
+                <td align="left" style="padding-left:15px;"><?= $result_order['cus_name'] ?></td>
+                <td align="left">
+                    <?php
+                    if ($result_order['order_status'] != 3)
+                        echo $receipt_tye;
+                    else
+                        echo "-"
+                    ?>
+                <td style="padding-left:15px;"><?= $order_status ?></td>
+                <td align="right"><?= number_format($result_order['order_total'], 2) ?></td>
+                <td align="right"><?= $result_order['order_deliverycost'] ?></td>
+                <td align="right"><?= $order_totalprice ?></td>
 
                 <?php
 
                 $sql_orderdet = "SELECT * FROM orderlist 
                     LEFT JOIN product ON orderlist.product_id = product.product_id
+                    LEFT JOIN category ON product.category_id = category.category_id
                     WHERE orderlist.order_id = '" . $result_order['order_id'] . "'";
                 $query_orderdet = mysqli_query($link, $sql_orderdet) or die(mysqli_error($link));
 
-                while ($result_orderdet = mysqli_fetch_array($query_orderdet)) { ?>
-                   
-                   <tr style="height: 25px;">
-                        <td colspan="10"></td>
-                        <td style="padding-left:20px;"><?= $result_orderdet['product_name'] ?></td>
-                        <td align="right"><?= $result_orderdet['od_price_unit'] ?></td>
-                        <td align="right"><?= $result_orderdet['od_amount'] ?></td>
-                        <td align="right"><?=  number_format ($result_orderdet['od_amount'] *  $result_orderdet['od_price_unit'], 2) ?></td>
-                   
-                        
+                $row_orderdet = 1;
+                while ($result_orderdet = mysqli_fetch_array($query_orderdet)) {
+                    if ($row_orderdet > 1) {
+                        echo "</tr><tr><td colspan='9'></td>";
+                    }
+                ?>
+
+                    <td style="padding-left:15px;"><?= $result_orderdet['category_name'] ?></td>
+                    <td style="padding-left:20px;"><?= $result_orderdet['product_name'] ?></td>
+                    <td align="right"><?= $result_orderdet['od_price_unit'] ?></td>
+                    <td align="right"><?= $result_orderdet['od_amount'] ?></td>
+                    <td align="right"><?= number_format($result_orderdet['od_amount'] *  $result_orderdet['od_price_unit'], 2) ?></td>
+
+
                     </tr>
             <?php
+                    $row_orderdet++;
                 }
+                $row_order++;
             }
             // $total += $sum_per_date;
 
