@@ -61,7 +61,7 @@ $enddate    = tochristyear($_POST['enddate']);
     <?php
     $sql_date = "SELECT DISTINCT date(order_delivery_date) FROM orders WHERE (date(orders.order_delivery_date) >= date('" . tochristyear($_POST['startdate']) . "') AND date(orders.order_delivery_date) <= date('" . tochristyear($_POST['enddate']) . "'))";
     $query_date = mysqli_query($link, $sql_date) or die(mysqli_error($link));
-    
+
     $sum_a = $sum_b = $sum_c = $sum_d = $sum_e = 0;
     $sum_f = $sum_g = $sum_h = $sum_i = $sum_j = 0; // รวมราคารวมทั้งหมด
     $sum_k = $sum_l = $sum_m = $sum_n = $sum_o = 0; // รวมค่าจัดส่งทั้งหมด
@@ -184,9 +184,10 @@ $enddate    = tochristyear($_POST['enddate']);
                 <td align="center"><?= $result_orderdet['product_unit'] ?></td>
                 </tr>
         <?php
-                $count_day++; $total++;
                 $row_orderdet++;
             }
+            $count_day++;
+            $total++;
         }
         ?>
         <tr style="border-top:1px solid; border-bottom:1px solid;">
@@ -208,15 +209,15 @@ $enddate    = tochristyear($_POST['enddate']);
     <tr style="border-bottom:1px solid;">
         <td colspan="4"></td>
         <td align="right" colspan="2" style="color:Black;"><b>รวมทั้งหมด(บาท)</b></td>
-            <td align="right" style="color:Black;"><b><?= number_format($sum_f + $sum_g + $sum_h + $sum_i + $sum_j, 2) ?></b></td>
-            <td align="right" style="color:Black;"><b><?= number_format($sum_k + $sum_l + $sum_m + $sum_n + $sum_o, 2) ?></b></td>
-            <td align="right" style="color:Black;"><b><?= number_format($sum_a + $sum_b + $sum_c + $sum_d, 2) ?></b></td>
-            <td align="right"><b></b></td>
-            <td align="right"><b></b></td>
-            <td align="right"><b></b></td>
-            <td align="right"><b><?= $total ?></b></td>
-            <td align="center"><b>รายการ</b></td>
-        </tr>
+        <td align="right" style="color:Black;"><b><?= number_format($sum_f + $sum_g + $sum_h + $sum_i + $sum_j, 2) ?></b></td>
+        <td align="right" style="color:Black;"><b><?= number_format($sum_k + $sum_l + $sum_m + $sum_n + $sum_o, 2) ?></b></td>
+        <td align="right" style="color:Black;"><b><?= number_format($sum_a + $sum_b + $sum_c + $sum_d, 2) ?></b></td>
+        <td align="right"><b></b></td>
+        <td align="right"><b></b></td>
+        <td align="right"><b></b></td>
+        <td align="right"><b><?= $total ?></b></td>
+        <td align="center"><b>รายการ</b></td>
+    </tr>
 
 </table>
 </body>
