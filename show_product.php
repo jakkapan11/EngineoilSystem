@@ -8,6 +8,7 @@
 
   include("conf/head.php");
   include("conf/connection.php");
+  include("conf/mali_cus.php");
 
   $strKeyword = null;
   $catg = null;

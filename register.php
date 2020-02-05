@@ -3,18 +3,11 @@
   <?php
   include("conf/head.php");
   include("conf/connection.php");
+  include("conf/mali_cus.php");
   ?>
   <script>
-  // --------------------- Protect Coppy -----------------------------------------------------------------------------
-  document.onkeydown = function(e) {
-        if (e.ctrlKey && (e.keyCode === 85 || e.keyCode === 117) || e.keyCode === 123) { // Key 123 = F12, Key 85 = U
-            return false;
-        }
-    };
-    $(this).bind("contextmenu", function(e) {
-        e.preventDefault();
-    });
-    // ---------------------------------------------------------------------------------------------------------------
+  
+  
 
 
     var endYear = new Date(new Date().getFullYear() - 15, 11, 32);

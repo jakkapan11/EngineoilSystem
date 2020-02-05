@@ -4,7 +4,8 @@
   include("conf/head.php");
   include("conf/connection.php");
   include_once("conf/etc_funct.php");
-
+  include("conf/mali_cus.php");
+  
   if (!isset($_SESSION['cus_id'])) {
     echo "<script>window.location.assign('login.php')</script>";
     exit();

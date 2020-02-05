@@ -21,6 +21,7 @@ if (isset($_SESSION['cus_id'])) {
 <body>
     <?php
     include("conf/head.php");
+    include("conf/mali_cus.php");
     ?>
     <div class="cotainer" style="padding-top:150px;">
         <div class="row justify-content-center">

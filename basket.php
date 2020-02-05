@@ -3,6 +3,7 @@
     <?php
     include("conf/head.php");
     include("conf/connection.php");
+    include("conf/mali_cus.php");
 
     if (!isset($_SESSION)) {
         session_start();
