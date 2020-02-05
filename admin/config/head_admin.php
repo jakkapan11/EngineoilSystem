@@ -34,7 +34,7 @@
 <body>
 
 	<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
-		<a class="navbar-brand" href="#">อู่ชัยยานยนต์</a>
+		<a class="navbar-brand" href="index.php">อู่ชัยยานยนต์</a>
 		<button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle navbar-toggler ml-auto">
 			<span class="navbar-toggler-icon"></span>
 			<span class="icon-bar"></span>
