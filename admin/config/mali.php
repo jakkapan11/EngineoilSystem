@@ -107,12 +107,12 @@ function short_datetime_thai($dates)
         e.preventDefault();
     });
 
-
-    $("#search_report_daily").click(function(e) {
+    $(document).ready(function() {
+        $("#search_report_daily").click(function(e) {
             // 2 ปี 1 เดือน 0 วัน
             var start = $("#startdate").val().split("/");
             var end = $("#enddate").val().split("/");
-         //   console.log(end[1]);
+            //   console.log(end[1]);
             if (start != "" && end != "") {
                 if ((end[2] == start[2])) { // ตรวจปี
                     if (end[1] >= start[1]) {
@@ -141,11 +141,5 @@ function short_datetime_thai($dates)
                 }
             }
         });
-
-
-
-
-
-
-
+    });
 </script>
