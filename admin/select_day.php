@@ -40,14 +40,14 @@
             <tr>
                 <td height="50" align="right"><strong>ตั้งแต่วันที่ :</strong><span style="color:red;">*</span></td>
                 <td><label for="textfield2"></label>
-                <input type="text" class="form-control datepicker" onfocus="$(this).blur();" name="startdate" id="startdate"style="width:300; padding-left:13px;" placeholder="กรุณาเลือกวันที่ที่ต้องการ" onkeypress="return false; event.preventDefault();" onfocus="$(this).blur();" autocomplete="off" required></td>
+                <input type="text" class="form-control datepicker" onfocus="$(this).blur();" name="startdate" id="startdate" style="width:300; padding-left:13px;" placeholder="กรุณาเลือกวันที่ที่ต้องการ" onkeypress="return false; event.preventDefault();" onfocus="$(this).blur();" autocomplete="off" required></td>
                
                 <td width="120" height="50" align="right"><strong>ถึงวันที่ :</strong><span style="color:red;">*</span></td>
                 <td><label for="textfield2"></label>
-                <input type="text" class="form-control datepicker" onfocus="$(this).blur();" name="enddate" id="enddate"style=" width:300; padding-left:13px;" placeholder="กรุณาเลือกวันที่ที่ต้องการ" onkeypress="return false; event.preventDefault();"  onfocus="$(this).blur();"autocomplete="off" required></td>
+                <input type="text" class="form-control datepicker" onfocus="$(this).blur();" name="enddate" id="enddate" style=" width:300; padding-left:13px;" placeholder="กรุณาเลือกวันที่ที่ต้องการ" onkeypress="return false; event.preventDefault();"  onfocus="$(this).blur();"autocomplete="off" required></td>
 
                 <td>
-                    <button style="margin-top:8px;" class="btn btn-primary" name="search" type="submit">ค้นหา</button>
+                    <button style="margin-top:8px;" class="btn btn-primary" id="search_report_daily" name="search" type="submit">ค้นหา</button>
                 </td>
             </tr>
         </table>
