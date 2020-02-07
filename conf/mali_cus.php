@@ -106,4 +106,5 @@ function short_datetime_thai($dates)
     $(this).bind("contextmenu", function(e) {
         e.preventDefault();
     });
+    
 </script>

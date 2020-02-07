@@ -106,4 +106,46 @@ function short_datetime_thai($dates)
     $(this).bind("contextmenu", function(e) {
         e.preventDefault();
     });
+
+
+    $("#search_report_daily").click(function(e) {
+            // 2 ปี 1 เดือน 0 วัน
+            var start = $("#startdate").val().split("/");
+            var end = $("#enddate").val().split("/");
+         //   console.log(end[1]);
+            if (start != "" && end != "") {
+                if ((end[2] == start[2])) { // ตรวจปี
+                    if (end[1] >= start[1]) {
+                        if (!(end[0] >= start[0])) {
+                            // Invalid date
+                            $("#startdate").val("");
+                            $("#enddate").val("");
+                            alert("กรุณาตรวจสอบวันที่ให้ถูกต้อง");
+                            e.preventDefault();
+                        }
+                    } else {
+                        // Invalid date
+                        $("#startdate").val("");
+                        $("#enddate").val("");
+                        alert("กรุณาตรวจสอบวันที่ให้ถูกต้อง");
+                        e.preventDefault();
+                    }
+                } else if (end[2] > start[2]) {
+                    // กรณีปีมากกว่าให้อยู่เฉยๆ
+                } else {
+                    // Invalid date
+                    $("#startdate").val("");
+                    $("#enddate").val("");
+                    alert("กรุณาตรวจสอบวันที่ให้ถูกต้อง");
+                    e.preventDefault();
+                }
+            }
+        });
+
+
+
+
+
+
+
 </script>
