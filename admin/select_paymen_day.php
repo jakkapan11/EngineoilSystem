@@ -4,6 +4,7 @@
     include("config/head_admin.php");
     include("config/connect.php");
     include_once("config/etc_funct_admin.php");
+    include("config/mali.php");
 
     if (!isset($_SESSION['emp_id'])) {
         echo "<script>window.location.assign('login.php')</script>";
@@ -46,7 +47,7 @@
                 <input type="text" class="form-control datepicker" onfocus="$(this).blur();" name="enddate" id="enddate"style=" width:300; padding-left:13px;" placeholder="กรุณาเลือกวันที่ที่ต้องการ" onkeypress="return false; event.preventDefault();" autocomplete="off" required></td>
 
                 <td>
-                    <button style="margin-top:8px;" class="btn btn-primary" name="search" type="submit">ค้นหา</button>
+                    <button style="margin-top:8px;" class="btn btn-primary" id="search_report_daily" name="search" type="submit">ค้นหา</button>
                 </td>
             </tr>
         </table>

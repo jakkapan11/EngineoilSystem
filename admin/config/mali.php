@@ -115,7 +115,7 @@ function short_datetime_thai($dates)
             //   console.log(end[1]);
             if (start != "" && end != "") {
                 if ((end[2] == start[2])) { // ตรวจปี
-                    if (end[1] >= start[1]) {
+                    if (end[1] == start[1]) {
                         if (!(end[0] >= start[0])) {
                             // Invalid date
                             $("#startdate").val("");
@@ -123,6 +123,8 @@ function short_datetime_thai($dates)
                             alert("กรุณาตรวจสอบวันที่ให้ถูกต้อง");
                             e.preventDefault();
                         }
+                    } else if (end[1] > start[1]) {
+                        // กรณีเดือนมากกว่า ไม่ต้องทำอะไร
                     } else {
                         // Invalid date
                         $("#startdate").val("");
