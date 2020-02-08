@@ -59,9 +59,6 @@
     $strStartDate   = $receipt_data['payment_date']; //วันที่ปัจจุบัน
     $strNewDate = date("Y-m-d", strtotime("+5 day", strtotime($strStartDate))); // วันที่ปัจจุบัน + 5 วัน
 
-
-
-
     ?>
 
     <div class="container">
@@ -216,35 +213,39 @@
             </tr>
         </table>
     </div>
+    <?= $strStartDate." ".$strNewDate ?>
 </body>
 
 <script>
     $(document).ready(function() {
         var d = new Date();
-        var current_date = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
+       // var current_date = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
 
         // var date_change_product = $('#date_change_product').val();
         var date_change_product = new Date($('#date_change_product').val());
-        var date_change_product_2 = date_change_product.getFullYear() + "-" + (date_change_product.getMonth() + 1) + "-" + date_change_product.getDate();
+     //   var date_change_product_2 = date_change_product.getFullYear() + "-" + (date_change_product.getMonth() + 1) + "-" + date_change_product.getDate();
         // var date_change_product = Date.parse($("input[name='date_change_product']").val()) ;
 
 
-        //  alert(current_date+"   "+date_change_product_2);
+   
 
-        if (date_change_product_2 < current_date) {
+        if (date_change_product < d) {
             //  alert('aa');
-
+           // console.log(current_date + " > " + date_change_product_2);
             $("#sub").attr("disabled", true);
-
+        } else {
+           //gg console.log(current_date + " < " + date_change_product_2);
         }
 
         // ปิดปุ่ม ตรงนี้
+        /*
         checkbox = $('#od_status');
         if (checkbox.hasAttr) {
             console.log("Undefined");
         } else {
             console.log("NULL");
         }
+        */
     });
 
 
