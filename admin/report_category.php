@@ -91,7 +91,7 @@ echo ThDate(); // วันที่แสดง
         <?php } else { ?>
             <tr>
                 <td colspan="2"></td>
-                <td sdtyle="border-bottom:1px soild; padding-right:20px;" height="37" align="right"><?= $result_product['product_id'] ?></td>
+                <td style="border-bottom:1px soild; padding-right:20px;" height="37" align="right"><?= $result_product['product_id'] ?></td>
                 <td style="border-bottom:1px soild;"><?= $result_product['product_name'] ?></td>
                 <td style="border-bottom:1px soild;" align="right"><?= number_format($result_product['product_price_unit'], 2); ?></td>
                 <td style="border-bottom:1px soild;" align="right"><?= $result_product['product_amount'] ?></td>

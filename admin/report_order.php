@@ -20,6 +20,12 @@
 
 </head>
 
+<style type="text/css" media="print">
+    @page {
+        size: auto;
+    }
+</style>
+
 <?php
 $startdate  = tochristyear($_POST['startdate']);
 $enddate    = tochristyear($_POST['enddate']);

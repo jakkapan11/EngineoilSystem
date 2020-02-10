@@ -18,6 +18,13 @@
     }
     ?>
 </head>
+
+<style type="text/css" media="print">
+    @page {
+        size: auto;
+    }
+</style>
+
 <?php
 $startdate  = tochristyear($_POST['startdate']);
 $enddate    = tochristyear($_POST['enddate']);
@@ -40,11 +47,11 @@ $enddate    = tochristyear($_POST['enddate']);
     </tr>
     <tr style="border-bottom:1px solid; height:30px; ">
         <th style="text-align:center; width:120px;">วันที่เปลี่ยน</th>
-        <th style="text-align:center; width:140px;">รหัสการเปลี่ยน</th>
+        <th style="text-align:center; width:125px;">รหัสการเปลี่ยน</th>
         <th style="text-align:center;  width:110px;">วันที่สั่งซื้อ</th>
-        <th style="text-align:center; width:95px;">รหัสสั่งซื้อ</th>
+        <th style="text-align:center; width:110px;">รหัสสั่งซื้อ</th>
         <th style="text-align:center; width:115px;">เลขที่ใบเสร็จ</th>
-        <th style="text-align:center; width:115px;">วันที่ออกใบเสร็จ</th>
+        <th style="text-align:center; width:120px;">วันที่ออกใบเสร็จ</th>
         <th style="text-align:left; padding-left:15px;width:200px;">ชื่อลูกค้า</th>
         <th style="text-align:left;width:260px;">รายการสินค้า</th>
         <th style="text-align:right; width:90px;">จํานวนซื้อ</th>

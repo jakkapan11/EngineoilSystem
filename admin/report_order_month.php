@@ -22,6 +22,11 @@
 
     ?>
 </head>
+<style type="text/css" media="print">
+    @page {
+        size: auto;
+    }
+</style>
 
 <h4 align="center" class="page-header text-center" style="padding-top:40px;">อู่ชัยยานยนต์</h4>
 <h4 align="center" class="page-header text-center" style="padding-top:1px;">รายงานการสั่งซื้อประจําเดือน</4h>

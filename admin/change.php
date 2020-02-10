@@ -213,7 +213,7 @@
             </tr>
         </table>
     </div>
-    <?= $strStartDate." ".$strNewDate ?>
+  
 </body>
 
 <script>
