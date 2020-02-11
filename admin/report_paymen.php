@@ -196,7 +196,7 @@ $enddate    = tochristyear($_POST['enddate']);
         <td colspan="7"></td>
         <td align="right" colspan="2" style="color:Black;"><b>รวมทั้งหมด(บาท)</b></td>
         <td align="right"  style="color:Black;"><b><?= number_format($sum_f + $sum_g + $sum_h + $sum_i, 2) ?></b></td>
-            <td align="right"  style="color:Black;"><b><?= number_format($sum_k + $sum_l + $sum_m + $sum_n, 2) ?></b></td>
+        <td align="right"  style="color:Black;"><b><?= number_format($sum_k + $sum_l + $sum_m + $sum_n, 2) ?></b></td>
         <td align="right" colspan="3" style="color:Black;"><b><?= number_format($sum_a + $sum_b + $sum_c + $sum_d, 2) ?></b></td>
     </tr>
     <tr>
@@ -210,21 +210,21 @@ $enddate    = tochristyear($_POST['enddate']);
         <td colspan="7"></td>
         <td align="right" colspan="2" style="color:339999;"><b>รวมเงินโอนทั้งหมด(บาท)</b></td>
         <td align="right" style="color:339999;"><b><?= number_format($sum_g, 2) ?></b></td>
-            <td align="right" style="color:339999;"><b><?= number_format($sum_l, 2) ?></b></td>
+        <td align="right" style="color:339999;"><b><?= number_format($sum_l, 2) ?></b></td>
         <td align="right" colspan="3" style="color:339999;"><b><?= number_format($sum_b, 2) ?></b></td>
     </tr>
     <tr>
         <td colspan="7"></td>
         <td align="right" colspan="2" style="color:FF9999;"><b>รวมบัตรเดบิตทั้งหมด(บาท)</b></td>
         <td align="right" style="color:FF9999;"><b><?= number_format($sum_h, 2) ?></b></td>
-            <td align="right" style="color:FF9999;"><b><?= number_format($sum_m, 2) ?></b></td>
+        <td align="right" style="color:FF9999;"><b><?= number_format($sum_m, 2) ?></b></td>
         <td align="right" colspan="3" style="color:FF9999;"><b><?= number_format($sum_c, 2) ?></b></td>
     </tr>
     <tr style="border-bottom:1px solid;">
         <td colspan="7"></td>
         <td align="right" colspan="2" style="color:0000DD;"><b>รวมบัตรเครดิตทั้งหมด(บาท)</b></td>
         <td align="right" style="color:0000DD;"><b><?= number_format($sum_i, 2) ?></b></td>
-            <td align="right" style="color:0000DD;"><b><?= number_format($sum_n, 2) ?></b></td>
+        <td align="right" style="color:0000DD;"><b><?= number_format($sum_n, 2) ?></b></td>
         <td align="right" colspan="3" style="color:0000DD;"><b><?= number_format($sum_d, 2) ?></b></td>
     </tr>
 
