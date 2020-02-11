@@ -73,7 +73,7 @@ $enddate    = tochristyear($_POST['enddate']);
     $sum_f = $sum_g = $sum_h = $sum_i = $sum_j = 0; // รวมราคารวมทั้งหมด
     $sum_k = $sum_l = $sum_m = $sum_n = $sum_o = 0; // รวมค่าจัดส่งทั้งหมด
     $total = 0; // รวมรายการทั้งหมด
-
+    $count_sum_a = $count_sum_b = 0 ;
     if (mysqli_num_rows($query_date) == 0) {
         echo "<script>alert('ไม่พบข้อมูลที่ค้นหา'); window.close();</script>";
         exit();
@@ -105,57 +105,33 @@ $enddate    = tochristyear($_POST['enddate']);
             $sum_2 += $result_order['order_deliverycost'];
             $sum_3 += ($result_order['order_total'] + $result_order['order_deliverycost']);
 
-            switch ($result_order['order_status']) {
+           
+
+            switch ($result_order['order_type']) {
                 case 0:
-                    $order_status = "<font color='orange'>ยังไม่แจ้งชำระ</font>";
+                    $order_type = "<font color='54BD54'>ลงทะเบียน</font>";
                     $order_totalprice = "<font color='Black'>" . number_format($result_order['order_deliverycost'] + $result_order['order_total'], 2) . "</font>";
                     $sum_f += $result_order['order_total'];
                     $sum_a += $result_order['order_deliverycost'] + $result_order['order_total'];
                     $sum_k += $result_order['order_deliverycost'];
+                    $count_sum_a ++;
                     break;
                 case 1:
-                    $order_status = "<font color='3366CC'>รอการตรวจสอบ</font>";
+                    $order_type = "<font color='3366CC'>EMS</font>";
                     $order_totalprice = "<font color='Black'>" . number_format($result_order['order_deliverycost'] + $result_order['order_total'], 2) . "</font>";
                     $sum_g += $result_order['order_total'];
                     $sum_b += $result_order['order_deliverycost'] + $result_order['order_total'];
                     $sum_l += $result_order['order_deliverycost'];
+                    $count_sum_b ++;
                     break;
                 case 2:
-                    $order_status = "<font color='54BD54'>ชำระแล้ว</font>";
+                    $order_type = "<font color=''>นําสินค้ากลับบ้านเอง</font>";
+                    break;
                     $order_totalprice = "<font color='Black'>" . number_format($result_order['order_deliverycost'] + $result_order['order_total'], 2) . "</font>";
                     $sum_h += $result_order['order_total'];
                     $sum_c += $result_order['order_deliverycost'] + $result_order['order_total'];
                     $sum_m += $result_order['order_deliverycost'];
                     break;
-                case 3:
-                    $order_status = "<font color='9900FF'>ค้างชําระ</font>";
-                    $order_totalprice = "<font color='Black'>" . number_format($result_order['order_deliverycost'] + $result_order['order_total'], 2) . "</font>";
-                    $sum_i += $result_order['order_total'];
-                    $sum_d += $result_order['order_deliverycost'] + $result_order['order_total'];
-                    $sum_n += $result_order['order_deliverycost'];
-                    break;
-                case 4:
-                    $order_status = "<font color='red'>ยกเลิก</font>";
-                    $order_totalprice = "<font color='Black'>" . number_format($result_order['order_deliverycost'] + $result_order['order_total'], 2) . "</font>";
-                    $sum_j += $result_order['order_total'];
-                    $sum_e += $result_order['order_deliverycost'] + $result_order['order_total'];
-                    $sum_o += $result_order['order_deliverycost'];
-                    break;
-                default:
-                    $order_status = "-";
-            }
-
-            switch ($result_order['order_type']) {
-                case 0:
-                    $order_type = "<font color=''>ลงทะเบียน</font>";
-                    break;
-                case 1:
-                    $order_type = "<font color=''>EMS</font>";
-                    break;
-                case 2:
-                    $order_type = "<font color=''>นําสินค้ากลับบ้านเอง</font>";
-                    break;
-
                 default:
                     $order_type = "-";
             }
@@ -213,7 +189,7 @@ $enddate    = tochristyear($_POST['enddate']);
     <?php
     }
     ?>
-    <tr style="border-bottom:1px solid;">
+    <tr >
         <td colspan="4"></td>
         <td align="right" colspan="2" style="color:Black;"><b>รวมทั้งหมด(บาท)</b></td>
         <td align="right" style="color:Black;"><b><?= number_format($sum_f + $sum_g + $sum_h + $sum_i + $sum_j, 2) ?></b></td>
@@ -225,6 +201,31 @@ $enddate    = tochristyear($_POST['enddate']);
         <td align="right"><b><?= $total ?></b></td>
         <td align="center"><b>รายการ</b></td>
     </tr>
+    <tr>
+    <td colspan="4"></td>
+        <td align="right" colspan="2" style="color:54BD54;"><b>รวมลงทะเบียนทั้งหมด</b></td>
+        <td align="right" style="color:54BD54;"><b><?= number_format($sum_f, 2) ?></b></td>
+        <td align="right" style="color:54BD54;"><b><?= number_format($sum_k, 2) ?></b></td>
+        <td align="right" style="color:54BD54;"><b><?= number_format($sum_a, 2) ?></b></td>
+        <td align="right"><b></b></td>
+        <td align="right"><b></b></td>
+        <td align="right"><b></b></td>
+        <td align="right"style="color:54BD54;"><b></b><?= $count_sum_a ?></td>
+        <td align="center"style="color:54BD54;"><b>รายการ</b></td>
+</tr>
+<tr style="border-bottom:1px solid;">
+    <td colspan="4"></td>
+        <td align="right" colspan="2" style="color:3366CC;"><b>รวม EMS ทั้งหมด</b></td>
+        <td align="right" style="color:3366CC;"><b><?= number_format($sum_g, 2) ?></b></td>
+        <td align="right" style="color:3366CC;"><b><?= number_format($sum_l, 2) ?></b></td>
+        <td align="right" style="color:3366CC;"><b><?= number_format($sum_b, 2) ?></b></td>
+        <td align="right"><b></b></td>
+        <td align="right"><b></b></td>
+        <td align="right"><b></b></td>
+        <td align="right" style="color:3366CC;"><b><?= $count_sum_b ?><b></td>
+        <td align="center" style="color:3366CC;"><b>รายการ</b></td>
+</tr>
+    
 
 </table>
 </body>
