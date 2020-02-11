@@ -68,6 +68,8 @@ $enddate    = tochristyear($_POST['enddate']);
         $sql_date = "SELECT DISTINCT date(order_date) FROM orders WHERE (date(orders.order_date) >= date('" . tochristyear($_POST['startdate']) . "') AND date(orders.order_date) <= date('" . tochristyear($_POST['enddate']) . "'))";
         $query_date = mysqli_query($link, $sql_date) or die(mysqli_error($link));
         $sum_a = $sum_b = $sum_c = $sum_d = $sum_e = 0;
+        $sum_k = $sum_l = $sum_m = $sum_n = $sum_o = 0; // รวมค่าจัดส่งทั้งหมด
+        $sum_f = $sum_g = $sum_h = $sum_i = $sum_j = 0; // รวมราคารวมทั้งหมด
 
         if (mysqli_num_rows($query_date) == 0) {
             echo "<script>alert('ไม่พบข้อมูลที่ค้นหา'); window.close();</script>";
@@ -105,35 +107,55 @@ $enddate    = tochristyear($_POST['enddate']);
                     case 0:
                         $order_status = "<font color='orange'>ยังไม่แจ้งชำระ</font>";
                         $order_totalprice = "<font color='orange'>" . number_format($result_order['order_deliverycost'] + $result_order['order_total'], 2) . "</font>";
+                        $order_deliverycost =  "<font color='orange'>" . number_format($result_order['order_deliverycost'], 2) . "</font>";  //สีของค่าส่ง
+                        $order_total = "<font color='orange'>" . number_format($result_order['order_total'], 2) . "</font>";
                         $sum_a += $result_order['order_deliverycost'] + $result_order['order_total'];
+                        $sum_k += $result_order['order_deliverycost'];
+                        $sum_f += $result_order['order_total'];
                         //  $order_totalprice = "<font color='orange'>" . $result_order['order_totalprice'] . "</font>";
                         //$total_trans_0++;
                         break;
                     case 1:
                         $order_status = "<font color='3366CC'>รอการตรวจสอบ</font>";
                         $order_totalprice = "<font color='3366CC'>" . number_format($result_order['order_deliverycost'] + $result_order['order_total'], 2) . "</font>";
-                        $sum_b += $result_order['order_deliverycost'] + $result_order['order_total'];
+                        $order_deliverycost =  "<font color='3366CC'>" . number_format($result_order['order_deliverycost'], 2) . "</font>";
+                        $order_total = "<font color='3366CC'>" . number_format($result_order['order_total'], 2) . "</font>";
+                        $sum_b += $result_order['order_deliverycost'] + $result_order['order_total']; 
+                        $sum_l += $result_order['order_deliverycost'];
+                        $sum_g += $result_order['order_total'];
                         //  $order_totalprice = "<font color='#0072EE'>" . $result_order['order_totalprice'] . "</font>";
                         //$total_trans_1++;
                         break;
                     case 2:
                         $order_status = "<font color='54BD54'>ชำระแล้ว</font>";
                         $order_totalprice = "<font color='54BD54'>" . number_format($result_order['order_deliverycost'] + $result_order['order_total'], 2) . "</font>";
+                        $order_deliverycost =  "<font color='54BD54'>" . number_format($result_order['order_deliverycost'], 2) . "</font>";
+                        $order_total = "<font color='54BD54'>" . number_format($result_order['order_total'], 2) . "</font>";
                         $sum_c += $result_order['order_deliverycost'] + $result_order['order_total'];
+                        $sum_m += $result_order['order_deliverycost'];
+                        $sum_h += $result_order['order_total'];
                         //$order_totalprice = "<font color='#12BB4F'>" . $result_order['order_totalprice'] . "</font>";
                         //$total_trans_2++;
                         break;
                     case 3:
                         $order_status = "<font color='9900FF'>ค้างชําระ</font>";
                         $order_totalprice = "<font color='9900FF'>" . number_format($result_order['order_deliverycost'] + $result_order['order_total'], 2) . "</font>";
+                        $order_deliverycost =  "<font color='9900FF'>" . number_format($result_order['order_deliverycost'], 2) . "</font>";
+                        $order_total = "<font color='9900FF'>" . number_format($result_order['order_total'], 2) . "</font>";
                         $sum_d += $result_order['order_deliverycost'] + $result_order['order_total'];
+                        $sum_n += $result_order['order_deliverycost'];
+                        $sum_i += $result_order['order_total'];
                         //$order_totalprice = "<font color='red'>" . $result_order['order_totalprice'] . "</font>";
                         //$total_trans_3++;
                         break;
                     case 4:
                         $order_status = "<font color='red'>ยกเลิก</font>";
                         $order_totalprice = "<font color='red'>" . number_format($result_order['order_deliverycost'] + $result_order['order_total'], 2) . "</font>";
+                        $order_deliverycost =  "<font color='red'>" . number_format($result_order['order_deliverycost'], 2) . "</font>";
+                        $order_total = "<font color='red'>" . number_format($result_order['order_total'], 2) . "</font>";
                         $sum_e += $result_order['order_deliverycost'] + $result_order['order_total'];
+                        $sum_o += $result_order['order_deliverycost'];
+                        $sum_j += $result_order['order_total'];
                         //$order_totalprice = "<font color='red'>" . $result_order['order_totalprice'] . "</font>";
                         //$total_trans_3++;
                         break;
@@ -172,8 +194,8 @@ $enddate    = tochristyear($_POST['enddate']);
                         echo "-"
                     ?>
                 <td style="padding-left:15px;"><?= $order_status ?></td>
-                <td align="right"><?= number_format($result_order['order_total'], 2) ?></td>
-                <td align="right"><?= $result_order['order_deliverycost'] ?></td>
+                <td align="right"><?= $order_total ?></td>
+                <td align="right"><?= $order_deliverycost ?></td>
                 <td align="right"><?= $order_totalprice ?></td>
 
                 <?php
@@ -193,7 +215,7 @@ $enddate    = tochristyear($_POST['enddate']);
 
                     <td style="padding-left:15px;"><?= $result_orderdet['category_name'] ?></td>
                     <td style="padding-left:20px;"><?= $result_orderdet['product_name'] ?></td>
-                    <td align="right"><?= $result_orderdet['od_price_unit'] ?></td>
+                    <td align="right"><?=  number_format($result_orderdet['od_price_unit'], 2) ?></td>
                     <td align="right"><?= $result_orderdet['od_amount'] ?></td>
                     <td align="right"><?= number_format($result_orderdet['od_amount'] *  $result_orderdet['od_price_unit'], 2) ?></td>
 
@@ -226,32 +248,46 @@ $enddate    = tochristyear($_POST['enddate']);
         <tr>
             <td colspan="4"></td>
             <td align="right" colspan="2" style="color:Black;"><b>รวมทั้งหมด(บาท)</b></td>
-            <td align="right" colspan="3" style="color:Black;"><b><?= number_format($sum_a + $sum_b + $sum_c + $sum_d + $sum_e, 2) ?></b></td>
+            <td align="right"  style="color:Black;"><b><?= number_format($sum_f + $sum_g + $sum_h + $sum_i + $sum_j, 2) ?></b></td>
+            <td align="right"  style="color:Black;"><b><?= number_format($sum_k + $sum_l + $sum_m + $sum_n + $sum_o, 2) ?></b></td>
+            <td align="right"  style="color:Black;"><b><?= number_format($sum_a + $sum_b + $sum_c + $sum_d + $sum_e, 2) ?></b></td>
         </tr>
         <tr>
             <td colspan="4"></td>
             <td align="right" colspan="2" style="color:orange;"><b>รวมยังไม่แจ้งชำระทั้งหมด(บาท)</b></td>
-            <td align="right" colspan="3" style="color:orange;"><b><?= number_format($sum_a, 2) ?></b></td>
+            <td align="right" style="color:orange;"><b><?= number_format($sum_f, 2) ?></b></td>
+            <td align="right" style="color:orange;"><b><?= number_format($sum_k, 2) ?></b></td>
+            <td align="right" style="color:orange;"><b><?= number_format($sum_a, 2) ?></b></td>
+           
         </tr>
         <tr>
             <td colspan="4"></td>
             <td align="right" colspan="2" style="color:3366CC;"><b>รวมรอการตรวจสอบทั้งหมด(บาท)</b></td>
-            <td align="right" colspan="3" style="color:3366CC;"><b><?= number_format($sum_b, 2) ?></b></td>
+            <td align="right" style="color:3366CC;"><b><?= number_format($sum_g, 2) ?></b></td>
+            <td align="right" style="color:3366CC;"><b><?= number_format($sum_l, 2) ?></b></td>
+            <td align="right" style="color:3366CC;"><b><?= number_format($sum_b, 2) ?></b></td>
         </tr>
         <tr>
             <td colspan="4"></td>
-            <td align="right" colspan="2" style="color:54BD54;"><b>รวมยังชำระทั้งหมด(บาท)</b></td>
-            <td align="right" colspan="3" style="color:54BD54;"><b><?= number_format($sum_c, 2) ?></b></td>
+            <td align="right" colspan="2" style="color:54BD54;"><b>รวมชำระทั้งหมด(บาท)</b></td>
+            <td align="right" style="color:54BD54;"><b><?= number_format($sum_h, 2) ?></b></td>
+            <td align="right" style="color:54BD54;"><b><?= number_format($sum_m, 2) ?></b></td>
+            <td align="right" style="color:54BD54;"><b><?= number_format($sum_c, 2) ?></b></td>
+
         </tr>
         <tr>
             <td colspan="4"></td>
             <td align="right" colspan="2" style="color:9900FF;"><b>รวมค้างชําระทั้งหมด(บาท)</b></td>
-            <td align="right" colspan="3" style="color:9900FF;"><b><?= number_format($sum_d, 2) ?></b></td>
+            <td align="right" style="color:9900FF;"><b><?= number_format($sum_i, 2) ?></b></td>
+            <td align="right" style="color:9900FF;"><b><?= number_format($sum_n, 2) ?></b></td>
+            <td align="right" style="color:9900FF;"><b><?= number_format($sum_d, 2) ?></b></td>
         </tr>
         <tr style="border-bottom:1px solid;">
             <td colspan="4"></td>
             <td align="right" colspan="2" style="color:red;"><b>รวมยกเลิกทั้งหมด(บาท)</b></td>
-            <td align="right" colspan="3" style="color:red;"><b><?= number_format($sum_e, 2) ?></b></td>
+            <td align="right" style="color:red;"><b><?= number_format($sum_j, 2) ?></b></td>
+            <td align="right" style="color:red;"><b><?= number_format($sum_o, 2) ?></b></td>
+            <td align="right" style="color:red;"><b><?= number_format($sum_e, 2) ?></b></td>
         </tr>
         <tr>
             <td colspan="14"></td>
