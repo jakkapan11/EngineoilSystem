@@ -59,16 +59,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   }
 
   $sqlreceipt = "INSERT INTO receipt SET 
-    payment_date              = '" . $payment_date . "',
     receipt_tye	        	    = '$receipt_tye',
     emp_id                    = '" . $_SESSION['emp_id'] . "',
     order_id                  = '" .  $last_orderid . "',
     receipt_date              = '" . $receipt_date . "',
     receipt_payment_details	  = ' $receipt_payment_details '";
-
-  mysqli_query($link, $sqlreceipt) or die(mysqli_error($link));
-  $last_receipt = mysqli_insert_id($link);
-
+    
+  if ($_POST['order_status'] == 2) {
+    mysqli_query($link, $sqlreceipt) or die(mysqli_error($link));
+    $last_receipt = mysqli_insert_id($link);
+  }
   //    $sql ="INSERT INTO receipt (receipt_tye, receipt_payment_details , invoice_id)
   // VALUES ('".$_POST['receipt_tye']."','".$_POST['receipt_payment_details']."' , 1)";
   // mysqli_query($link, $sql) or die(mysqli_error($link));
