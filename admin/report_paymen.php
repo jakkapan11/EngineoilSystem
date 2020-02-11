@@ -34,7 +34,7 @@ $enddate    = tochristyear($_POST['enddate']);
 <h4 align="center" class="page-header text-center" style="padding-top:1px;">รายงานการรับชําระประจําวัน</h4>
 <h4 align="center" class=" text-center" style="padding-top:1px;">ตั้งแต่วันที่ <?= DateThai($startdate) ?> ถึงวันที่ <?= DateThai($enddate) ?></h4>
 
-<table border="0" width="1450px" align="center">
+<table border="0" width="1480px" align="center">
 
     <tr>
         <td colspan="12" align="right" style="border-bottom:1px solid;">
@@ -47,7 +47,7 @@ $enddate    = tochristyear($_POST['enddate']);
     </tr>
 
     <tr style="border-bottom:1px solid; height:30px; ">
-        <th style="text-align:center; width:100px;">วันที่ชําระ</th>
+        <th style="text-align:center; width:130px;">วันที่ออกใบเสร็จ</th>
         <th style="text-align:center; width:100px;">เลขที่ใบเสร็จ</th>
         <th style="text-align:center; width:120px;">วันที่สั่งซื้อ</th>
         <th style="text-align:left; padding-left:15px; width:100px;">รหัสสั่งซื้อ</th>
@@ -63,7 +63,7 @@ $enddate    = tochristyear($_POST['enddate']);
 
     <?php
     $sql_date = "SELECT DISTINCT date(receipt_date) FROM receipt 
-    WHERE (date(receipt.payment_date) >= date('" . tochristyear($_POST['startdate']) . "') AND date(receipt.payment_date) <= date('" . tochristyear($_POST['enddate']) . "'))
+    WHERE (date(receipt.receipt_date) >= date('" . tochristyear($_POST['startdate']) . "') AND date(receipt.receipt_date) <= date('" . tochristyear($_POST['enddate']) . "'))
     ORDER BY date(receipt_date) ASC";
     $query_date = mysqli_query($link, $sql_date) or die(mysqli_error($link));
     $sum_a = $sum_b = $sum_c = $sum_d = 0;
