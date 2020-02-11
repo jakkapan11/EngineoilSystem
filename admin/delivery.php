@@ -67,9 +67,9 @@
         $order_deadline_date = "";
     else $order_deadline_date = tothaiyear($data['order_deadline_date']);
 
-    if ($receipt_data2['payment_date'] == "0000-00-00")
-        $payment_date = "";
-    else $payment_date = tothaiyear($receipt_data2['payment_date']);
+    if ($receipt_data2['receipt_date'] == "0000-00-00")
+        $receipt_date = "";
+    else $receipt_date = tothaiyear($receipt_data2['receipt_date']);
     ?>
 
     <div class="container">
@@ -95,10 +95,10 @@
                     <td width="200" height="45" align="right"><strong>วันที่สั่งซื้อ :</strong> </td>
                     <td width="250" style="padding-left:20px;"><?= tothaiyear($data['order_date']); ?></td>
                    
-                    <td width="160" height="45" align="right"><strong>วันที่ชําระ :</strong> </td>
+                    <td width="160" height="45" align="right"><strong>วันที่ออกใบเสร็จ :</strong> </td>
                     <td width="200" style="padding-left:20px;"><?php
-                                                             if ($payment_date != "") {
-                                                             echo $payment_date;
+                                                             if ($receipt_date != "") {
+                                                             echo $receipt_date;
                                                             } else {echo " <left>-</left>"; } ?></td>
                 </tr>
                 <tr>

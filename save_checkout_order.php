@@ -36,10 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   $last_orderid = mysqli_insert_id($link);
 
-  $sqlreceipt = "INSERT INTO receipt SET 
-    order_id                  = '" .  $last_orderid . "'";
-  mysqli_query($link, $sqlreceipt);
-
+  
 
 
   for ($i = 0; $i < count($_SESSION['product_id']); $i++) {

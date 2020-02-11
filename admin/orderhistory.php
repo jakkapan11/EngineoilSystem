@@ -54,7 +54,6 @@
                 <th style="text-align:left;width:160px;">สถานะสั่งซื้อ</th>
                 <th style="text-align:center;width:120px;">ยกเลิก</th>
                 <th style="text-align:center;width:150px;">รับชําระ</th>
-
                 <th style="text-align:center;width:200px;">พิมพ์ใบแจ้งหนี้</th>
             </tr>
         </thead>

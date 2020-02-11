@@ -42,7 +42,7 @@
     $q3 = mysqli_query($link, $sql_invoice) or die(mysqli_error($link));
     $invoice_data = mysqli_fetch_assoc($q3);
 
-    $sql_receipt = "SELECT receipt_id , payment_date FROM receipt WHERE order_id = '" . $data['order_id'] . "'";
+    $sql_receipt = "SELECT receipt_id , receipt_date FROM receipt WHERE order_id = '" . $data['order_id'] . "'";
     $q3 = mysqli_query($link, $sql_receipt) or die(mysqli_error($link));
     $receipt_data = mysqli_fetch_assoc($q3);
 
@@ -56,7 +56,7 @@
     else $order_delivery_date = tothaiyear($data['order_delivery_date']);
 
     //วันที่ชำระ +5 วัน (การเปลี่ยนสินค้า)
-    $strStartDate   = $receipt_data['payment_date']; //วันที่ปัจจุบัน
+    $strStartDate   = $receipt_data['receipt_date']; //วันที่ปัจจุบัน
     $strNewDate = date("Y-m-d", strtotime("+5 day", strtotime($strStartDate))); // วันที่ปัจจุบัน + 5 วัน
 
     ?>
