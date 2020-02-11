@@ -28,13 +28,6 @@
     $q3 = mysqli_query($link, $sql_invoice) or die(mysqli_error($link));
     $invoice_data = mysqli_fetch_assoc($q3);
 
-    $sql_receipt = "SELECT receipt_id FROM receipt WHERE order_id = '" . $data['order_id'] . "'";
-    $q3 = mysqli_query($link, $sql_receipt) or die(mysqli_error($link));
-    $receipt_data = mysqli_fetch_assoc($q3);
-
-    $sql_receipt2 = "SELECT * FROM receipt WHERE order_id = '" . $data['order_id'] . "'";
-    $q4 = mysqli_query($link, $sql_receipt2) or die(mysqli_error($link));
-    $receipt_data2 = mysqli_fetch_assoc($q4);
     ?>
 
     <div class="container">
@@ -60,7 +53,6 @@
                                                                     echo " <left>-</left>";
                                                                 } ?>
                         <input type="text" hidden name="invoice_id" id="invoice_id" value="<?= $invoice_data['invoice_id'] ?>">
-                        <input type="text" hidden name="receipt_id" id="receipt_id" value="<?= $receipt_data['receipt_id'] ?>">
 
                     </td>
 
@@ -72,7 +64,7 @@
                     <td width="20%" style="padding-left:20px;"><?php
                                                                 if ($invoice_data['invoice_id'] != NULL) {
                                                                     echo tothaiyear($invoice_data['invoice_paymendate']) ?>
-                                                                <?php } else {
+                        <?php } else {
                                                                     echo " <left>-</left>";
                                                                 } ?>
 
@@ -80,22 +72,21 @@
                     <td height="25" align="right"><strong>ประเภทการชําระ :</strong> <span style="color:red;">*</span></td>
                     <td style="padding-left:20px;"><label for="select"></label>
                         <select name="receipt_tye" style="width:227px; " class="form-control" id="receipt_tye" required>
-                            <!--<option value="" disabled selected> กรุณาเลือกประเภทการชําระ</option> !-->
-                            <option <?php if ($receipt_data2['receipt_tye'] == 0) echo "selected"; ?> value="0">เงินสด</option>
-                            <option <?php if ($receipt_data2['receipt_tye'] == 1) echo "selected"; ?> value="1">โอน</option>
-                            <option <?php if ($receipt_data2['receipt_tye'] == 2) echo "selected"; ?> value="2">บัตรเดบิต</option>
-                            <option <?php if ($receipt_data2['receipt_tye'] == 3) echo "selected"; ?> value="3">บัตรเครดิต</option>
+                            <option value="" disabled selected> กรุณาเลือกประเภทการชําระ</option>
+                            <option value="0">เงินสด</option>
+                            <option value="1">โอน</option>
+                            <option value="2">บัตรเดบิต</option>
+                            <option value="3">บัตรเครดิต</option>
                         </select></td>
                 </tr>
                 <tr>
                     <td width="180" align="right"><strong>วันทีชําระ :</strong></td>
                     <td width="20%" style="padding-left:14px;"><label for="textfield"></label>
-                        <?= tothaiyear(date("Y-m-d")); ?>
-                        <input type="text" style="width:250px;" name="payment_date" id="payment_date" value="<?= tothaiyear(date("Y-m-d")); ?>" hidden /></td>
+                        <input type="text" style="width:200px;" class="form-control" name="invoice_date" id="invoice_date" value="<?= tothaiyear(date("Y-m-d")); ?>" readonly/></td>
 
                     <td align="right"><strong>รายละเอียดการชําระ :</strong> <span style="color:red;">*</span></td>
                     <td style="padding-left:20px;"><label for="textarea"></label>
-                        <textarea name="receipt_payment_details" style="width:227px;" class="form-control" id="receipt_payment_details" required cols="30" rows="1" required><?= $receipt_data2['receipt_payment_details'] ?></textarea></td>
+                        <textarea name="receipt_payment_details" style="width:227px;" class="form-control" id="receipt_payment_details" required cols="30" rows="1" required></textarea></td>
                 </tr>
                 <tr>
                     <input type="text" style="width:250px;" hidden name="receipt_date" id="receipt_date" value="<?= tothaiyear(date("Y-m-d")); ?>" hidden /></td>
