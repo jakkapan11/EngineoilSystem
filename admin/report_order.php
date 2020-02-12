@@ -35,7 +35,7 @@ $enddate    = tochristyear($_POST['enddate']);
     <h4 align="center" class=" text-center" style="padding-top:1px;">ตั้งแต่วันที่ <?= DateThai($startdate) ?> ถึงวันที่ <?= DateThai($enddate) ?></h4>
 
 
-    <table border="0" width="1860px" align="center">
+    <table border="0" width="1870px" align="center">
 
         <tr>
             <td colspan="14" align="right" style="border-bottom:1px solid;">
@@ -49,10 +49,10 @@ $enddate    = tochristyear($_POST['enddate']);
 
         <tr style="border-bottom:1px solid; height:30px; ">
             <th style="text-align:center; width:100px;">วันที่สั่งซื้อ</th>
-            <th style="text-align:center; width:100px;">รหัสสั่งซื้อ</th>
-            <th style="text-align:right; width:80px;">รหัสลูกค้า</th>
-            <th style="text-align:left; padding-left:15px; width:150px;">ชื่อลูกค้า</th>
-            <th style="text-align:left; width:130px;">ประเภทการชําระ</th>
+            <th style="text-align:center; width:90px;">รหัสสั่งซื้อ</th>
+            <th style="text-align:right; width:90px;">รหัสลูกค้า</th>
+            <th style="text-align:left; padding-left:15px; width:160px;">ชื่อลูกค้า</th>
+            <th style="text-align:left; padding-left:10px; width:140px;">ประเภทการชําระ</th>
             <th style="text-align:left; padding-left:15px;width:125px;">สถานะสั่งซื้อ</th>
             <th style="text-align:right; width:120px;">ราคารวม(บาท)</th>
             <th style="text-align:right; width:115px;">ค่าส่ง(บาท)</th>
@@ -186,7 +186,7 @@ $enddate    = tochristyear($_POST['enddate']);
                 <td align="center"><?= $result_order['order_id'] ?></td>
                 <td align="right"><?= $result_order['cus_id'] ?></td>
                 <td align="left" style="padding-left:15px;"><?= $result_order['cus_name'] ?></td>
-                <td align="left">
+                <td align="left" style="padding-left:10px;">
                     <?php
                     if ($result_order['order_status'] != 3)
                         echo $receipt_tye;
