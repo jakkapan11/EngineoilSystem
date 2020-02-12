@@ -1,5 +1,5 @@
 <head>
-    <title>รายงานหนี้ค้างชําระประจําเดือน</title>
+    <title>เงื่อนไขรายงานหนี้ค้างชําระประจําเดือน</title>
     <?php
     include("config/head_admin.php");
     include("config/connect.php");
@@ -13,7 +13,7 @@
     ?>
 
 <body>
-    <h2 class="page-header text-center" style="padding-top:90px;">รายงานหนี้ค้างชําระประจําเดือน</h2>
+    <h2 class="page-header text-center" style="padding-top:90px;">เงื่อนไขรายงานหนี้ค้างชําระประจําเดือน</h2>
     <hr>
     <form id="form1" name="form1" method="post" target="_blank" action="report_invoice.php">
         <table width="825" border="0" align="center" style="width:900px;">
