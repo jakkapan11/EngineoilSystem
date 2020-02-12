@@ -33,7 +33,7 @@
 <h4 align="center" class="page-header text-center" style="padding-top:1px;">เดือน <?= MonthThai($month) ?> พ.ศ. <?= $year + 543 ?></h4>
 
 
-<table border="0" width="1750px" align="center">
+<table border="0" width="1770px" align="center">
 
     <tr>
         <td colspan="14" align="right" style="border-bottom:1px solid;">
@@ -45,7 +45,7 @@
         </td>
     </tr>
     <tr style="border-bottom:1px solid; height:30px; ">
-        <th style="text-align:center; width:100px;">วันที่ชําระ</th>
+        <th style="text-align:center; width:120px;">วันที่ออกใบเสร็จ</th>
         <th style="text-align:left; padding-left:15px; width:150px;">ประเภทการชําระ</th>
         <th style="text-align:center; width:100px;">เลขที่ใบเสร็จ</th>
         <th style="text-align:center; width:110px;">วันที่สั่งซื้อ</th>
@@ -86,6 +86,7 @@
         $sql_order = "SELECT *
                         FROM receipt
                         LEFT JOIN invoice ON receipt.invoice_id = invoice.invoice_id
+                        LEFT JOIN orders ON receipt.order_id = orders.order_id
                         LEFT JOIN employee ON receipt.emp_id = employee.emp_id
                         WHERE date(receipt_date) = '" . $result_date['date(receipt_date)'] . "'";
         $query_order = mysqli_query($link, $sql_order) or die(mysqli_error($link));
@@ -99,7 +100,7 @@
 
             $sql_order2 = "SELECT * FROM orders 
                     LEFT JOIN customers ON orders.cus_id = customers.cus_id
-                    WHERE order_id = '" . $result_order['receipt_id'] . "'";
+                    WHERE order_id = '" . $result_order['order_id'] . "'";
             $query_order2 = mysqli_query($link, $sql_order2) or die(mysqli_error($link));
             $result_order2 = mysqli_fetch_assoc($query_order2);
 

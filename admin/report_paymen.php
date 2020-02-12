@@ -87,6 +87,7 @@ $enddate    = tochristyear($_POST['enddate']);
         $sql_order = "SELECT *
                 FROM receipt
                 LEFT JOIN invoice ON receipt.invoice_id = invoice.invoice_id
+                LEFT JOIN orders ON receipt.order_id = orders.order_id
                 WHERE date(receipt_date) = '" . $result_date['date(receipt_date)'] . "'";
         $query_order = mysqli_query($link, $sql_order) or die(mysqli_error($link));
        
@@ -95,7 +96,7 @@ $enddate    = tochristyear($_POST['enddate']);
 
             $sql_order2 = "SELECT * FROM orders 
             LEFT JOIN customers ON orders.cus_id = customers.cus_id
-            WHERE order_id = '" . $result_order['receipt_id'] . "'";
+            WHERE order_id = '" . $result_order['order_id'] . "'";
             $query_order2 = mysqli_query($link, $sql_order2) or die(mysqli_error($link));
             $result_order2 = mysqli_fetch_assoc($query_order2);
 

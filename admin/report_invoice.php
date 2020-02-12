@@ -35,7 +35,7 @@
 <table border="0" width="1370px" align="center">
 
     <tr>
-        <td colspan="10" align="right" style="border-bottom:1px solid;">
+        <td colspan="11" align="right" style="border-bottom:1px solid;">
             <?php
             echo "<meta charset='utf-8'>";
             date_default_timezone_set("Asia/Bangkok");
@@ -50,9 +50,10 @@
         <th style="text-align:center; width:120px;">เลขที่ใบแจ้งหนี้</th>
         <th style="text-align:center; width:120px;">รหัสสั่งซื้อ</th>
         <th style="text-align:center; width:120px;">วันที่สั่งซื้อ</th>
-        <th style="text-align:center;  width:120px;">เครดิต(วัน)</th>
-        <th style="text-align:left; width:150px;">ชื่อลูกค้า</th>
-        <th style="text-align:right;  width:120px;">ราคารวม(บาท)</th>
+        <th style="text-align:center; width:120px;">วันที่ชําระ</th>
+        <th style="text-align:center; width:100px;">เครดิต(วัน)</th>
+        <th style="text-align:left; width:180px;">ชื่อลูกค้า</th>
+        <th style="text-align:right; width:120px;">ราคารวม(บาท)</th>
         <th style="text-align:right; width:95px;">ค่าส่ง(บาท)</th>
         <th style="text-align:right; width:120px;">รวมสุทธิ(บาท)</th>
     </tr>
@@ -144,9 +145,9 @@
             }
 
 
-            if ($result_order['order_deadline_date'] == "0000-00-00")
-                $order_deadline_date = "";
-            else $order_deadline_date = short_datetime_thai($result_order['order_deadline_date']);
+            if ($result_order['invoice_date'] == "0000-00-00")
+                $invoice_date = "";
+            else $invoice_date = short_datetime_thai($result_order['invoice_date']);
 
 
 
@@ -156,6 +157,11 @@
                 <td align="center"><?= $result_order['invoice_id'] ?></td>
                 <td align="center"><?= $result_order['order_id'] ?></td>
                 <td align="center"><?= short_datetime_thai($result_order['order_date']) ?></td>
+                <td align="center"><?php if ($invoice_date != "") {
+                                            echo $invoice_date;
+                                        } else {
+                                            echo " <left>-</left>";
+                                        } ?></td>
                 <td align="center"><?= $result_order['invoice_credit'] ?></td>
                 <td align="left"><?= $result_order['cus_name'] ?></td>
                 <td align="right"><?= number_format($result_order['order_total'], 2) ?></td>
@@ -167,7 +173,7 @@
         }
             ?>
             <tr style="border-top:1px solid; border-bottom:1px solid;">
-                <td colspan="6"></td>
+                <td colspan="7"></td>
                 <td align="right"><b>รวม</b></td>
                 <td align="right"><b><?= number_format($sum_1, 2) ?></b></td>
                 <td align="right"><b><?= number_format($sum_2, 2) ?></b></td>
@@ -178,7 +184,7 @@
     }
         ?>
         <tr style="border-bottom:1px solid;">
-            <td colspan="5"></td>
+            <td colspan="6"></td>
             <td align="right" colspan="2" style="color:Black;"><b>รวมทั้งหมด(บาท)</b></td>
             <td align="right" style="color:Black;"><b><?= number_format($sum_f + $sum_g + $sum_h + $sum_i + $sum_j, 2) ?></b></td>
             <td align="right" style="color:Black;"><b><?= number_format($sum_k + $sum_l + $sum_m + $sum_n + $sum_o, 2) ?></b></td>

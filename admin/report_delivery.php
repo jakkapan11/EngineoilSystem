@@ -38,7 +38,7 @@ $enddate    = tochristyear($_POST['enddate']);
 
 
 
-<table border="0" width="1750px" align="center">
+<table border="0" width="1770px" align="center">
     <tr>
         <td colspan="14" align="right" style="border-bottom:1px solid;">
             <?php
@@ -57,7 +57,7 @@ $enddate    = tochristyear($_POST['enddate']);
         <th style="text-align:center; width:95px;">รหัสสั่งซื้อ</th>
         <th style="text-align:right; width:120px;">ราคารวม(บาท)</th>
         <th style="text-align:right; width:100px;">ค่าส่ง(บาท)</th>
-        <th style="text-align:right; width:130px;">รวมสุทธิ(บาท)</th>
+        <th style="text-align:right; width:120px;">รวมสุทธิ(บาท)</th>
         <th style="text-align:left; padding-left:15px;width:200px;">ชื่อลูกค้า</th>
         <th style="text-align:left; width:110px;">สถานที่ส่ง</th>
         <th style="text-align:left;width:260px;">รายการสินค้า</th>
