@@ -110,15 +110,19 @@ $enddate    = tochristyear($_POST['enddate']);
             switch ($result_order['order_type']) {
                 case 0:
                     $order_type = "<font color='54BD54'>ลงทะเบียน</font>";
-                    $order_totalprice = "<font color='Black'>" . number_format($result_order['order_deliverycost'] + $result_order['order_total'], 2) . "</font>";
+                    $order_totalprice = "<font color='54BD54'>" . number_format($result_order['order_deliverycost'] + $result_order['order_total'], 2) . "</font>";
                     $sum_f += $result_order['order_total'];
+                    $order_deliverycost =  "<font color='54BD54'>" . number_format($result_order['order_deliverycost'], 2) . "</font>";  //สีของค่าส่ง
+                    $order_total = "<font color='54BD54'>" . number_format($result_order['order_total'], 2) . "</font>";
                     $sum_a += $result_order['order_deliverycost'] + $result_order['order_total'];
                     $sum_k += $result_order['order_deliverycost'];
                     $count_sum_a ++;
                     break;
                 case 1:
                     $order_type = "<font color='3366CC'>EMS</font>";
-                    $order_totalprice = "<font color='Black'>" . number_format($result_order['order_deliverycost'] + $result_order['order_total'], 2) . "</font>";
+                    $order_totalprice = "<font color='3366CC'>" . number_format($result_order['order_deliverycost'] + $result_order['order_total'], 2) . "</font>";
+                    $order_deliverycost =  "<font color='3366CC'>" . number_format($result_order['order_deliverycost'], 2) . "</font>";  //สีของค่าส่ง
+                    $order_total = "<font color='3366CC'>" . number_format($result_order['order_total'], 2) . "</font>";
                     $sum_g += $result_order['order_total'];
                     $sum_b += $result_order['order_deliverycost'] + $result_order['order_total'];
                     $sum_l += $result_order['order_deliverycost'];
@@ -142,8 +146,8 @@ $enddate    = tochristyear($_POST['enddate']);
             <td align="center"><?= short_datetime_thai($result_order['order_deadline_date']) ?></td>
             <td align="center"><?= short_datetime_thai($result_order['order_date']) ?></td>
             <td align="center"><?= $result_order['order_id'] ?></td>
-            <td align="right"><?= number_format($result_order['order_total'], 2) ?></td>
-            <td align="right"><?= $result_order['order_deliverycost'] ?></td>
+            <td align="right"><?= $order_total ?></td>
+            <td align="right"><?= $order_deliverycost?></td>
             <td align="right"><?= $order_totalprice ?></td>
             <td align="left" style="padding-left:15px;"><?= $result_order['cus_name'] ?></td>
             <td align="left"><?= $result_order['order_place'] ?></td>
