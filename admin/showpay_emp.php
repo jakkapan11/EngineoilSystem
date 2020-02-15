@@ -43,10 +43,10 @@
     <table class="table table-striped table-bordered" align="center" border="0" style="width:1530px;">
         <thead>
             <tr>
-                <th style="text-align:center;width:280px;">เลขที่ใบเสร็จรับเงิน</th>
+                <th style="text-align:center;width:270px;">เลขที่ใบเสร็จรับเงิน</th>
+                <th style="text-align:center;width:180px">วันที่ออกใบเสร็จ</th>
                 <th style="text-align:center;width:190px;">รหัสการสั่งซื้อ</th>
                 <th style="text-align:center;width:150px">วันที่สั่งซื้อ</th>
-                <th style="text-align:center;width:150px">วันที่ชําระ</th>
                 <th style="text-align:center;width:235px;">เลขที่ใบแจ้งหนี้</th>
                 <th style="text-align:center;width:190px;">วันกําหนดชําระ</th>
                 <th style="text-align:left;width:240px;">ประเภทการชําระ</th>
@@ -61,7 +61,7 @@
 
             require_once("config/connect.php");
             $sql = "SELECT inv.invoice_date , ord.order_date , re.receipt_id , ord.order_id , ord.order_type,
-                    inv.invoice_id , inv.invoice_paymendate , re.receipt_tye , ord.order_deliverynumber , ord.order_evidence , ord.order_status 
+                    inv.invoice_id , inv.invoice_paymendate , re.receipt_date ,re.receipt_tye , ord.order_deliverynumber , ord.order_evidence , ord.order_status 
                     FROM receipt AS re 
                     LEFT JOIN orders AS ord  
                     ON re.order_id = ord.order_id 
@@ -95,19 +95,14 @@
 
                         ?>
                         <td align="center"><?php echo $result['receipt_id'] ?></td>
+                        <td align="center"><?= tothaiyear($result['receipt_date']); ?>
                         <td align="center"><?= $result['order_id']; ?></td>
-                        
                         <td align="center"><?= tothaiyear($result['order_date']); ?></td>
-                        <td align="center"><?php
-                                            if (!empty($result['invoice_date']))
-                                                echo tothaiyear($result['invoice_date']);
-                                            else echo "-" ?>
-
                         <td align="center"><?php
                                             if (!empty($result['invoice_id']))
                                                 echo $result['invoice_id'];
-                                            else echo "-" ?>
-                        </td>
+                                            else echo "-" ?> </td>
+                      
                         <td align="center"><?php
                                             if ($result['invoice_id'] != NULL)
                                                 echo tothaiyear($result['invoice_paymendate']);
