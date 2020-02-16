@@ -89,7 +89,7 @@
                         <textarea name="receipt_payment_details" style="width:227px;" class="form-control" id="receipt_payment_details" required cols="30" rows="1" required></textarea></td>
                 </tr>
                 <tr>
-                    <input type="text" style="width:250px;" hidden name="receipt_date" id="receipt_date" value="<?= tothaiyear(date("Y-m-d")); ?>" hidden /></td>
+                    <input type="text" style="width:250px;" hidden  name="receipt_date" id="receipt_date" value="<?= tothaiyear(date("Y-m-d")); ?>" hidden /></td>
                 </tr>
                 <tr>
                     <td colspan="4"><label for="select"></label>

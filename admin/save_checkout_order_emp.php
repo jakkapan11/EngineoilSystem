@@ -118,7 +118,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   if ($_POST['order_status'] == 2) {
     echo '<script>  
       $(document).ready(function() {
-        alert("บันทึกการสั่งซื้อเรียบร้อย\nรหัสการสั่งซื้อ ' . str_pad($last_orderid, 5, 0, STR_PAD_LEFT) .' เลขที่ใบเสร็จ' . str_pad($last_receipt, 5, 0, STR_PAD_LEFT) . '"); 
+        alert("บันทึกการสั่งซื้อเรียบร้อย\nรหัสการสั่งซื้อ ' . str_pad($last_orderid, 5, 0, STR_PAD_LEFT) . ' เลขที่ใบเสร็จ ' . str_pad($last_receipt, 5, 0, STR_PAD_LEFT) .  '"); 
         window.open("bill.php?orderid=' . str_pad($last_orderid, 5, 0, STR_PAD_LEFT) . '","_blank"); 
         window.location.assign("showpay_emp.php");
       });
