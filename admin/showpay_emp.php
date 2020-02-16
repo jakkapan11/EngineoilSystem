@@ -60,7 +60,7 @@
             <?php
 
             require_once("config/connect.php");
-            $sql = "SELECT inv.invoice_date , ord.order_date , re.receipt_id , ord.order_id , ord.order_type,
+            $sql = "SELECT inv.invoice_date , ord.order_delivery_date, ord.order_date , re.receipt_id , ord.order_id , ord.order_type,
                     inv.invoice_id , inv.invoice_paymendate , re.receipt_date ,re.receipt_tye , ord.order_deliverynumber , ord.order_evidence , ord.order_status 
                     FROM receipt AS re 
                     LEFT JOIN orders AS ord  
@@ -102,7 +102,7 @@
                                             if (!empty($result['invoice_id']))
                                                 echo $result['invoice_id'];
                                             else echo "-" ?> </td>
-                      
+
                         <td align="center"><?php
                                             if ($result['invoice_id'] != NULL)
                                                 echo tothaiyear($result['invoice_paymendate']);
@@ -163,7 +163,13 @@
                         </td>
 
                         <td align="center">
-                            <a href="change.php?orderid=<?= $result['order_id'] ?>" class="btn btn-success"><i class="fa fa-wpforms"></i> เปลี่ยน</a>
+                            <?php
+                            if (($result['order_delivery_date'] == "0000-00-00") && $result['order_deliverynumber'] == "" && $result['order_type'] != 2) {
+                                echo "-";
+                            } else {
+                           ?>
+                                <a href="change.php?orderid=<?= $result['order_id'] ?>" class="btn btn-success"><i class="fa fa-wpforms"></i> เปลี่ยน</a>
+                            <?php } ?>
                         </td>
 
                         <td align="center">
@@ -172,7 +178,7 @@
                                     <span class="caret"></span></button>
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" target="_blank" href="bill.php?orderid=<?= $result['order_id'] ?>">พิมพ์ใบเสร็จรับเงิน</a></li>
-                                    
+
                                     <?php if ($result['order_deliverynumber'] != '') { ?>
                                         <li><a class="dropdown-item" target="_blank" href="delivery_emp.php?orderid=<?= $result['order_id'] ?>">พิมพ์ใบส่งของ</a></li>
                                     <?php } ?>
