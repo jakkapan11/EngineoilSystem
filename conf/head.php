@@ -53,7 +53,7 @@ if (!isset($_SESSION)) {
 					<li class="nav-item"><a href="show_order.php" class="nav-link">แสดงรายการสั่งซื้อ</a></li>
 				<?php } ?>
 				<li class="nav-item"><a href="contact.php" class="nav-link">ติดต่อเรา</a></li>
-				<li class="nav-item"><a href="manual.pdf" class="nav-link">คู่มือการใช้งาน</a></li>
+				<li class="nav-item"><a target="_blank" href="manual.pdf" class="nav-link">คู่มือการใช้งาน</a></li>
 			</ul>
 
 			<?php if (isset($_SESSION['cus_id'])) { ?>
