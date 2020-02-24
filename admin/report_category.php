@@ -16,6 +16,12 @@
     <link rel="shortcut icon" href="favicon.ico" />
 </head>
 
+<style type="text/css" media="print">
+    @page {
+        size: auto;
+    }
+</style>
+
 <h4 align="center" class="page-header text-center" style="padding-top:70px;">อู่ชัยยานยนต์</h4>
 <h3 align="center" class="page-header text-center" style="padding-top:1px;">รายงานสินค้าแยกตามประเภท</h3>
 
