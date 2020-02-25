@@ -10,12 +10,19 @@ if (!isset($_SESSION['emp_username'])) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     require('config/connect.php');
     $password        =    trim($_POST['emp_password']);
-
+    $idcard          = $_POST['emp_idcard'];
+    
     if ($password != $_POST['emp_password2']) {
         echo "<script> alert('รหัสผ่านไม่ตรงกัน');window.location.assign('modify_user.php')</script>";
         exit();
     }
-
+    
+    $chk_idcard	= mysqli_query($link, "SELECT * FROM employee WHERE emp_idcard = '" . $idcard . "' AND emp_id != '" . $_POST['emp_id'] . "'");
+    
+    if (mysqli_num_rows($chk_idcard) > 0) {
+		echo "<script> alert('หมายเลขบัตรประชาชนถูกใช้แล้ว'); window.history.back();</script>";
+		exit();
+	}
     if ($password == "" && $_POST['emp_password2'] == "") {
         $sql_update  = "UPDATE employee SET 
 		        emp_name	            = '" . $_POST['emp_name'] . "',

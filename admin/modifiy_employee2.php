@@ -14,8 +14,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
 
-    $chk_idcard	= mysqli_query($link, "SELECT * FROM employee WHERE emp_idcard = '" . $idcard . "'");
-	if (mysqli_num_rows($chk_idcard) != "0") {
+    $chk_idcard	= mysqli_query($link, "SELECT * FROM employee WHERE emp_idcard = '" . $idcard . "' AND emp_id != '" . $_POST['emp_id'] . "'");
+    
+    if (mysqli_num_rows($chk_idcard) > 0) {
 		echo "<script> alert('หมายเลขบัตรประชาชนถูกใช้แล้ว'); window.history.back();</script>";
 		exit();
 	}

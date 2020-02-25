@@ -61,7 +61,10 @@
               <td align="right"><?= $result['cus_id']; ?></td>
               <td><?= $result['cus_name']; ?></td>
               <td align="center"> <?= $result['cus_phone']; ?></td>
-              <td><?= $result['cus_email']; ?></td>
+              <td><?php
+                if ($result['cus_email'] != ""){
+                  echo $result['cus_email']; 
+                } else { echo " <left>-</left>"; } ?></td></td></td>
               <td><?php
                       if ($result['cus_status'] == 0) {
                         echo "<span style='color:green;'>ลูกค้าปกติ</span>";

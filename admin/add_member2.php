@@ -11,7 +11,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 	require('config/connect.php');
 	$cus_birth	= tochristyear($_POST['cus_birthday']);
-	$email = $_POST['cus_email'];
 	$phone = $_POST['cus_phone'];
 	//$user_name	=	trim($_POST['user_name']);    
 	//$password		=	trim($_POST['password']);    
@@ -22,11 +21,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		exit();
 	}
 	
-	$chk_email	= mysqli_query($link, "SELECT * FROM customers WHERE cus_email = '" . $email . "'");
-	if (mysqli_num_rows($chk_email) != "0") {
-		echo "<script> alert('อีเมลล์ถูกใช้แล้ว'); window.history.back();</script>";
-		exit();
-	}
 	
 
 	//ถ้าไม่มีให้เพิ่มข้อมูล

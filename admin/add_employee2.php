@@ -17,14 +17,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	//$user_name	=	trim($_POST['user_name']);    
 	//$password		=	trim($_POST['password']);    
 	
-	if ($email != "") {      
-	$chk_email	= mysqli_query($link, "SELECT * FROM employee WHERE emp_email = '" . $email . "'");
-	if (mysqli_num_rows($chk_email) != "0") {
-		echo "<script> alert('อีเมลล์ถูกใช้แล้ว'); window.history.back();</script>";
-		exit();
-	}
-}
-	
 	$chk_phone	= mysqli_query($link, "SELECT * FROM employee WHERE emp_phone = '" . $phone . "'");
 	if (mysqli_num_rows($chk_phone) != "0") {
 		echo "<script> alert('เบอร์โทรศัพท์ถูกใช้แล้ว'); window.history.back();</script>";
