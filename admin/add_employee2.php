@@ -11,8 +11,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 	require('config/connect.php');
 	$emp_birth	    = 	tochristyear($_POST['emp_birthday']);
-	$email = $_POST['emp_email'];
-	$phone = $_POST['emp_phone'];
+	$email  = $_POST['emp_email'];
+	$phone  = $_POST['emp_phone'];
+	$idcard = $_POST['emp_idcard'];
 	//$user_name	=	trim($_POST['user_name']);    
 	//$password		=	trim($_POST['password']);    
 	
@@ -27,6 +28,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	$chk_phone	= mysqli_query($link, "SELECT * FROM employee WHERE emp_phone = '" . $phone . "'");
 	if (mysqli_num_rows($chk_phone) != "0") {
 		echo "<script> alert('เบอร์โทรศัพท์ถูกใช้แล้ว'); window.history.back();</script>";
+		exit();
+	}
+
+	$chk_idcard	= mysqli_query($link, "SELECT * FROM employee WHERE emp_idcard = '" . $idcard . "'");
+	if (mysqli_num_rows($chk_idcard) != "0") {
+		echo "<script> alert('หมายเลขบัตรประชาชนถูกใช้แล้ว'); window.history.back();</script>";
 		exit();
 	}
 	//ถ้าไม่มีให้เพิ่มข้อมูล
