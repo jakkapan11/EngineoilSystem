@@ -20,7 +20,7 @@
                 todayBtn: false,
                 clearBtn: true,
                 endDate: '+5d',
-                startDate: 'now',
+                startDate: '-5d',
                 autoclose: true, //Set เป็นปี พ.ศ.
                 inline: true
             }) //กำหนดเป็นวันปัจุบัน       

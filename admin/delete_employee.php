@@ -10,7 +10,9 @@
     require_once('config/connect.php');
 
     if (mysqli_query($link, "DELETE FROM employee WHERE emp_id = '" . $_GET['emp_id'] . "' ")) {
-        echo "<script> alert('ลบข้อมูลเรียบร้อยแล้วของรหัสพนักงาน". $_GET['emp_id']."'); window.location.assign('show_employee.php')</script>";
+        echo '<script> alert("ลบข้อมูลพนักงานเรียบร้อยแล้ว\nรหัสพนักงาน '. $_GET['emp_id'].'"); 
+        window.location.assign("show_employee.php")
+        </script>';
     } else {
         echo "<script> alert('ไม่สามารถลบได้'); window.location.assign('show_employee.php')</script>";
     }

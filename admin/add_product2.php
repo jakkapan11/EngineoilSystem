@@ -26,6 +26,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 if (move_uploaded_file($_FILES['product_pic']['tmp_name'], "../image/" . $prd_image))
 if (mysqli_query($link, $sql) or die(mysqli_error($link))) {
 	$new_bank = mysqli_insert_id($link);
-	echo "<script> alert('เพิ่มข้อมูลเรียบร้อยแล้วของรหัสสินค้า"  .  $new_bank. "'); window.location.assign('show_product.php')</script>";
+	echo '<script> alert("เพิ่มข้อมูลสินค้าเรียบร้อยแล้ว\nรหัสสินค้า '  .  $new_bank. '"); 
+	window.location.assign("show_product.php")
+	</script>';
 	}
 }

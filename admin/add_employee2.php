@@ -48,6 +48,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 	if (mysqli_query($link, $sql) or die(mysqli_error($link))) {
 		$new_bank = mysqli_insert_id($link);
-		echo "<script> alert('เพิ่มข้อมูลเรียบร้อยแล้วของรหัสพนักงาน". $new_bank . "'); window.location.assign('show_employee.php')</script>";
+		echo '<script> alert("เพิ่มข้อมูลพนักงานเรียบร้อยแล้ว\nรหัสพนักงาน '. $new_bank . '"); 
+		window.location.assign("show_employee.php")
+		</script>';
 	}
 }
