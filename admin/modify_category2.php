@@ -19,5 +19,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
 if (mysqli_query($link, $sql_update) or die(mysqli_error($link))) {
-    echo "<script> alert('แก้ไขข้อมูลเรียบร้อยแล้วของรหัสประเภทสินค้า". $_POST['category_id']. "'); window.location.assign('show_category.php')</script>";
+    echo '<script> alert("แก้ไขข้อมูลประเภทสินค้าเรียบร้อยแล้ว\nรหัสประเภทสินค้า '. $_POST['category_id']. '"); 
+    window.location.assign("show_category.php")
+    </script>';
 }

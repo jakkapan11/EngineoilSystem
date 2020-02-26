@@ -45,6 +45,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     emp_password            = '" . $_POST['emp_password'] . "' WHERE emp_id = '" .  $_SESSION['emp_id'] . "' ";
     }
     if (mysqli_query($link, $sql_update) or die(mysqli_error($link))) {
-        echo "<script> alert('แก้ไขข้อมูลผู้ใช้เรียบร้อยแล้วของรหัสพนักงาน". $_SESSION['emp_id']. "'); window.location.assign('index.php')</script>";
+        echo '<script> 
+        alert("แก้ไขข้อมูลผู้ใช้เรียบร้อยแล้ว\nรหัสพนักงาน '. $_SESSION['emp_id']. '"); 
+        window.location.assign("index.php")
+        </script>';
     }
 }

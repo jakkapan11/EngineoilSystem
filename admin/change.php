@@ -12,14 +12,14 @@
 
     ?>
     <script>
-        $(document).ready(function() {
+         $(document).ready(function() {
             $('.datepicker-checkout').datepicker({
                 language: 'th-th', //เปลี่ยน label ต่างของ ปฏิทิน ให้เป็น ภาษาไทย   (ต้องใช้ไฟล์ bootstrap-datepicker.th.min.js นี้ด้วย)
                 format: 'dd/mm/yyyy',
                 disableTouchKeyboard: true,
                 todayBtn: false,
                 clearBtn: true,
-                endDate: '+60d',
+                endDate: '+5d',
                 startDate: 'now',
                 autoclose: true, //Set เป็นปี พ.ศ.
                 inline: true
@@ -125,10 +125,9 @@
                                                     } ?></td>
                 </tr>
                 <tr>
-                    <td height="40" align="right"><strong>วันที่เปลี่ยน :</strong><span style="color:red;"></span></td>
+                    <td height="40" align="right"><strong>วันที่เปลี่ยน :</strong><span style="color:red;">*</span></td>
                     <td style="padding-left:17px;"><label for="textfield"></label>
-                        <?= tothaiyear(date("Y-m-d")) ?>
-                        <input type="text" style="width:250px;" name="change_date" id="change_date" value="<?= tothaiyear(date("Y-m-d")) ?>" hidden /></td>
+                        <input type="text" onfocus="$(this).blur();" style="width:200px;" onkeypress="return false;" class="form-control datepicker-checkout" name="change_date" id="change_date" min="<?= date("Y-m-d"); ?>" required /></td>
 
 
                     <td align="right"><strong></strong> </span></td>
@@ -189,7 +188,7 @@
                     } ?>
         </form>
 
-        <td style="padding-top:30px; " colspan="8" align="center"><span style="color:red;">การเปลี่ยนสินค้าจะเปลี่ยนได้ครั้งเดียวเท่านั้น โดยสินค้าเปลี่ยนภายใน 3-5 วันหลังจากวันที่ชําระ</span> </td>
+        <td style="padding-top:30px; " colspan="8" align="center"><span style="color:red; "><u>หมายเหตุ</u> การเปลี่ยนสินค้าจะเปลี่ยนได้ครั้งเดียวเท่านั้น โดยสินค้าเปลี่ยนไม่เกิน 5 วันนับจากวันที่ชําระ</span> </td>
 
         </table>
         </form>
@@ -213,28 +212,28 @@
             </tr>
         </table>
     </div>
-  
+
 </body>
 
 <script>
     $(document).ready(function() {
         var d = new Date();
-       // var current_date = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
+        // var current_date = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
 
         // var date_change_product = $('#date_change_product').val();
         var date_change_product = new Date($('#date_change_product').val());
-     //   var date_change_product_2 = date_change_product.getFullYear() + "-" + (date_change_product.getMonth() + 1) + "-" + date_change_product.getDate();
+        //   var date_change_product_2 = date_change_product.getFullYear() + "-" + (date_change_product.getMonth() + 1) + "-" + date_change_product.getDate();
         // var date_change_product = Date.parse($("input[name='date_change_product']").val()) ;
 
 
-   
+
 
         if (date_change_product < d) {
             //  alert('aa');
-           // console.log(current_date + " > " + date_change_product_2);
+            // console.log(current_date + " > " + date_change_product_2);
             $("#sub").attr("disabled", true);
         } else {
-           //gg console.log(current_date + " < " + date_change_product_2);
+            //gg console.log(current_date + " < " + date_change_product_2);
         }
 
         // ปิดปุ่ม ตรงนี้

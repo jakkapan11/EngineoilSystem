@@ -40,7 +40,7 @@
     <br>
 
 
-    <table class="table table-striped table-bordered" align="center" border="0" style="width:1530px;">
+    <table class="table table-striped table-bordered" align="center" border="0" style="width:1590px;">
         <thead>
             <tr>
                 <th style="text-align:center;width:270px;">เลขที่ใบเสร็จรับเงิน</th>
@@ -53,7 +53,7 @@
                 <th style="text-align:center;width:250px;">หลักฐานการชําระ</th>
                 <th style="text-align:center;width:160px;">จัดส่ง</th>
                 <th style="text-align:center;width:140px;">เปลี่ยน</th>
-                <th style="text-align:center;width:150px;">พิมพ์</th>
+                <th style="text-align:center;width:265px;">พิมพ์ใบเสร็จ/ใบส่งของ</th>
             </tr>
         </thead>
         <tbody>

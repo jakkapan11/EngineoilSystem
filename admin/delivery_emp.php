@@ -122,7 +122,7 @@ else $order_delivery_date = DateThai($data['order_delivery_date']);
                 } ?>
     </form>
 
-    <td style="padding-top:30px; " colspan="7" align="center"><span style="color:red;">หมายเหตุ สามารถนําใบเสร็จมาเปลี่ยนสินค้าที่ชํารุดภายใน 3-5 วันหลังจากวันที่ชําระ</span> </td>
+    <td style="padding-top:30px; " colspan="7" align="center"><span style="color:red;"><u>หมายเหตุ</u> สามารถนําใบเสร็จมาเปลี่ยนสินค้าที่ชํารุดภายใน 5 วันนับจากวันที่ชําระ</span> </td>
 
     </table>
     </form>
