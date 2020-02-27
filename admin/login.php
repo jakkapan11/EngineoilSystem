@@ -44,8 +44,7 @@
                             </div>
 
                             <div class="col-md-6 offset-md-4" align="center">
-                                <button type="submit" class="btn btn-primary">เข้าสู่ระบบ</button>
-                                <a href="../index.php" class="btn btn-primary" style="width:95px;">ออก</a>
+                                <button type="submit" class="btn btn-primary" style="width:270px;">เข้าสู่ระบบ</button>  
                             </div>
                     </div>
                     </form>

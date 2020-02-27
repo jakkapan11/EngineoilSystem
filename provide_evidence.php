@@ -19,7 +19,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   if (move_uploaded_file($_FILES['order_evidence']['tmp_name'], "image/evidence/" . $ord_image)) {
     if (mysqli_query($link, $sql_update) or die(mysqli_error($link))) {
-      echo "<script> alert('บันทึกแจ้งหลักฐานเรียบร้อยของรหัส". $_POST['orders_id']. "'); window.location.assign('show_order.php')</script>";
+      echo '<script> alert("บันทึกแจ้งหลักฐานเรียบร้อย\nรหัสการสั่งซื้อ '. $_POST['orders_id']. '"); 
+      window.location.assign("show_order.php")
+      </script>';
     }
   } else {
     echo "<script>alert('อัพโหลดไฟล์ล้มเหลว'); window.location.assign('show_order.php');</script>";

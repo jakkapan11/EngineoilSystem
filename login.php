@@ -48,7 +48,7 @@ if (isset($_SESSION['cus_id'])) {
                                 <button type="submit" class="btn btn-primary">เข้าสู่ระบบ</button>
                                 <a href="index.php" class="btn btn-primary" style="width:95px;">ออก</a>
                             </div>
-                            <p class="col-md-4 col-form-label text-md-right"><a target="_blank" href="forgot_ password.php">ลืมรหัสผ่าน?</a></p>
+                            <p class="col-md-4 col-form-label text-md-right"><a target="_blank" href="forgot_ password.php"><u>ลืมรหัสผ่าน?</u></a></p>
                     </div>
                     </form>
                 </div>

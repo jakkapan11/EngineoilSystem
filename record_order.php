@@ -79,7 +79,7 @@
                 <tr>
                     <td height="20" align="right"><strong></strong> </td>
                     <td style="padding-right:70px;" align="center">
-                        <font size="2" color="red">กําหนดส่งได้ภายใน 1 เดือน</font>
+                        <font size="2" color="red">สามารถเลือกวันกําหนดส่งได้ภายใน 1 เดือน เท่านั้น</font>
                     <td>
                    
                     <td >

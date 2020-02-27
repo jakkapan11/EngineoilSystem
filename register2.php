@@ -18,11 +18,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		exit();
 	}
 	
-	$chk_email	= mysqli_query($link, "SELECT * FROM customers WHERE cus_email = '" . $email . "'");   
-	if (mysqli_num_rows($chk_email) != "0") {
-		echo "<script> alert('อีเมลล์ถูกใช้แล้ว'); window.history.back();</script>";
-		exit();
-	}	
     $chk_phone	= mysqli_query($link, "SELECT * FROM customers WHERE cus_phone = '" . $phone . "'");   
 	if (mysqli_num_rows($chk_phone) != "0") {
 		echo "<script> alert('เบอร์โทรศัพท์ใช้งานแล้ว'); window.history.back();</script>";
@@ -50,6 +45,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 if (mysqli_query($link, $sql) or die(mysqli_error($link))) {
 	$new_bank = mysqli_insert_id($link);
-	echo "<script> alert('สมัครสมาชิกสําเร็จของรหัสสมาชิก". $new_bank . "'); window.location.assign('index.php')</script>";
+	echo '<script> alert("สมัครสมาชิกสําเร็จ\nรหัสสมาชิก '. $new_bank . '"); 
+	window.location.assign("index.php")
+	</script>';
 	}
 }

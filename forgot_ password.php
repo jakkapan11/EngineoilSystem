@@ -16,11 +16,11 @@
             </tr>
             <tr>
                 <td style="padding-left:138px;"><i class="fa fa-envelope-o"></i><strong> อีเมล </strong> :</td>
-                <td width="229" height="30" align="left"><a href="mailto: natthamon.phro@bumail.net"> natthamon.phro@bumail.net</a></td>
+                <td width="229" height="30" align="left"><a href="mailto: natthamon.phro@bumail.net"> <u>natthamon.phro@bumail.net</u></a></td>
             </tr>
             <tr>
                 <td style="padding-left:80px;"><i class="fa fa-volume-control-phone"></i><strong> เบอร์โทรศัพท์ </strong> :</td>
-                <td width="229" height="35" align="left"><a href="tel: 096-792-5485"> 096-792-5485</a> </td>
+                <td width="229" height="35" align="left"><a href="tel: 096-792-5485"> <u>096-792-5485<u></a> </td>
             </tr>
         </table>
 </body>

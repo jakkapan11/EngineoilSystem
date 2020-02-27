@@ -38,6 +38,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     cus_password            = '" . $_POST['cus_password'] . "' WHERE cus_id = '" .  $_SESSION['cus_id'] . "' ";
     }
     if (mysqli_query($link, $sql_update) or die(mysqli_error($link))) {
-        echo "<script> alert('แก้ไขข้อมูลสมาชิกเรียบร้อยแล้วของรหัสสมาชิก". $_SESSION['cus_id']."'); window.location.assign('index.php')</script>";
+        echo '<script> alert("แก้ไขข้อมูลสมาชิกเรียบร้อยแล้ว\nรหัสสมาชิก '. $_SESSION['cus_id'].'"); 
+        window.location.assign("index.php")
+        </script>';
     }
 }

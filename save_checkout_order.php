@@ -62,5 +62,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   unset($_SESSION['product_id']);
   unset($_SESSION['strqty']);
   mysqli_close($link);
-   echo "<script>alert('บันทึกการสั่งซื้อเรียบร้อยแล้วของหรัส" . str_pad($last_orderid, 5, 0, STR_PAD_LEFT) .  "'); window.location.assign('show_order.php')</script>";
+   echo '<script>alert("บันทึกการสั่งซื้อเรียบร้อยแล้ว\nรหัสการสั่งซื้อ ' . str_pad($last_orderid, 5, 0, STR_PAD_LEFT) .  '"); 
+   window.location.assign("show_order.php")
+   </script>';
 }

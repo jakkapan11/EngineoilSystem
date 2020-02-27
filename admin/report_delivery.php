@@ -207,7 +207,7 @@ $enddate    = tochristyear($_POST['enddate']);
     </tr>
     <tr>
     <td colspan="4"></td>
-        <td align="right" colspan="2" style="color:54BD54;"><b>รวมลงทะเบียนทั้งหมด</b></td>
+        <td align="right" colspan="2" style="color:54BD54;"><b>รวมลงทะเบียนทั้งหมด(บาท)</b></td>
         <td align="right" style="color:54BD54;"><b><?= number_format($sum_f, 2) ?></b></td>
         <td align="right" style="color:54BD54;"><b><?= number_format($sum_k, 2) ?></b></td>
         <td align="right" style="color:54BD54;"><b><?= number_format($sum_a, 2) ?></b></td>
@@ -219,7 +219,7 @@ $enddate    = tochristyear($_POST['enddate']);
 </tr>
 <tr style="border-bottom:1px solid;">
     <td colspan="4"></td>
-        <td align="right" colspan="2" style="color:3366CC;"><b>รวม EMS ทั้งหมด</b></td>
+        <td align="right" colspan="2" style="color:3366CC;"><b>รวม EMS ทั้งหมด(บาท)</b></td>
         <td align="right" style="color:3366CC;"><b><?= number_format($sum_g, 2) ?></b></td>
         <td align="right" style="color:3366CC;"><b><?= number_format($sum_l, 2) ?></b></td>
         <td align="right" style="color:3366CC;"><b><?= number_format($sum_b, 2) ?></b></td>
