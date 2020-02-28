@@ -109,7 +109,7 @@ $enddate    = tochristyear($_POST['enddate']);
             <td align="left" style="padding-left:15px;"><?= $result_change['cus_name'] ?></td>
             <td align="left"><?= $result_change['product_name'] ?></td>
             <td align="right"><?= $result_change['od_amount'] ?></td>
-            <td align="right"><?= $result_change['change_Amount'] ?></td>
+            <td align="right"><?= $result_change['change_amount'] ?></td>
             <td align="center"><?= $result_change['product_unit'] ?></td>
             <td align="center"><?= $result_change['change_notes'] ?></td>
            

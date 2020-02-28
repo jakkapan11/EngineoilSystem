@@ -7,18 +7,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (isset($_POST['od_status'])) {
         for ($i = 0; $i < count($_POST['od_status']); $i++) {
-            echo $i;
 
-            // echo "<br>";
             $od = $_POST['od_status'];
-          //  print_r($od);
-            //print_r($_POST['od_id']);
-            
-            if (isset($od[$i]) && $_POST['change_amount_'.$od[$i]] != "") { //ถ้ามีค่าที่ใส่มาจะ insert ลงฐานข้อมูล
+
+            if (isset($od[$i]) && $_POST['change_amount_' . $od[$i]] != "") { //ถ้ามีค่าที่ใส่มาจะ insert ลงฐานข้อมูล
                 $sql_change = "INSERT INTO amount_change SET 
                     change_date	        = '" . tochristyear($_POST['change_date']) . "',
-                    change_amount		= '" . $_POST['change_amount_'.$od[$i]] . "',
-                    change_notes	    = '" . $_POST['change_notes_'.$od[$i]] . "',
+                    change_amount		= '" . $_POST['change_amount_' . $od[$i]] . "',
+                    change_notes	    = '" . $_POST['change_notes_' . $od[$i]] . "',
                     od_id	        	= '" . $od[$i] . "' ";
                 //  echo $i."<br>";
 
@@ -35,12 +31,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         }
         echo '<script> 
-        alert("บันทึกการเปลี่ยนสินค้า\nของรหัสสั่งซื้อ ' .  $_POST['order_id'] . ' รหัสการเปลี่ยน ' . str_pad($new_bank, 5, 0, STR_PAD_LEFT) .   '"); 
+        alert("บันทึกการเปลี่ยนสินค้า\nรหัสสั่งซื้อ ' .  $_POST['order_id'] . ' รหัสการเปลี่ยน ' . str_pad($new_bank, 5, 0, STR_PAD_LEFT) .   '"); 
         window.location.assign("showpay_emp.php");
-        </script>'; 
-  
-  
-  
+        </script>';
     } else {
         //   echo "<script>      </script>";
         echo "<script> alert('กรุณาเลือกสินค้าที่ต้องการเปลี่ยน'); window.history.back(); </script>";
