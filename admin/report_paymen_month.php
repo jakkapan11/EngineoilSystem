@@ -387,7 +387,7 @@
                     LEFT JOIN customers ON orders.cus_id = customers.cus_id
                     WHERE order_id = '" . $result_order['order_id'] . "'";
             $query_order2 = mysqli_query($link, $sql_order2) or die(mysqli_error($link));
-            $result_order2 = mysqli_fetch_assoc($query_order2);
+            $result_order2 = mysqli_fetch_assoc($query_order2); 
 
 
             $sum_1 += $result_order2['order_total'];
