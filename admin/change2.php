@@ -7,8 +7,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     if (isset($_POST['od_status'])) {
         for ($i = 0; $i < count($_POST['od_status']); $i++) {
-            echo $i;
-
+           
             // echo "<br>";
             $od = $_POST['od_status'];
           //  print_r($od);
