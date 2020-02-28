@@ -10,6 +10,16 @@ if (!isset($_SESSION['emp_username'])) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     require('config/connect.php');
+    $idcard = $_POST['emp_idcard'];
+
+
+
+    $chk_idcard	= mysqli_query($link, "SELECT * FROM employee WHERE emp_idcard = '" . $idcard . "' AND emp_id != '" . $_POST['emp_id'] . "'");
+    
+    if (mysqli_num_rows($chk_idcard) > 0) {
+		echo "<script> alert('หมายเลขบัตรประชาชนถูกใช้แล้ว'); window.history.back();</script>";
+		exit();
+	}
 
             //              ชื่อ Table ใน DB
     $sql_update  = "UPDATE employee SET 

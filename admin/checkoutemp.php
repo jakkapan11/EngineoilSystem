@@ -35,20 +35,22 @@
             $("#order_status").change(function() {
                 var status = $("#order_status").val();
 
-                if (status == 2) {
+                if (status == 2) { // =ำระแล้ว
                     $('.credits').hide();
+                    $('.credits2').show();
+
                     $("#invoice_credit").attr("required", false);
 
-                    // ประเภทการชำระ รายละเอียดการชำระ
-                    //  $('#receipt_tye').prop("disabled", false);
                     $('#receipt_tye').removeAttr("disabled");
                     $('#receipt_tye').attr('required', true);
 
                     $('#receipt_payment_details').prop('disabled', false);
                     $('#receipt_payment_details').attr('required', true);
 
-                } else if (status == 3) {
+                } else if (status == 3) { // ค้างชำระ
                     $(".credits").show();
+                    $('.credits2').hide();
+
                     $("invoice_credit").attr("required", true);
 
                     // ประเภทการชำระ รายละเอียดการชำระ
@@ -105,7 +107,7 @@
                 </tr>
                 <tr>
                     <td width="229" height="50" align="right"><strong></strong> </td>
-                    <td style="padding-left:20px;"><a href="select_member.php" style="padding-left:10px;" class="btn btn-primary"><i class="fa fa-user"></i> เลือกลูกค้า</a></td>
+                    <td style="padding-left:80px;"><a href="select_member.php" style="padding-left:10px;" class="btn btn-primary"><i class="fa fa-user"></i> เลือกลูกค้า</a></td>
                     <td width="229" align="right"><strong>วันที่สั่งซื้อ :</strong></td>
                     <td width="301" style="padding-left:14px;"><label for="textfield"></label>
                         <?= tothaiyear(date("Y-m-d")); ?>
@@ -113,16 +115,15 @@
 
                 </tr>
                 <tr>
-                    <td height="40" align="right"><strong>ประเภทการชําระ :</strong><span style="color:red;">*</span></td>
+                    <td height="50" align="right"><strong>สถานะสั่งซื้อ :</strong><span style="color:red;">*</span></td>
                     <td style="padding-left:20px;"><label for="select"></label>
-                        <select name="receipt_tye" style="width:250px; " class="form-control" id="receipt_tye" required>
-                            <option value="" disabled selected> กรุณาเลือกประเภทการชําระ</option>
-                            <option value="0">เงินสด</option>
-                            <option value="1">โอน</option>
-                            <option value="2">บัตรเดบิต</option>
-                            <option value="3">บัตรเครดิต</option>
+                        <select name="order_status" style="width:250px;" class="form-control" id="order_status" required>
+                            <option value="" disabled selected>-- กรุณาเลือกสถานะสั่งซื้อ --</option>
+                            <option value="2">ชําระแล้ว</option>
+                            <option value="3">ค้างชําระ</option>
 
                         </select></td>
+
                     <td width="229" height="40" align="right"><strong>รหัสลูกค้า :</strong> </td>
                     <td width="301" style="padding-left:20px;">
                         <?php
@@ -139,9 +140,16 @@
                     </td>
                 </tr>
                 <tr>
-                    <td align="right"><strong>รายละเอียดการชําระ :</strong><span style="color:red;">*</span></td>
-                    <td style="padding-left:20px;"><label for="textarea"></label>
-                        <input type="text" name="receipt_payment_details" style="width:250px;" class="form-control" id="receipt_payment_details" required cols="30" rows="3" required></td>
+                    <td align="right"><strong>ประเภทจัดส่ง :</strong><span style="color:red;">*</span></td>
+                    <td style="padding-left:20px;"><label for="select"></label>
+                        <select required name="order_type" onchange="fee()" style="width:250px;" id="order_type" class="form-control">
+                            <option value="" disabled selected>-- กรุณาเลือกประเภทจัดส่ง --</option> -->
+                            <option value="0">ลงทะเบียน ค่าส่ง 50 บาท</option>
+                            <option value="1">EMS ค่าส่ง 100 บาท</option>
+                            <option value="2">นําสินค้ากลับบ้านเอง</option>
+                        </select>
+                    </td>
+
                     <td width="229" height="45" align="right"><strong>ชื่อ-นามสกุล :</strong> </td>
                     <td width="301" style="padding-left:20px;">
                         <?php
@@ -159,15 +167,9 @@
 
                 </tr>
                 <tr>
-                    <td align="right"><strong>ประเภทจัดส่ง :</strong><span style="color:red;">*</span></td>
-                    <td style="padding-left:20px;"><label for="select"></label>
-                        <select required name="order_type" onchange="fee()" style="width:250px;" id="order_type" class="form-control">
-                            <option value="" disabled selected>-- กรุณาเลือกประเภทจัดส่ง --</option> -->
-                            <option value="0">ลงทะเบียน ค่าส่ง 50 บาท</option>
-                            <option value="1">EMS ค่าส่ง 100 บาท</option>
-                            <option value="2">นําสินค้ากลับบ้านเอง</option>
-                        </select>
-                    </td>
+                    <td height="45" align="right"><strong>วันที่กําหนดส่ง :</strong><span style="color:red;"></span></td>
+                    <td style="padding-left:20px;"><label for="textfield"></label>
+                        <input type="text" onfocus="$(this).blur();" style="width:250px;" onkeypress="return false;" class="form-control datepicker-checkout" name="order_deadline_date" id="order_deadline_date" min="<?= date("Y-m-d"); ?>" /></td>
                     <td width="229" height="45" align="right"><strong>เบอร์โทรศัพท์ :</strong> </td>
                     <td width="301" style="padding-left:20px;">
                         <?php
@@ -184,36 +186,35 @@
                         <input type="hidden" id="cus_phone" name="cus_phone" value="<?php echo $cus_phone; ?>">
                     </td>
                 </tr>
-
-                <tr>
-                    <td height="45" align="right"><strong>วันที่กําหนดส่ง :</strong><span style="color:red;"></span></td>
-                    <td style="padding-left:20px;"><label for="textfield"></label>
-                        <input type="text" onfocus="$(this).blur();" style="width:250px;" onkeypress="return false;" class="form-control datepicker-checkout" name="order_deadline_date" id="order_deadline_date" min="<?= date("Y-m-d"); ?>" /></td>
-
-                    <td height="50" align="right"><strong>สถานะสั่งซื้อ :</strong><span style="color:red;">*</span></td>
-                    <td style="padding-left:20px;"><label for="select"></label>
-                        <select name="order_status" style="width:250px;" class="form-control" id="order_status" required>
-                            <option value="" disabled selected>-- กรุณาเลือกสถานะสั่งซื้อ --</option>
-                            <option value="2">ชําระแล้ว</option>
-                            <option value="3">ค้างชําระ</option>
-                        </select></td>
-                </tr>
-
                 <tr>
                     <td height="10" align="right"><strong></strong> </td>
                     <td style="padding-left:13px;" align="center">
-                        <font size="2" color="red">กําหนดส่งได้ภายใน 1 เดือน</font>
+                        <font size="2" color="red">สามารถเลือกวันกําหนดส่งได้ภายใน 1 เดือน เท่านั้น</font>
                     <td>
-
-                    <td>
-                    </td>
                 </tr>
+                <tr class="credits2" style="display:none;">
+                    <td height="40" align="right"><strong>ประเภทการชําระ :</strong><span style="color:red;">*</span></td>
+                    <td style="padding-left:20px;"><label for="select"></label>
+                        <select name="receipt_tye" style="width:250px; " class="form-control" id="receipt_tye" required>
+                            <option value="" disabled selected> กรุณาเลือกประเภทการชําระ</option>
+                            <option value="0">เงินสด</option>
+                            <option value="1">โอน</option>
+                            <option value="2">บัตรเดบิต</option>
+                            <option value="3">บัตรเครดิต</option>
+                        </select></td>
+
+                    <td align="right"><strong>รายละเอียดการชําระ :</strong><span style="color:red;">*</span></td>
+                    <td style="padding-left:20px;"><label for="textarea"></label>
+                        <input type="text" name="receipt_payment_details" style="width:250px;" class="form-control" id="receipt_payment_details" required cols="30" rows="3" required></td>
+                </tr>
+
+
 
                 <tr class="credits" style="display:none;">
                     <td height="40" align="right"><strong>เครดิต (วัน) :</strong><span style="color:red;">*</span></td>
                     <td style="padding-left:20px;"><label for="select"></label>
                         <select name="invoice_credit" style="width:250px; " class="form-control" id="invoice_credit" required>
-                        <option value="" disabled selected>-- กรุณาเลือกเครดิต --</option>
+                            <option value="" disabled selected>-- กรุณาเลือกเครดิต --</option>
                             <option value="1">เครดิต 1 วัน</option>
                             <option value="2">เครดิต 2 วัน</option>
                             <option value="3">เครดิต 3 วัน</option>

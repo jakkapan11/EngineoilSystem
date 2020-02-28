@@ -76,7 +76,7 @@
 
   <body>
     <form action="modify_user2.php" method="post">
-      <table width="777" border="0" align="center">
+      <table width="782" border="0" align="center">
         <tr>
           <td width="175" height="50" align="right"><strong>รหัสพนักงาน</strong> :</td>
           <td width="302"><label for="textfield1"></label>
@@ -115,10 +115,10 @@
             <textarea name="emp_address" style="width:300px; " id="emp_address" required cols="30" rows="5" class="form-control"><?= $result['emp_address'] ?></textarea></td>
         </tr>
         <tr>
-          <td height="50" align="right"><strong>หมายเลขบัตรประชาชน</strong> :</span></td>
+          <td height="50" align="right"><strong>หมายเลขบัตรประชาชน</strong> :<span style="color:red;">*</span></td>
           <td><label for="textfield4"></label>
-            <?= $result['emp_idcard'] ?>
-            <input type="text" name="emp_idcard" style="width:300px;" value="<?= $result['emp_idcard'] ?>" id="emp_idcard" hidden /></td>
+            <input type="text" name="emp_idcard" style="width:300px;" class="form-control"value="<?= $result['emp_idcard'] ?>" id="emp_idcard" onkeypress="return isNumberKey(event)" id="emp_idcard" minlength="10" maxlength="13"required /></td>
+            <td <font style="padding-left:60px; color:gray;">(กรอก 13 ตัวอักษร)</font></td>
           <td>
         </tr>
         <tr>

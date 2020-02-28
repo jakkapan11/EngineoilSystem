@@ -10,12 +10,19 @@ if (!isset($_SESSION['emp_username'])) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     require('config/connect.php');
     $password        =    trim($_POST['emp_password']);
-
+    $idcard          = $_POST['emp_idcard'];
+    
     if ($password != $_POST['emp_password2']) {
         echo "<script> alert('รหัสผ่านไม่ตรงกัน');window.location.assign('modify_user.php')</script>";
         exit();
     }
-
+    
+    $chk_idcard	= mysqli_query($link, "SELECT * FROM employee WHERE emp_idcard = '" . $idcard . "' AND emp_id != '" . $_POST['emp_id'] . "'");
+    
+    if (mysqli_num_rows($chk_idcard) > 0) {
+		echo "<script> alert('หมายเลขบัตรประชาชนถูกใช้แล้ว'); window.history.back();</script>";
+		exit();
+	}
     if ($password == "" && $_POST['emp_password2'] == "") {
         $sql_update  = "UPDATE employee SET 
 		        emp_name	            = '" . $_POST['emp_name'] . "',
@@ -38,6 +45,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     emp_password            = '" . $_POST['emp_password'] . "' WHERE emp_id = '" .  $_SESSION['emp_id'] . "' ";
     }
     if (mysqli_query($link, $sql_update) or die(mysqli_error($link))) {
-        echo "<script> alert('แก้ไขข้อมูลผู้ใช้เรียบร้อยแล้วของรหัสพนักงาน". $_SESSION['emp_id']. "'); window.location.assign('index.php')</script>";
+        echo '<script> 
+        alert("แก้ไขข้อมูลผู้ใช้เรียบร้อยแล้ว\nรหัสพนักงาน '. $_SESSION['emp_id']. '"); 
+        window.location.assign("index.php")
+        </script>';
     }
 }

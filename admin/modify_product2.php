@@ -20,7 +20,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         product_status          = '" . $_POST['product_status'] . "'  WHERE product_id = '" . $_POST['product_id'] . "' ";
 
         if (mysqli_query($link, $sql_update) or die(mysqli_error($link))) {
-            echo "<script> alert('แก้ไขข้อมูลเรียบร้อยแล้วของรหัสสินค้า". $_POST['product_id']."'); window.location.assign('show_product.php')</script>";
+            echo '<script> alert("แก้ไขข้อมูลสินค้าเรียบร้อยแล้ว\nรหัสสินค้า '. $_POST['product_id'].'"); 
+            window.location.assign("show_product.php")
+            </script>';
         } else {
             echo "<script> alert('แก้ไขข้อมูลผิดพลาด'); window.location.assign('show_product.php')</script>";
         }
@@ -39,7 +41,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
         if (move_uploaded_file($_FILES['product_pic']['tmp_name'], "../image/" . $prd_image)) {
             if (mysqli_query($link, $sql_update) or die(mysqli_error($link))) {
-                echo "<script> alert('แก้ไขข้อมูลเรียบร้อยของรหัสสินค้า". $_POST['product_id']."'); window.location.assign('show_product.php')</script>";
+                echo '<script> alert("แก้ไขข้อมูลสินค้าเรียบร้อยแล้ว\nรหัสสินค้า '. $_POST['product_id'].'"); 
+                window.location.assign("show_product.php")
+                </script>';
             }
         } else {
             echo "<script>alert('อัพโหลดไฟล์ล้มเหลว'); window.location.assign('show_product.php');</script>";

@@ -10,7 +10,9 @@
     require_once('config/connect.php');
 
     if (mysqli_query($link, "DELETE FROM customers WHERE cus_id = '" . $_GET['cus_id'] . "' ")) {
-        echo "<script> alert('ลบข้อมูลเรียบร้อยแล้วของรหัสสมาชิก". $_GET['cus_id']."'); window.location.assign('show_member.php')</script>";
+        echo '<script> alert("ลบข้อมูลสมาชิกเรียบร้อยแล้ว\nรหัสสมาชิก '. $_GET['cus_id']. '"); 
+        window.location.assign("show_member.php")
+        </script>';
     } else {
         echo "<script> alert('ไม่สามารถลบได้'); window.location.assign('show_member.php')</script>";
     }

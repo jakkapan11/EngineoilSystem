@@ -90,9 +90,9 @@
         </td>
       </tr>
       <tr>
-        <td height="50" align="right"><strong>อีเมล</strong>:<span style="color:red;">*</span></td>
+        <td height="50" align="right"><strong>อีเมล</strong>:<span style="color:red;"></span></td>
         <td><label for="textfield4"></label>
-          <input style="width:300px;" class="form-control" type="email" name="cus_email" id="cus_email" required /></td>
+          <input style="width:300px;" class="form-control" type="email" name="cus_email" id="cus_email"/></td>
           <td <font style="padding-left:60px; color:gray;">(กรอกอีเมลให้ถูกต้องตามรูปแบบ เช่น email@hotmail.com)</font></td>
       </tr>
       <tr>

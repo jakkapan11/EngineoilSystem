@@ -72,7 +72,7 @@
                     $cus_data = mysqli_fetch_assoc($q);
 
                     $sql_invoice_paymendate = "SELECT invoice_paymendate FROM invoice 
-                                                WHERE order_id = '". $result['order_id'] ."'";
+                                                WHERE order_id = '" . $result['order_id'] . "'";
                     $query_invoice_paymendate = mysqli_query($link, $sql_invoice_paymendate);
                     $result_invoice_paymendate = mysqli_fetch_assoc($query_invoice_paymendate);
             ?>
@@ -158,16 +158,18 @@
 
 
                         <td align="center">
-                            <?php if ($result['order_status'] != 0 && $result['order_status'] != 1 &&  $result['order_status'] != 2  &&  $result['order_status'] != 4) { ?>
-                                <a target="_blank" href="invoice.php?orderid=<?= $result['order_id'] ?>" class="btn btn-primary"><i class="fa fa-print"></i> พิมพ์ใบแจ้งหนี้</a>
-                            <?php } else { ?>
-                                <center>-</center>
-                            <?php } ?>
+                            <?php
+                            if ($result_invoice_paymendate['invoice_paymendate']) {
+                                ?>
+                                    <a target="_blank" href="invoice.php?orderid=<?= $result['order_id'] ?>" class="btn btn-primary"><i class="fa fa-print"></i> พิมพ์ใบแจ้งหนี้</a>
+                                <?php } else { ?>
+                                    <center>-</center>
+                                <?php } ?>
                         </td>
-                    <?php }
-            } else { ?>
-                    <td align="center" bgcolor="#E4E3EA" colspan="10">ไม่พบข้อมูล</td>
-                <?php  } ?>
+                <?php } 
+                    } else { ?>
+                <td align="center" bgcolor="#E4E3EA" colspan="10">ไม่พบข้อมูล</td>
+            <?php  } ?>
         </tbody>
     </table>
     <script>

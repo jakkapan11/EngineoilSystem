@@ -5,7 +5,7 @@
     include("config/connect.php");
     include_once("config/etc_funct_admin.php");
     include("config/mali.php");
-    
+
     if (!isset($_SESSION)) {
         session_start();
     }
@@ -44,6 +44,11 @@
     if ($invoice_data['invoice_issued_date'] == "0000-00-00")
         $invoice_issued_date = "";
     else $invoice_issued_date = DateThai($invoice_data['invoice_issued_date']);
+
+
+    if ($invoice_data['invoice_date'] == "0000-00-00")
+        $invoice_date = "";
+    else $invoice_date = DateThai($invoice_data['invoice_date']);
     ?>
 
 
@@ -165,6 +170,20 @@
                 <td width="250" align="right"><strong></strong></td>
                 <td width="30%" style="padding-left:20px;"></td>
             </tr>
+            
+            <tr>
+                <td width="150" height="30" align="right"><strong>วันที่ชําระ :</strong></td>
+                <td width="30%" style="padding-left:20px;"><?php if ($invoice_date != "") {
+                                            echo $invoice_date;
+                                        } else {
+                                            echo " <left>-</left>";
+                                        } ?></td>
+
+                <td width="250" align="right"><strong></strong></td>
+                <td width="30%" style="padding-left:20px;"></td>
+            </tr>
+
+            <tr>
             <td width="150" height="30" align="right"><strong>วันที่พิมพ์ :</strong></td>
             <td width="30%" style="padding-left:20px;">
                 <?php
@@ -184,7 +203,7 @@
                     $years = date("Y") + 543; // ค่า ค.ศ.บวก 543 ทำให้เป็น ค.ศ.
 
                     return "
-                            $day $ThMonth[$months] พ.ศ.$years";
+                            $day $ThMonth[$months] พ.ศ. $years";
                 }
                 echo ThDate(); // วันที่แสดง
                 ?>

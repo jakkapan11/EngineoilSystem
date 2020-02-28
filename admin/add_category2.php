@@ -18,6 +18,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 //                      
 if (mysqli_query($link, $sql) or die(mysqli_error($link))) {
 	$new_bank = mysqli_insert_id($link);
-		echo "<script> alert('เพิ่มข้อมูลเรียบร้อยแล้วของรหัสประเภทสินค้า" .  $new_bank. "'); window.location.assign('show_category.php')</script>";
+		echo '<script> alert("เพิ่มข้อมูลประเภทสินค้าเรียบร้อยแล้ว\nรหัสประเภทสินค้า ' .  $new_bank. '"); 
+		window.location.assign("show_category.php")
+		</script>';
 	}
 }
