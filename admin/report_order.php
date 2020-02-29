@@ -189,7 +189,7 @@ $enddate    = tochristyear($_POST['enddate']);
                 <td align="left" style="padding-left:15px;"><?= $result_order['cus_name'] ?></td>
                 <td align="left" style="padding-left:10px;">
                     <?php
-                    if ($result_order['order_status'] != 3)
+                    if ($result_order['order_status'] != 0 && $result_order['order_status'] != 3)
                         echo $receipt_tye;
                     else
                         echo "-"

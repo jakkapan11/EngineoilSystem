@@ -19,8 +19,8 @@
                 disableTouchKeyboard: true,
                 todayBtn: false,
                 clearBtn: true,
-                endDate: '+60d',
-                startDate: 'now',
+                endDate: '+0d',
+                startDate: '-5d',
                 autoclose: true, //Set เป็นปี พ.ศ.
                 inline: true
             }) //กำหนดเป็นวันปัจุบัน       
@@ -125,10 +125,10 @@
                                                     } ?></td>
                 </tr>
                 <tr>
-                    <td height="40" align="right"><strong>วันที่เปลี่ยน :</strong><span style="color:red;"></span></td>
+                    <td height="40" align="right"><strong>วันที่เปลี่ยน :</strong><span style="color:red;">*</span></td>
                     <td style="padding-left:17px;"><label for="textfield"></label>
-                        <?= tothaiyear(date("Y-m-d")) ?>
-                        <input type="text" style="width:250px;" name="change_date" id="change_date" value="<?= tothaiyear(date("Y-m-d")) ?>" hidden /></td>
+                        
+                        <input type="text" onfocus="$(this).blur();" style="width:200px;" onkeypress="return false;" class="form-control datepicker-checkout" name="change_date" id="change_date" min="<?= date("Y-m-d"); ?>" required/></td>
 
 
                     <td align="right"><strong></strong> </span></td>
@@ -189,7 +189,7 @@
                     } ?>
         </form>
 
-        <td style="padding-top:30px; " colspan="8" align="center"><span style="color:red;">การเปลี่ยนสินค้าจะเปลี่ยนได้ครั้งเดียวเท่านั้น โดยสินค้าเปลี่ยนภายใน 3-5 วันหลังจากวันที่ชําระ</span> </td>
+        <td style="padding-top:30px; " colspan="8" align="center"><span style="color:red;"><u>หมายเหตุ</u> การเปลี่ยนสินค้าจะเปลี่ยนได้ครั้งเดียวเท่านั้น โดยสินค้าเปลี่ยนไม่เกิน 5 วันนับจากวันที่ชําระ</span> </td>
 
         </table>
         </form>
@@ -261,7 +261,7 @@
 
         } else {
             if (cheange_amount > amount) {
-                alert('จํานวนเปลี่ยนต้องมากกว่า จำนวนที่ซื้อ');
+                alert('จํานวนเปลี่ยนต้องเท่ากับ จำนวนที่ซื้อ');
                 $('#change_amount' + product_id).val('');
             }
         }

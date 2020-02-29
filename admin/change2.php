@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             }
         }
         echo '<script> 
-        alert("บันทึกการเปลี่ยนสินค้า\nรหัสสั่งซื้อ ' .  $_POST['order_id'] . ' รหัสการเปลี่ยน ' . str_pad($new_bank, 5, 0, STR_PAD_LEFT) .   '"); 
+        alert("บันทึกการเปลี่ยนสินค้าเรียบร้อยแล้ว\nรหัสสั่งซื้อ ' .  $_POST['order_id'] . ' รหัสการเปลี่ยน ' . str_pad($new_bank, 5, 0, STR_PAD_LEFT) .   '"); 
         window.location.assign("showpay_emp.php");
         </script>';
     } else {
