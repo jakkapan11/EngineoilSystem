@@ -81,7 +81,7 @@
 
   <body>
     <form action="profile2.php" method="post">
-      <table width="767" border="0" align="center">
+      <table width="796" border="0" align="center">
         <tr>
           <td width="175" height="50" align="right"><strong>รหัสลูกค้า</strong> :</td>
           <td width="302"><label for="textfield1"></label>
@@ -98,7 +98,7 @@
           <td><label for="textfield8"></label>
             <input type="text" name="cus_birthday" onfocus="$(this).blur();" style="width:300px; padding-left:14px;" onkeypress="return false;" class="form-control datepicker" value="<?= $cus_birthday ?>" id="cus_birthday" /></td>
           <td>
-            <font style="padding-left:50px; color:gray;">(กรอก วัน/เดือน/ปี ที่เกิดของท่าน)</font>
+            <font style="padding-left:30px; color:gray;">(กรอก วัน/เดือน/ปี ที่เกิดเลือกจากปฎิทิน)</font>
           </td>
         </tr>
         <tr>
@@ -106,13 +106,13 @@
           <td><label for="textfield2"></label>
             <input type="text" style="width:300px; " class="form-control" name="cus_phone" value="<?= $result['cus_phone'] ?>" id="cus_phone" minlength="8" maxlength="10" required /></td>
           <td>
-            <font width="667;" style="padding-left:50px; color:gray;">(กรอกอย่างน้อย 9 ตัวอีกษร)</font>
+            <font width="667;" style="padding-left:30px; color:gray;">(กรอกอย่างน้อย 9 ตัวอีกษร)</font>
         </tr>
         <tr>
           <td height="50" align="right"><strong>อีเมล</strong> :<span style="color:red;"></span></td>
           <td><label for="textfield3"></label>
             <input type="email" name="cus_email" style="width:300px; " class="form-control" value="<?= $result['cus_email'] ?>" id="cus_email" /></td>
-            <td <font style="padding-left:50px; color:gray;">(กรอกอีเมลให้ถูกต้องตามรูปแบบ เช่น email@hotmail.com)</font></td>
+            <td <font style="padding-left:30px; color:gray;">(กรอกอีเมลให้ถูกต้องตามรูปแบบ เช่น email@hotmail.com)</font></td>
         </tr>
         <tr>
           <td height="120" align="right"><strong>ที่อยู่</strong> :<span style="color:red;">*</span></td>
@@ -124,7 +124,7 @@
           <td><label for="textfield4"></label>
             <input type="text" name="cus_zipcode" style="width:300px; " class="form-control" value="<?= $result['cus_zipcode'] ?>" id="cus_zipcode" minlength="5" maxlength="5" required /></td>
           <td>
-            <font style="padding-left:50px; color:gray;">(กรอก 5 ตัวอักษร)</font>
+            <font style="padding-left:30px; color:gray;">(กรอก 5 ตัวอักษร)</font>
           </td>
         </tr>
         <tr>
@@ -139,14 +139,14 @@
           <td><label for="textfield6"></label>
             <input type="password" name="cus_password" minlength="8" maxlength="20" style="width:300px; " class="form-control" id="cus_password" /></td>
           <td>
-            <font style="padding-left:50px; color:gray;">(กรอกอย่างน้อย 8 ตัวอักษร)</font>
+            <font style="padding-left:30px; color:gray;">(กรอกอย่างน้อย 8 ตัวอักษร)</font>
         </tr>
         <tr>
           <td height="50" align="right"><strong>ยืนยันรหัสผ่าน</strong> :</span></td>
           <td><label for="textfield7"></label>
             <input type="password" name="cus_password2" style="width:300px; " class="form-control" id="cus_password2" oninput='cus_password2.setCustomValidity(cus_password2.value != cus_password.value ? "กรอกรหัสผ่านให้ตรงกัน!" : "")' minlength="8" maxlength="20" /></td>
           <td>
-            <font style="padding-left:50px; color:gray;">(กรอกอย่างน้อย 8 ตัวอักษร)</font>
+            <font style="padding-left:30px; color:gray;">(กรอกอย่างน้อย 8 ตัวอักษร)</font>
         </tr>
         <tr>
           <td height="100" align="right">&nbsp;</td>

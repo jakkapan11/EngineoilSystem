@@ -56,7 +56,7 @@
   <hr>
 
   <form id="form1" name="form1" method="post" action="add_employee2.php">
-    <table width="825" border="0" align="center">
+    <table width="843" border="0" align="center">
       <tr>
         <td width="229" height="50" align="right"><strong>ชื่อ-นามสกุล </strong> :<span style="color:red;">*</span></td>
         <td width="301"><label for="textfield"></label>
@@ -68,7 +68,7 @@
         <td><label for="textfield2"></label>
           <input type="text" onfocus="$(this).blur();" id="emp_birthday" name="emp_birthday" class="form-control datepicker" onkeypress="return false;" style="width:300; padding-left:13px;" autocomplete="off" required />
         <td>
-          <font style="padding-left:60px; color:gray;">(กรอก วัน/เดือน/ปี ที่เกิดของท่าน)</font>
+          <font style="padding-left:40px; color:gray;">(กรอก วัน/เดือน/ปี ที่เกิดเลือกจากปฎิทิน)</font>
         </td>
       </tr>
       <tr>
@@ -76,13 +76,13 @@
         <td><label for="textfield3"></label>
           <input type="text" style="width:300px; " class="form-control" name="emp_phone" onkeypress="return isNumberKey(event)" id="emp_phone" minlength="8" maxlength="10" required /></td>
         <td>
-          <font style="padding-left:60px; color:gray;">(กรอกอย่างน้อย 9 ตัวอักษร)</font>
+          <font style="padding-left:40px; color:gray;">(กรอกอย่างน้อย 9 ตัวอักษร)</font>
       </tr>
       <tr>
         <td height="50" align="right"><strong>อีเมล</strong> :<span style="color:red;"></span></td>
         <td><label for="textfield4"></label>
           <input type="email" style="width:300px; " class="form-control" name="emp_email" id="emp_email" /></td>
-        <td <font style="padding-left:60px; color:gray;">(กรอกอีเมลให้ถูกต้องตามรูปแบบ เช่น email@hotmail.com)</font>
+        <td <font style="padding-left:40px; color:gray;">(กรอกอีเมลให้ถูกต้องตามรูปแบบ เช่น email@hotmail.com)</font>
         </td>
       </tr>
       <tr>
@@ -96,7 +96,7 @@
         <td><label for="textfield5"></label>
           <input type="text" style="width:300px; " class="form-control" name="emp_idcard" onkeypress="return isNumberKey(event)" id="emp_idcard" minlength="10" maxlength="13" required /></td>
         <td>
-          <font style="padding-left:60px; color:gray;">(กรอก 13 ตัวอักษร)</font>
+          <font style="padding-left:40px; color:gray;">(กรอก 13 ตัวอักษร)</font>
       </tr>
       <tr>
         <td height="50" align="right"><strong>ระดับ</strong> :<span style="color:red;">*</span></td>

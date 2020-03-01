@@ -76,7 +76,7 @@
 
   <body>
     <form action="modify_user2.php" method="post">
-      <table width="782" border="0" align="center">
+      <table width="809" border="0" align="center">
         <tr>
           <td width="175" height="50" align="right"><strong>รหัสพนักงาน</strong> :</td>
           <td width="302"><label for="textfield1"></label>
@@ -93,7 +93,7 @@
           <td><label for="textfield8"></label>
             <input type="text" name="emp_birthday" style="width:300px; padding-left:14px;" onfocus="$(this).blur();" class="form-control datepicker" onkeypress="return false;" value="<?= tothaiyear($result['emp_birthday']) ?>" id="emp_birthday" /></td>
           <td>
-            <font style="padding-left:60px; color:gray;">(กรอก วัน/เดือน/ปี ที่เกิดของท่าน)</font>
+            <font style="padding-left:40px; color:gray;">(กรอก วัน/เดือน/ปี ที่เกิดเลือกจากปฎิทิน)</font>
           </td>
         </tr>
         <tr>
@@ -101,13 +101,13 @@
           <td><label for="textfield2"></label>
             <input type="text" name="emp_phone" style="width:300px; " class="form-control" onkeypress="return isNumberKey (event)" value="<?= $result['emp_phone'] ?>" id="emp_phone" /></td>
           <td>
-            <font style="padding-left:60px; color:gray;">(กรอกอย่างน้อย 9 ตัวอักษร)</font>
+            <font style="padding-left:40px; color:gray;">(กรอกอย่างน้อย 9 ตัวอักษร)</font>
         </tr>
         <tr>
           <td height="50" align="right"><strong>อีเมล</strong> :<span style="color:red;"></span></td>
           <td><label for="textfield3"></label>
             <input type="email" name="emp_email" style="width:300px; " class="form-control" value="<?= $result['emp_email'] ?>" id="emp_email" /></td>
-          <td <font style="padding-left:60px; color:gray;">(กรอกอีเมลให้ถูกต้องตามรูปแบบ เช่น email@hotmail.com)</font></td>
+          <td <font style="padding-left:40px; color:gray;">(กรอกอีเมลให้ถูกต้องตามรูปแบบ เช่น email@hotmail.com)</font></td>
         </tr>
         <tr>
           <td height="120" align="right"><strong>ที่อยู่</strong> :<span style="color:red;">*</span></td>
@@ -118,7 +118,7 @@
           <td height="50" align="right"><strong>หมายเลขบัตรประชาชน</strong> :<span style="color:red;">*</span></td>
           <td><label for="textfield4"></label>
             <input type="text" name="emp_idcard" style="width:300px;" class="form-control"value="<?= $result['emp_idcard'] ?>" id="emp_idcard" onkeypress="return isNumberKey(event)" id="emp_idcard" minlength="10" maxlength="13"required /></td>
-            <td <font style="padding-left:60px; color:gray;">(กรอก 13 ตัวอักษร)</font></td>
+            <td <font style="padding-left:40px; color:gray;">(กรอก 13 ตัวอักษร)</font></td>
           <td>
         </tr>
         <tr>
@@ -133,14 +133,14 @@
           <td><label for="textfield6"></label>
             <input type="password" name="emp_password" minlength="8" maxlength="20" style="width:300px; " class="form-control" id="emp_password" /></td>
           <td>
-            <font style="padding-left:60px; color:gray;">(กรอกอย่างน้อย 8 ตัวอักษร)</font>
+            <font style="padding-left:40px; color:gray;">(กรอกอย่างน้อย 8 ตัวอักษร)</font>
         </tr>
         <tr>
           <td height="50" align="right"><strong>ยืนยันรหัสผ่าน</strong> :</span></td>
           <td><label for="textfield7"></label>
             <input type="password" name="emp_password2" style="width:300px; " class="form-control" id="emp_password2" oninput='emp_password2.setCustomValidity(emp_password2.value != emp_password.value ? "กรอกรหัสผ่านให้ตรงกัน!" : "")' minlength="8" maxlength="20" /></td>
           <td>
-            <font style="padding-left:60px; color:gray;">(กรอกอย่างน้อย 8 ตัวอักษร)</font>
+            <font style="padding-left:40px; color:gray;">(กรอกอย่างน้อย 8 ตัวอักษร)</font>
         </tr>
         <tr>
           <td height="100" align="right">&nbsp;</td>

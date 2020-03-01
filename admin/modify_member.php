@@ -81,7 +81,7 @@
   ?>
 
   <form id="form1" name="form1" method="post" action="modify_member2.php">
-    <table width="815" border="0" align="center">
+    <table width="845" border="0" align="center">
       <tr>
         <td width="175" height="50" align="right"><strong>รหัสลูกค้า</strong> :</td>
         <td width="302"><label for="textfield1"></label>
@@ -98,20 +98,20 @@
         <td><label for="textfield2"></label>
           <input type="text" style="width:300px; padding-left:14px;" onfocus="$(this).blur();" class="form-control datepicker" onkeypress="return false;" name="cus_birthday" value="<?= $cus_birthday ?>" id="cus_birthday" /></td>
         <td>
-          <font style="padding-left:60px; color:gray;">(กรอก วัน/เดือน/ปี ที่เกิดของท่าน)</font>
+          <font style="padding-left:40px; color:gray;">(กรอก วัน/เดือน/ปี ที่เกิดเลือกจากปฎิทิน)</font>
       </tr>
       <tr>
         <td height="50" align="right"><strong>เบอร์โทรศัพท์</strong> :<span style="color:red;">*</span></td>
         <td><label for="textfield3"></label>
           <input type="text" style="width:300px; " class="form-control" name="cus_phone" onkeypress="return isNumberKey (event)" value="<?= $result['cus_phone'] ?>" id="cus_phone" minlength="8" maxlength="10" required /></td>
         <td>
-          <font style="padding-left:60px; color:gray;">(กรอกอย่างน้อย 9 ตัวอักษร)</font>
+          <font style="padding-left:40px; color:gray;">(กรอกอย่างน้อย 9 ตัวอักษร)</font>
       </tr>
       <tr>
         <td height="50" align="right"><strong>อีเมล</strong>:<span style="color:red;"></span></td>
         <td><label for="textfield4"></label>
           <input type="email" style="width:300px; " class="form-control" name="cus_email" value="<?= $result['cus_email'] ?>" id="cus_email"/></td>
-        <td <font style="padding-left:60px; color:gray;">(กรอกอีเมลให้ถูกต้องตามรูปแบบ เช่น email@hotmail.com)</font></td>
+        <td <font style="padding-left:40px; color:gray;">(กรอกอีเมลให้ถูกต้องตามรูปแบบ เช่น email@hotmail.com)</font></td>
       </tr>
       <tr>
         <td height="130" align="right"><strong>ที่อยู่</strong> :<span style="color:red;">*</span></td>
@@ -123,7 +123,7 @@
         <td><label for="textfield5"></label>
           <input type="text" style="width:300px; " class="form-control" name="cus_zipcode" value="<?= $result['cus_zipcode'] ?>" onkeypress="return isNumberKey(event)" id="cus_zipcode" minlength="5" maxlength="5" required /></td>
         <td>
-          <font style="padding-left:60px; color:gray;">(กรอก 5 ตัวอักษร)</font>
+          <font style="padding-left:40px; color:gray;">(กรอก 5 ตัวอักษร)</font>
       </tr>
       <tr>
         <td height="50" align="right"><strong>สถานะ</strong> :<span style="color:red;">*</span></td>

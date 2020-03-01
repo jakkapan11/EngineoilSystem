@@ -79,7 +79,7 @@
   ?>
 
   <form class="form-horizontal" method="post" action="modifiy_employee2.php" enctype="multipart/form-data">
-    <table width="765" border="0" align="center">
+    <table width="804" border="0" align="center">
       <tr>
         <td width="190" height="50" align="right"><strong>รหัสพนักงาน</strong> :</td>
         <td width="302"><label for="textfield1"></label>
@@ -96,20 +96,20 @@
         <td><label for="textfield2"></label>
           <input type="text" style="width:300px; padding-left:14px;" onfocus="$(this).blur();" class="form-control datepicker" onkeypress="return false;" name="emp_birthday" value="<?= tothaiyear($result['emp_birthday']) ?>" id="emp_birthday" required /></td>
         <td>
-          <font style="padding-left:50px; color:gray;">(กรอก วัน/เดือน/ปี ที่เกิดของท่าน)</font>
+          <font style="padding-left:40px; color:gray;">(กรอก วัน/เดือน/ปี ที่เกิดเลือกจากปฎิทิน)</font>
       </tr>
       <tr>
         <td height="50" align="right"><strong>เบอร์โทรศัพท์</strong> :<span style="color:red;">*</span></td>
         <td><label for="textfield3"></label>
           <input type="text" style="width:300px; " class="form-control" name="emp_phone" onkeypress="return isNumberKey(event)" minlength="9" maxlength="10" value="<?= $result['emp_phone'] ?>" id="emp_phone" required /></td>
         <td>
-          <font style="padding-left:50px; color:gray;">(กรอกอย่างน้อย 9 ตัวอักษร)</font>
+          <font style="padding-left:40px; color:gray;">(กรอกอย่างน้อย 9 ตัวอักษร)</font>
       </tr>
       <tr>
         <td height="50" align="right"><strong>อีเมล</strong> :<span style="color:red;"></span></td>
         <td><label for="textfield4"></label>
           <input type="email" style="width:300px; " class="form-control" name="emp_email" value="<?= $result['emp_email'] ?>" id="emp_email" /></td>
-          <td <font style="padding-left:50px; color:gray;">(กรอกอีเมลให้ถูกต้องตามรูปแบบ เช่น email@hotmail.com)</font></td>
+          <td <font style="padding-left:40px; color:gray;">(กรอกอีเมลให้ถูกต้องตามรูปแบบ เช่น email@hotmail.com)</font></td>
       </tr>
       <tr>
         <td height="130" align="right"><strong>ที่อยู่</strong> :<span style="color:red;">*</span></td>
@@ -121,7 +121,7 @@
         <td><label for="textfield5"></label>
           <input type="text" style="width:300px;" id="emp_idcard" class="form-control" name="emp_idcard" onkeypress="return isNumberKey(event)" minlength="10" maxlength="13" value="<?= $result['emp_idcard']; ?>" required /></td>
         <td>
-          <font style="padding-left:50px; color:gray;">(กรอก 13 ตัวอักษร)</font>
+          <font style="padding-left:40px; color:gray;">(กรอก 13 ตัวอักษร)</font>
       </tr>
       <tr>
         <td height="50" align="right"><strong>ระดับ</strong> :<span style="color:red;">*</span></td>

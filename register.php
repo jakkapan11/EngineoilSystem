@@ -66,7 +66,7 @@
   <hr>
 
   <form id="form1" name="form1" method="post" action="register2.php">
-    <table width="823" border="0" align="center">
+    <table width="881" border="0" align="center">
       <tr>
         <td width="229" height="45" align="right"><strong>ชื่อ-นามสกุล </strong> :<span style="color:red;">*</span></td>
         <td width="301"><label for="textfield"></label>
@@ -79,7 +79,7 @@
           <input type="text" onfocus="$(this).blur();" id="cus_birthday" name="cus_birthday" class="form-control datepicker" onkeydown="return false;" onkeypress="return false;" style="background-color:white; width:300; padding-left:13px" data-provide="datepicker" autocomplete="off" data-date-format="dd/mm//yyyy" />
         </td>
         <td>
-          <font style="padding-left:50px; color:gray;">(กรอก วัน/เดือน/ปี ที่เกิดของท่าน)</font>
+          <font style="padding-left:30px; color:gray;">(กรอก วัน/เดือน/ปี ที่เกิดเลือกจากปฎิทิน)</font>
         </td>
       </tr>
       <tr>
@@ -87,14 +87,14 @@
         <td><label for="textfield3"></label>
           <input type="text" style="width:300px;" class="form-control" name="cus_phone" oninput="this.setCustomValidity('')" onkeypress="return isNumberKey(event)" id="cus_phone" minlength="9" maxlength="10" required /></td>
         <td>
-          <font style="padding-left:50px; color:gray;">(กรอกอย่างน้อย 9 ตัวอักษร)</font>
+          <font style="padding-left:30px; color:gray;">(กรอกอย่างน้อย 9 ตัวอักษร)</font>
         </td>
       </tr>
       <tr>
         <td height="45" align="right"><strong>อีเมล</strong>:<span style="color:red;"></span></td>
         <td><label for="textfield4"></label>
           <input style="width:300px;" class="form-control" type="email" name="cus_email" id="cus_email"  /></td>
-        <td <font style="padding-left:50px; color:gray;">(กรอกอีเมลให้ถูกต้องตามรูปแบบ เช่น email@hotmail.com)</font>
+        <td <font style="padding-left:30px; color:gray;">(กรอกอีเมลให้ถูกต้องตามรูปแบบ เช่น email@hotmail.com)</font>
       </tr>
       <tr>
         <td height="120" align="right"><strong>ที่อยู่</strong> :<span style="color:red;">*</span></td>
@@ -106,7 +106,7 @@
         <td height="45" align="right"><strong>รหัสไปรษณีย์</strong> :<span style="color:red;">*</span></td>
         <td><label for="textfield5"></label>
           <input type="text" name="cus_zipcode" style="width:300px;" class="form-control" onkeypress="return isNumberKey(event)" id="cus_zipcode" minlength="4" maxlength="5" required /></td>
-        <td <font style="padding-left:50px; color:gray;">(กรอก 5 ตัวอักษร)</font>
+        <td <font style="padding-left:30px; color:gray;">(กรอก 5 ตัวอักษร)</font>
       </tr>
       <tr>
       <tr>
@@ -114,20 +114,20 @@
         <td><label for="textfield5"></label>
           <input type="text" name="cus_username" style="width:300px; " class="form-control" id="cus_username" minlength="5" maxlength="16" required /></td>
           
-          <td <font style="padding-left:50px; color:gray;">(กรอกเป็นตัวอักษร A-z และ 0-9 อย่างน้อย 5 ตัว)</font>
+          <td <font style="padding-left:30px; color:gray;">(กรอกเป็นตัวอักษร A-z และ 0-9 อย่างน้อย 5 ตัว)</font>
       </tr>
       <td height="50" align="right"><strong>รหัสผ่าน</strong> :<span style="color:red;">*</span></td>
       <td><label for="textfield6"></label>
         <input type="password" name="cus_password" minlength="8" maxlength="20" style="width:300px; " class="form-control" id="cus_password" required /></td>
       <td>
-        <font style="padding-left:50px; color:gray;">(กรอกอย่างน้อย 8 ตัวอักษร)</font>
+        <font style="padding-left:30px; color:gray;">(กรอกอย่างน้อย 8 ตัวอักษร)</font>
         </tr>
         <tr>
           <td height="50" align="right"><strong>ยืนยันรหัสผ่าน</strong> :<span style="color:red;">*</span></td>
           <td><label for="textfield7"></label>
             <input type="password" name="cus_password2" style="width:300px; " class="form-control" id="cus_password2" minlength="8" maxlength="20" oninput='cus_password2.setCustomValidity(cus_password2.value != cus_password.value ? "กรอกรหัสผ่านให้ตรงกัน!" : "")' required /></td>
           <td>
-            <font size="3" style="padding-left:50px; color:gray;">(กรอกอย่างน้อย 8 ตัวอักษร)</font>
+            <font size="3" style="padding-left:30px; color:gray;">(กรอกอย่างน้อย 8 ตัวอักษร)</font>
         </tr>
 
         <tr>
