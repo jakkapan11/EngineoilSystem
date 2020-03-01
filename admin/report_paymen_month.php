@@ -208,6 +208,14 @@
     <td align="right"><b><?= number_format($sum_a, 2) ?></b></td>
 </tr>
 
+
+
+
+
+
+
+
+
 <tr>
     <td style="text-align:left; padding-left:15px;color:339999;">เงินโอน</td>
     <?php // เงิินโอน
@@ -348,6 +356,13 @@
 </tr>
 
 
+
+
+
+
+
+
+
 <tr>
     <td style="text-align:left; padding-left:15px;color:FF9999;">บัตรเดบิต</td>
     <?php
@@ -486,6 +501,15 @@
     <td align="right"><b><?= number_format($sum_m, 2) ?></b></td>
     <td align="right"><b><?= number_format($sum_c, 2) ?></b></td>
 </tr>
+
+
+
+
+
+
+
+
+
 
 <tr>
     <td style="text-align:left; padding-left:15px;color:0000DD;">บัตรเครดิต</td>
