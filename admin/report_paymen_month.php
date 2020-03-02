@@ -80,13 +80,16 @@
         $sum_a = $sum_b = $sum_c = $sum_d = $sum_e = 0;
         $sum_k = $sum_l = $sum_m = $sum_n  = 0; // รวมค่าจัดส่งทั้งหมด
         $sum_f = $sum_g = $sum_h = $sum_i  = 0; // รวมราคารวมทั้งหมด
-        
+        $row_date = 1;
+
         while ($result_date = mysqli_fetch_array($query_date)) {
- 
+
             $sum_1 = $sum_2 = $sum_3 = 0;
+            if ($row_date > 1) {
+                echo "</tr><tr><td>";
+            }
             echo "
-                        <tr height='25px'>
-                        <td></td><td align='center'>
+                       <td align='center'>
                          " . short_datetime_thai($result_date['date(receipt_date)']) . "
                         </td>
                         ";
@@ -198,6 +201,7 @@
 
 
 <?php
+            $row_date++;
         }
 ?>
 <tr style="border-top:1px solid; border-bottom:1px solid;">
@@ -224,15 +228,18 @@
                 ORDER BY date(receipt_date) ASC";
     $query_date = mysqli_query($link, $sql_date) or die(mysqli_error($link));
 
-
+    $row_date = 1;
 
 
     while ($result_date = mysqli_fetch_array($query_date)) {
 
         $sum_1 = $sum_2 = $sum_3 = 0;
+        if ($row_date > 1) {
+            echo "</tr><tr><td>";
+        }
         echo "
-                        <tr height='25px'>
-                        <td></td><td align='center'>
+                       
+                        <td align='center'>
                          " . short_datetime_thai($result_date['date(receipt_date)']) . "
                         </td>
                         ";
@@ -344,6 +351,7 @@
 
 
 <?php
+        $row_date++;
     }
 ?>
 
@@ -370,15 +378,18 @@
                 WHERE month(receipt_date) = '$month' AND year(receipt_date) = '$year' AND receipt_tye = 2
                 ORDER BY date(receipt_date) ASC";
     $query_date = mysqli_query($link, $sql_date) or die(mysqli_error($link));
-
+    $row_date = 1;  
 
 
     while ($result_date = mysqli_fetch_array($query_date)) {
 
         $sum_1 = $sum_2 = $sum_3 = 0;
+        if ($row_date > 1) {
+            echo "</tr><tr><td>";
+        }
         echo "
-                        <tr height='25px'>
-                        <td></td><td align='center'>
+                        
+                        <td align='center'>
                          " . short_datetime_thai($result_date['date(receipt_date)']) . "
                         </td>
                         ";
@@ -402,7 +413,7 @@
                     LEFT JOIN customers ON orders.cus_id = customers.cus_id
                     WHERE order_id = '" . $result_order['order_id'] . "'";
             $query_order2 = mysqli_query($link, $sql_order2) or die(mysqli_error($link));
-            $result_order2 = mysqli_fetch_assoc($query_order2); 
+            $result_order2 = mysqli_fetch_assoc($query_order2);
 
 
             $sum_1 += $result_order2['order_total'];
@@ -490,6 +501,7 @@
 
 
 <?php
+        $row_date++;
     }
 
 ?>
@@ -518,15 +530,18 @@
                 WHERE month(receipt_date) = '$month' AND year(receipt_date) = '$year' AND receipt_tye = 3
                 ORDER BY date(receipt_date) ASC";
     $query_date = mysqli_query($link, $sql_date) or die(mysqli_error($link));
-
+    $row_date = 1;  
 
 
     while ($result_date = mysqli_fetch_array($query_date)) {
 
         $sum_1 = $sum_2 = $sum_3 = 0;
+        if ($row_date > 1) {
+            echo "</tr><tr><td>";
+        }
         echo "
-                        <tr height='25px'>
-                        <td></td><td align='center'>
+                        
+                        <td align='center'>
                          " . short_datetime_thai($result_date['date(receipt_date)']) . "
                         </td>
                         ";
@@ -638,6 +653,7 @@
 
 
 <?php
+        $row_date++;
     }
 
 ?>

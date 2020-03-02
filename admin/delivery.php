@@ -125,7 +125,12 @@
                         echo "<span style='padding-left:20px;color:CC6666;'>เงินสด</span>";
                     } elseif ($receipt_data2['receipt_tye'] == 1) {
                         echo "<span style='padding-left:20px;color:339999;'>เงินโอน</span>";
+                    } elseif ($receipt_data2['receipt_tye'] == 2) {
+                        echo "<span style='padding-left:20px;color:FF9999;'>บัตรเดบิต</span>";
+                    } elseif ($receipt_data2['receipt_tye'] == 3) {
+                        echo "<span style='padding-left:20px;color:0000DD;'>บัตรเครดิต</span>";
                     }
+                    
                     ?></td>
                 <td width="160" height="45" align="right"><strong>หมายเลขจัดส่ง :</strong><span style="color:red;">*</span> </td>
                 <td width="200" style="padding-left:20px;"><label for="textfield3"></label>

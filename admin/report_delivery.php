@@ -38,7 +38,7 @@ $enddate    = tochristyear($_POST['enddate']);
 
 
 
-<table border="0" width="1770px" align="center">
+<table border="0" width="1900px" align="center">
     <tr>
         <td colspan="14" align="right" style="border-bottom:1px solid;">
             <?php
@@ -51,7 +51,7 @@ $enddate    = tochristyear($_POST['enddate']);
     <tr style="border-bottom:1px solid; height:30px; ">
         <th style="text-align:center; width:110px;">วันที่จัดส่ง</th>
         <th style="text-align:center; width:140px;">หมายเลขการจัดส่ง</th>
-        <th style="text-align:left; padding-left:10px; width:110px;">ประเภทจัดส่ง</td>
+        <th style="text-align:left; padding-left:10px; width:160px;">ประเภทจัดส่ง</td>
         <th style="text-align:center; width:115px;">วันที่กําหนดส่ง</td>
         <th style="text-align:center; width:117px;">วันที่สั่งซื้อ</th>
         <th style="text-align:center; width:95px;">รหัสสั่งซื้อ</th>
@@ -73,7 +73,7 @@ $enddate    = tochristyear($_POST['enddate']);
     $sum_f = $sum_g = $sum_h = $sum_i = $sum_j = 0; // รวมราคารวมทั้งหมด
     $sum_k = $sum_l = $sum_m = $sum_n = $sum_o = 0; // รวมค่าจัดส่งทั้งหมด
     $total = 0; // รวมรายการทั้งหมด
-    $count_sum_a = $count_sum_b = 0 ;
+    $count_sum_a = $count_sum_b =  $count_sum_c = 0 ;
     if (mysqli_num_rows($query_date) == 0) {
         echo "<script>alert('ไม่พบข้อมูลที่ค้นหา'); window.close();</script>";
         exit();
@@ -130,11 +130,13 @@ $enddate    = tochristyear($_POST['enddate']);
                     break;
                 case 2:
                     $order_type = "<font color=''>นําสินค้ากลับบ้านเอง</font>";
-                    break;
                     $order_totalprice = "<font color='Black'>" . number_format($result_order['order_deliverycost'] + $result_order['order_total'], 2) . "</font>";
+                    $order_deliverycost =  "<font color='3366CC'>" . number_format($result_order['order_deliverycost'], 2) . "</font>";  //สีของค่าส่ง
+                    $order_total = "<font color='3366CC'>" . number_format($result_order['order_total'], 2) . "</font>";
                     $sum_h += $result_order['order_total'];
                     $sum_c += $result_order['order_deliverycost'] + $result_order['order_total'];
                     $sum_m += $result_order['order_deliverycost'];
+                    $count_sum_c ++;
                     break;
                 default:
                     $order_type = "-";
