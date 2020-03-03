@@ -10,11 +10,19 @@ if (!isset($_SESSION['cus_username'])) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     require('conf/connection.php');
     $password        =    trim($_POST['cus_password']);
-
+    $phone           = $_POST['cus_phone'];
+    
     if ($password != $_POST['cus_password2']) {
         echo "<script> alert('รหัสผ่านไม่ตรงกัน');window.location.assign('profile.php')</script>";
         exit();
     }
+
+
+    $chk_phone	= mysqli_query($link, "SELECT * FROM customers WHERE cus_phone = '" . $phone . "' AND cus_id != '" . $_POST['cus_id'] . "'");
+        if (mysqli_num_rows($chk_phone) > 0) {
+		echo "<script> alert('เบอร์โทรศัพท์ถูกใช้แล้ว'); window.history.back();</script>";
+		exit();
+	}
 
     if ($password == "" && $_POST['cus_password2'] == "") {
         $sql_update  = "UPDATE customers SET 

@@ -1,5 +1,5 @@
 <head>
-    <title>เงื่อนไขรายงานการรับชําระประจําเดือน</title>
+    <title>รายงานการรับชําระประจําเดือน</title>
     <?php
     include("config/head_admin.php");
     include("config/connect.php");
@@ -13,7 +13,7 @@
     ?>
 
 <body>
-    <h2 class="page-header text-center" style="padding-top:90px;">เงื่อนไขรายงานการรับชําระประจําเดือน</h2>
+    <h2 class="page-header text-center" style="padding-top:90px;">รายงานการรับชําระประจําเดือน</h2>
     <hr>
     <form id="form1" name="form1" method="post" target="_blank" action="report_paymen_month.php">
         <table width="825" border="0" align="center" style="width:900px;">
