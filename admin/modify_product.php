@@ -74,7 +74,7 @@
       <tr>
         <td height="50" align="right"><strong>จํานวน</strong>:<span style="color:red;">*</span></td>
         <td><label for="textfield4"></label>
-          <input type="number" style="width:300px; " class="form-control" name="product_amount" min="0" max="100" onkeypress="return isNumberKey(event)" value="<?= $result['product_amount'] ?>"   id="product_amount" required /></td>
+          <input type="number" style="width:300px; " class="form-control" name="product_amount" min="0" max="100" onkeypress="return isNumberKey(event)" value="<?= $result['product_amount'] ?>"   id="product_amount"autocomplete="off" onpaste="return false;" onchange="if(this.value <= 0) {alert('จำนวนไม่สามารถน้อยกว่า 1'); this.value='1'; } " required /></td>
       </tr>
       <tr>
         <td height="50" align="right"><strong>ราคาต่อหน่วย (บาท)</strong>:<span style="color:red;">*</span></td>

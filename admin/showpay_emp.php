@@ -27,7 +27,7 @@
     <hr>
 
     <form get="POST" class="form-inline" action="">
-        <table width="1530px" border="0" align="center">
+        <table width="1590px" border="0" align="center">
             <tr>
                 <td width="100%">
 

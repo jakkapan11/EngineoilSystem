@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             window.location.assign("show_product.php")
             </script>';
         } else {
-            echo "<script> alert('แก้ไขข้อมูลผิดพลาด'); window.location.assign('show_product.php')</script>";
+        //    echo "<script> alert('แก้ไขข้อมูลผิดพลาด'); window.location.assign('show_product.php')</script>";
         }
     } else {
         $prd_image     =    $_FILES['product_pic']['name'];
@@ -45,8 +45,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 window.location.assign("show_product.php")
                 </script>';
             }
-        } else {
-            echo "<script>alert('อัพโหลดไฟล์ล้มเหลว'); window.location.assign('show_product.php');</script>";
+        } else { 
+     //       echo "<script>alert('อัพโหลดไฟล์ล้มเหลว'); window.location.assign('show_product.php');</script>";
         }
     }
 }
