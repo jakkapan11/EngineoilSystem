@@ -43,7 +43,7 @@
             <img src="image/รูป1.2.jpg" width="100" class="rounded" alt="...">
             <p></p>
             <h3 class="text-uppercase mb-5">เบอร์โทรศัพท์</h3>
-            <p>096-792-5485</p>
+            <p><a href="tel: 096-792-5485"><u>096-792-5485</u></a></p>
           </div>
         </div>
       </div>
@@ -54,7 +54,7 @@
             <img src="image/รูป1.1.jpg" width="100" class="rounded" alt="...">
             <p></p>
             <h3 class="text-uppercase mb-5">email</h3>
-            <p>natthamon.phro@bumail.net</p>
+            <p><a href="mailto: natthamon.phro@bumail.net"><u>natthamon.phro@bumail.net</u></a></p>
           </div>
         </div>
       </div>

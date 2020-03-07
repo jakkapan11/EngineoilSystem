@@ -39,18 +39,17 @@
                 <td><label for="select"></label>
                     <select name="year" style="width:300px; " class="form-control" id="year" required>
                         <option value="" selected disabled>-- กรุณาเลือกปี พ.ศ. ที่ต้องการ --</option>
-                        <option value="2019">2562</option>
-                        <option value="2020">2563</option>
-                        <option value="2021">2564</option>
-                        <option value="2022">2565</option>
-                        <option value="2023">2566</option>
-                        <option value="2024">2567</option>
-                        <option value="2025">2568</option>
-                        <option value="2026">2569</option>
-                        <option value="2027">2570</option>
-                        <option value="2028">2571</option>
-                        <option value="2028">2572</option>
-                    </select></td>
+                        <?php
+
+                        $sql_year = "SELECT DISTINCT year(invoice_paymendate) FROM invoice WHERE invoice_paymendate != '0000-00-00'";
+                        $query_year = mysqli_query($link, $sql_year) or die(mysqli_error($link));
+
+                        while ($result_year = mysqli_fetch_array($query_year)) {
+                            echo "<option value='" . $result_year[0] . "' >" . ($result_year[0] + 543) . "</option>";
+                        }
+                        ?>
+                    </select>
+                </td>
                 <td>
                     <button style="margin-top:8px;" class="btn btn-primary" name="search" type="submit">ค้นหา</button>
                 </td>

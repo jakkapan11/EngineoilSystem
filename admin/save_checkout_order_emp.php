@@ -18,6 +18,7 @@ if ($_POST['cus_id'] == "") {
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $totalprice = $_POST['order_total'];
   $orderdate = tochristyear($_POST['order_date']);
+  $order_delivery_date = "";
 
   if ($_POST['order_status'] == 2) {
     $receipt_date = date("Y-m-d");
@@ -33,7 +34,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $deliverycost = 50;
   } elseif ($_POST['order_type'] == 1) {
     $deliverycost = 100;
-  } else {
+  } elseif ($_POST['order_type'] == 2) {
+    $order_delivery_date = $orderdate;
     $deliverycost = 0;
   }
 
@@ -42,6 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     order_deadline_date		= '" . tochristyear($_POST['order_deadline_date']) . "',
     order_total	        	= '" . $_POST['order_total'] . "',
     order_deliverycost	 	= '" . $deliverycost . "',
+    order_delivery_date   = '    $order_delivery_date',
     order_type	 	        = '" . $_POST['order_type'] . "',
     order_status	 	      = '" . $_POST['order_status'] . "',
     cus_id	 	            = '" . $_POST['cus_id'] . "'";
