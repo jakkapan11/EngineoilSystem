@@ -35,7 +35,7 @@ if (!isset($_SESSION)) {
 
 <body>
 
-	<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+	<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-secondary">
 		<a class="navbar-brand" href="index.php">อู่ชัยยานยนต์</a>
 		<button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle navbar-toggler ml-auto">
 			<span class="navbar-toggler-icon"></span>
@@ -45,20 +45,20 @@ if (!isset($_SESSION)) {
 		</button>
 		<div id="navbarCollapse" class="collapse navbar-collapse justify-content-start">
 			<ul class="nav navbar-nav">
-				<li class="nav-item"><a href="index.php" class="nav-link">หน้าแรก</a></li>
+				<li class="nav-item active"><a href="index.php" class="nav-link">หน้าแรก</a></li>
 
-				<li class="nav-item"><a href="show_product.php" class="nav-link">แสดงสินค้า</a></li>
+				<li class="nav-item active"><a href="show_product.php" class="nav-link">แสดงสินค้า</a></li>
 
 				<?php if (isset($_SESSION['cus_id'])) { ?>
-					<li class="nav-item"><a href="show_order.php" class="nav-link">แสดงรายการสั่งซื้อ</a></li>
+					<li class="nav-item active"><a href="show_order.php" class="nav-link">แสดงรายการสั่งซื้อ</a></li>
 				<?php } ?>
-				<li class="nav-item"><a href="contact.php" class="nav-link">ติดต่อเรา</a></li>
-				<li class="nav-item"><a target="_blank" href="manual.pdf" class="nav-link">คู่มือการใช้งาน</a></li>
+				<li class="nav-item active"><a href="contact.php" class="nav-link">ติดต่อเรา</a></li>
+				<li class="nav-item active"><a target="_blank" href="manual.pdf" class="nav-link">คู่มือการใช้งาน</a></li>
 			</ul>
 
 			<?php if (isset($_SESSION['cus_id'])) { ?>
 				<ul class="nav navbar-nav navbar-right ml-auto " style="padding-right:px; ">
-					<li class="nav-item dropdown">
+					<li class="nav-item active dropdown">
 						<a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle user-action"><i class="fa fa-user-o"></i> สวัสดี, <?= $_SESSION['cus_username'] ?><b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li><a href="profile.php" class="dropdown-item"><i class="fa fa-user-o"></i> แก้ไขสมาชิก</a></li>
@@ -71,8 +71,8 @@ if (!isset($_SESSION)) {
 				</ul> <?php
 						} else { ?>
 				<ul class="nav navbar-nav navbar-right ml-auto">
-					<li class="nav-item"><a href="register.php" class="nav-link"><i class="fa fa-key"></i> สมัครสมาชิก</a></li>
-					<li class="nav-item"><a href="login.php" class="nav-link"><i class="fa fa-user-o"></i> เข้าสู่ระบบ</a></li>
+					<li class="nav-item active"><a href="register.php" class="nav-link"><i class="fa fa-key"></i> สมัครสมาชิก</a></li>
+					<li class="nav-item active"><a href="login.php" class="nav-link"><i class="fa fa-user-o"></i> เข้าสู่ระบบ</a></li>
 				</ul>
 			<?php } ?>
 	</nav>

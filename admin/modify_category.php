@@ -49,7 +49,7 @@
       </tr>
     <tr>
       <td height="95">&nbsp;</td>
-      <td><button type="submit" class="btn btn-secondary" onclick="if(confirm('ยืนยันการบันทึก?')) return true; else return false;">บันทึก</button>   
+      <td><button type="submit" class="btn btn-secondary" onclick="if(confirm('ยืนยันการแก้ไข?')) return true; else return false;">บันทึก</button>   
       	  <input  class="btn btn-info" type="reset" name="reset" id="reset" value="คืนค่า"/>
           <button type="button"class="btn btn-primary" name="back" onclick="window.history.back();">ย้อนกลับ</button>
       </td>
