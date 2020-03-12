@@ -35,7 +35,7 @@ if (!isset($_SESSION)) {
 
 <body>
 
-	<nav class="navbar navbar-expand-lg  navbar-dark bg-secondary">
+	<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-secondary">
 
 		<a class="navbar-brand" href="index.php">อู่ชัยยานยนต์</a>
 		<button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle navbar-toggler ml-auto">
