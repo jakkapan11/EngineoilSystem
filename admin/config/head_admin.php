@@ -56,7 +56,7 @@
 				<li class="nav-item active"><a href="showpay_emp.php" class="nav-link">แสดงการชําระ</a></li>
 
 				<?php if ($_SESSION['emp_level'] == 1) { ?>
-					<li class="nav-item active dropdown">
+					<li class="nav-item  active dropdown">
 						<a data-toggle="dropdown" class="nav-link dropdown-toggle" href="#">รายงาน<b class="caret"></b></a>
 						<ul class="dropdown-menu">
 							<li><a href="select_order_day.php" class="dropdown-item">รายงานการสั่งซื้อประจําวัน</a></li>
@@ -72,7 +72,6 @@
 					</li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right ml-auto " style="padding-right:20px; ">
-				<li class="nav-item dropdown">
 				<li class="nav-item active dropdown">
 					<a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle user-action"><i class="fa fa-user-o"></i> สวัสดี, <?= $_SESSION['emp_username'] ?><b class="caret"></b></a>
 					<ul class="dropdown-menu">

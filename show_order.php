@@ -22,7 +22,7 @@
     }
     ?>
 
-    <h2 style="padding-top:90px;" class="page-header text-center">แสดงรายการสั่งซื้อ</h2>
+    <h2 style="padding-top:70px;" class="page-header text-center">แสดงรายการสั่งซื้อ</h2>
     <hr>
 
 
