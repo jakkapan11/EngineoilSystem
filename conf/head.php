@@ -34,8 +34,7 @@ if (!isset($_SESSION)) {
 
 
 <body>
-
-	<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
+	<nav class="navbar navbar-expand-lg  navbar-dark bg-secondary">
 		<a class="navbar-brand" href="index.php">อู่ชัยยานยนต์</a>
 		<button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle navbar-toggler ml-auto">
 			<span class="navbar-toggler-icon"></span>
@@ -43,36 +42,55 @@ if (!isset($_SESSION)) {
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
 		</button>
-		<div id="navbarCollapse" class="collapse navbar-collapse flex-column" style="margin-left:-70%;">
-			<ul class="navbar-nav ">
-				<li class="nav-item"><a href="index.php" class="nav-link">หน้าแรก</a></li>
+		<div id="navbarCollapse" class="collapse navbar-collapse ">
+			<div class="col-md-4" >
+				<h6 class="" style="color:white; margin-top:8px;">32/2 หมู่ 2 ตำบลแหลมงอบ อำเภอแหลมงอบ จังหวัดตราด 23120</h6>
+			</div>
 
-				<li class="nav-item"><a href="show_product.php" class="nav-link">แสดงสินค้า</a></li>
+			<?php if (isset($_SESSION['cus_id'])) { ?>
+				<ul class="nav navbar-nav navbar-right ml-auto " style="padding-right:px; ">
+					<li class="nav-item active dropdown">
+						<a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle user-action"><i class="fa fa-user-o"></i> สวัสดี, <?= $_SESSION['cus_username'] ?><b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="profile.php" class="dropdown-item"><i class="fa fa-user-o"></i> แก้ไขสมาชิก</a></li>
+							<li class="divider dropdown-divider"></li>
+							<li><a href="basket.php" class="dropdown-item"><i class="fa fa-shopping-cart"></i> ตะกร้าสินค้า <span class="badge badge-light" style="font-size:15px;"></span></a></li>
+							<li class="divider dropdown-divider"></li>
+							<li><a href="logout.php" class="dropdown-item"><i class="fa fa-power-off"></i> ออกจากระบบ</a></li>
+						</ul>
+					</li>
+				</ul> <?php
+					} else { ?>
+				<ul class="nav navbar-nav navbar-right ml-auto">
+					<li class="nav-item active"><a href="register.php" class="nav-link"><i class="fa fa-key"></i> สมัครสมาชิก</a></li>
+					<li class="nav-item active"><a href="login.php" class="nav-link"><i class="fa fa-user-o"></i> เข้าสู่ระบบ</a></li>
+				</ul>
+		</div>
+
+	<?php } ?>
+
+	</div>
+	</nav>
+	<nav class="navbar navbar-expand-lg  navbar-dark bg-secondary" style="border-top:1px white solid;">
+		<button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle navbar-toggler ml-auto">
+			<span class="navbar-toggler-icon"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+		</button>
+		<div id="navbarCollapse" class="collapse navbar-collapse ">
+			<ul class="nav navbar-nav">
+				<li class="nav-item active"><a href="index.php" class="nav-link">หน้าแรก</a></li>
+
+				<li class="nav-item active"><a href="show_product.php" class="nav-link">แสดงสินค้า</a></li>
 
 				<?php if (isset($_SESSION['cus_id'])) { ?>
-					<li class="nav-item"><a href="show_order.php" class="nav-link">แสดงรายการสั่งซื้อ</a></li>
+					<li class="nav-item active"><a href="show_order.php" class="nav-link">แสดงรายการสั่งซื้อ</a></li>
 				<?php } ?>
-				<li class="nav-item"><a href="contact.php" class="nav-link">ติดต่อเรา</a></li>
-				<li class="nav-item"><a target="_blank" href="manual.pdf" class="nav-link">คู่มือการใช้งาน</a></li>
+				<li class="nav-item active"><a href="contact.php" class="nav-link">ติดต่อเรา</a></li>
+				<li class="nav-item active"><a target="_blank" href="manual.pdf" class="nav-link">คู่มือการใช้งาน</a></li>
 			</ul>
-		<?php if (isset($_SESSION['cus_id'])) { ?>
-			<ul class="nav navbar-nav navbar-right ml-auto " style="padding-right:px; ">
-				<li class="nav-item dropdown">
-					<a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle user-action"><i class="fa fa-user-o"></i> สวัสดี, <?= $_SESSION['cus_username'] ?><b class="caret"></b></a>
-					<ul class="dropdown-menu">
-						<li><a href="profile.php" class="dropdown-item"><i class="fa fa-user-o"></i> แก้ไขสมาชิก</a></li>
-						<li class="divider dropdown-divider"></li>
-						<li><a href="basket.php" class="dropdown-item"><i class="fa fa-shopping-cart"></i> ตะกร้าสินค้า <span class="badge badge-light" style="font-size:15px;"></span></a></li>
-						<li class="divider dropdown-divider"></li>
-						<li><a href="logout.php" class="dropdown-item"><i class="fa fa-power-off"></i> ออกจากระบบ</a></li>
-					</ul>
-				</li>
-			</ul> <?php
-				} else { ?>
-			<ul class="nav navbar-nav navbar-right ml-auto">
-				<li class="nav-item"><a href="register.php" class="nav-link"><i class="fa fa-key"></i> สมัครสมาชิก</a></li>
-				<li class="nav-item"><a href="login.php" class="nav-link"><i class="fa fa-user-o"></i> เข้าสู่ระบบ</a></li>
-			</ul>
-		<?php } ?>
+		</div>
 	</nav>
+
 </body>
