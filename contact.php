@@ -9,7 +9,7 @@
 </head>
 
 <body>
-  <h2 class="page-header text-center" style="padding-top:80px;">ติดต่อเรา</h2>
+  <h2 class="page-header text-center" style="padding-top:70px;">ติดต่อเรา</h2>
   <hr>
   <div class="container">
     <div class="row">

@@ -10,8 +10,7 @@ include_once("conf/connection.php");
 include("conf/mali_cus.php");
 ?>
 </head>
-<h2 class="page-header text-center" style="padding-top:90px;"><img src="image/general/shop_name.png" width="245" class="rounded" alt=""></h2>
-<h6 class="page-header text-center" style="padding-top:px;">32/2 หมู่ 2 ตำบลแหลมงอบ อำเภอแหลมงอบ จังหวัดตราด 23120</h6>
+<h2 class="page-header text-center" style="padding-top:70px;"><img src="image/general/shop_name.png" width="245" class="rounded" alt=""></h2>
 <hr>
 <div class="container" style="padding-top:20px;">
 
