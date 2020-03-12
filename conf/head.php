@@ -34,7 +34,9 @@ if (!isset($_SESSION)) {
 
 
 <body>
+
 	<nav class="navbar navbar-expand-lg  navbar-dark bg-secondary">
+
 		<a class="navbar-brand" href="index.php">อู่ชัยยานยนต์</a>
 		<button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle navbar-toggler ml-auto">
 			<span class="navbar-toggler-icon"></span>
@@ -43,8 +45,22 @@ if (!isset($_SESSION)) {
 			<span class="icon-bar"></span>
 		</button>
 		<div id="navbarCollapse" class="collapse navbar-collapse ">
-			<div class="col-md-4" >
+			<div style="width:460px;">
 				<h6 class="" style="color:white; margin-top:8px;">32/2 หมู่ 2 ตำบลแหลมงอบ อำเภอแหลมงอบ จังหวัดตราด 23120</h6>
+			</div>
+
+			<div id="navbarCollapse" class="collapse navbar-collapse ">
+				<ul class="nav navbar-nav">
+					<li class="nav-item active"><a href="index.php" class="nav-link">หน้าแรก</a></li>
+
+					<li class="nav-item active"><a href="show_product.php" class="nav-link">แสดงสินค้า</a></li>
+
+					<?php if (isset($_SESSION['cus_id'])) { ?>
+						<li class="nav-item active"><a href="show_order.php" class="nav-link">แสดงรายการสั่งซื้อ</a></li>
+					<?php } ?>
+					<li class="nav-item active"><a href="contact.php" class="nav-link">ติดต่อเรา</a></li>
+					<li class="nav-item active"><a target="_blank" href="manual.pdf" class="nav-link">คู่มือการใช้งาน</a></li>
+				</ul>
 			</div>
 
 			<?php if (isset($_SESSION['cus_id'])) { ?>
@@ -70,27 +86,7 @@ if (!isset($_SESSION)) {
 	<?php } ?>
 
 	</div>
-	</nav>
-	<nav class="navbar navbar-expand-lg  navbar-dark bg-secondary" style="border-top:1px white solid;">
-		<button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle navbar-toggler ml-auto">
-			<span class="navbar-toggler-icon"></span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-		</button>
-		<div id="navbarCollapse" class="collapse navbar-collapse ">
-			<ul class="nav navbar-nav">
-				<li class="nav-item active"><a href="index.php" class="nav-link">หน้าแรก</a></li>
 
-				<li class="nav-item active"><a href="show_product.php" class="nav-link">แสดงสินค้า</a></li>
-
-				<?php if (isset($_SESSION['cus_id'])) { ?>
-					<li class="nav-item active"><a href="show_order.php" class="nav-link">แสดงรายการสั่งซื้อ</a></li>
-				<?php } ?>
-				<li class="nav-item active"><a href="contact.php" class="nav-link">ติดต่อเรา</a></li>
-				<li class="nav-item active"><a target="_blank" href="manual.pdf" class="nav-link">คู่มือการใช้งาน</a></li>
-			</ul>
-		</div>
 	</nav>
 
 </body>
