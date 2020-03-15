@@ -62,7 +62,7 @@
     ?>
 
     <div class="container">
-        <h2 class="page-header text-center" style="padding-top:80px;">บันทึกการเปลี่ยนสินค้า</h2>
+        <h2 class="page-header text-center" style="padding-top:25px;">บันทึกการเปลี่ยนสินค้า</h2>
         <hr>
         <form action="change2.php" method="post" enctype="multipart/form-data">
             <table border="0" align="center" style="border:1px solid #C0C0C0; background:#F5F5F5;width:900px;">

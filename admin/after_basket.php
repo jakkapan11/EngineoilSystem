@@ -17,7 +17,7 @@
 </head>
 
 <body>
-    <h2 class="page-header text-center" style="padding-top:80px;">เลือก/ยกเลิกรายการสั่งซื้อ</h2>
+    <h2 class="page-header text-center" style="padding-top:25px;">เลือก/ยกเลิกรายการสั่งซื้อ</h2>
     <hr>
     <table class="table" align="center" border="0" style="width:1230px;">
         <thead>
@@ -79,7 +79,7 @@
             <td colspan="9" align="center">
                 <!-- <button type="submit" class="btn btn-warning">คำนวณราคาใหม่</button> -->
                 <a href="logproduct.php" class="btn btn-primary">เลือกสินค้า</a>
-                <a href="checkoutemp.php" class="btn btn-success"> ยืนยัน</a>
+                <a href="select_member.php" class="btn btn-success"> ยืนยัน</a>
                 <a href="delete_all_basket.php" class="btn btn-danger" onclick="if(confirm('ยืนยันการล้างตะกร้า?')) return true; else return false;"></i>ล้างตะกร้า</a>
             </td>
             </tr>

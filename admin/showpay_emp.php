@@ -23,7 +23,7 @@
     }
     ?>
 
-    <h2 style="padding-top:80px;" class="page-header text-center">แสดงการชําระ</h2>
+    <h2 style="padding-top:25px;" class="page-header text-center">แสดงการชําระ</h2>
     <hr>
 
     <form get="POST" class="form-inline" action="">

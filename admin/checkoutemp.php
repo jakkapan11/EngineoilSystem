@@ -98,7 +98,7 @@
     $cus_data = mysqli_fetch_assoc($q_cus);
     ?>
     <div class="container">
-        <h2 class="page-header text-center" style="padding-top:70px;">บันทึกการสั่งซื้อ</h2>
+        <h2 class="page-header text-center" style="padding-top:25px;">บันทึกการสั่งซื้อ</h2>
         <hr>
         <form action="save_checkout_order_emp.php" method="POST">
             <table border="0" align="center" style="border:1px solid #C0C0C0; background:#F5F5F5;">

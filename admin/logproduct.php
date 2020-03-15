@@ -25,7 +25,7 @@
   }
   ?>
 
-  <h2 class="page-header text-center" style="padding-top:70px;">แสดงรายการสินค้า</h2>
+  <h2 class="page-header text-center" style="padding-top:25px;">แสดงรายการสินค้า</h2>
   <hr>
 
 <body>

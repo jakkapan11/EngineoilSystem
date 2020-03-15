@@ -30,7 +30,7 @@
     ?>
 
     <div class="container">
-        <h2 class="page-header text-center" style="padding-top:80px;">รายละเอียดการสั่งซื้อ</h2>
+        <h2 class="page-header text-center" style="padding-top:25px;">รายละเอียดการสั่งซื้อ</h2>
         <hr>
         <form action="#" enctype="multipart/form-data" method="POST">
             <table border="0" align="center" style="border:1px solid #C0C0C0; background:#F5F5F5;">

@@ -31,7 +31,7 @@
     ?>
 
     <div class="container">
-        <h2 class="page-header text-center" style="padding-top:70px;">บันทึกการชําระเงิน</h2>
+        <h2 class="page-header text-center" style="padding-top:25px;">บันทึกการชําระเงิน</h2>
         <hr>
         <form action="payemp2.php" method="POST">
             <table border="0" align="center" style="border:1px solid #C0C0C0; background:#F5F5F5;">
