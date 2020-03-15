@@ -21,7 +21,7 @@
     include("config/connect.php");
     ?>
 
-    <h2 class="page-header text-center" style="padding-top:25px;">ค้าหา/เลือกลูกค้า</h2>
+    <h2 class="page-header text-center" style="padding-top:25px;">ค้นหา/เลือกลูกค้า</h2>
     <hr>
     <div class="container">
         <form get="POST" class="form-inline" action="">
