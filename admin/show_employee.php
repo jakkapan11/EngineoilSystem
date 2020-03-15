@@ -18,7 +18,7 @@
   }
   ?>
   
-  <h2 class="page-header text-center"style="padding-top:75px;">แสดง/ลบข้อมูลพนักงาน</h2>
+  <h2 class="page-header text-center"style="padding-top:25px;">แสดง/ลบข้อมูลพนักงาน</h2>
   <hr>
 <body>
   

@@ -30,7 +30,7 @@
 </head>
 
 <body>
-  <h2 class="page-header text-center" style="padding-top:80px;">เพิ่มข้อมูลสินค้า</h2>
+  <h2 class="page-header text-center" style="padding-top:25px;">เพิ่มข้อมูลสินค้า</h2>
   <hr>
 
   <form id="form1" name="form1" method="post" action="add_product2.php" enctype="multipart/form-data">

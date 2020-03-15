@@ -32,57 +32,71 @@
 <link href="css/datepicker.css" rel="stylesheet">
 
 <body>
+	<div style=" position: -webkit-sticky; position: sticky; z-index:1; top: 0;">
+		<nav class="navbar navbar-expand-lg  navbar-dark bg-secondary">
+			<a class="navbar-brand" href="index.php">อู่ชัยยานยนต์</a>
+			<button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle navbar-toggler ml-auto">
+				<span class="navbar-toggler-icon"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<div id="navbarCollapse" class="collapse navbar-collapse ">
+				<div class="col-md-4">
+					<h6 class="" style="color:white; margin-top:8px;">32/2 หมู่ 2 ตำบลแหลมงอบ อำเภอแหลมงอบ จังหวัดตราด 23120</h6>
+				</div>
+			</div>
+		</nav>
+		<nav class="navbar navbar-expand-lg  navbar-dark bg-secondary" style="border-top:1px white solid;">
+			<button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle navbar-toggler ml-auto">
+				<span class="navbar-toggler-icon"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
 
-	<nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-secondary">
-		<a class="navbar-brand" href="index.php">อู่ชัยยานยนต์</a>
-		<button type="button" data-target="#navbarCollapse" data-toggle="collapse" class="navbar-toggle navbar-toggler ml-auto">
-			<span class="navbar-toggler-icon"></span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-			<span class="icon-bar"></span>
-		</button>
-
-		<div id="navbarCollapse" class="collapse navbar-collapse justify-content-start" style="width:1500px;">
+			<div id="navbarCollapse" class="collapse navbar-collapse ">
 			<ul class="nav navbar-nav">
-				<li class="nav-item active"><a href="index.php" class="nav-link">หน้าแรก</a></li>
-				<?php if ($_SESSION['emp_level'] == 1) { ?>
-					<li class="nav-item active"><a href="show_employee.php" class="nav-link">แสดง/ลบข้อมูลพนักงาน</a></li>
-				<?php	} ?>
-				<li class="nav-item active"><a href="show_member.php" class="nav-link">แสดง/ลบข้อมูลสมาชิก</a></li>
-				<li class="nav-item active"><a href="show_category.php" class="nav-link">แสดง/ลบข้อมูลประเภทสินค้า</a></li>
-				<li class="nav-item active"><a href="show_product.php" class="nav-link">แสดง/ลบข้อมูลสินค้า</a></li>
-				<li class="nav-item active"><a href="logproduct.php" class="nav-link">แสดงรายการสินค้า</a></li>
-				<li class="nav-item active"><a href="orderhistory.php" class="nav-link">แสดง/ยกเลิกรายการสั่งซื้อ</a></li>
-				<li class="nav-item active"><a href="showpay_emp.php" class="nav-link">แสดงการชําระ</a></li>
-
-				<?php if ($_SESSION['emp_level'] == 1) { ?>
-					<li class="nav-item  active dropdown">
-						<a data-toggle="dropdown" class="nav-link dropdown-toggle" href="#">รายงาน<b class="caret"></b></a>
-						<ul class="dropdown-menu">
-							<li><a href="select_order_day.php" class="dropdown-item">รายงานการสั่งซื้อประจําวัน</a></li>
-							<li><a href="select_order_month_year.php" class="dropdown-item">รายงานการสั่งซื้อประจําเดือน</a></li>
-							<li><a href="select_day.php" class="dropdown-item">รายงานการจัดส่งสินค้าประจําวัน</a></li>
-							<li><a href="selct_change_day.php" class="dropdown-item">รายงานการเปลี่ยนสินค้าประจําวัน</a></li>
-							<li><a href="select_paymen_day.php" class="dropdown-item">รายงานการรับชําระประจําวัน</a></li>
-							<li><a href="select_paymen_month.php" class="dropdown-item">รายงานการรับชําระประจําเดือน</a></li>
-							<li><a href="select_month_year.php" class="dropdown-item">รายงานหนี้ค้างชําระประจําเดือน</a></li>
-							<li><a target="_blank" href="report_category.php" class="dropdown-item">รายงานสินค้าแยกตามประเภท</a></li>
-						</ul>
+					<li class="nav-item active"><a href="index.php" class="nav-link">หน้าแรก</a></li>
+					<?php if ($_SESSION['emp_level'] == 1) { ?>
+						<li class="nav-item active"><a href="show_employee.php" class="nav-link">แสดง/ลบข้อมูลพนักงาน</a></li>
 					<?php	} ?>
+					<li class="nav-item active"><a href="show_member.php" class="nav-link">แสดง/ลบข้อมูลสมาชิก</a></li>
+					<li class="nav-item active"><a href="show_category.php" class="nav-link">แสดง/ลบข้อมูลประเภทสินค้า</a></li>
+					<li class="nav-item active"><a href="show_product.php" class="nav-link">แสดง/ลบข้อมูลสินค้า</a></li>
+					<li class="nav-item active"><a href="logproduct.php" class="nav-link">แสดงรายการสินค้า</a></li>
+					<li class="nav-item active"><a href="orderhistory.php" class="nav-link">แสดง/ยกเลิกรายการสั่งซื้อ</a></li>
+					<li class="nav-item active"><a href="showpay_emp.php" class="nav-link">แสดงการชําระ</a></li>
+
+					<?php if ($_SESSION['emp_level'] == 1) { ?>
+						<li class="nav-item  active dropdown">
+							<a data-toggle="dropdown" class="nav-link dropdown-toggle" href="#">รายงาน<b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="select_order_day.php" class="dropdown-item">รายงานการสั่งซื้อประจําวัน</a></li>
+								<li><a href="select_order_month_year.php" class="dropdown-item">รายงานการสั่งซื้อประจําเดือน</a></li>
+								<li><a href="select_day.php" class="dropdown-item">รายงานการจัดส่งสินค้าประจําวัน</a></li>
+								<li><a href="selct_change_day.php" class="dropdown-item">รายงานการเปลี่ยนสินค้าประจําวัน</a></li>
+								<li><a href="select_paymen_day.php" class="dropdown-item">รายงานการรับชําระประจําวัน</a></li>
+								<li><a href="select_paymen_month.php" class="dropdown-item">รายงานการรับชําระประจําเดือน</a></li>
+								<li><a href="select_month_year.php" class="dropdown-item">รายงานหนี้ค้างชําระประจําเดือน</a></li>
+								<li><a target="_blank" href="report_category.php" class="dropdown-item">รายงานสินค้าแยกตามประเภท</a></li>
+							</ul>
+						<?php	} ?>
+						</li>
+				</ul>
+				<ul class="nav navbar-nav navbar-right ml-auto " style="padding-right:20px; ">
+					<li class="nav-item active dropdown">
+						<a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle user-action"><i class="fa fa-user-o"></i> สวัสดี, <?= $_SESSION['emp_username'] ?><b class="caret"></b></a>
+						<ul class="dropdown-menu">
+							<li><a href="modify_user.php" class="dropdown-item"><i class="fa fa-user-o"></i> แก้ไขข้อมูลผู้ใช้</a></li>
+							<li class="divider dropdown-divider"></li>
+							<li><a href="UserManual_foodorder.pdf" class="dropdown-item"><i class="fa fa-book"></i> คู่มือการใช้งาน</a></li>
+							<li class="divider dropdown-divider"></li>
+							<li><a href="logout.php" class="dropdown-item"><i class="fa fa-power-off"></i> ออกจากระบบ</a></li>
+						</ul>
 					</li>
-			</ul>
-			<ul class="nav navbar-nav navbar-right ml-auto " style="padding-right:20px; ">
-				<li class="nav-item active dropdown">
-					<a href="#" data-toggle="dropdown" class="nav-link dropdown-toggle user-action"><i class="fa fa-user-o"></i> สวัสดี, <?= $_SESSION['emp_username'] ?><b class="caret"></b></a>
-					<ul class="dropdown-menu">
-						<li><a href="modify_user.php" class="dropdown-item"><i class="fa fa-user-o"></i> แก้ไขข้อมูลผู้ใช้</a></li>
-						<li class="divider dropdown-divider"></li>
-						<li><a href="UserManual_foodorder.pdf" class="dropdown-item"><i class="fa fa-book"></i> คู่มือการใช้งาน</a></li>
-						<li class="divider dropdown-divider"></li>
-						<li><a href="logout.php" class="dropdown-item"><i class="fa fa-power-off"></i> ออกจากระบบ</a></li>
-					</ul>
-				</li>
-			</ul>
-		</div>
-	</nav>
+				</ul>
+			</div>
+		</nav>
+	</div>
 </body>

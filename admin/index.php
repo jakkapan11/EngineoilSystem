@@ -4,39 +4,38 @@
   <title>หน้าแรก | อู่ชัยยานยนต์ </title>
 </head>
 
-<?php
-if (!isset($_SESSION)) {
-  session_start();
-}
-if (!isset($_SESSION['emp_id'])) {
-  echo "<script>window.location.assign('login.php')</script>";
-  exit();
-}
-include("config/head_admin.php");
-include_once("config/connect.php");
-?>
-<h2 class="page-header text-center" style="padding-top:90px;"><img src="image/general/shop_name.png" width="245" class="rounded" alt=""></h2>
-<h6 class="page-header text-center" style="padding-top:px;">32/2 หมู่ 2 ตำบลแหลมงอบ อำเภอแหลมงอบ จังหวัดตราด 23120</h6>
-<hr>
-<div class="container" style="padding-top:20px;">
+<body>
+  <?php
+  if (!isset($_SESSION)) {
+    session_start();
+  }
+  if (!isset($_SESSION['emp_id'])) {
+    echo "<script>window.location.assign('login.php')</script>";
+    exit();
+  }
+  include("config/head_admin.php");
+  include_once("config/connect.php");
+  ?>
+  <h2 class="page-header text-center" style="padding-top:25px;"><img src="image/general/shop_name.png" width="245" class="rounded" alt=""></h2>
+  <hr>
+  <div class="container" style="padding-top:20px;">
 
-  <body>
     <div class="carousel-inner">
       <div class="carousel-item active">
-        <img class="d-block w-100" style="width:1024px; height:400px;" style=width src="image/general/banner5.jpg"alt="First slide">
+        <img class="d-block w-100" style="width:1024px; height:400px;" style=width src="image/general/banner5.jpg" alt="First slide">
         <div class="carousel-caption d-none d-md-block">
         </div>
       </div>
+      <!--
+      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a> -->
     </div>
-    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-
     <h4 class="page-header text-center" style="padding-top:40px;">สินค้าแนะนํา</h4>
     <hr>
 
@@ -50,7 +49,7 @@ include_once("config/connect.php");
       <?php
       for ($i = 1; $i <= $limit_recomend; $i++) {
         $result_rec = mysqli_fetch_array($query_rec)
-        ?>
+      ?>
         <?php if ($i == 1) { ?><div class="row text-center"> <?php } ?>
           <div class="col-md-4" style="padding-bottom:15px;">
 
@@ -88,8 +87,8 @@ include_once("config/connect.php");
 
           </div>
         <?php if ($i % 3 == 0) {
-            echo "</div><div class='row text-center'>";
-          }
+          echo "</div><div class='row text-center'>";
         }
+      }
         ?>
-  </body>
+</body>

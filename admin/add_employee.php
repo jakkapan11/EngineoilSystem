@@ -52,7 +52,7 @@
 </head>
 
 <body>
-  <h2 class="page-header text-center" style="padding-top:80px;">เพิ่มข้อมูลพนักงาน</h2>
+  <h2 class="page-header text-center" style="padding-top:25px;">เพิ่มข้อมูลพนักงาน</h2>
   <hr>
 
   <form id="form1" name="form1" method="post" action="add_employee2.php">

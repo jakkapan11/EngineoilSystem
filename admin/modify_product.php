@@ -29,7 +29,7 @@
   </script>
 </head>
 <body>
-  <h2 class="page-header text-center" style="padding-top:80px;">แก้ไขข้อมูลสินค้า</h2>
+  <h2 class="page-header text-center" style="padding-top:25px;">แก้ไขข้อมูลสินค้า</h2>
   <hr>
 
   <?php
