@@ -33,7 +33,7 @@
 </head>
 
 <body>
-    <h2 class="page-header text-center" style="padding-top:90px;">รายงานการเปลี่ยนสินค้าประจําวัน</h2>
+    <h2 class="page-header text-center" style="padding-top:25px;">เงื่อนไขรายงานการเปลี่ยนสินค้าประจําวัน</h2>
     <hr>
     <form id="form1" name="form1" method="post" target="_blank" action="report_change.php">
         <table width="825" border="0" align="center" style="width:900px;">

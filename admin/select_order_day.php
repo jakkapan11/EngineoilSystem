@@ -33,7 +33,7 @@
 </head>
 
 <body>
-    <h2 class="page-header text-center" style="padding-top:90px;">รายงานการสั่งซื้อประจําวัน</h2>
+    <h2 class="page-header text-center" style="padding-top:25px;">เงื่อนไขรายงานการสั่งซื้อประจําวัน</h2>
     <hr>
     <form id="form1" name="form1" method="post" target="_blank" action="report_order.php">
         <table width="825" border="0" align="center" style="width:900px;">
