@@ -32,6 +32,17 @@
                 inline: true
             }) //กำหนดเป็นวันปัจุบัน       
 
+            $("#order_type").change(function() { // ประเภทจัดส่ง
+                if ($("#order_type").val() == 2) {
+                    $('#order_deadline_date').val("");
+                    $('#order_deadline_date').attr("disabled", true);
+                    //$('#order_deadline_date').removeClass("datepicker-checkout");
+                } else {
+                    $('#order_deadline_date').attr("disabled", false);
+                }
+            });
+
+
             $("#order_status").change(function() {
                 var status = $("#order_status").val();
 
@@ -115,14 +126,17 @@
 
                 </tr>
                 <tr>
-                    <td height="50" align="right"><strong>สถานะสั่งซื้อ :</strong><span style="color:red;">*</span></td>
+                    <td align="right"><strong>ประเภทจัดส่ง :</strong><span style="color:red;">*</span></td>
                     <td style="padding-left:20px;"><label for="select"></label>
-                        <select name="order_status" style="width:250px;" class="form-control" id="order_status" required>
-                            <option value="" disabled selected>-- กรุณาเลือกสถานะสั่งซื้อ --</option>
-                            <option value="2">ชําระแล้ว</option>
-                            <option value="3">ค้างชําระ</option>
+                        <select required name="order_type" onchange="fee()" style="width:250px;" id="order_type" class="form-control">
+                            <option value="" disabled selected>-- กรุณาเลือกประเภทจัดส่ง --</option> -->
+                            <option value="0">ลงทะเบียน ค่าส่ง 50 บาท</option>
+                            <option value="1">EMS ค่าส่ง 100 บาท</option>
+                            <option value="2">นําสินค้ากลับบ้านเอง</option>
+                        </select>
+                    </td>
 
-                        </select></td>
+
 
                     <td width="229" height="40" align="right"><strong>รหัสลูกค้า :</strong> </td>
                     <td width="301" style="padding-left:20px;">
@@ -140,15 +154,10 @@
                     </td>
                 </tr>
                 <tr>
-                    <td align="right"><strong>ประเภทจัดส่ง :</strong><span style="color:red;">*</span></td>
-                    <td style="padding-left:20px;"><label for="select"></label>
-                        <select required name="order_type" onchange="fee()" style="width:250px;" id="order_type" class="form-control">
-                            <option value="" disabled selected>-- กรุณาเลือกประเภทจัดส่ง --</option> -->
-                            <option value="0">ลงทะเบียน ค่าส่ง 50 บาท</option>
-                            <option value="1">EMS ค่าส่ง 100 บาท</option>
-                            <option value="2">นําสินค้ากลับบ้านเอง</option>
-                        </select>
-                    </td>
+                    <td height="45" align="right"><strong>วันที่กําหนดส่ง :</strong><span style="color:red;">*</span></td>
+                    <td style="padding-left:20px;"><label for="textfield"></label>
+                        <input type="text" onfocus="$(this).blur();" style="width:250px;" onkeypress="return false;" class="form-control datepicker-checkout" name="order_deadline_date" id="order_deadline_date" min="<?= date("Y-m-d"); ?>" required/></td>
+
 
                     <td width="229" height="45" align="right"><strong>ชื่อ-นามสกุล :</strong> </td>
                     <td width="301" style="padding-left:20px;">
@@ -167,9 +176,20 @@
 
                 </tr>
                 <tr>
-                    <td height="45" align="right"><strong>วันที่กําหนดส่ง :</strong><span style="color:red;"></span></td>
-                    <td style="padding-left:20px;"><label for="textfield"></label>
-                        <input type="text" onfocus="$(this).blur();" style="width:250px;" onkeypress="return false;" class="form-control datepicker-checkout" name="order_deadline_date" id="order_deadline_date" min="<?= date("Y-m-d"); ?>" /></td>
+                    <td height="10" align="right"><strong></strong> </td>
+                    <td style="padding-left:13px;" align="center">
+                        <font size="2" color="red">สามารถเลือกวันกําหนดส่งได้ภายใน 1 เดือน เท่านั้น</font>
+                    <td>
+                </tr>
+                <tr>
+
+                    <td height="50" align="right"><strong>สถานะสั่งซื้อ :</strong><span style="color:red;">*</span></td>
+                    <td style="padding-left:20px;"><label for="select"></label>
+                        <select name="order_status" style="width:250px;" class="form-control" id="order_status" required>
+                            <option value="" disabled selected>-- กรุณาเลือกสถานะสั่งซื้อ --</option>
+                            <option value="2">ชําระเต็ม</option>
+                            <option value="3">ยังไม่ชําระ</option>
+                        </select></td>
                     <td width="229" height="45" align="right"><strong>เบอร์โทรศัพท์ :</strong> </td>
                     <td width="301" style="padding-left:20px;">
                         <?php
@@ -186,12 +206,7 @@
                         <input type="hidden" id="cus_phone" name="cus_phone" value="<?php echo $cus_phone; ?>">
                     </td>
                 </tr>
-                <tr>
-                    <td height="10" align="right"><strong></strong> </td>
-                    <td style="padding-left:13px;" align="center">
-                        <font size="2" color="red">สามารถเลือกวันกําหนดส่งได้ภายใน 1 เดือน เท่านั้น</font>
-                    <td>
-                </tr>
+
                 <tr class="credits2" style="display:none;">
                     <td height="40" align="right"><strong>ประเภทการชําระ :</strong><span style="color:red;">*</span></td>
                     <td style="padding-left:20px;"><label for="select"></label>

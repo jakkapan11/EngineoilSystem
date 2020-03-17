@@ -39,9 +39,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $deliverycost = 0;
   }
 
+  if (isset($_POST['order_deadline_date'])) {
+    $order_deadline_date =  tochristyear($_POST['order_deadline_date']);
+  } else {
+    $order_deadline_date = "";
+  }
+
   $sqlorder = "INSERT INTO orders SET 
     order_date	        	= '" . $orderdate . "',
-    order_deadline_date		= '" . tochristyear($_POST['order_deadline_date']) . "',
+    order_deadline_date		= '" . $order_deadline_date . "',
     order_total	        	= '" . $_POST['order_total'] . "',
     order_deliverycost	 	= '" . $deliverycost . "',
     order_delivery_date   = '    $order_delivery_date',
