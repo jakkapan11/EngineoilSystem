@@ -90,7 +90,7 @@
 						<ul class="dropdown-menu">
 							<li><a href="modify_user.php" class="dropdown-item"><i class="fa fa-user-o"></i> แก้ไขข้อมูลผู้ใช้</a></li>
 							<li class="divider dropdown-divider"></li>
-							<li><a href="UserManual_foodorder.pdf" class="dropdown-item"><i class="fa fa-book"></i> คู่มือการใช้งาน</a></li>
+							<li><a href="<?= ($_SESSION['emp_level'] == 1) ? "UserManualAdmin.pdf" : "UserManualEmployee.pdf" ?>"  target="_blank" class="dropdown-item"><i class="fa fa-book"></i> คู่มือการใช้งาน</a></li>
 							<li class="divider dropdown-divider"></li>
 							<li><a href="logout.php" class="dropdown-item"><i class="fa fa-power-off"></i> ออกจากระบบ</a></li>
 						</ul>
