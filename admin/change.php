@@ -127,8 +127,8 @@
                 <tr>
                     <td height="40" align="right"><strong>วันที่เปลี่ยน :</strong><span style="color:red;">*</span></td>
                     <td style="padding-left:17px;"><label for="textfield"></label>
-                        
-                        <input type="text" onfocus="$(this).blur();" style="width:200px;" onkeypress="return false;" class="form-control datepicker-checkout" name="change_date" id="change_date" min="<?= date("Y-m-d"); ?>" required/></td>
+
+                        <input type="text" onfocus="$(this).blur();" style="width:200px;" onkeypress="return false;" class="form-control datepicker-checkout" name="change_date" id="change_date" min="<?= date("Y-m-d"); ?>" required /></td>
 
 
                     <td align="right"><strong></strong> </span></td>
@@ -169,8 +169,10 @@
                         <tr>
                             <!-- เช็คสถานะการเปลีย่น -->
                             <td align="center" label for="textfield4">
-                                <input value="<?= $result_orderlist['od_id'] ?>" type="checkbox" name="od_status[]" <?= $result_orderlist['od_status'] ? "disabled" : "" ?> id="od_status" style="margin-top:15px;" /></td>
-                            <td hidden><input type="text" name="od_id[]" id="od_id" value="<?php echo $result_orderlist['od_id'] ?>"></td>
+                                <input value="<?= $result_orderlist['od_id'] ?>" onchange='require_amount($(this).attr("id"))' type="checkbox" name="od_status[]" <?= $result_orderlist['od_status'] ? "disabled" : "" ?> id="od_status<?= $i ?>" style="margin-top:15px;" />
+                                <input hidden type="text" name="od_id[]" id="od_id" value="<?php echo $result_orderlist['od_id'] ?>">
+                                <input name="products_id" hidden id="products_id_<?= $result_orderlist['od_id'] ?>" value="<?= $result_orderlist['product_id'] ?>"
+                            </td>
 
                             <td style="padding-top:20px;" align="right"><?= $result_orderlist["product_id"]; ?></td>
                             <td style="padding-top:20px;"><?= $result["product_name"]; ?></td>
@@ -213,28 +215,28 @@
             </tr>
         </table>
     </div>
-  
+
 </body>
 
 <script>
     $(document).ready(function() {
         var d = new Date();
-       // var current_date = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
+        // var current_date = d.getFullYear() + "-" + (d.getMonth() + 1) + "-" + d.getDate();
 
         // var date_change_product = $('#date_change_product').val();
         var date_change_product = new Date($('#date_change_product').val());
-     //   var date_change_product_2 = date_change_product.getFullYear() + "-" + (date_change_product.getMonth() + 1) + "-" + date_change_product.getDate();
+        //   var date_change_product_2 = date_change_product.getFullYear() + "-" + (date_change_product.getMonth() + 1) + "-" + date_change_product.getDate();
         // var date_change_product = Date.parse($("input[name='date_change_product']").val()) ;
 
 
-   
+
 
         if (date_change_product < d) {
             //  alert('aa');
-           // console.log(current_date + " > " + date_change_product_2);
+            // console.log(current_date + " > " + date_change_product_2);
             $("#sub").attr("disabled", true);
         } else {
-           //gg console.log(current_date + " < " + date_change_product_2);
+            //gg console.log(current_date + " < " + date_change_product_2);
         }
 
         // ปิดปุ่ม ตรงนี้
@@ -248,6 +250,21 @@
         */
     });
 
+    function require_amount(checkbox) {
+
+        check_value = $('#' + checkbox).val();
+        product_id = $('#products_id_'+ check_value ).val();
+        //  od_id = $('#' + checkbox).next().val();
+       // console.log($('#' + checkbox).is(':checked'));
+        if ($('#' + checkbox).is(':checked')) {
+            $('#' + "change_amount" + product_id).attr("required", true);
+        //    console.log("TRUE");
+        } else {
+            $('#' + "change_amount" + product_id).attr("required", false);
+       //     console.log("FALSE");
+        }
+
+    }
 
     function check_amount(product_id) {
 
