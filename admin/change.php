@@ -13,14 +13,20 @@
     ?>
     <script>
         $(document).ready(function() {
+            let receipt_date = $('#receipt_date').val();
+
+            startdate_change = new Date(receipt_date);
+            end_date = startdate_change.getFullYear() + '-' + (startdate_change.getMonth()+1) + '-' + (startdate_change.getDate()+5);
+            end_change = new Date(end_date);
+           
             $('.datepicker-checkout').datepicker({
                 language: 'th-th', //เปลี่ยน label ต่างของ ปฏิทิน ให้เป็น ภาษาไทย   (ต้องใช้ไฟล์ bootstrap-datepicker.th.min.js นี้ด้วย)
                 format: 'dd/mm/yyyy',
                 disableTouchKeyboard: true,
                 todayBtn: false,
                 clearBtn: true,
-                endDate: '+0d',
-                startDate: '-5d',
+                endDate: end_change,
+                startDate: startdate_change,
                 autoclose: true, //Set เป็นปี พ.ศ.
                 inline: true
             }) //กำหนดเป็นวันปัจุบัน       
@@ -50,6 +56,9 @@
     $q4 = mysqli_query($link, $sql_receipt2) or die(mysqli_error($link));
     $receipt_data2 = mysqli_fetch_assoc($q4);
 
+    $sql_orderlist = "SELECT * FROM orderlist WHERE order_id = '" . $_GET['orderid'] . "'";
+    $q5 = mysqli_query($link, $sql_orderlist) or die(mysqli_error($link));
+    $orderlist = mysqli_fetch_assoc($q5);
 
     if ($data['order_delivery_date'] == "0000-00-00")
         $order_delivery_date = "";
@@ -116,6 +125,16 @@
                     <td height="40" align="right"><strong>ชื่อ-นามสกุล :</strong></td>
                     <td style="padding-left:20px;"><?php echo $cus_data['cus_name']; ?></td>
 
+                    <td height="40" align="right"><strong>วันทีชําระ :</strong><span style="color:red;">*</span></td>
+                    <td width="300" style="padding-left:20px;"><?= tothaiyear($receipt_data['receipt_date']) ?></td>
+                </tr>
+                <tr>
+                    <td height="40" align="right"><strong>วันที่เปลี่ยน :</strong><span style="color:red;">*</span></td>
+                    <td style="padding-left:17px;"><label for="textfield"></label>
+
+                        <input type="text" name="receipt_date" id="receipt_date" hidden value="<?= $receipt_data['receipt_date'] ?>">
+                        <input type="text" onfocus="$(this).blur();" style="width:200px;" onkeypress="return false;" class="form-control datepicker-checkout" <?= $orderlist['od_status'] ? "disabled" : "" ?> name="change_date" id="change_date" min="<?= date("Y-m-d"); ?>" required /></td>
+
                     <td align="right"><strong>สถานที่ส่ง :</strong> </span></td>
                     <td style="padding-left:20px;"><?php
                                                     if ($data['order_place'] != "") {
@@ -123,13 +142,6 @@
                                                     } else {
                                                         echo " <left>-</left>";
                                                     } ?></td>
-                </tr>
-                <tr>
-                    <td height="40" align="right"><strong>วันที่เปลี่ยน :</strong><span style="color:red;">*</span></td>
-                    <td style="padding-left:17px;"><label for="textfield"></label>
-
-                        <input type="text" onfocus="$(this).blur();" style="width:200px;" onkeypress="return false;" class="form-control datepicker-checkout" name="change_date" id="change_date" min="<?= date("Y-m-d"); ?>" required /></td>
-
 
                     <td align="right"><strong></strong> </span></td>
                     <td style="padding-left:20px;"></td>
@@ -171,10 +183,7 @@
                             <td align="center" label for="textfield4">
                                 <input value="<?= $result_orderlist['od_id'] ?>" onchange='require_amount($(this).attr("id"))' type="checkbox" name="od_status[]" <?= $result_orderlist['od_status'] ? "disabled" : "" ?> id="od_status<?= $i ?>" style="margin-top:15px;" />
                                 <input hidden type="text" name="od_id[]" id="od_id" value="<?php echo $result_orderlist['od_id'] ?>">
-                                <input name="products_id" hidden id="products_id_<?= $result_orderlist['od_id'] ?>" value="<?= $result_orderlist['product_id'] ?>"
-                            </td>
-
-                            <td style="padding-top:20px;" align="right"><?= $result_orderlist["product_id"]; ?></td>
+                                <input name="products_id" hidden id="products_id_<?= $result_orderlist['od_id'] ?>" value="<?= $result_orderlist['product_id'] ?>" </td> <td style="padding-top:20px;" align="right"><?= $result_orderlist["product_id"]; ?></td>
                             <td style="padding-top:20px;"><?= $result["product_name"]; ?></td>
                             <td style="padding-top:20px;"><?= $result['category_name'] ?></td>
                             <td style="padding-top:20px;" align="center"><?= $result["product_unit"]; ?></td>
@@ -253,15 +262,15 @@
     function require_amount(checkbox) {
 
         check_value = $('#' + checkbox).val();
-        product_id = $('#products_id_'+ check_value ).val();
+        product_id = $('#products_id_' + check_value).val();
         //  od_id = $('#' + checkbox).next().val();
-       // console.log($('#' + checkbox).is(':checked'));
+        // console.log($('#' + checkbox).is(':checked'));
         if ($('#' + checkbox).is(':checked')) {
             $('#' + "change_amount" + product_id).attr("required", true);
-        //    console.log("TRUE");
+            //    console.log("TRUE");
         } else {
             $('#' + "change_amount" + product_id).attr("required", false);
-       //     console.log("FALSE");
+            //     console.log("FALSE");
         }
 
     }

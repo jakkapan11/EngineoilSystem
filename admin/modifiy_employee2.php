@@ -38,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 if (mysqli_query($link, $sql_update) or die(mysqli_error($link))) {
     echo '<script>
-     alert("แก้ไขข้อมูลเรียบร้อยแล้ว\nรหัสพนักงาน '. $_POST['emp_id']. '"); 
+     alert("แก้ไขข้อมูลพนักงานเรียบร้อยแล้ว\nรหัสพนักงาน '. $_POST['emp_id']. '"); 
      window.location.assign("show_employee.php")
      </script>';
 }
