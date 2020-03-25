@@ -56,9 +56,17 @@
     $q4 = mysqli_query($link, $sql_receipt2) or die(mysqli_error($link));
     $receipt_data2 = mysqli_fetch_assoc($q4);
 
+    // -------------------------------- สำหรับปิด ช่องวันที่เปลี่ยน ----------------------------------
     $sql_orderlist = "SELECT * FROM orderlist WHERE order_id = '" . $_GET['orderid'] . "'";
     $q5 = mysqli_query($link, $sql_orderlist) or die(mysqli_error($link));
-    $orderlist = mysqli_fetch_assoc($q5);
+    $change_num_rows = mysqli_num_rows($q5);
+    $change_count = 0;
+    while ($orderlist = mysqli_fetch_assoc($q5)) {
+        if ($orderlist['od_status'] == 1) {
+            $change_count++;
+        }
+    }
+    // ----------------------------------------------------------------------------------------
 
     if ($data['order_delivery_date'] == "0000-00-00")
         $order_delivery_date = "";
@@ -133,7 +141,7 @@
                     <td style="padding-left:17px;"><label for="textfield"></label>
 
                         <input type="text" name="receipt_date" id="receipt_date" hidden value="<?= $receipt_data['receipt_date'] ?>">
-                        <input type="text" onfocus="$(this).blur();" style="width:200px;" onkeypress="return false;" class="form-control datepicker-checkout" <?= $orderlist['od_status'] ? "disabled" : "" ?> name="change_date" id="change_date" min="<?= date("Y-m-d"); ?>" required /></td>
+                        <input type="text" onfocus="$(this).blur();" style="width:200px;" onkeypress="return false;" class="form-control datepicker-checkout" <?= ($change_num_rows == $change_count) ? "disabled" : "" ?> name="change_date" id="change_date" min="<?= date("Y-m-d"); ?>" required /></td>
 
                     <td align="right"><strong>สถานที่ส่ง :</strong> </span></td>
                     <td style="padding-left:20px;"><?php
@@ -143,9 +151,7 @@
                                                         echo " <left>-</left>";
                                                     } ?></td>
 
-                    <td align="right"><strong></strong> </span></td>
-                    <td style="padding-left:20px;"></td>
-                </tr>
+                  </tr>
                 <tr>
                     <td colspan="4"><label for="select"></label>
                 </tr>
