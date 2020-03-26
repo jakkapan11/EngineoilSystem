@@ -9,7 +9,12 @@
         echo "<script>window.location.assign('login.php')</script>";
         exit();
     }
-
+    
+    if (!isset($_SESSION['productid'])) {
+      echo "<script> alert('ต้องทําการเลือกสินค้าก่อน'); window.location.assign('after_basket.php'); </script>";
+      exit();
+    }
+    
     $strKeyword = null;
     if (isset($_POST["search_customers"])) {
         $strKeyword = $_POST["search_customers"];

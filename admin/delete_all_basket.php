@@ -11,9 +11,9 @@ if (isset($_SESSION['intline2'])) {
     unset($_SESSION['productid']);
     unset($_SESSION['strqty2']);
 
-    echo "<script> alert('ล้างตะกร้าเรียบร้อย'); window.location.assign('after_basket.php')</script>";
+    echo "<script> alert('ล้างตะกร้าเรียบร้อยแล้ว'); window.location.assign('after_basket.php')</script>";
    
 } else {
-    echo "<script> alert('ล้างตะกร้าเรียบร้อย'); window.location.assign('after_basket.php')</script>";
+    echo "<script> alert('ล้างตะกร้าเรียบร้อยแล้ว'); window.location.assign('after_basket.php')</script>";
 }
 ?>
