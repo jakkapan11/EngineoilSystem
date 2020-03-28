@@ -16,16 +16,18 @@
             let receipt_date = $('#receipt_date').val();
 
             startdate_change = new Date(receipt_date);
-            end_date = startdate_change.getFullYear() + '-' + (startdate_change.getMonth()+1) + '-' + (startdate_change.getDate()+5);
-            end_change = new Date(end_date);
-           
+
+            end_change = new Date(receipt_date);
+            cc = end_change.setDate(end_change.getDate() + 5);
+            end_date = new Date(`${end_change.getFullYear()}-${end_change.getMonth()+1}-${end_change.getDate()}`);          
+
             $('.datepicker-checkout').datepicker({
                 language: 'th-th', //เปลี่ยน label ต่างของ ปฏิทิน ให้เป็น ภาษาไทย   (ต้องใช้ไฟล์ bootstrap-datepicker.th.min.js นี้ด้วย)
                 format: 'dd/mm/yyyy',
                 disableTouchKeyboard: true,
                 todayBtn: false,
                 clearBtn: true,
-                endDate: end_change,
+                endDate: end_date,
                 startDate: startdate_change,
                 autoclose: true, //Set เป็นปี พ.ศ.
                 inline: true
