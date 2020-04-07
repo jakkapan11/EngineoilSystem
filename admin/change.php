@@ -27,7 +27,7 @@
                 disableTouchKeyboard: true,
                 todayBtn: false,
                 clearBtn: true,
-                endDate: end_date,
+                endDate: '+0d',
                 startDate: startdate_change,
                 autoclose: true, //Set เป็นปี พ.ศ.
                 inline: true
