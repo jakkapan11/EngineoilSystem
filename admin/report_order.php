@@ -230,7 +230,7 @@ $enddate    = tochristyear($_POST['enddate']);
             // $total += $sum_per_date;
 
             ?>
-            <tr style="border-top:1px solid; border-bottom:1px solid;">
+            <tr style="border-bottom:1px solid;">
                 <td colspan="5"></td>
                 <td align="right"><b>รวม</b></td>
                 <td align="right"><b><?= number_format($sum_1, 2) ?></b></td>

@@ -126,7 +126,7 @@ $enddate    = tochristyear($_POST['enddate']);
             $row_change++;
         }
         ?>
-<tr style="border-top:1px solid; border-bottom:1px solid;">
+<tr style="border-bottom:1px solid;">
             <td colspan="7"></td>
             <td align="right"><b>รวม</b></td>
            

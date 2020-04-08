@@ -204,7 +204,7 @@
             $row_date++;
         }
 ?>
-<tr style="border-top:1px solid; border-bottom:1px solid;">
+<tr style="border-bottom:1px solid;">
     <td colspan="10"></td>
     <td align="right"><b>รวม</b></td>
     <td align="right"><b><?= number_format($sum_f, 2) ?></b></td>
@@ -355,7 +355,7 @@
     }
 ?>
 
-<tr style="border-top:1px solid; border-bottom:1px solid;">
+<tr style="border-bottom:1px solid;">
     <td colspan="10"></td>
     <td align="right"><b>รวม</b></td>
     <td align="right"><b><?= number_format($sum_g, 2) ?></b></td>
@@ -506,7 +506,7 @@
 
 ?>
 
-<tr style="border-top:1px solid; border-bottom:1px solid;">
+<tr style="border-bottom:1px solid;">
     <td colspan="10"></td>
     <td align="right"><b>รวม</b></td>
     <td align="right"><b><?= number_format($sum_h, 2) ?></b></td>
@@ -658,7 +658,7 @@
 
 ?>
 
-<tr style="border-top:1px solid; border-bottom:1px solid;">
+<tr style="border-bottom:1px solid;">
     <td colspan="10"></td>
     <td align="right"><b>รวม</b></td>
     <td align="right"><b><?= number_format($sum_i, 2) ?></b></td>
