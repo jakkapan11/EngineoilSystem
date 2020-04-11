@@ -179,8 +179,12 @@
                     <td height="10" align="right"><strong></strong> </td>
                     <td style="padding-left:13px;" align="center">
                         <font size="2" color="red">สามารถเลือกวันกําหนดส่งได้ภายใน 1 เดือน เท่านั้น</font>
-                    <td>
+                    </td>
+
+                    <td height="10" align="right"><strong></strong> </td>
+                    <td></td>
                 </tr>
+                
                 <tr>
 
                     <td height="50" align="right"><strong>สถานะสั่งซื้อ :</strong><span style="color:red;">*</span></td>
