@@ -176,7 +176,6 @@
                     <?php
                     $i = 0;
                     $sql_orderlist = "SELECT * FROM orderlist 
-                    LEFT JOIN amount_change ON orderlist.od_id = amount_change.od_id
                     WHERE order_id = '" . $_GET['orderid'] . "'";
                     $query_orderlist = mysqli_query($link, $sql_orderlist) or die(mysqli_error($link));
 
@@ -185,6 +184,10 @@
                         $sql = "SELECT * FROM product LEFT JOIN category on product.category_id = category.category_id WHERE product_id = '" . $result_orderlist['product_id'] . "' ";
                         $query = mysqli_query($link, $sql) or die(mysqli_error($link));
                         $result = mysqli_fetch_array($query);
+
+                        $sql_change = "SELECT * FROM amount_change WHERE od_id = '". $result_orderlist['od_id'] ."'";
+                        $query_change = mysqli_query($link, $sql_change) or die(mysqli_error($link));
+                        $amount_change = mysqli_fetch_assoc($query_change);
 
                         $t1 = $result['product_price_unit'] * $result_orderlist['od_amount'];
                     ?>
@@ -199,10 +202,10 @@
                             <td style="padding-top:20px;" align="center"><?= $result["product_unit"]; ?></td>
                             <td style="padding-top:20px; text-align:right;"><?= $result_orderlist['od_amount'] ?><input type="hidden" name="old_amount" id="old_amount<?php echo $result_orderlist['product_id']; ?>" value="<?php echo $result_orderlist['od_amount']; ?>"></td>
                             <td align="center" label for="textfield"></label>
-                                <input type="text" style="width:65px; " class="form-control" <?= $result_orderlist['od_status'] ? "disabled" : "" ?> name="change_amount_<?= $result_orderlist['od_id'] ?>" pattern="^[Z0-9]+$" title="กรุณาใส่ตัวเลข" onkeyup="check_amount('<?php echo $result_orderlist['product_id'] ?>');" id="change_amount<?php echo $result_orderlist['product_id'] ?>" autocomplete="off" /></td>
+                                <input type="text" style="width:65px; " value="<?= ($amount_change['change_Amount'] ? $amount_change['change_Amount'] : "") ?>" class="form-control" <?= $result_orderlist['od_status'] ? "disabled" : "" ?> name="change_amount_<?= $result_orderlist['od_id'] ?>" pattern="^[Z0-9]+$" title="กรุณาใส่ตัวเลข" onkeyup="check_amount('<?php echo $result_orderlist['product_id'] ?>');" id="change_amount<?php echo $result_orderlist['product_id'] ?>" autocomplete="off" /></td>
 
                             <td align="center" label for="textfield4"></label>
-                                <input type="text" style="width:200px; " class="form-control" <?= $result_orderlist['od_status'] ? "disabled" : "" ?> name="change_notes_<?= $result_orderlist['od_id'] ?>" id="change_notes" /></td>
+                                <input type="text" style="width:200px; " class="form-control" value="<?= ($amount_change['change_Amount'] ? $amount_change['change_notes'] : "") ?>" <?= $result_orderlist['od_status'] ? "disabled" : "" ?> name="change_notes_<?= $result_orderlist['od_id'] ?>" id="change_notes" /></td>
 
                         </tr>
                     <?php
