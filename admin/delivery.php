@@ -13,14 +13,16 @@
     ?>
     <script>
         $(document).ready(function() {
+            var orders_deadline_date = new Date($('#order_deadline_date').val());
+
             $('.datepicker-checkout').datepicker({
                 language: 'th-th', //เปลี่ยน label ต่างของ ปฏิทิน ให้เป็น ภาษาไทย   (ต้องใช้ไฟล์ bootstrap-datepicker.th.min.js นี้ด้วย)
                 format: 'dd/mm/yyyy',
                 disableTouchKeyboard: true,
                 todayBtn: false,
                 clearBtn: true,
-                endDate: '+30d',
-                startDate: 'now',
+                startDate: orders_deadline_date,
+                endDate: 'now',
                 autoclose: true, //Set เป็นปี พ.ศ.
                 inline: true
             }) //กำหนดเป็นวันปัจุบัน       
@@ -28,11 +30,11 @@
 
         function notThai(evt) {
             var charCode = (evt.which) ? evt.which : evt.keyCode;
-           // console.log(charCode);
-            if ((charCode >= 65 && charCode <= 90) || (charCode >= 97 && charCode <= 122) ||  (charCode >= 48 && charCode <= 57) ) {
-             //   console.log("True");
+            // console.log(charCode);
+            if ((charCode >= 65 && charCode <= 90) || (charCode >= 97 && charCode <= 122) || (charCode >= 48 && charCode <= 57)) {
+                //   console.log("True");
                 return true;
-                
+
             } else {
                 return false;
             }
@@ -87,19 +89,25 @@
 
                     <td width="160" align="right"><strong>วันที่กําหนดส่ง :</strong> </span></td>
                     <td width="200" style="padding-left:20px;"><?php
-                                                               if ($order_deadline_date != "") {
-                                                                echo $order_deadline_date;
-                                                            } else {echo " <left>-</left>"; } ?></td>
+                                                                if ($order_deadline_date != "") {
+                                                                    echo $order_deadline_date;
+                                                                } else {
+                                                                    echo " <left>-</left>";
+                                                                } ?>
+                        <input type='text' hidden name='order_deadline_date' id='order_deadline_date' value='<?= $data['order_deadline_date'] ?>'>
+                    </td>
                 </tr>
                 <tr>
                     <td width="200" height="45" align="right"><strong>วันที่สั่งซื้อ :</strong> </td>
                     <td width="250" style="padding-left:20px;"><?= tothaiyear($data['order_date']); ?></td>
-                   
+
                     <td width="160" height="45" align="right"><strong>วันที่ออกใบเสร็จ :</strong> </td>
                     <td width="200" style="padding-left:20px;"><?php
-                                                             if ($receipt_date != "") {
-                                                             echo $receipt_date;
-                                                            } else {echo " <left>-</left>"; } ?></td>
+                                                                if ($receipt_date != "") {
+                                                                    echo $receipt_date;
+                                                                } else {
+                                                                    echo " <left>-</left>";
+                                                                } ?></td>
                 </tr>
                 <tr>
                     <td width="20%" height="45" align="right"><strong>ชื่อ-นามสกุล :</strong> </td>
@@ -130,7 +138,7 @@
                     } elseif ($receipt_data2['receipt_tye'] == 3) {
                         echo "<span style='padding-left:20px;color:0000DD;'>บัตรเครดิต</span>";
                     }
-                    
+
                     ?></td>
                 <td width="160" height="45" align="right"><strong>หมายเลขจัดส่ง :</strong><span style="color:red;">*</span> </td>
                 <td width="200" style="padding-left:20px;"><label for="textfield3"></label>
