@@ -19,7 +19,7 @@
 
             end_change = new Date(receipt_date);
             cc = end_change.setDate(end_change.getDate() + 5);
-            end_date = new Date(`${end_change.getFullYear()}-${end_change.getMonth()+1}-${end_change.getDate()}`);          
+            end_date = new Date(`${end_change.getFullYear()}-${end_change.getMonth()+1}-${end_change.getDate()}`);
 
             $('.datepicker-checkout').datepicker({
                 language: 'th-th', //เปลี่ยน label ต่างของ ปฏิทิน ให้เป็น ภาษาไทย   (ต้องใช้ไฟล์ bootstrap-datepicker.th.min.js นี้ด้วย)
@@ -59,7 +59,8 @@
     $receipt_data2 = mysqli_fetch_assoc($q4);
 
     // -------------------------------- สำหรับปิด ช่องวันที่เปลี่ยน ----------------------------------
-    $sql_orderlist = "SELECT * FROM orderlist WHERE order_id = '" . $_GET['orderid'] . "'";
+    $sql_orderlist = "SELECT * FROM orderlist  WHERE order_id = '" . $_GET['orderid'] . "'";
+    
     $q5 = mysqli_query($link, $sql_orderlist) or die(mysqli_error($link));
     $change_num_rows = mysqli_num_rows($q5);
     $change_count = 0;
@@ -152,8 +153,7 @@
                                                     } else {
                                                         echo " <left>-</left>";
                                                     } ?></td>
-
-                  </tr>
+                </tr>
                 <tr>
                     <td colspan="4"><label for="select"></label>
                 </tr>
@@ -175,7 +175,9 @@
                     </tr>
                     <?php
                     $i = 0;
-                    $sql_orderlist = "SELECT * FROM orderlist WHERE order_id = '" . $_GET['orderid'] . "'";
+                    $sql_orderlist = "SELECT * FROM orderlist 
+                    LEFT JOIN amount_change ON orderlist.od_id = amount_change.od_id
+                    WHERE order_id = '" . $_GET['orderid'] . "'";
                     $query_orderlist = mysqli_query($link, $sql_orderlist) or die(mysqli_error($link));
 
                     while ($result_orderlist = mysqli_fetch_array($query_orderlist)) {
@@ -213,21 +215,20 @@
         </table>
         </form>
         <table border="0" align="center">
-
-            <?php
-            $sql_disable = "SELECT od_id, od_status FROM orderlist WHERE order_id = '" . $data['order_id'] . "' AND od_status = '0'";
-            $query_diable = mysqli_query($link, $sql_disable);
-            if (mysqli_num_rows($query_diable) == 0) {
-                $disable = "disabled";
-            } else {
-                $disable = "";
-            }
-
-            ?>
             <tr>
                 <input type="hidden" name="date_change_product" id="date_change_product" value="<?php echo $strNewDate; ?>">
-                <td style="padding-top:30px; "><button type="submit" id="sub" name="sub" <?= $disable ?> class="btn btn-secondary" onclick="if(confirm('ยืนยันการบันทึกเปลี่ยนสินค้า?')) return true; else return false;">บันทึก</button>
-                    <input class="btn btn-info" type="reset" name="reset" id="reset" value="ล้างค่า" />
+                <td style="padding-top:30px; ">
+
+                    <?php
+                    $sql_disable = "SELECT od_id, od_status FROM orderlist WHERE order_id = '" . $data['order_id'] . "' AND od_status = '0'";
+                    $query_diable = mysqli_query($link, $sql_disable);
+                    if (mysqli_num_rows($query_diable) == 0 || ($strStartDate > $strNewDate)) {
+                        // กรณีเปล่ี่ยนครบทุกรายการแล้ว หรือ เกินกำหนดเวลา
+                    } else {
+                    ?>
+                        <button type="submit" id="sub" name="sub" class="btn btn-secondary" onclick="if(confirm('ยืนยันการบันทึกเปลี่ยนสินค้า?')) return true; else return false;">บันทึก</button>
+                        <input class="btn btn-info" type="reset" name="reset" id="reset" value="ล้างค่า" />
+                    <?php } ?>
                     <button type="button" class="btn btn-primary" name="back" onclick="window.history.back();">ย้อนกลับ</button></td>
             </tr>
         </table>
