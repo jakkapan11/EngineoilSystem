@@ -2,8 +2,8 @@
 
     $host = "localhost"; // mysql host
     $mysql_user = "root"; // mysql username
-    $mysql_pass = ""; // mysql password
-    $db = "engineoilsystem"; // mysql schema
+    $mysql_pass = "krittawat"; // mysql password
+    $db = "engineoil"; // mysql schema
 
     $link = mysqli_connect("$host", "$mysql_user", "$mysql_pass", "$db");
     mysqli_set_charset($link,"utf8");

@@ -60,7 +60,7 @@
 
     // -------------------------------- สำหรับปิด ช่องวันที่เปลี่ยน ----------------------------------
     $sql_orderlist = "SELECT * FROM orderlist  WHERE order_id = '" . $_GET['orderid'] . "'";
-    
+
     $q5 = mysqli_query($link, $sql_orderlist) or die(mysqli_error($link));
     $change_num_rows = mysqli_num_rows($q5);
     $change_count = 0;
@@ -76,9 +76,9 @@
     else $order_delivery_date = tothaiyear($data['order_delivery_date']);
 
     //วันที่ชำระ +5 วัน (การเปลี่ยนสินค้า)
-    $strStartDate   = $receipt_data['receipt_date']; //วันที่ปัจจุบัน
+    $strStartDate   =  $receipt_data['receipt_date']; //วันที่ปัจจุบัน
     $strNewDate = date("Y-m-d", strtotime("+5 day", strtotime($strStartDate))); // วันที่ปัจจุบัน + 5 วัน
-
+    $today = date("Y-m-d");
     ?>
 
     <div class="container">
@@ -185,7 +185,7 @@
                         $query = mysqli_query($link, $sql) or die(mysqli_error($link));
                         $result = mysqli_fetch_array($query);
 
-                        $sql_change = "SELECT * FROM amount_change WHERE od_id = '". $result_orderlist['od_id'] ."'";
+                        $sql_change = "SELECT * FROM amount_change WHERE od_id = '" . $result_orderlist['od_id'] . "'";
                         $query_change = mysqli_query($link, $sql_change) or die(mysqli_error($link));
                         $amount_change = mysqli_fetch_assoc($query_change);
 
@@ -225,8 +225,11 @@
                     <?php
                     $sql_disable = "SELECT od_id, od_status FROM orderlist WHERE order_id = '" . $data['order_id'] . "' AND od_status = '0'";
                     $query_diable = mysqli_query($link, $sql_disable);
-                    if (mysqli_num_rows($query_diable) == 0 || ($strStartDate > $strNewDate)) {
-                        // กรณีเปล่ี่ยนครบทุกรายการแล้ว หรือ เกินกำหนดเวลา
+
+                    //echo "$today > $strNewDate";
+
+                    if (mysqli_num_rows($query_diable) == 0 || ($today > $strNewDate)) {
+                        // กรณี ปิดปุ่ม
                     } else {
                     ?>
                         <button type="submit" id="sub" name="sub" class="btn btn-secondary" onclick="if(confirm('ยืนยันการบันทึกเปลี่ยนสินค้า?')) return true; else return false;">บันทึก</button>
