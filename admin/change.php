@@ -194,7 +194,7 @@
                         <tr>
                             <!-- เช็คสถานะการเปลีย่น -->
                             <td align="center" label for="textfield4">
-                                <input value="<?= $result_orderlist['od_id'] ?>" onchange='require_amount($(this).attr("id"))' type="checkbox" name="od_status[]" <?= $result_orderlist['od_status'] ? "disabled" : "" ?> id="od_status<?= $i ?>" style="margin-top:15px;" />
+                                <input value="<?= $result_orderlist['od_id'] ?>" onchange='require_amount($(this).attr("id"))' type="checkbox" name="od_status[]" <?= ($result_orderlist['od_status']) || ($today >= $strNewDate) ? "disabled" : "" ?> id="od_status<?= $i ?>" style="margin-top:15px;" />
                                 <input hidden type="text" name="od_id[]" id="od_id" value="<?php echo $result_orderlist['od_id'] ?>">
                                 <input name="products_id" hidden id="products_id_<?= $result_orderlist['od_id'] ?>" value="<?= $result_orderlist['product_id'] ?>" </td> <td style="padding-top:20px;" align="right"><?= $result_orderlist["product_id"]; ?></td>
                             <td style="padding-top:20px;"><?= $result["product_name"]; ?></td>
@@ -202,10 +202,10 @@
                             <td style="padding-top:20px;" align="center"><?= $result["product_unit"]; ?></td>
                             <td style="padding-top:20px; text-align:right;"><?= $result_orderlist['od_amount'] ?><input type="hidden" name="old_amount" id="old_amount<?php echo $result_orderlist['product_id']; ?>" value="<?php echo $result_orderlist['od_amount']; ?>"></td>
                             <td align="center" label for="textfield"></label>
-                                <input type="text" style="width:65px; " value="<?= ($amount_change['change_amount'] ? $amount_change['change_amount'] : "") ?>" class="text-center form-control" <?= $result_orderlist['od_status'] ? "disabled" : "" ?> name="change_amount_<?= $result_orderlist['od_id'] ?>" pattern="^[Z0-9]+$" title="กรุณาใส่ตัวเลข" onkeyup="check_amount('<?php echo $result_orderlist['product_id'] ?>');" id="change_amount<?php echo $result_orderlist['product_id'] ?>" autocomplete="off" /></td>
+                                <input type="text" style="width:65px; " value="<?= ($amount_change['change_amount'] ? $amount_change['change_amount'] : "") ?>" class="text-center form-control" <?= ($result_orderlist['od_status'] || ($today >= $strNewDate)) ? "disabled" : "" ?> name="change_amount_<?= $result_orderlist['od_id'] ?>" pattern="^[Z0-9]+$" title="กรุณาใส่ตัวเลข" onkeyup="check_amount('<?php echo $result_orderlist['product_id'] ?>');" id="change_amount<?php echo $result_orderlist['product_id'] ?>" autocomplete="off" /></td>
 
                             <td align="center" label for="textfield4"></label>
-                                <input type="text" style="width:200px; " class="form-control" value="<?= ($amount_change['change_amount'] ? $amount_change['change_notes'] : "") ?>" <?= $result_orderlist['od_status'] ? "disabled" : "" ?> name="change_notes_<?= $result_orderlist['od_id'] ?>" id="change_notes" /></td>
+                                <input type="text" style="width:200px; " class="form-control" value="<?= ($amount_change['change_amount'] ? $amount_change['change_notes'] : "") ?>" <?= ($result_orderlist['od_status'] || ($today >= $strNewDate)) ? "disabled" : "" ?> name="change_notes_<?= $result_orderlist['od_id'] ?>" id="change_notes" /></td>
 
                         </tr>
                     <?php
