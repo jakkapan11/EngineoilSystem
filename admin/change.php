@@ -144,7 +144,7 @@
                     <td style="padding-left:17px;"><label for="textfield"></label>
 
                         <input type="text" name="receipt_date" id="receipt_date" hidden value="<?= $receipt_data['receipt_date'] ?>">
-                        <input type="text" onfocus="$(this).blur();" style="width:200px;" onkeypress="return false;" class="form-control datepicker-checkout" <?= ($change_num_rows == $change_count) ? "disabled" : "" ?> name="change_date" id="change_date" min="<?= date("Y-m-d"); ?>" required /></td>
+                        <input type="text" onfocus="$(this).blur();" style="width:200px;" onkeypress="return false;" class="form-control datepicker-checkout" <?= (($change_num_rows == $change_count) || ($today >= $strNewDate)) ? "disabled" : "" ?> name="change_date" id="change_date" min="<?= date("Y-m-d"); ?>" required /></td>
 
                     <td align="right"><strong>สถานที่ส่ง :</strong> </span></td>
                     <td style="padding-left:20px;"><?php
