@@ -228,7 +228,7 @@
 
                     //echo "$today > $strNewDate";
 
-                    if (mysqli_num_rows($query_diable) == 0 || ($today > $strNewDate)) {
+                    if (mysqli_num_rows($query_diable) == 0 || ($today >= $strNewDate)) {
                         // กรณี ปิดปุ่ม
                     } else {
                     ?>
@@ -251,27 +251,6 @@
         var date_change_product = new Date($('#date_change_product').val());
         //   var date_change_product_2 = date_change_product.getFullYear() + "-" + (date_change_product.getMonth() + 1) + "-" + date_change_product.getDate();
         // var date_change_product = Date.parse($("input[name='date_change_product']").val()) ;
-
-
-
-
-        if (date_change_product < d) {
-            //  alert('aa');
-            // console.log(current_date + " > " + date_change_product_2);
-            $("#sub").attr("disabled", true);
-        } else {
-            //gg console.log(current_date + " < " + date_change_product_2);
-        }
-
-        // ปิดปุ่ม ตรงนี้
-        /*
-        checkbox = $('#od_status');
-        if (checkbox.hasAttr) {
-            console.log("Undefined");
-        } else {
-            console.log("NULL");
-        }
-        */
     });
 
     function require_amount(checkbox) {
@@ -306,6 +285,6 @@
                 $('#change_amount' + product_id).val('');
             }
         }
-
     }
+
 </script>
