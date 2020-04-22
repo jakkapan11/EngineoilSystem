@@ -91,4 +91,11 @@
         }
       }
         ?>
+
+        <footer class="footer" style="position: relative; border-top:1px solid #dfe3e8; border-bottom:1px solid #dfe3e8; height:55px; padding: 0.5rem; width: 100%; bottom: 0; background: #FBFBFB">
+
+          <div class="text-center darken-grey-text mb-2" style=" margin-top:10px; color:gray;">
+            © 2020 Copyright: ระบบขายนํ้ามันเครื่อง | Best view in Google Chrome <i class="fa fa-chrome" aria-hidden="true"></i>
+          </div>
+        </footer>
 </body>

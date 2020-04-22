@@ -75,6 +75,10 @@
         $order_delivery_date = "";
     else $order_delivery_date = tothaiyear($data['order_delivery_date']);
 
+
+
+
+
     //วันที่ชำระ +5 วัน (การเปลี่ยนสินค้า)
     $strStartDate   =  $receipt_data['receipt_date']; //วันที่ปัจจุบัน
     $strNewDate = date("Y-m-d", strtotime("+5 day", strtotime($strStartDate))); // วันที่ปัจจุบัน + 5 วัน
@@ -136,7 +140,7 @@
                     <td height="40" align="right"><strong>ชื่อ-นามสกุล :</strong></td>
                     <td style="padding-left:20px;"><?php echo $cus_data['cus_name']; ?></td>
 
-                    <td height="40" align="right"><strong>วันทีชําระ :</strong><span style="color:red;">*</span></td>
+                    <td height="40" align="right"><strong>วันทีชําระ :</strong><span style="color:red;"></span></td>
                     <td width="300" style="padding-left:20px;"><?= tothaiyear($receipt_data['receipt_date']) ?></td>
                 </tr>
                 <tr>
@@ -165,12 +169,13 @@
                     <tr>
                         <th style="text-align:right;width:50px;">เลือก</th>
                         <th style="text-align:right;width:100px;">รหัสสินค้า</th>
-                        <th style="text-align:left; width:120px;">ชื่อสินค้า</th>
-                        <th style="text-align:left;width:100px;">ประเภท</th>
-                        <th style="text-align:center;width:100px;">หน่วยนับ</th>
+                        <th style="text-align:left; width:230px;">ชื่อสินค้า</th>
+                        <th style="text-align:left;width:90px;">ประเภท</th>
+                        <th style="text-align:center;width:90px;">หน่วยนับ</th>
                         <th style="text-align:right;width:110px;">จํานวนที่ซื้อ</th>
-                        <th style="text-align:center;width:150px;">จํานวนเปลี่ยน</th>
-                        <th style="text-align:center;width:180px;">หมายเหตุ</th>
+                        <th style="text-align:center;width:130px;">จํานวนเปลี่ยน</th>
+                        <th style="text-align:center;width:100px;">หมายเหตุ</th>
+                        <th style="text-align:center;width:110px;">วันเปลี่ยน</th>
 
                     </tr>
                     <?php
@@ -190,6 +195,11 @@
                         $amount_change = mysqli_fetch_assoc($query_change);
 
                         $t1 = $result['product_price_unit'] * $result_orderlist['od_amount'];
+
+                        if ($amount_change['change_date'] == "0000-00-00")
+                            $change_date = "";
+                        else $change_date = tothaiyear($amount_change['change_date']);
+
                     ?>
                         <tr>
                             <!-- เช็คสถานะการเปลีย่น -->
@@ -205,15 +215,23 @@
                                 <input type="text" style="width:65px; " value="<?= ($amount_change['change_amount'] ? $amount_change['change_amount'] : "") ?>" class="text-center form-control" <?= ($result_orderlist['od_status'] || ($today >= $strNewDate)) ? "disabled" : "" ?> name="change_amount_<?= $result_orderlist['od_id'] ?>" pattern="^[Z0-9]+$" title="กรุณาใส่ตัวเลข" onkeyup="check_amount('<?php echo $result_orderlist['product_id'] ?>');" id="change_amount<?php echo $result_orderlist['product_id'] ?>" autocomplete="off" /></td>
 
                             <td align="center" label for="textfield4"></label>
-                                <input type="text" style="width:200px; " class="form-control" value="<?= ($amount_change['change_amount'] ? $amount_change['change_notes'] : "") ?>" <?= ($result_orderlist['od_status'] || ($today >= $strNewDate)) ? "disabled" : "" ?> name="change_notes_<?= $result_orderlist['od_id'] ?>" id="change_notes" /></td>
+                                <input type="text" style="width:150px;" class="text-center form-control" value="<?= ($amount_change['change_amount'] ? $amount_change['change_notes'] : "") ?>" <?= ($result_orderlist['od_status'] || ($today >= $strNewDate)) ? "disabled" : "" ?> name="change_notes_<?= $result_orderlist['od_id'] ?>" id="change_notes" /></td>
 
+                            <td style="padding-top:20px;"align="center"><?php
+                                                if ($amount_change['change_date'] == "0000-00-00" || !$amount_change['change_date'])
+                                                    echo "-";
+                                                else
+                                                    echo tothaiyear($amount_change['change_date']);
+
+                                                ?>
                         </tr>
+
                     <?php
                         $i++;
                     } ?>
         </form>
 
-        <td style="padding-top:30px; " colspan="8" align="center"><span style="color:red;"><u>หมายเหตุ</u> การเปลี่ยนสินค้าจะเปลี่ยนได้ครั้งเดียวเท่านั้น โดยสินค้าเปลี่ยนไม่เกิน 5 วันนับจากวันที่ชําระ</span> </td>
+        <td style="padding-top:30px; " colspan="9" align="center"><span style="color:red;"><u>หมายเหตุ</u> การเปลี่ยนสินค้าจะเปลี่ยนได้ครั้งเดียวเท่านั้น โดยสินค้าเปลี่ยนไม่เกิน 5 วันนับจากวันที่ชําระ</span> </td>
 
         </table>
         </form>
@@ -286,5 +304,4 @@
             }
         }
     }
-
 </script>
