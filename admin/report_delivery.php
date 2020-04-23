@@ -89,8 +89,7 @@ $enddate    = tochristyear($_POST['enddate']);
           ";
         $sql_order = "SELECT * FROM orders 
           LEFT JOIN customers ON orders.cus_id = customers.cus_id
-          RIGHT JOIN receipt  ON orders.order_id = receipt.order_id
-         
+          #RIGHT JOIN receipt  ON orders.order_id = receipt.order_id
           WHERE date(order_delivery_date) = '" . $result_date['date(order_delivery_date)'] . "'";
         $query_order = mysqli_query($link, $sql_order) or die(mysqli_error($link));
 
