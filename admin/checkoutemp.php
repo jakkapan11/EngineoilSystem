@@ -62,7 +62,7 @@
                     $(".credits").show();
                     $('.credits2').hide();
 
-                    $("invoice_credit").attr("required", true);
+                    $("#invoice_credit").attr("required", true);
 
                     // ประเภทการชำระ รายละเอียดการชำระ
                     $('#receipt_tye').prop('disabled', true);
