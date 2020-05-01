@@ -42,8 +42,8 @@
 				<span class="icon-bar"></span>
 			</button>
 			<div id="navbarCollapse" class="collapse navbar-collapse ">
-				<div class="col-md-4">
-					<h6 class="" style="color:white; margin-top:8px;">32/2 หมู่ 2 ตำบลแหลมงอบ อำเภอแหลมงอบ จังหวัดตราด 23120</h6>
+				<div class="col-md-5">
+					<h6 class="" style="color:white; margin-top:8px;">32/2 หมู่ 2 ตำบลแหลมงอบ อำเภอแหลมงอบ จังหวัดตราด 23120 Tel: 096-792-5485</h6>
 				</div>
 			</div>
 		</nav>
