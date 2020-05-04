@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 
 if (mysqli_query($link, $sql_update) or die(mysqli_error($link))) {
-    echo '<script> alert("แก้ไขข้อมูลเรียบร้อยแล้ว\nรหัสสมาชิก '. $_POST['cus_id']. '"); 
+    echo '<script> alert("แก้ไขข้อมูลสมาชิกเรียบร้อยแล้ว\nรหัสสมาชิก '. $_POST['cus_id']. '"); 
     window.location.assign("show_member.php")
     </script>';
 }

@@ -31,7 +31,7 @@
             <tr>
                 <td width="100%">
 
-                    <input type="text" class="form-control" placeholder="ค้นหารหัสการสั่งซื้อ" style="width:200px" name="search_order" id="search_order" />
+                    <input type="text" class="form-control" placeholder="ค้นหารหัสการสั่งซื้อ,หมายเลขจัดส่งส่ง" style="width:256px" name="search_order" id="search_order" />
                     <input type="submit" class="btn btn-primary" id="ค้นหา" value="ค้นหา" />
 
                 </td>
@@ -59,6 +59,7 @@
 
             require_once("conf/connection.php");
             $sql = "SELECT * FROM orders WHERE order_id LIKE '%" . $strKeyword . "%' and cus_id = '" . $_SESSION['cus_id'] . "' ORDER BY order_id DESC";
+            
             $query = mysqli_query($link, $sql) or die(mysqli_error($link));
             $num_rows = mysqli_num_rows($query);
 

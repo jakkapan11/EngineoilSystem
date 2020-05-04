@@ -31,7 +31,7 @@
             <tr>
                 <td width="100%">
 
-                    <input type="text" class="form-control" placeholder="ค้นหาเลขที่ใบเสร็จรับเงิน" style="width:200px" name="search_receipt" id="search_receipt" />
+                    <input type="text" class="form-control" placeholder="เลขที่ใบเสร็จ,รหัสสั่งซื้อ,เลขที่ใบแจ้งหนี้" style="width:283px" name="search_receipt" id="search_receipt" />
                     <input type="submit" class="btn btn-primary" id="ค้นหา" value="ค้นหา" />
 
                 </td>
@@ -44,8 +44,8 @@
         <thead>
             <tr>
                 <th style="text-align:center;width:270px;">เลขที่ใบเสร็จรับเงิน</th>
-                <th style="text-align:center;width:180px">วันที่ออกใบเสร็จ</th>
                 <th style="text-align:center;width:190px;">รหัสการสั่งซื้อ</th>
+                <th style="text-align:center;width:180px">วันที่ออกใบเสร็จ</th>
                 <th style="text-align:center;width:150px">วันที่สั่งซื้อ</th>
                 <th style="text-align:center;width:235px;">เลขที่ใบแจ้งหนี้</th>
                 <th style="text-align:center;width:190px;">วันกําหนดชําระ</th>
@@ -67,7 +67,7 @@
                     ON re.order_id = ord.order_id 
                     LEFT JOIN invoice AS inv
                     ON inv.order_id = re.order_id
-                    WHERE ord.order_status IN('2') AND re.receipt_id LIKE '%" . $strKeyword . "%'
+                    WHERE ord.order_status IN('2') AND re.receipt_id LIKE '%" . $strKeyword . "%' OR ord.order_id LIKE '%" . $strKeyword ."%' OR  inv.invoice_id LIKE '%" . $strKeyword ."%' 
                     ORDER BY receipt_id DESC";
             $query = mysqli_query($link, $sql) or die(mysqli_error($link));
             $num_rows = mysqli_num_rows($query);
@@ -95,8 +95,8 @@
 
                         ?>
                         <td align="center"><?php echo $result['receipt_id'] ?></td>
-                        <td align="center"><?= tothaiyear($result['receipt_date']); ?>
                         <td align="center"><?= $result['order_id']; ?></td>
+                        <td align="center"><?= tothaiyear($result['receipt_date']); ?>
                         <td align="center"><?= tothaiyear($result['order_date']); ?></td>
                         <td align="center"><?php
                                             if (!empty($result['invoice_id']))

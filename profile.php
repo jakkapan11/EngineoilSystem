@@ -98,7 +98,7 @@
           <td><label for="textfield8"></label>
             <input type="text" name="cus_birthday" onfocus="$(this).blur();" style="width:300px; padding-left:14px;" onkeypress="return false;" class="form-control datepicker" value="<?= $cus_birthday ?>" id="cus_birthday" /></td>
           <td>
-            <font style="padding-left:30px; color:gray;">(กรอก วัน/เดือน/ปี ที่เกิดเลือกจากปฎิทิน)</font>
+            <font style="padding-left:30px; color:gray;">(เลือก วัน/เดือน/ปี ที่เกิดเลือกจากปฎิทิน)</font>
           </td>
         </tr>
         <tr>

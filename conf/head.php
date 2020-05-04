@@ -45,7 +45,7 @@ if (!isset($_SESSION)) {
 		</button>
 		<div id="navbarCollapse" class="collapse navbar-collapse ">
 			<div style="width:580px;">
-				<h6 class="" style="color:white; margin-top:8px;">32/2 หมู่ 2 ตำบลแหลมงอบ อำเภอแหลมงอบ จังหวัดตราด 23120 Tel: 096-792-5485 </h6>
+				<h6 class="" style="color:white; margin-top:8px;">32/2 หมู่ 2 ตำบลแหลมงอบ อำเภอแหลมงอบ จังหวัดตราด 23120 โทร: 096-792-5485 </h6>
 			</div>
 
 			<div id="navbarCollapse" class="collapse navbar-collapse ">
@@ -71,8 +71,8 @@ if (!isset($_SESSION)) {
 							<li class="divider dropdown-divider"></li>
 							<li><a href="basket.php" class="dropdown-item"><i class="fa fa-shopping-cart"></i> ตะกร้าสินค้า <span class="badge badge-light" style="font-size:15px;"></span></a></li>
 							<li class="divider dropdown-divider"></li>
-							<li><a href="logout.php" class="dropdown-item"><i class="fa fa-power-off"></i> ออกจากระบบ</a></li>
-						</ul>
+							<li><a onclick="if(confirm('ต้องการออกจากระบบใช่หรือไม่?')) return true; else return false;" href="logout.php" class="dropdown-item"><i class="fa fa-power-off"></i> ออกจากระบบ</a></li>
+					</ul>
 					</li>
 				</ul> <?php
 					} else { ?>

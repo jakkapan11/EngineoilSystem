@@ -43,7 +43,7 @@
 			</button>
 			<div id="navbarCollapse" class="collapse navbar-collapse ">
 				<div class="col-md-5">
-					<h6 class="" style="color:white; margin-top:8px;">32/2 หมู่ 2 ตำบลแหลมงอบ อำเภอแหลมงอบ จังหวัดตราด 23120 Tel: 096-792-5485</h6>
+					<h6 class="" style="color:white; margin-top:8px;">32/2 หมู่ 2 ตำบลแหลมงอบ อำเภอแหลมงอบ จังหวัดตราด 23120 โทร: 096-792-5485</h6>
 				</div>
 			</div>
 		</nav>
@@ -92,7 +92,7 @@
 							<li class="divider dropdown-divider"></li>
 							<li><a href="<?= ($_SESSION['emp_level'] == 1) ? "UserManualAdmin.pdf" : "UserManualEmployee.pdf" ?>"  target="_blank" class="dropdown-item"><i class="fa fa-book"></i> คู่มือการใช้งาน</a></li>
 							<li class="divider dropdown-divider"></li>
-							<li><a href="logout.php" class="dropdown-item"><i class="fa fa-power-off"></i> ออกจากระบบ</a></li>
+							<li><a onclick="if(confirm('ต้องการออกจากระบบใช่หรือไม่?')) return true; else return false;" href="logout.php" class="dropdown-item"><i class="fa fa-power-off"></i> ออกจากระบบ</a></li>
 						</ul>
 					</li>
 				</ul>

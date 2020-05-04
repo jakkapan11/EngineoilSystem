@@ -299,7 +299,7 @@
 
         } else {
             if (cheange_amount > amount) {
-                alert('จํานวนเปลี่ยนต้องเท่ากับ จำนวนที่ซื้อ');
+                alert('จํานวนเปลี่ยนห้ามมากกว่าจำนวนที่ซื้อ');
                 $('#change_amount' + product_id).val('');
             }
         }
