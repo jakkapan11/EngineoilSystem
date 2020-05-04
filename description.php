@@ -62,7 +62,7 @@
 
                 </tr>
                 <tr>
-                    <td align="right"><strong>สถานะ :</strong><span style="color:red; "></span></td>
+                    <td align="right"><strong>สถานะสั่งซื้อ :</strong><span style="color:red; "></span></td>
                     <td><?php
                         if ($data['order_status'] == 0) {
                             echo "<span style='padding-left:20px;color:orange;'>ยังไม่แจ้งชําระ</span>";

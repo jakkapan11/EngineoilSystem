@@ -79,7 +79,7 @@
           <input type="text" onfocus="$(this).blur();" id="cus_birthday" name="cus_birthday" class="form-control datepicker" onkeydown="return false;" onkeypress="return false;" style="background-color:white; width:300; padding-left:13px" data-provide="datepicker" autocomplete="off" data-date-format="dd/mm//yyyy" />
         </td>
         <td>
-          <font style="padding-left:30px; color:gray;">(กรอก วัน/เดือน/ปี ที่เกิดเลือกจากปฎิทิน)</font>
+          <font style="padding-left:30px; color:gray;">(เลือก วัน/เดือน/ปี ที่เกิดจากปฎิทิน)</font>
         </td>
       </tr>
       <tr>

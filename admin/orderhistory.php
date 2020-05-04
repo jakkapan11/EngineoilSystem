@@ -29,7 +29,7 @@
 
 
     <form get="POST" class="form-inline" action="">
-        <table width="1450px" border="0" align="center">
+        <table width="1550px" border="0" align="center">
             <tr>
                 <td width="100%">
 
@@ -42,7 +42,7 @@
     <br>
 
 
-    <table class="table table-striped table-bordered" align="center" border="0" style="width:1450px;">
+    <table class="table table-striped table-bordered" align="center" border="0" style="width:1550px;">
         <thead>
             <tr>
                 <th style="text-align:center;width:140px">วันที่สั่งซื้อ</th>
@@ -52,7 +52,7 @@
                 <th style="text-align:center;width:190px;">หลักฐานการชําระ</th>
                 <th style="text-align:right;width:150px;">รวมสุทธิ (บาท)</th>
                 <th style="text-align:left;width:160px;">สถานะสั่งซื้อ</th>
-                <th style="text-align:center;width:120px;">ยกเลิก</th>
+                <th style="text-align:center;width:170px;">ยกเลิกสั่งซื้อ</th>
                 <th style="text-align:center;width:150px;">รับชําระ</th>
                 <th style="text-align:center;width:200px;">พิมพ์ใบแจ้งหนี้</th>
             </tr>
@@ -141,7 +141,7 @@
 
                         <td align="center">
                             <?php if ($result['order_status'] != 4 && $result['order_status'] != 2) { ?>
-                                <button id="cancel_order" name="cancel_order" onclick="if(confirm('ต้องการยกเลิกหรือไม่?')){ cancel_order('<?php echo $result['order_id']; ?>');}else{ return false;}" style="width:87px" class="btn btn-danger"><i class="fa fa-times"></i> ยกเลิก</button>
+                                <button id="cancel_order" name="cancel_order" onclick="if(confirm('ต้องการยกเลิกหรือไม่?')){ cancel_order('<?php echo $result['order_id']; ?>');}else{ return false;}" style="width:125px" class="btn btn-danger"><i class="fa fa-times"></i> ยกเลิกสั่งซื้อ</button>
                             <?php } else { ?>
                                 <center>-</center>
                             <?php } ?>
@@ -182,7 +182,7 @@
                 dataType: "text",
                 type: "POST",
                 success: function(result) {
-                    alert("ยกเลิกรายการ " + order_id + " เรียบร้อย");
+                    alert("ยกเลิกรายการสั่งซื้อ รหัส " + order_id + " เรียบร้อยแล้ว");
                     location.reload();
                 }
             });

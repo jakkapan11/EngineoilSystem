@@ -68,7 +68,7 @@
         <td><label for="textfield2"></label>
           <input type="text" onfocus="$(this).blur();" id="emp_birthday" name="emp_birthday" class="form-control datepicker" onkeypress="return false;" style="width:300; padding-left:13px;" autocomplete="off" required />
         <td>
-          <font style="padding-left:40px; color:gray;">(กรอก วัน/เดือน/ปี ที่เกิดเลือกจากปฎิทิน)</font>
+          <font style="padding-left:40px; color:gray;">(เลือก วัน/เดือน/ปี ที่เกิดจากปฎิทิน)</font>
         </td>
       </tr>
       <tr>

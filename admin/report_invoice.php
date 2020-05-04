@@ -35,7 +35,7 @@
 <table border="0" width="1370px" align="center">
 
     <tr>
-        <td colspan="10" align="right" style="border-bottom:1px solid;">
+        <td colspan="11" align="right" style="border-bottom:1px solid;">
             <?php
             echo "<meta charset='utf-8'>";
             date_default_timezone_set("Asia/Bangkok");
@@ -52,6 +52,7 @@
         <th style="text-align:center; width:120px;">วันที่สั่งซื้อ</th>
         <th style="text-align:center; width:100px;">เครดิต(วัน)</th>
         <th style="text-align:left; width:180px;">ชื่อลูกค้า</th>
+        <th style="text-align:left; width:150px;">สถานะ</th>
         <th style="text-align:right; width:120px;">ราคารวม(บาท)</th>
         <th style="text-align:right; width:95px;">ค่าส่ง(บาท)</th>
         <th style="text-align:right; width:120px;">รวมสุทธิ(บาท)</th>
@@ -101,14 +102,14 @@
             switch ($result_order['order_status']) {
 
                 case 0:
-                    $order_status = "<font color='orange'>ยังไม่แจ้งชำระ</font>";
+                    $order_status = "<font color='orange'>ชําระแล้ว</font>";
                     $order_totalprice = "<font color='Black'>" . number_format($result_order['order_deliverycost'] + $result_order['order_total'], 2) . "</font>";
                     $sum_a += $result_order['order_deliverycost'] + $result_order['order_total'];
                     $sum_f += $result_order['order_total'];
                     $sum_k += $result_order['order_deliverycost'];
                     break;
                 case 1:
-                    $order_status = "<font color='3366CC'>รอการตรวจสอบ</font>";
+                    $order_status = "<font color='3366CC'>ยกเลิก</font>";
                     $order_totalprice = "<font color='Black'>" . number_format($result_order['order_deliverycost'] + $result_order['order_total'], 2) . "</font>";
                     $sum_b += $result_order['order_deliverycost'] + $result_order['order_total'];
                     $sum_g += $result_order['order_total'];
@@ -151,6 +152,7 @@
                 <td align="center"><?= short_datetime_thai($result_order['order_date']) ?></td>
                 <td align="center"><?= $result_order['invoice_credit'] ?></td>
                 <td align="left"><?= $result_order['cus_name'] ?></td>
+                <td align="left"></td>
                 <td align="right"><?= number_format($result_order['order_total'], 2) ?></td>
                 <td align="right"><?= $result_order['order_deliverycost'] ?></td>
                 <td align="right"><?= $order_totalprice ?></td>
@@ -160,7 +162,7 @@
         }
             ?>
             <tr style="border-bottom:1px solid;">
-                <td colspan="6"></td>
+                <td colspan="7"></td>
                 <td align="right"><b>รวม</b></td>
                 <td align="right"><b><?= number_format($sum_1, 2) ?></b></td>
                 <td align="right"><b><?= number_format($sum_2, 2) ?></b></td>
@@ -171,7 +173,7 @@
     }
         ?>
         <tr style="border-bottom:1px solid;">
-            <td colspan="5"></td>
+            <td colspan="6"></td>
             <td align="right" colspan="2" style="color:Black;"><b>รวมทั้งหมด(บาท)</b></td>
             <td align="right" style="color:Black;"><b><?= number_format($sum_f + $sum_g + $sum_h + $sum_i + $sum_j, 2) ?></b></td>
             <td align="right" style="color:Black;"><b><?= number_format($sum_k + $sum_l + $sum_m + $sum_n + $sum_o, 2) ?></b></td>
