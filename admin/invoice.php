@@ -169,7 +169,7 @@
 
                 <td width="300" align="right"><strong></strong>
                     <?php
-                    if ($invoice_data['invoice_status'] == 1) {
+                    if ($invoice_data['invoice_status'] == 2) {
                         echo '<font size="4px" color="red"><b>*** ใบแจ้งหนี้ได้ถูกยกเลิกแล้ว ***</b></font>';
                     }
                     ?>

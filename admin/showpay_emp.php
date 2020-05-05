@@ -179,9 +179,9 @@
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" target="_blank" href="bill.php?orderid=<?= $result['order_id'] ?>">พิมพ์ใบเสร็จรับเงิน</a></li>
 
-                                    <?php if ($result['order_deliverynumber'] != '') { ?>
+                                   
                                         <li><a class="dropdown-item" target="_blank" href="delivery_emp.php?orderid=<?= $result['order_id'] ?>">พิมพ์ใบส่งของ</a></li>
-                                    <?php } ?>
+                                    
                                 </ul>
                             </div>
                         <?php }

@@ -16,7 +16,7 @@ while ($result_orderlist = mysqli_fetch_array($query_orderlist)) {
   mysqli_query($link, $sql_stock) or die(mysqli_error($link));
 
   $sql_invoice = "UPDATE invoice SET
-     invoice_status = '1' WHERE order_id = '" . $_POST['update_order_id'] . "' ";
+     invoice_status = '2' WHERE order_id = '" . $_POST['update_order_id'] . "' ";
   mysqli_query($link, $sql_invoice) or die(mysqli_error($link));
 
 

@@ -65,17 +65,32 @@ else $order_delivery_date = DateThai($data['order_delivery_date']);
             </tr>
             <tr>
                 <td width="200" height="40" align="right"><strong>วันที่จัดส่ง :</strong></td>
-                <td width="25%" style="padding-left:20px;"><?= $order_delivery_date  ?></td>
-
+                <td width="25%" style="padding-left:20px;"><?php
+                                                                if ($order_delivery_date != "") {
+                                                                    echo $order_delivery_date;
+                                                                } else {
+                                                                    echo " <left>-</left>";
+                                                                } ?></td>
+              
                 <td width="260" height="40" align="right"><strong>ชื่อ-นามสกุล :</strong></td>
                 <td width="30%" style="padding-left:20px;"><?php echo $cus_data['cus_name']; ?></td>
             </tr>
             <tr>
                 <td width="200" height="40" align="right"><strong>หมายเลขส่ง :</strong></td>
-                <td width="25%" style="padding-left:20px;"><?= $data['order_deliverynumber'] ?></td>
-
+                <td width="25%" style="padding-left:20px;"><?php
+                                                                if ($data['order_deliverynumber'] != "") {
+                                                                    echo $data['order_deliverynumber'];
+                                                                } else {
+                                                                    echo " <left>-</left>";
+                                                                } ?></td>
+    
                 <td width="260" height="40" align="right"><strong>สถานที่ส่ง :</strong></td>
-                <td style="padding-left:20px;"> <?php echo $data['order_place'] ?> </td>
+                <td style="padding-left:20px;"><?php
+                                                if ($data['order_place'] != "") {
+                                                    echo $data['order_place'];
+                                                } else {
+                                                    echo " <left>-</left>";
+                                                } ?></td>
             </tr>
             <tr>
                 <td colspan="4"><label for="select"></label>
