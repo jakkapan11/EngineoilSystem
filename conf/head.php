@@ -28,6 +28,9 @@ if (!isset($_SESSION)) {
 <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 <script type="text/javascript" src="admin/js/bootstrap-datepicker.js"></script>
 <!-- thai extension -->
+<script  type="text/javascript"src="admin/js/jquery.validate.min.js"></script>
+<script type="text/javascript" src="admin/js/jquery-validate-addition.min.js"></script>
+
 <script type="text/javascript" src="admin/js/bootstrap-datepicker-thai.js"></script>
 <script type="text/javascript" src="admin/js/locales/bootstrap-datepicker.th.js"></script>
 <link href="admin/css/datepicker.css" rel="stylesheet">

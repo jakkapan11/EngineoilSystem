@@ -40,6 +40,56 @@
       }) //กำหนดเป็นวันปัจุบัน       
     });
   </script>
+  <script>
+    $(document).ready(function() {
+      $("#form1").validate({
+        messages: {
+          cus_name: {
+            required: "<font color='red'>กรุณากรอก ชื่อ-นามสกุล</font>",
+            //minlength: "<font color='red'>กรุณากรอก มากกว่า 5 ตัวอักษร</font>",
+            pattern: "<font color='red'>กรุณากรอกเฉพาะ ตัวอักษรเท่านั้น",
+          },
+          cus_phone: {
+            required: "<font color='red'>กรุณากรอกเบอร์โทรศัพท์</font>",
+            digits: "<font color='red'>กรุณากรอกเบอร์โทรศัพท์</font>",
+            minlength: "<font color='red'>กรุณาระบุ ไม่น้อยกว่า 9 ตัวอักษร</font>",
+            maxlength: "<font color='red'>กรุณาระบุ ไม่เกิน 10 ตัวอักษร</font>",
+
+          },
+
+          cus_zipcode: {
+            required: "<font color='red'>กรุณากรอกหมายเลขบัตรประชาชน</font>",
+            minlength: "<font color='red'>กรุุณากรอก ให้ครบ 5 ตัวอักษร</font>",
+            maxlength: "<font color='red'>กรุุณากรอก ให้ครบ 5 ตัวอักษร</font>",
+
+          },
+          cus_address: {
+            required: "<font color='red'>กรุณากรอกที่อยู่ของท่าน</font>",
+          },
+          cus_username: {
+            required: "<font color='red'>กรุณากรอกชื่อผู้ใช้</font>",
+            minlength: "<font color='red'>กรุณากรอกอย่างน้อย 5 ตัวอักษร</font>",
+						pattern: "<font color='red'>กรุณากรอกเป็นตัวอักษร A-z และ 0-9 อย่างน้อย 5 ตัว</font>",
+          },
+          cus_password: {
+						required: "<font color='red'>กรุณากรอกอย่างน้อย 8-20 ตัวอักษร</font>",
+						minlength: "<font color='red'>กรุณากรอกอย่างน้อย 8-20 ตัวอักษร</font>",
+						maxlength: "<font color='red'>กรุณากรอกอย่างน้อย 8-20 ตัวอักษร</font>",
+					},
+					cus_password2: {
+						required: "<font color='red'>กรุณากรอกรหัสผ่านให้ตรงกับ รหัสผ่าน</font>",
+						minlength: "<font color='red'>กรุณากรอกอย่างน้อย 8-20 ตัวอักษร</font>",
+						maxlength: "<font color='red'>กรุณากรอกอย่างน้อย 8-20 ตัวอักษร</font>",
+					},
+
+        },
+        onfocusout: function(element) {
+          // "eager" validation
+          this.element(element);
+        },
+      });
+    });
+  </script>
 </head>
 <script type="text/javascript">
   function isNumberKey(evt) {
@@ -70,7 +120,7 @@
       <tr>
         <td width="229" height="45" align="right"><strong>ชื่อ-นามสกุล </strong> :<span style="color:red;">*</span></td>
         <td width="301"><label for="textfield"></label>
-          <input type="text" style="width:300px;" class="form-control" name="cus_name" pattern="^[ก-๏a-zA-Z\s]+$" minlength="5" maxlength="35" id="cus_name" required /></td>
+          <input type="text" style="width:300px;" class="form-control" name="cus_name" pattern="^[ก-๏a-zA-Z\s]+$" id="cus_name" required /></td>
         <td width="">&nbsp;</td>
       </tr>
       <tr>
@@ -118,7 +168,7 @@
       </tr>
       <td height="50" align="right"><strong>รหัสผ่าน</strong> :<span style="color:red;">*</span></td>
       <td><label for="textfield6"></label>
-        <input type="password" name="cus_password" minlength="8" maxlength="20" style="width:300px; " class="form-control" id="cus_password" required /></td>
+        <input type="password" name="cus_password" minlength="8" maxlength="20" style="width:300px; " class="form-control" id="cus_password" minlength="8" maxlength="20" required /></td>
       <td>
         <font style="padding-left:30px; color:gray;">(กรอกอย่างน้อย 8 ตัวอักษร)</font>
         </tr>

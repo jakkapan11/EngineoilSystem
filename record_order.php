@@ -39,13 +39,34 @@
             }) //กำหนดเป็นวันปัจุบัน       
         });
     </script>
+     <script>
+        $(document).ready(function() {
+            $("#order").validate({
+                messages: {
+                    order_deadline_date: {
+                        required: "<font size='2' style='padding-left:55px;'color='red'>กรุณาเลือกวันที่กําหนดส่ง</font>",
+
+                    },
+                    order_place: {
+                        required: "<font size='2' style='padding-left:55px;'color='red'>กรุณากรอกสถานที่ส่ง</font>",
+
+                    },
+                   
+                },
+                onfocusout: function(element) {
+                    // "eager" validation
+                    this.element(element);
+                },
+            });
+        });
+    </script>
 </head>
 
 <body>
     <div class="container">
         <h2 class="page-header text-center" style="padding-top:80px;">บันทึกการสั่งซื้อ</h2>
         <hr>
-        <form action="save_checkout_order.php" method="POST">
+        <form  id="order" name="order" action="save_checkout_order.php" method="POST">
             <table border="0" align="center" width="100%" style="border:1px solid #C0C0C0; background:#F5F5F5;">
                 <tr>
                     <td width="20%" align="right"><strong>รหัสลูกค้า :</strong> </td>
@@ -79,7 +100,7 @@
                 <tr>
                     <td height="20" align="right"><strong></strong> </td>
                     <td style="padding-right:70px;" align="center">
-                        <font size="2" color="red">สามารถเลือกวันกําหนดส่งได้ภายใน 1 เดือน เท่านั้น</font>
+                        <font size="2" color="#3399CC">สามารถเลือกวันกําหนดส่งได้ภายใน 1 เดือน เท่านั้น</font>
                     <td>
                    
                     <td >
