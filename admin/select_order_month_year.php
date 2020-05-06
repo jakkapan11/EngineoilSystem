@@ -11,7 +11,26 @@
     }
 
     ?>
+     <script>
+        $(document).ready(function() {
+            $("#form1").validate({
+                messages: {
+                    month: {
+                        required: "<font size='2' style='padding-left:58px;' color='red'>กรุณาเลือก เดือน ที่ต้องการค้นหา</font>",
+                    },
+                    year: {
+                        required: "<font size='2' style='padding-left:58px;' color='red'>กรุณาเลือก ปี พ.ศ. ต้องการค้นหา</font>",
+                    },
 
+                },
+                onfocusout: function(element) {
+                    // "eager" validation
+                    this.element(element);
+                },
+            });
+        });
+    </script>
+</head>
 <body>
     <h2 class="page-header text-center" style="padding-top:25px;">เงื่อนไขรายงานการสั่งซื้อประจําเดือน</h2>
     <hr>

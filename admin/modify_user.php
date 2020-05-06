@@ -58,6 +58,51 @@
       return false;
     }
   </script>
+  <script>
+    $(document).ready(function() {
+      $("#form1").validate({
+        messages: {
+          emp_name: {
+            required: "<font color='red'>กรุณากรอก ชื่อ-นามสกุล</font>",
+            //minlength: "<font color='red'>กรุณากรอก มากกว่า 5 ตัวอักษร</font>",
+            pattern: "<font color='red'>กรุณากรอกเฉพาะ ตัวอักษรเท่านั้น",
+          },
+          emp_birthday: {
+            required: "<font color='red'>กรุณาเลือกวันเกิดของท่าน</font>",
+          },
+           emp_phone: {
+                         required: "<font color='red'>กรุณากรอกเบอร์โทรศัพท์</font>",
+                         digits: "<font color='red'>กรุณากรอกเบอร์โทรศัพท์</font>",
+                         minlength: "<font color='red'>กรุณาระบุ ไม่น้อยกว่า 9 ตัวอักษร</font>",
+                         maxlength: "<font color='red'>กรุณาระบุ ไม่เกิน 10 ตัวอักษร</font>",
+          },
+          emp_idcard: {
+            required: "<font color='red'>กรุณากรอกหมายเลขบัตรประชาชน</font>",
+            minlength: "<font color='red'>กรุุณากรอกให้ครบ 13 หลัก</font>",
+            maxlength: "<font color='red'>กรุุณากรอกให้ครบ 13 หลัก</font>",
+
+          },
+          emp_address: {
+            required: "<font color='red'>กรุณากรอกที่อยู่ของท่าน</font>",
+          },
+         
+          emp_password: {
+            minlength: "<font color='red'>กรุณากรอกอย่างน้อย 8-20 ตัวอักษร</font>",
+            maxlength: "<font color='red'>กรุณากรอกอย่างน้อย 8-20 ตัวอักษร</font>",
+          },
+          emp_password2: {
+            required: "<font color='red'>กรุณากรอกรหัสผ่านให้ตรงกัน</font>",
+            minlength: "<font color='red'>กรุณากรอกอย่างน้อย 8-20 ตัวอักษร</font>",
+            maxlength: "<font color='red'>กรุณากรอกอย่างน้อย 8-20 ตัวอักษร</font>",
+          },
+        },
+        onfocusout: function(element) {
+          // "eager" validation
+          this.element(element);
+        },
+      });
+    });
+  </script>
 </head>
 
 <body>
@@ -75,7 +120,7 @@
   ?>
 
   <body>
-    <form action="modify_user2.php" method="post">
+    <form id="form1" name="form1" action="modify_user2.php" method="post">
       <table width="809" border="0" align="center">
         <tr>
           <td width="175" height="50" align="right"><strong>รหัสพนักงาน</strong> :</td>
@@ -91,7 +136,7 @@
         <tr>
           <td height="50" align="right"><strong>วันเกิด</strong> :<span style="color:red;">*</span></td>
           <td><label for="textfield8"></label>
-            <input type="text" name="emp_birthday" style="width:300px; padding-left:14px;" onfocus="$(this).blur();" class="form-control datepicker" onkeypress="return false;" value="<?= tothaiyear($result['emp_birthday']) ?>" id="emp_birthday" required/></td>
+            <input type="text" name="emp_birthday" style="width:300px; padding-left:14px;" onfocus="$(this).blur();" class="form-control datepicker" onkeypress="return false;" value="<?= tothaiyear($result['emp_birthday']) ?>" id="emp_birthday" required /></td>
           <td>
             <font style="padding-left:40px; color:gray;">(กรอก วัน/เดือน/ปี ที่เกิดเลือกจากปฎิทิน)</font>
           </td>
@@ -99,7 +144,7 @@
         <tr>
           <td height="50" align="right"><strong>เบอร์โทรศัพท์</strong>:<span style="color:red;">*</span></td>
           <td><label for="textfield2"></label>
-            <input type="text" name="emp_phone" style="width:300px; " class="form-control" onkeypress="return isNumberKey (event)" value="<?= $result['emp_phone'] ?>" id="emp_phone" required/></td>
+            <input type="text" name="emp_phone" style="width:300px; " class="form-control" onkeypress="return isNumberKey (event)" value="<?= $result['emp_phone'] ?>" minlength="9" maxlength="10" id="emp_phone" required /></td>
           <td>
             <font style="padding-left:40px; color:gray;">(กรอกอย่างน้อย 9 ตัวอักษร)</font>
         </tr>
@@ -107,7 +152,8 @@
           <td height="50" align="right"><strong>อีเมล</strong> :<span style="color:red;"></span></td>
           <td><label for="textfield3"></label>
             <input type="email" name="emp_email" style="width:300px; " class="form-control" value="<?= $result['emp_email'] ?>" id="emp_email" /></td>
-          <td <font style="padding-left:40px; color:gray;">(กรอกอีเมลให้ถูกต้องตามรูปแบบ เช่น email@hotmail.com)</font></td>
+          <td <font style="padding-left:40px; color:gray;">(กรอกอีเมลให้ถูกต้องตามรูปแบบ เช่น email@hotmail.com)</font>
+          </td>
         </tr>
         <tr>
           <td height="120" align="right"><strong>ที่อยู่</strong> :<span style="color:red;">*</span></td>
@@ -117,8 +163,9 @@
         <tr>
           <td height="50" align="right"><strong>หมายเลขบัตรประชาชน</strong> :<span style="color:red;">*</span></td>
           <td><label for="textfield4"></label>
-            <input type="text" name="emp_idcard" style="width:300px;" class="form-control"value="<?= $result['emp_idcard'] ?>" id="emp_idcard" onkeypress="return isNumberKey(event)" id="emp_idcard" minlength="10" maxlength="13"required /></td>
-            <td <font style="padding-left:40px; color:gray;">(กรอก 13 ตัวอักษร)</font></td>
+            <input type="text" name="emp_idcard" style="width:300px;" class="form-control" value="<?= $result['emp_idcard'] ?>" id="emp_idcard" onkeypress="return isNumberKey(event)" id="emp_idcard" minlength="10" maxlength="13" required /></td>
+          <td <font style="padding-left:40px; color:gray;">(กรอก 13 ตัวอักษร)</font>
+          </td>
           <td>
         </tr>
         <tr>

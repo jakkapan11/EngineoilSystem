@@ -9,6 +9,28 @@
     exit();
   }
 ?>
+<script>
+         $(document).ready(function() {
+             $("#form1").validate({
+                 messages: {
+                  category_name: {
+                         required: "<font color='red'>กรุณากรอกชื่อประเภท</font>",
+                         //minlength: "<font color='red'>กรุณากรอก มากกว่า 5 ตัวอักษร</font>",
+                         pattern: "<font color='red'>กรุณากรอกเฉพาะ ตัวอักษรเท่านั้น",
+                     },
+                   
+                     
+                 },
+                 onfocusout: function(element) {
+                     // "eager" validation
+                     this.element(element);
+                 },
+             });
+         });
+     </script>
+
+
+</head>
 <body>
   <h2 class="page-header text-center" style="padding-top:25px;">เพิ่มข้อมูลประเภทสินค้า</h2>
   <hr>
@@ -20,7 +42,7 @@
   <tr>
     <td height="50"align="right"><strong>ชื่อประเภท</strong> :<span style="color:red;">*</span></td>
     <td><label for="textfield2"></label>
-      <input type="text" name="category_name" style="width:300px;" class="form-control" id="category_name" minlength="3" maxlength="50" required/></td>
+      <input type="text" name="category_name" style="width:300px;" class="form-control" id="category_name" required/></td>
   </tr>
       
     <tr>

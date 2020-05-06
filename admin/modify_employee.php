@@ -58,8 +58,50 @@
       return false;
     }
   </script>
+  <script>
+         $(document).ready(function() {
+             $("#form1").validate({
+                 messages: {
+                  emp_name: {
+                         required: "<font color='red'>กรุณากรอก ชื่อ-นามสกุล</font>",
+                         //minlength: "<font color='red'>กรุณากรอก มากกว่า 5 ตัวอักษร</font>",
+                         pattern: "<font color='red'>กรุณากรอกเฉพาะ ตัวอักษรเท่านั้น",
+                     },
+                     emp_birthday: {
+                         required: "<font color='red'>กรุณาเลือกวันเกิดของท่าน</font>",
+                      
+                     },
+                     emp_phone: {
+                         required: "<font color='red'>กรุณากรอกเบอร์โทรศัพท์</font>",
+                         digits: "<font color='red'>กรุณากรอกเบอร์โทรศัพท์</font>",
+                         minlength: "<font color='red'>กรุณาระบุ ไม่น้อยกว่า 9 ตัวอักษร</font>",
+                         maxlength: "<font color='red'>กรุณาระบุ ไม่เกิน 10 ตัวอักษร</font>",
+                        
+                     },
+                    
+                     emp_idcard: {
+                         required: "<font color='red'>กรุณากรอกหมายเลขบัตรประชาชน</font>",
+                         minlength: "<font color='red'>กรุุณากรอก ให้ครบ 13 ตัวอักษร</font>",
+                         maxlength: "<font color='red'>กรุุณากรอก ให้ครบ 13 ตัวอักษร</font>",
+                        
+                     },
+                     emp_address: {
+                         required: "<font color='red'>กรุณากรอกที่อยู่ของท่าน</font>",
+                     },
+                     emp_level: {
+                         required: "<font color='red'>กรุณาเลือกระดับ</font>",
+                     },
+                     
+                 },
+                 onfocusout: function(element) {
+                     // "eager" validation
+                     this.element(element);
+                 },
+             });
+         });
+     </script>
 </head>
-</head>
+
 
 <body>
   <h2 class="page-header text-center" style="padding-top:25px;">แก้ไขข้อมูลพนักงาน</h2>
@@ -78,7 +120,7 @@
   
   ?>
 
-  <form class="form-horizontal" method="post" action="modifiy_employee2.php" enctype="multipart/form-data">
+  <form id="form1" name="form1"class="form-horizontal" method="post" action="modifiy_employee2.php" enctype="multipart/form-data">
     <table width="804" border="0" align="center">
       <tr>
         <td width="190" height="50" align="right"><strong>รหัสพนักงาน</strong> :</td>
@@ -89,7 +131,7 @@
       <tr>
         <td height="50" align="right"><strong>ชื่อ-นามสกุล </strong>:<span style="color:red;">*</span></td>
         <td><label for="textfield"></label>
-          <input type="text" style="width:300px;"class="form-control" name="emp_name" value="<?= $result['emp_name'] ?>" pattern="^[ก-๏a-zA-Z\s]+$" id="emp_name" minlength="5" maxlength="35" required /></td>
+          <input type="text" style="width:300px;"class="form-control" name="emp_name" value="<?= $result['emp_name'] ?>" pattern="^[ก-๏a-zA-Z\s]+$" id="emp_name" required /></td>
       </tr>
       <tr>
         <td height="50" align="right"><strong>วันเกิด</strong> :<span style="color:red;">*</span></td>

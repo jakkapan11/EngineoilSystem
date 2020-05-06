@@ -11,7 +11,25 @@
     }
 
     ?>
+    <script>
+        $(document).ready(function() {
+            $("#payemp").validate({
+                messages: {
+                    receipt_tye: {
+                        required: "<font size='2' style='padding-left:38px;' color='red'>กรุณาเลือกประเภทการชําระ</font>",
+                    },
+                    receipt_payment_details: {
+                        required: "<font size='2' style='padding-left:32px;' color='red'>กรุณากรอกรายละเอียดการชําระ</font>",
+                    },
 
+                },
+                onfocusout: function(element) {
+                    // "eager" validation
+                    this.element(element);
+                },
+            });
+        });
+    </script>
 </head>
 
 <body>
@@ -33,7 +51,7 @@
     <div class="container">
         <h2 class="page-header text-center" style="padding-top:25px;">บันทึกการชําระเงิน</h2>
         <hr>
-        <form action="payemp2.php" method="POST">
+        <form id="payemp" name="payemp" action="payemp2.php" method="POST">
             <table border="0" align="center" style="border:1px solid #C0C0C0; background:#F5F5F5;">
                 <tr>
                     <td colspan="4"><label for="select"></label>
@@ -82,14 +100,14 @@
                 <tr>
                     <td width="180" align="right"><strong>วันทีชําระ :</strong></td>
                     <td width="20%" style="padding-left:14px;"><label for="textfield"></label>
-                        <input type="text" style="width:200px;" class="form-control" name="invoice_date" id="invoice_date" value="<?= tothaiyear(date("Y-m-d")); ?>" readonly/></td>
+                        <input type="text" style="width:200px;" class="form-control" name="invoice_date" id="invoice_date" value="<?= tothaiyear(date("Y-m-d")); ?>" readonly /></td>
 
                     <td align="right"><strong>รายละเอียดการชําระ :</strong> <span style="color:red;">*</span></td>
                     <td style="padding-left:20px;"><label for="textarea"></label>
                         <textarea name="receipt_payment_details" style="width:227px;" class="form-control" id="receipt_payment_details" required cols="30" rows="1" required></textarea></td>
                 </tr>
                 <tr>
-                    <input type="text" style="width:250px;" hidden  name="receipt_date" id="receipt_date" value="<?= tothaiyear(date("Y-m-d")); ?>" hidden /></td>
+                    <input type="text" style="width:250px;" hidden name="receipt_date" id="receipt_date" value="<?= tothaiyear(date("Y-m-d")); ?>" hidden /></td>
                 </tr>
                 <tr>
                     <td colspan="4"><label for="select"></label>

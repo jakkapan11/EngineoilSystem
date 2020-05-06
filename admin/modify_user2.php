@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $idcard          = $_POST['emp_idcard'];
     
     if ($password != $_POST['emp_password2']) {
-        echo "<script> alert('รหัสผ่านไม่ตรงกัน');window.location.assign('modify_user.php')</script>";
+        echo "<script> alert('กรอกรหัสผ่านไม่ตรงกัน');window.location.assign('modify_user.php')</script>";
         exit();
     }
     

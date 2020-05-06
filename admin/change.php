@@ -34,6 +34,25 @@
             }) //กำหนดเป็นวันปัจุบัน       
         });
     </script>
+    <script>
+        $(document).ready(function() {
+            $("#change").validate({
+                messages: {
+                    change_date: {
+                        required: "<font size='2' style='padding-left:40px;' color='red'>กรุณาเลือกวันที่เปลี่ยน</font>",
+                    },
+                    change_amount: {
+                        required: "<font size='2' style='padding-left:40px;' color='red'>กรุณากรอกจําเปลี่ยน</font>",
+                    },
+
+                },
+                onfocusout: function(element) {
+                    // "eager" validation
+                    this.element(element);
+                },
+            });
+        });
+    </script>
 </head>
 
 <body>
@@ -88,7 +107,7 @@
     <div class="container">
         <h2 class="page-header text-center" style="padding-top:25px;">บันทึกการเปลี่ยนสินค้า</h2>
         <hr>
-        <form action="change2.php" method="post" enctype="multipart/form-data">
+        <form id="change" name="change" action="change2.php" method="post" enctype="multipart/form-data">
             <table border="0" align="center" style="border:1px solid #C0C0C0; background:#F5F5F5;width:900px;">
                 <tr>
                     <td colspan="4"><label for="select"></label>
@@ -217,13 +236,13 @@
                             <td align="center" label for="textfield4"></label>
                                 <input type="text" style="width:150px;" class="text-center form-control" value="<?= ($amount_change['change_amount'] ? $amount_change['change_notes'] : "") ?>" <?= ($result_orderlist['od_status'] || ($today >= $strNewDate)) ? "disabled" : "" ?> name="change_notes_<?= $result_orderlist['od_id'] ?>" id="change_notes" /></td>
 
-                            <td style="padding-top:20px;"align="center"><?php
-                                                if ($amount_change['change_date'] == "0000-00-00" || !$amount_change['change_date'])
-                                                    echo "-";
-                                                else
-                                                    echo tothaiyear($amount_change['change_date']);
+                            <td style="padding-top:20px;" align="center"><?php
+                                                                            if ($amount_change['change_date'] == "0000-00-00" || !$amount_change['change_date'])
+                                                                                echo "-";
+                                                                            else
+                                                                                echo tothaiyear($amount_change['change_date']);
 
-                                                ?>
+                                                                            ?>
                         </tr>
 
                     <?php

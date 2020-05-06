@@ -40,6 +40,27 @@
             }
         }
     </script>
+    <script>
+        $(document).ready(function() {
+            $("#delivery").validate({
+                messages: {
+                    order_deliverynumber: {
+                        required: "<font size='2' style='padding-left:30px;' color='red'>กรุณากรอกหมายเลขจัดส่ง</font>",
+                        minlength: "<font size='2' style='padding-left:18px;'color='red'>กรุณากรอก ให้ครบ 13 ตัวอักษร</font>",
+                        maxlength: "<font size='2' style='padding-left:18px;'color='red'>กรุณากรอก ให้ครบ 13 ตัวอักษร</font>",
+                    },
+                    order_delivery_date: {
+                        required: "<font size='2' style='padding-left:42px;' color='red'>กรุณาเลือกวันที่จัดส่ง</font>",
+                    },
+
+                },
+                onfocusout: function(element) {
+                    // "eager" validation
+                    this.element(element);
+                },
+            });
+        });
+    </script>
 </head>
 
 <body>
@@ -77,7 +98,7 @@
     <div class="container">
         <h2 class="page-header text-center" style="padding-top:25px;">บันทึกการจัดส่งสินค้า</h2>
         <hr>
-        <form action="delivery2.php" method="POST">
+        <form id="delivery" name="delivery" action="delivery2.php" method="POST">
             <table border="0" align="center" style="border:1px solid #C0C0C0; background:#F5F5F5;">
                 <tr>
                     <td colspan="4"><label for="select"></label>

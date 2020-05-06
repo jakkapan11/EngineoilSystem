@@ -27,6 +27,46 @@
       return false;
     }
   </script>
+  <script>
+    $(document).ready(function() {
+      $("#form1").validate({
+        messages: {
+          product_name: {
+            required: "<font color='red'>กรุณากรอกชื่อสินค้า</font>",
+            //minlength: "<font color='red'>กรุณากรอก มากกว่า 5 ตัวอักษร</font>",
+            //pattern: "<font color='red'>กรุณากรอกเฉพาะ ตัวอักษรเท่านั้น",
+          },
+          category_id: {
+            required: "<font color='red'>กรุณาเลือกประเภท</font>",
+
+          },
+          product_amount: {
+            required: "<font color='red'>กรุณากรอกจำนวนสินค้า</font>",
+            min: "<font color='red'>กรุณากรอกเป็นจำนวนเต็ม</font>",
+          },
+          product_price_unit: {
+            required: "<font color='red'>กรุณากรอกราคาต่อหน่วย</font>",
+                    min: "<font color='red'>กรุณากรอกราคาไม่น้อยกว่า 600 บาท</font>",
+
+          },
+          product_unit: {
+            required: "<font color='red'>กรุณากรอกหน่วยนับ</font>",
+          },
+          product_pic: {
+            required: "<font color='red'>กรุณาเลือกไฟล์รูปภาพ</font>",
+          },
+          product_description: {
+            required: "<font color='red'>กรุณารายละเอียดสินค้า</font>",
+          },
+
+        },
+        onfocusout: function(element) {
+          // "eager" validation
+          this.element(element);
+        },
+      });
+    });
+  </script>
 </head>
 
 <body>
@@ -38,7 +78,7 @@
       <tr>
         <td width="229" height="50" align="right"><strong>ชื่อสินค้า </strong> :<span style="color:red;">*</span></td>
         <td width="330"><label for="textfield"></label>
-          <input type="text " style="width:300px; " class="form-control" name="product_name" id="product_name" minlength="5" maxlength="50" required /></td>
+          <input type="text"style="width:300px;"class="form-control" name="product_name" id="product_name"  required /></td>
       </tr>
       <tr>
         <td height="50" align="right"><strong>ประเภท</strong> :<span style="color:red;">*</span></td>
@@ -56,14 +96,16 @@
       <tr>
         <td height="50" align="right"><strong>จํานวน</strong>:<span style="color:red;">*</span></td>
         <td><label for="textfield4"></label>
-          <input type="number" style="width:300px; " class="form-control" name="product_amount" min="0" max="100" onkeypress="return isNumberKey(event)" id="product_amount"autocomplete="off" onpaste="return false;" onchange="if(this.value <= 0) {alert('จำนวนไม่สามารถน้อยกว่า 1'); this.value='1'; } " required /></td>
+        <input type="number" class="form-control" style="width:300px" id="product_amount" min="1" onkeypress="return isNumberKey(event)" value="" name="product_amount" required>
+          
       </tr>
-      
+
       <tr>
         <td height="50" align="right"><strong>ราคาต่อหน่วย (บาท)</strong>:<span style="color:red;">*</span></td>
         <td><label for="textfield4"></label>
-          <input type="text" style="width:300px; " class="form-control" name="product_price_unit" onkeypress="return isNumberKey(event)" id="product_price_unit" required /></td>
-          <td>
+        <input type="text" class="form-control" style="width:300px" id="product_price_unit" min="600" onkeypress="return isNumberKey(event)" value="" name="product_price_unit" required>
+        
+        <td>
           <font style="padding-left:70px; color:gray;"></font>
         </td>
       </tr>
@@ -88,7 +130,7 @@
         <td height="100">&nbsp;</td>
         <td><button type="submit" class="btn btn-secondary" onclick="if(confirm('ยืนยันการบันทึก?')) return true; else return false;">บันทึก</button>
           <input class="btn btn-info" type="reset" name="reset" id="reset" value="ล้างค่า" />
-          <button class="btn btn-primary" name="back" onclick="window.history.back();">ย้อนกลับ</button>
+          <inbutton class="btn btn-primary" name="button" onclick="window.history.back();" >ย้อนกลับ</inbutton>
         </td>
       </tr>
     </table>

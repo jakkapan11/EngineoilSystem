@@ -30,6 +30,25 @@
             }) //กำหนดเป็นวันปัจุบัน
         });
     </script>
+    <script>
+        $(document).ready(function() {
+            $("#form1").validate({
+                messages: {
+                    startdate: {
+                        required: "<font size='2' style='padding-left:43px;' color='red'>กรุณาเลือกวันที่ต้องการเริ่มต้นการค้นหา</font>",
+                    },
+                    enddate: {
+                        required: "<font size='2' style='padding-left:43px;' color='red'>กรุณาเลือกวันที่ต้องการสิ้นสุดการค้นหา</font>",
+                    },
+
+                },
+                onfocusout: function(element) {
+                    // "eager" validation
+                    this.element(element);
+                },
+            });
+        });
+    </script>
 </head>
 
 <body>

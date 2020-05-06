@@ -165,31 +165,32 @@
         <table border="0" align="center" style="border:1px;">
             <tr>
                 <td width="100" height="30" align="right"><strong>ชื่อพนักงาน :</strong></td>
-                <td width="30%" style="padding-left:20px;"><?php echo $emp_data['emp_name'] ?></td>
+                <td width="25%" style="padding-left:20px;"><?php echo $emp_data['emp_name'] ?></td>
 
-                <td width="300" align="right"><strong></strong>
+                <td width="400" align="left"><strong></strong>
                     <?php
-                    if ($invoice_data['invoice_status'] == 2) {
-                        echo '<font size="4px" color="red"><b>*** ใบแจ้งหนี้ได้ถูกยกเลิกแล้ว ***</b></font>';
+                    if ($invoice_data['invoice_status'] == 1) {
+                        echo '<font size="5px" color="red"><b>*** ใบแจ้งหนี้ได้ถูกยกเลิกแล้ว ***</b></font>';
                     }
                     ?>
                 </td>
+                <td width="100" align="right"><strong></strong></td>
                 </tr>
             <tr>
                 <td width="100" height="30" align="right"><strong>วันที่ชําระ :</strong></td>
-                <td width="30%" style="padding-left:20px;"><?php if ($invoice_date != "") {
+                <td width="25%" style="padding-left:20px;"><?php if ($invoice_date != "") {
                                             echo $invoice_date;
                                         } else {
                                             echo " <left>-</left>";
                                         } ?></td>
 
-                <td width="270" align="right"><strong></strong></td>
-                <td width="30%" style="padding-left:20px;"></td>
+                <td width="100" align="right"><strong></strong></td>
+                <td width="25%" style="padding-left:20px;"></td>
             </tr>
 
             <tr>
             <td width="100" height="30" align="right"><strong>วันที่พิมพ์ :</strong></td>
-            <td width="30%" style="padding-left:20px;">
+            <td width="25%" style="padding-left:20px;">
                 <?php
                 echo "<meta charset='utf-8'>";
                 date_default_timezone_set("Asia/Bangkok");

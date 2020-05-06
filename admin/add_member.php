@@ -58,6 +58,47 @@
       return false;
     }
   </script>
+<script>
+	
+  // Wait for the DOM to be ready
+  $(document).ready(function() {
+    $("#form1").validate({
+      // Specify validation rules
+    
+      messages: {
+        cus_name: {
+          required: "<font color='red'>กรุณากรอก ชื่อ-นามสกุล</font>",
+          //minlength: "<font color='red'>กรุณากรอก มากกว่า 5 ตัวอักษร</font>",
+          pattern: "<font color='red'>กรุณากรอกเฉพาะ ตัวอักษรเท่านั้น",
+          
+        },
+        cus_phone: {
+          required: "<font color='red'>กรุณากรอกเบอร์โทรศัพท์</font>",
+          digits: "<font color='red'>กรุณากรอกเบอร์โทรศัพท์</font>",
+          minlength: "<font color='red'>กรุณาระบุ ไม่น้อยกว่า 9 ตัวอักษร</font>",
+          maxlength: "<font color='red'>กรุณาระบุ ไม่เกิน 10 ตัวอักษร</font>",
+       
+        },
+      
+        cus_zipcode: {
+          required: "<font color='red'>กรุณากรอกรหัสไปรษณีย์</font>",
+          minlength: "<font color='red'>กรุุณากรอก ให้ครบ 5 ตัวอักษร</font>",
+          maxlength: "<font color='red'>กรุุณากรอก ให้ครบ 5 ตัวอักษร</font>",
+         
+        },
+        cus_address: {
+          required: "<font color='red'>กรุณากรอกที่อยู่ของท่าน</font>",
+        },
+       
+      },
+      onfocusout: function(element) {
+        // "eager" validation
+        this.element(element);
+      },
+    });
+  });
+</script>
+
 </head>
 
 <body>
@@ -71,7 +112,7 @@
       <tr>
         <td width="229" height="50" align="right"><strong>ชื่อ-นามสกุล </strong> :<span style="color:red;">*</span></td>
         <td width="301"><label for="textfield"></label>
-          <input type="text" style="width:300px;" class="form-control" name="cus_name" pattern="^[ก-๏a-zA-Z\s]+$" id="cus_name" minlength="5" maxlength="35" required /></td>
+          <input type="text" style="width:300px;" class="form-control" name="cus_name" pattern="^[ก-๏a-zA-Z\s]+$" id="cus_name"  required /></td>
         <td width="244">&nbsp;</td>
       </tr>
       <tr>
@@ -111,7 +152,7 @@
         <td height="95">&nbsp;</td>
         <td><button type="submit" class="btn btn-secondary" onclick="if(confirm('ยืนยันการบันทึก?')) return true; else return false;">บันทึก</button>
           <input class="btn btn-info" type="reset" name="reset" id="reset" value="ล้างค่า" />
-          <button class="btn btn-primary" name="back" onclick="window.history.back();">ย้อนกลับ</button>
+          <inbutton class="btn btn-primary" name="back" onclick="window.history.back();">ย้อนกลับ</inbutton>
         </td>
         <td>&nbsp;</td>
       </tr>

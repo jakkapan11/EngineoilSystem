@@ -100,6 +100,39 @@
             });
         });
     </script>
+    <script>
+        $(document).ready(function() {
+            $("#form2").validate({
+                messages: {
+                    order_type: {
+                        required: "<font size='2' style='padding-left:55px;'color='red'>กรุณาเลือกประเภทจัดส่ง</font>",
+
+                    },
+                    order_deadline_date: {
+                        required: "<font size='2' style='padding-left:55px;'color='red'>กรุณาเลือกวันที่กําหนดส่ง</font>",
+
+                    },
+                    order_status: {
+                        required: "<font size='2' style='padding-left:55px;'color='red'>กรุณาเลือกสถานะสั่งซื้อ</font>",
+                    },
+                    invoice_credit: {
+                        required: "<font  size='2' style='padding-left:55px;'color='red'>กรุณาเลือกเครดิต (วัน)</font>",
+                    },
+               
+                    receipt_tye: {
+                        required: "<font  size='2' style='padding-left:55px;'color='red'>กรุณาเลือกประเภทชําระ</font>",
+                    },
+                    receipt_payment_details: {
+                        required: "<font  size='2' style='padding-left:40px;'color='red'>กรุณากรอกรายละเอียดการชําระ</font>",
+                    },
+                },
+                onfocusout: function(element) {
+                    // "eager" validation
+                    this.element(element);
+                },
+            });
+        });
+    </script>
 </head>
 
 <body>
@@ -111,7 +144,7 @@
     <div class="container">
         <h2 class="page-header text-center" style="padding-top:25px;">บันทึกการสั่งซื้อ</h2>
         <hr>
-        <form action="save_checkout_order_emp.php" method="POST">
+        <form id="form2" name="form2" action="save_checkout_order_emp.php" method="POST">
             <table border="0" align="center" style="border:1px solid #C0C0C0; background:#F5F5F5;">
                 <tr>
                     <td colspan="4"><label for="select"></label>
@@ -156,7 +189,7 @@
                 <tr>
                     <td height="45" align="right"><strong>วันที่กําหนดส่ง :</strong><span style="color:red;">*</span></td>
                     <td style="padding-left:20px;"><label for="textfield"></label>
-                        <input type="text" onfocus="$(this).blur();" style="width:250px;" onkeypress="return false;" class="form-control datepicker-checkout" name="order_deadline_date" id="order_deadline_date" min="<?= date("Y-m-d"); ?>" required/></td>
+                        <input type="text" onfocus="$(this).blur();" style="width:250px;" onkeypress="return false;" class="form-control datepicker-checkout" name="order_deadline_date" id="order_deadline_date" min="<?= date("Y-m-d"); ?>" required /></td>
 
 
                     <td width="229" height="45" align="right"><strong>ชื่อ-นามสกุล :</strong> </td>
@@ -178,13 +211,13 @@
                 <tr>
                     <td height="10" align="right"><strong></strong> </td>
                     <td style="padding-left:13px;" align="center">
-                        <font size="2" color="red">สามารถเลือกวันกําหนดส่งได้ภายใน 1 เดือน เท่านั้น</font>
+                        <font size="2" color="#3399CC">สามารถเลือกวันกําหนดส่งได้ภายใน 1 เดือน เท่านั้น</font>
                     </td>
 
                     <td height="10" align="right"><strong></strong> </td>
                     <td></td>
                 </tr>
-                
+
                 <tr>
 
                     <td height="50" align="right"><strong>สถานะสั่งซื้อ :</strong><span style="color:red;">*</span></td>

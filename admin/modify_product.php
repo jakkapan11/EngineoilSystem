@@ -3,13 +3,13 @@
   <?php
   include("config/head_admin.php");
   include("config/connect.php");
-  
+
   if (!isset($_SESSION['emp_id'])) {
     echo "<script>window.location.assign('login.php')</script>";
     exit();
   }
   ?>
-<script type="text/javascript">
+  <script type="text/javascript">
     function isNumberKey(evt) {
       var charCode = (evt.which) ? evt.which : evt.keyCode;
       if (charCode != 46 && charCode > 31 &&
@@ -27,7 +27,41 @@
       return false;
     }
   </script>
+  <script>
+    $(document).ready(function() {
+      $("#form1").validate({
+        messages: {
+          product_name: {
+            required: "<font color='red'>กรุณากรอกชื่อสินค้า</font>",
+            //minlength: "<font color='red'>กรุณากรอก มากกว่า 5 ตัวอักษร</font>",
+            //pattern: "<font color='red'>กรุณากรอกเฉพาะ ตัวอักษรเท่านั้น",
+          },
+          product_amount: {
+            required: "<font color='red'>กรุณากรอกจำนวนสินค้า</font>",
+            min: "<font color='red'>กรุณากรอกเป็นจำนวนเต็ม</font>",
+          },
+          product_price_unit: {
+            required: "<font color='red'>กรุณากรอกราคาต่อหน่วย</font>",
+            min: "<font color='red'>กรุณากรอกราคาไม่น้อยกว่า 600 บาท</font>",
+
+          },
+          product_unit: {
+            required: "<font color='red'>กรุณากรอกหน่วยนับ</font>",
+          },
+          product_description: {
+            required: "<font color='red'>กรุณารายละเอียดสินค้า</font>",
+          },
+
+        },
+        onfocusout: function(element) {
+          // "eager" validation
+          this.element(element);
+        },
+      });
+    });
+  </script>
 </head>
+
 <body>
   <h2 class="page-header text-center" style="padding-top:25px;">แก้ไขข้อมูลสินค้า</h2>
   <hr>
@@ -48,13 +82,14 @@
       <tr>
         <td width="175" height="50" align="right"><strong>รหัสสินค้า</strong> :</td>
         <td width="350"><label for="textfield1"></label>
-        <?= $result['product_id'] ?>
+          <?= $result['product_id'] ?>
           <input type="text" style="width:300px;" value="<?= $result['product_id'] ?>" name="product_id" id="product_id" hidden /></td>
       </tr>
       <tr>
         <td width="229" height="50" align="right"><strong>ชื่อสินค้า </strong> :<span style="color:red;">*</span></td>
         <td width="301"><label for="textfield"></label>
-          <input type="text " style="width:300px; " class="form-control" name="product_name" value="<?= $result['product_name'] ?>" id="product_name" required /></td>
+        <input type="text" class="form-control" id="product_name" required value="<?php echo $result['product_name']; ?>" name="product_name">
+         
       </tr>
       <tr>
         <td height="50" align="right"><strong>ประเภท</strong> :<span style="color:red;">*</span></td>
@@ -66,22 +101,23 @@
             $query_catg = mysqli_query($link, $sql_cat);
             while ($catg = mysqli_fetch_array($query_catg)) { ?>
               <option <?php if ($result['category_id'] == $catg['category_id']) {
-                          echo "selected";
-                        } ?> value="<?= $catg['category_id'] ?>"><?= $catg['category_name'] ?></option>
+                        echo "selected";
+                      } ?> value="<?= $catg['category_id'] ?>"><?= $catg['category_name'] ?></option>
             <?php } ?>
           </select></td>
       </tr>
       <tr>
         <td height="50" align="right"><strong>จํานวน</strong>:<span style="color:red;">*</span></td>
         <td><label for="textfield4"></label>
-          <input type="number" style="width:300px; " class="form-control" name="product_amount" min="0" max="100" onkeypress="return isNumberKey(event)" value="<?= $result['product_amount'] ?>"   id="product_amount"autocomplete="off" onpaste="return false;" onchange="if(this.value <= 0) {alert('จำนวนไม่สามารถน้อยกว่า 1'); this.value='1'; } " required /></td>
+          <input type="number" class="form-control" required style="width:300px" id="product_amount" min="1" onkeypress="return isNumberKey(event)" value="<?php echo $result['product_amount']; ?>" name="product_amount">
       </tr>
       <tr>
         <td height="50" align="right"><strong>ราคาต่อหน่วย (บาท)</strong>:<span style="color:red;">*</span></td>
         <td><label for="textfield4"></label>
-          <input type="text"style="width:300px; " class="form-control" name="product_price_unit" value="<?= $result['product_price_unit'] ?>" onkeypress="return isNumberKey(event)" id="product_price_unit"required /></td>
-         
-        </tr>
+          <input type="text" class="form-control" required style="width:300px" id="product_price_unit" min="600" onkeypress="return isNumberKey(event)" value="<?php echo $result['product_price_unit']; ?>" name="product_price_unit">
+
+
+      </tr>
       <tr>
         <td height="50" align="right"><strong>หน่วยนับ</strong>:<span style="color:red;">*</span></td>
         <td><label for="textfield4"></label>
@@ -89,9 +125,7 @@
       </tr>
       <tr>
         <td></td>
-        <td height= "150" align="left" colspan="2"><img height="" width="120" src="../<?= $result['product_picture'] ?>"</td>
-      </tr>
-      <tr>
+        <td height="150" align="left" colspan="2"><img height="" width="120" src="../<?= $result['product_picture'] ?>" </td> </tr> <tr>
         <td height="50" align="right"><strong>รูปภาพ</strong>:<span style="color:red;"></span></td>
         <td><label for="textfield4"></label>
           <input type="file" name="product_pic" style="width:300px;" class="form-control" id="product_pic" accept="image/gif, image/jpeg, image/png" /></td>
