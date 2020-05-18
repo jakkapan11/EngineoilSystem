@@ -131,14 +131,14 @@
         <tr>
           <td width="192" height="50" align="right"><strong>ชื่อ-นามสกุล </strong>:<span style="color:red;">*</span></td>
           <td width="270"><label for="textfield"></label>
-            <input type="text" style="width:300px; " class="form-control" name="emp_name" value="<?= $result['emp_name'] ?>" pattern="^[ก-๏a-zA-Z\s]+$" minlength="5" maxlength="35" id="emp_name" required /></td>
+            <input type="text" style="width:300px; " class="form-control" name="emp_name" value="<?= $result['emp_name'] ?>" pattern="^[ก-๏a-zA-Z\s]+$"  id="emp_name" required /></td>
         </tr>
         <tr>
           <td height="50" align="right"><strong>วันเกิด</strong> :<span style="color:red;">*</span></td>
           <td><label for="textfield8"></label>
             <input type="text" name="emp_birthday" style="width:300px; padding-left:14px;" onfocus="$(this).blur();" class="form-control datepicker" onkeypress="return false;" value="<?= tothaiyear($result['emp_birthday']) ?>" id="emp_birthday" required /></td>
           <td>
-            <font style="padding-left:40px; color:gray;">(กรอก วัน/เดือน/ปี ที่เกิดเลือกจากปฎิทิน)</font>
+            <font style="padding-left:40px; color:gray;">(เลือก วัน/เดือน/ปี ที่เกิดจากปฎิทิน)</font>
           </td>
         </tr>
         <tr>

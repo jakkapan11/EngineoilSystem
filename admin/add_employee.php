@@ -51,12 +51,12 @@
   </script>
   <script>
          $(document).ready(function() {
-             $("#form1").validate({
+             $("#employee").validate({
                  messages: {
                   emp_name: {
                          required: "<font color='red'>กรุณากรอก ชื่อ-นามสกุล</font>",
                          //minlength: "<font color='red'>กรุณากรอก มากกว่า 5 ตัวอักษร</font>",
-                         pattern: "<font color='red'>กรุณากรอกเฉพาะ ตัวอักษรเท่านั้น",
+                         pattern: "<font color='red'>กรุณากรอกเฉพาะ ตัวอักษรเท่านั้น</font>",
                      },
                      emp_birthday: {
                          required: "<font color='red'>กรุณาเลือกวันเกิดของท่าน</font>",
@@ -97,12 +97,13 @@
   <h2 class="page-header text-center" style="padding-top:25px;">เพิ่มข้อมูลพนักงาน</h2>
   <hr>
 
-  <form id="form1" name="form1" method="post" action="add_employee2.php">
+  <form id="employee" name="form1" method="post" action="add_employee2.php">
     <table width="843" border="0" align="center">
       <tr>
         <td width="229" height="50" align="right"><strong>ชื่อ-นามสกุล </strong> :<span style="color:red;">*</span></td>
         <td width="301"><label for="textfield"></label>
-        <input type="text" class="form-control" pattern="^[ก-๏a-zA-Z\s]+$" value="" id="emp_name" name="emp_name" required>  
+        <input type="text" class="form-control"id="emp_name" value="" name="emp_name" required pattern="^[ก-๏a-zA-Z\s]+$">
+        
         
         <td width="244">&nbsp;</td>
       </tr>
