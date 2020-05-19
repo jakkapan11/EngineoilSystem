@@ -61,6 +61,7 @@
     <?php
     $sql_date = "SELECT DISTINCT date(invoice_paymendate) FROM invoice
                 WHERE month(invoice_paymendate) = '$month' AND year(invoice_paymendate) = '$year'
+                AND invoice_status != '2'
                 ORDER BY date(invoice_paymendate) ASC";
     $query_date = mysqli_query($link, $sql_date) or die(mysqli_error($link));
     $sum_a = $sum_b = $sum_c = $sum_d = $sum_e = 0;
@@ -85,7 +86,8 @@
         $sql_order = "SELECT * FROM invoice
                LEFT JOIN orders ON invoice.order_id = orders.order_id
                LEFT JOIN customers ON orders.cus_id = customers.cus_id
-               WHERE date(invoice_paymendate) = '" . $result_date['date(invoice_paymendate)'] . "'";
+               WHERE date(invoice_paymendate) = '" . $result_date['date(invoice_paymendate)'] . "'
+               AND invoice_status != '2'";
         $query_order = mysqli_query($link, $sql_order) or die(mysqli_error($link));
 
         $row_order = 1;
