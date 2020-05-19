@@ -58,46 +58,48 @@
       return false;
     }
   </script>
-<script>
-	
-  // Wait for the DOM to be ready
-  $(document).ready(function() {
-    $("#form1").validate({
-      // Specify validation rules
-    
-      messages: {
-        cus_name: {
-          required: "<font color='red'>กรุณากรอก ชื่อ-นามสกุล</font>",
-          //minlength: "<font color='red'>กรุณากรอก มากกว่า 5 ตัวอักษร</font>",
-          pattern: "<font color='red'>กรุณากรอกเฉพาะ ตัวอักษรเท่านั้น",
-          
+  <script>
+    // Wait for the DOM to be ready
+    $(document).ready(function() {
+      $("#form1").validate({
+        // Specify validation rules
+
+        messages: {
+          cus_name: {
+            required: "<font color='red'>กรุณากรอก ชื่อ-นามสกุล</font>",
+            //minlength: "<font color='red'>กรุณากรอก มากกว่า 5 ตัวอักษร</font>",
+            pattern: "<font color='red'>กรุณากรอกเฉพาะ ตัวอักษรเท่านั้น",
+
+          },
+          cus_phone: {
+            required: "<font color='red'>กรุณากรอกเบอร์โทรศัพท์</font>",
+            digits: "<font color='red'>กรุณากรอกเบอร์โทรศัพท์</font>",
+            minlength: "<font color='red'>กรุณาระบุ ไม่น้อยกว่า 9 ตัวอักษร</font>",
+            maxlength: "<font color='red'>กรุณาระบุ ไม่เกิน 10 ตัวอักษร</font>",
+
+          },
+
+          cus_zipcode: {
+            required: "<font color='red'>กรุณากรอกรหัสไปรษณีย์</font>",
+            minlength: "<font color='red'>กรุุณากรอก ให้ครบ 5 ตัวอักษร</font>",
+            maxlength: "<font color='red'>กรุุณากรอก ให้ครบ 5 ตัวอักษร</font>",
+
+          },
+          cus_address: {
+            required: "<font color='red'>กรุณากรอกที่อยู่ของท่าน</font>",
+          },
+          cus_email: {
+            email: "<font color='red'>กรุณากรอกอีเมลในรูปแบบที่ถูกต้อง</font>",
+          },
+
         },
-        cus_phone: {
-          required: "<font color='red'>กรุณากรอกเบอร์โทรศัพท์</font>",
-          digits: "<font color='red'>กรุณากรอกเบอร์โทรศัพท์</font>",
-          minlength: "<font color='red'>กรุณาระบุ ไม่น้อยกว่า 9 ตัวอักษร</font>",
-          maxlength: "<font color='red'>กรุณาระบุ ไม่เกิน 10 ตัวอักษร</font>",
-       
+        onfocusout: function(element) {
+          // "eager" validation
+          this.element(element);
         },
-      
-        cus_zipcode: {
-          required: "<font color='red'>กรุณากรอกรหัสไปรษณีย์</font>",
-          minlength: "<font color='red'>กรุุณากรอก ให้ครบ 5 ตัวอักษร</font>",
-          maxlength: "<font color='red'>กรุุณากรอก ให้ครบ 5 ตัวอักษร</font>",
-         
-        },
-        cus_address: {
-          required: "<font color='red'>กรุณากรอกที่อยู่ของท่าน</font>",
-        },
-       
-      },
-      onfocusout: function(element) {
-        // "eager" validation
-        this.element(element);
-      },
+      });
     });
-  });
-</script>
+  </script>
 
 </head>
 
@@ -112,13 +114,13 @@
       <tr>
         <td width="229" height="50" align="right"><strong>ชื่อ-นามสกุล </strong> :<span style="color:red;">*</span></td>
         <td width="301"><label for="textfield"></label>
-          <input type="text" style="width:300px;" class="form-control" name="cus_name" pattern="^[ก-๏a-zA-Z\s]+$" id="cus_name"  required /></td>
+          <input type="text" style="width:300px;" class="form-control" name="cus_name" pattern="^[ก-๏a-zA-Z\s]+$" id="cus_name" required /></td>
         <td width="244">&nbsp;</td>
       </tr>
       <tr>
         <td height="40" align="right"><strong>วันเกิด</strong> :<span style="color:red;"></span></td>
         <td><label for="textfield2"></label>
-          <input type="text" onfocus="$(this).blur();"id="cus_birthday" name="cus_birthday" class="form-control datepicker" onkeypress="return false;" style="width:300; padding-left:13px" data-provide="datepicker" autocomplete="off" data-date-format="dd/mm//yyyy" /></td>
+          <input type="text" onfocus="$(this).blur();" id="cus_birthday" name="cus_birthday" class="form-control datepicker" onkeypress="return false;" style="width:300; padding-left:13px" data-provide="datepicker" autocomplete="off" data-date-format="dd/mm//yyyy" /></td>
         <td>
           <font style="padding-left:40px; color:gray;">(เลือก วัน/เดือน/ปี ที่เกิดจากปฎิทิน)</font>
       </tr>
@@ -133,8 +135,9 @@
       <tr>
         <td height="50" align="right"><strong>อีเมล</strong>:<span style="color:red;"></span></td>
         <td><label for="textfield4"></label>
-          <input style="width:300px;" class="form-control" type="email" name="cus_email" id="cus_email"/></td>
-          <td <font style="padding-left:40px; color:gray;">(กรอกอีเมลให้ถูกต้องตามรูปแบบ เช่น email@hotmail.com)</font></td>
+          <input style="width:300px;" class="form-control" type="email" name="cus_email" id="cus_email" /></td>
+        <td <font style="padding-left:40px; color:gray;">(กรอกอีเมลให้ถูกต้องตามรูปแบบ เช่น email@hotmail.com)</font>
+        </td>
       </tr>
       <tr>
         <td height="130" align="right"><strong>ที่อยู่</strong> :<span style="color:red;">*</span></td>

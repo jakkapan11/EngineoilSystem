@@ -58,8 +58,16 @@
           </div>
         </div>
       </div>
+
       </section>
     </div>
+    
   </div>
   </div>
+  <h2 class="page-header text-center" style="padding-top:0px;"></h2>
+ <hr>
+  <div class=" container text-center col-md-10">
+      <h3 style="text-align:left; padding-left:320px; "><u>นโยบาย</u></h3>
+      <iframe frameBorder="0" style="width:750px; height:250px;" src="policy.php"></iframe>
+    </div>
 </body>

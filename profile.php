@@ -94,6 +94,9 @@
             minlength: "<font color='red'>กรุณากรอกอย่างน้อย 8-20 ตัวอักษร</font>",
             maxlength: "<font color='red'>กรุณากรอกอย่างน้อย 8-20 ตัวอักษร</font>",
           },
+          cus_email: {
+          email: "<font color='red'>กรุณากรอกอีเมลในรูปแบบที่ถูกต้อง</font>",
+        },
 
         },
         onfocusout: function(element) {
@@ -148,7 +151,7 @@
         <tr>
           <td height="50" align="right"><strong>เบอร์โทรศัพท์</strong>:<span style="color:red;">*</span></td>
           <td><label for="textfield2"></label>
-            <input type="text" style="width:300px; " class="form-control" name="cus_phone" value="<?= $result['cus_phone'] ?>" id="cus_phone" minlength="8" maxlength="10" required /></td>
+            <input type="text" style="width:300px; " class="form-control" name="cus_phone" onkeypress="return isNumberKey(event)" value="<?= $result['cus_phone'] ?>" id="cus_phone" minlength="8" maxlength="10" required /></td>
           <td>
             <font width="667;" style="padding-left:30px; color:gray;">(กรอกอย่างน้อย 9 ตัวอีกษร)</font>
         </tr>
@@ -167,7 +170,7 @@
         <tr>
           <td height="50" align="right"><strong>รหัสไปรษณีย์</strong> :<span style="color:red;">*</span></td>
           <td><label for="textfield4"></label>
-            <input type="text" name="cus_zipcode" style="width:300px; " class="form-control" value="<?= $result['cus_zipcode'] ?>" id="cus_zipcode" minlength="5" maxlength="5" required /></td>
+            <input type="text" name="cus_zipcode" style="width:300px; " class="form-control" onkeypress="return isNumberKey(event)" value="<?= $result['cus_zipcode'] ?>" id="cus_zipcode" minlength="5" maxlength="5" required /></td>
           <td>
             <font style="padding-left:30px; color:gray;">(กรอก 5 ตัวอักษร)</font>
           </td>

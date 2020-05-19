@@ -120,6 +120,16 @@
                     $sum_l += $result_order['order_deliverycost'];
                     //$total_trans_1++;
                     break;
+                case 2:
+                    $invoice_status = "<font color='54BD54'>ชําระแล้ว</font>";
+                    $order_totalprice = "<font color='54BD54'>" . number_format($result_order['order_deliverycost'] + $result_order['order_total'], 2) . "</font>";
+                    $order_deliverycost =  "<font color='54BD54'>" . number_format($result_order['order_deliverycost'], 2) . "</font>";
+                    $order_total = "<font color='54BD54'>" . number_format($result_order['order_total'], 2) . "</font>";
+                    $sum_c += $result_order['order_deliverycost'] + $result_order['order_total'];
+                    $sum_h += $result_order['order_total'];
+                    $sum_m += $result_order['order_deliverycost'];
+                    //$total_trans_1++;
+                    break;
                 default:
                     $invoice_status = "-";
             }
@@ -166,6 +176,13 @@
         <td align="right" style="color:9900FF;"><b><?= number_format($sum_k, 2) ?></b></td>
         <td align="right" colspan="3" style="color:9900FF;"><b><?= number_format($sum_a, 2) ?></b></td>
     </tr>
+    <tr>
+        <td colspan="6"></td>
+        <td align="right" colspan="2" style="color:54BD54;"><b>รวมชําระแล้วทั้งหมด(บาท)</b></td>
+        <td align="right" style="color:54BD54;"><b><?= number_format($sum_h, 2) ?></b></td>
+        <td align="right" style="color:54BD54;"><b><?= number_format($sum_m, 2) ?></b></td>
+        <td align="right" colspan="3" style="color:54BD54;"><b><?= number_format($sum_c, 2) ?></b></td>
+    </tr>   
     <tr style="border-bottom:1px solid">
         <td colspan="6"></td>
         <td align="right" colspan="2" style="color:red;"><b>รวมยกเลิกทั้งหมด(บาท)</b></td>
@@ -173,6 +190,7 @@
         <td align="right" style="color:red;"><b><?= number_format($sum_l, 2) ?></b></td>
         <td align="right" colspan="3" style="color:red;"><b><?= number_format($sum_b, 2) ?></b></td>
     </tr>
+    
 
     </tr>
 </table>

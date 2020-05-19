@@ -60,40 +60,42 @@
   }
 </script>
 <script>
-         $(document).ready(function() {
-             $("#form1").validate({
-                 messages: {
-                     cus_name: {
-                         required: "<font color='red'>กรุณากรอก ชื่อ-นามสกุล</font>",
-                         //minlength: "<font color='red'>กรุณากรอก มากกว่า 5 ตัวอักษร</font>",
-                         pattern: "<font color='red'>กรุณากรอกเฉพาะ ตัวอักษรเท่านั้น",
-                     },
-                     cus_phone: {
-                         required: "<font color='red'>กรุณากรอกเบอร์โทรศัพท์</font>",
-                         digits: "<font color='red'>กรุณากรอกเบอร์โทรศัพท์</font>",
-                         minlength: "<font color='red'>กรุณาระบุ ไม่น้อยกว่า 9 ตัวอักษร</font>",
-                         maxlength: "<font color='red'>กรุณาระบุ ไม่เกิน 10 ตัวอักษร</font>",
-                        
-                     },
-                    
-                     cus_zipcode: {
-                         required: "<font color='red'>กรุณากรอกรหัสไปรษณีย์</font>",
-                         minlength: "<font color='red'>กรุุณากรอก ให้ครบ 5 ตัวอักษร</font>",
-                         maxlength: "<font color='red'>กรุุณากรอก ให้ครบ 5 ตัวอักษร</font>",
-                        
-                     },
-                     cus_address: {
-                         required: "<font color='red'>กรุณากรอกที่อยู่ของท่าน</font>",
-                     },
-                     
-                 },
-                 onfocusout: function(element) {
-                     // "eager" validation
-                     this.element(element);
-                 },
-             });
-         });
-     </script>
+  $(document).ready(function() {
+    $("#form1").validate({
+      messages: {
+        cus_name: {
+          required: "<font color='red'>กรุณากรอก ชื่อ-นามสกุล</font>",
+          //minlength: "<font color='red'>กรุณากรอก มากกว่า 5 ตัวอักษร</font>",
+          pattern: "<font color='red'>กรุณากรอกเฉพาะ ตัวอักษรเท่านั้น",
+        },
+        cus_phone: {
+          required: "<font color='red'>กรุณากรอกเบอร์โทรศัพท์</font>",
+          digits: "<font color='red'>กรุณากรอกเบอร์โทรศัพท์</font>",
+          minlength: "<font color='red'>กรุณาระบุ ไม่น้อยกว่า 9 ตัวอักษร</font>",
+          maxlength: "<font color='red'>กรุณาระบุ ไม่เกิน 10 ตัวอักษร</font>",
+
+        },
+
+        cus_zipcode: {
+          required: "<font color='red'>กรุณากรอกรหัสไปรษณีย์</font>",
+          minlength: "<font color='red'>กรุุณากรอก ให้ครบ 5 ตัวอักษร</font>",
+          maxlength: "<font color='red'>กรุุณากรอก ให้ครบ 5 ตัวอักษร</font>",
+
+        },
+        cus_address: {
+          required: "<font color='red'>กรุณากรอกที่อยู่ของท่าน</font>",
+        },
+        cus_email: {
+          email: "<font color='red'>กรุณากรอกอีเมลในรูปแบบที่ถูกต้อง</font>",
+        },
+      },
+      onfocusout: function(element) {
+        // "eager" validation
+        this.element(element);
+      },
+    });
+  });
+</script>
 </head>
 
 <body>
@@ -126,8 +128,8 @@
       <tr>
         <td width="229" height="50" align="right"><strong>ชื่อ-นามสกุล </strong> :<span style="color:red;">*</span></td>
         <td width="301"><label for="textfield"></label>
-        <input type="text" required class="form-control" id="cus_name" pattern="^[ก-๏a-zA-Z\s]+$" value="<?php echo $result['cus_name']; ?>" name="cus_name">  
-        
+          <input type="text" required class="form-control" id="cus_name" pattern="^[ก-๏a-zA-Z\s]+$" value="<?php echo $result['cus_name']; ?>" name="cus_name">
+
       </tr>
       <tr>
         <td height="50" align="right"><strong>วันเกิด</strong> :<span style="color:red;"></span></td>
@@ -139,15 +141,16 @@
       <tr>
         <td height="50" align="right"><strong>เบอร์โทรศัพท์</strong> :<span style="color:red;">*</span></td>
         <td><label for="textfield3"></label>
-          <input type="text" style="width:300px; " class="form-control" name="cus_phone" onkeypress="return isNumberKey (event)" value="<?= $result['cus_phone'] ?>" id="cus_phone"  minlength="9" maxlength="10" required /></td>
+          <input type="text" style="width:300px; " class="form-control" name="cus_phone" onkeypress="return isNumberKey (event)" value="<?= $result['cus_phone'] ?>" id="cus_phone" minlength="9" maxlength="10" required /></td>
         <td>
           <font style="padding-left:40px; color:gray;">(กรอกอย่างน้อย 9 ตัวอักษร)</font>
       </tr>
       <tr>
         <td height="50" align="right"><strong>อีเมล</strong>:<span style="color:red;"></span></td>
         <td><label for="textfield4"></label>
-          <input type="email" style="width:300px; " class="form-control" name="cus_email" value="<?= $result['cus_email'] ?>" id="cus_email"/></td>
-        <td <font style="padding-left:40px; color:gray;">(กรอกอีเมลให้ถูกต้องตามรูปแบบ เช่น email@hotmail.com)</font></td>
+          <input type="email" style="width:300px; " class="form-control" name="cus_email" value="<?= $result['cus_email'] ?>" id="cus_email" /></td>
+        <td <font style="padding-left:40px; color:gray;">(กรอกอีเมลให้ถูกต้องตามรูปแบบ เช่น email@hotmail.com)</font>
+        </td>
       </tr>
       <tr>
         <td height="130" align="right"><strong>ที่อยู่</strong> :<span style="color:red;">*</span></td>

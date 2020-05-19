@@ -46,6 +46,7 @@
                             <div class="col-md-6 offset-md-4" align="center">
                                 <button type="submit" class="btn btn-primary col-md-12" >เข้าสู่ระบบ</button>  
                             </div>
+                            <p class="col-md-4 col-form-label text-md-right"><a target="_blank" href="forgot_password.php"><u>ลืมรหัสผ่าน?</u></a></p>
                     </div>
                     </form>
                 </div>

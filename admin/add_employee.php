@@ -50,47 +50,50 @@
     }
   </script>
   <script>
-         $(document).ready(function() {
-             $("#employee").validate({
-                 messages: {
-                  emp_name: {
-                         required: "<font color='red'>กรุณากรอก ชื่อ-นามสกุล</font>",
-                         //minlength: "<font color='red'>กรุณากรอก มากกว่า 5 ตัวอักษร</font>",
-                         pattern: "<font color='red'>กรุณากรอกเฉพาะ ตัวอักษรเท่านั้น</font>",
-                     },
-                     emp_birthday: {
-                         required: "<font color='red'>กรุณาเลือกวันเกิดของท่าน</font>",
-                      
-                     },
-                     emp_phone: {
-                         required: "<font color='red'>กรุณากรอกเบอร์โทรศัพท์</font>",
-                         digits: "<font color='red'>กรุณากรอกเบอร์โทรศัพท์</font>",
-                         minlength: "<font color='red'>กรุณาระบุ ไม่น้อยกว่า 9 ตัวอักษร</font>",
-                         maxlength: "<font color='red'>กรุณาระบุ ไม่เกิน 10 ตัวอักษร</font>",
-                        
-                     },
-                    
-                     emp_idcard: {
-                         required: "<font color='red'>กรุณากรอกหมายเลขบัตรประชาชน</font>",
-                         minlength: "<font color='red'>กรุุณากรอก ให้ครบ 13 ตัวอักษร</font>",
-                         maxlength: "<font color='red'>กรุุณากรอก ให้ครบ 13 ตัวอักษร</font>",
-                        
-                     },
-                     emp_address: {
-                         required: "<font color='red'>กรุณากรอกที่อยู่ของท่าน</font>",
-                     },
-                     emp_level: {
-                         required: "<font color='red'>กรุณาเลือกระดับ</font>",
-                     },
-                     
-                 },
-                 onfocusout: function(element) {
-                     // "eager" validation
-                     this.element(element);
-                 },
-             });
-         });
-     </script>
+    $(document).ready(function() {
+      $("#employee").validate({
+        messages: {
+          emp_name: {
+            required: "<font color='red'>กรุณากรอก ชื่อ-นามสกุล</font>",
+            //minlength: "<font color='red'>กรุณากรอก มากกว่า 5 ตัวอักษร</font>",
+            pattern: "<font color='red'>กรุณากรอกเฉพาะ ตัวอักษรเท่านั้น</font>",
+          },
+          emp_birthday: {
+            required: "<font color='red'>กรุณาเลือกวันเกิดของท่าน</font>",
+
+          },
+          emp_phone: {
+            required: "<font color='red'>กรุณากรอกเบอร์โทรศัพท์</font>",
+            digits: "<font color='red'>กรุณากรอกเบอร์โทรศัพท์</font>",
+            minlength: "<font color='red'>กรุณาระบุ ไม่น้อยกว่า 9 ตัวอักษร</font>",
+            maxlength: "<font color='red'>กรุณาระบุ ไม่เกิน 10 ตัวอักษร</font>",
+
+          },
+
+          emp_idcard: {
+            required: "<font color='red'>กรุณากรอกหมายเลขบัตรประชาชน</font>",
+            minlength: "<font color='red'>กรุุณากรอก ให้ครบ 13 ตัวอักษร</font>",
+            maxlength: "<font color='red'>กรุุณากรอก ให้ครบ 13 ตัวอักษร</font>",
+
+          },
+          emp_address: {
+            required: "<font color='red'>กรุณากรอกที่อยู่ของท่าน</font>",
+          },
+          emp_level: {
+            required: "<font color='red'>กรุณาเลือกระดับ</font>",
+          },
+          emp_email: {
+            email: "<font color='red'>กรุณากรอกอีเมลในรูปแบบที่ถูกต้อง</font>",
+          },
+
+        },
+        onfocusout: function(element) {
+          // "eager" validation
+          this.element(element);
+        },
+      });
+    });
+  </script>
 </head>
 
 <body>
@@ -102,9 +105,9 @@
       <tr>
         <td width="229" height="50" align="right"><strong>ชื่อ-นามสกุล </strong> :<span style="color:red;">*</span></td>
         <td width="301"><label for="textfield"></label>
-        <input type="text" class="form-control"id="emp_name" value="" name="emp_name" required pattern="^[ก-๏a-zA-Z\s]+$">
-        
-        
+          <input type="text" class="form-control" id="emp_name" value="" name="emp_name" required pattern="^[ก-๏a-zA-Z\s]+$">
+
+
         <td width="244">&nbsp;</td>
       </tr>
       <tr>

@@ -17,7 +17,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         order_id                  = '". $_POST['orders_id'] ."',
         receipt_payment_details	  = '" . $_POST['receipt_payment_details'] . "'";
     $sql_invoice = "UPDATE invoice SET
-        invoice_date =  '$paymentdate' WHERE invoice_id = '". $_POST['invoice_id'] ."' ";
+        invoice_date  =  '".$paymentdate. "',
+        invoice_status = '2'  WHERE invoice_id = '". $_POST['invoice_id'] ."' ";
         
     mysqli_query($link, $sql_receipt) or die(mysqli_error($link));
     $new_receiptid = mysqli_insert_id($link);
