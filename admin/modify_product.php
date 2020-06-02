@@ -36,14 +36,12 @@
             //minlength: "<font color='red'>กรุณากรอก มากกว่า 5 ตัวอักษร</font>",
             //pattern: "<font color='red'>กรุณากรอกเฉพาะ ตัวอักษรเท่านั้น",
           },
-          product_amount: {
-            required: "<font color='red'>กรุณากรอกจำนวนสินค้า</font>",
-            min: "<font color='red'>กรุณากรอกเป็นจำนวนเต็ม</font>",
-          },
           product_price_unit: {
             required: "<font color='red'>กรุณากรอกราคาต่อหน่วย</font>",
-            min: "<font color='red'>กรุณากรอกราคาไม่น้อยกว่า 600 บาท</font>",
-
+            min: "<font color='red'>กรุณากรอกราคาขั้นตํ่า 50 บาท</font>",
+          },
+          product_amount: {
+            required: "<font color='red'>กรุณากรอกจํานวนสินค้า</font>",
           },
           product_unit: {
             required: "<font color='red'>กรุณากรอกหน่วยนับ</font>",
@@ -88,7 +86,7 @@
       <tr>
         <td width="229" height="50" align="right"><strong>ชื่อสินค้า </strong> :<span style="color:red;">*</span></td>
         <td width="301"><label for="textfield"></label>
-        <input type="text" class="form-control" id="product_name" required value="<?php echo $result['product_name']; ?>" name="product_name">
+        <input type="text" style="width:300px; "class="form-control" id="product_name" required value="<?php echo $result['product_name']; ?>" name="product_name">
          
       </tr>
       <tr>
@@ -109,12 +107,12 @@
       <tr>
         <td height="50" align="right"><strong>จํานวน</strong>:<span style="color:red;">*</span></td>
         <td><label for="textfield4"></label>
-          <input type="number" class="form-control" required style="width:300px" id="product_amount" min="1" onkeypress="return isNumberKey(event)" value="<?php echo $result['product_amount']; ?>" name="product_amount">
+          <input type="text" class="form-control" required style="width:300px" id="product_amount" min="0" onkeypress="return isNumberKey(event)" value="<?php echo $result['product_amount']; ?>" name="product_amount">
       </tr>
       <tr>
         <td height="50" align="right"><strong>ราคาต่อหน่วย (บาท)</strong>:<span style="color:red;">*</span></td>
         <td><label for="textfield4"></label>
-          <input type="text" class="form-control" required style="width:300px" id="product_price_unit" min="600" onkeypress="return isNumberKey(event)" value="<?php echo $result['product_price_unit']; ?>" name="product_price_unit">
+          <input type="text" class="form-control" required style="width:300px" id="product_price_unit" min="50" onkeypress="return isNumberKey(event)" value="<?php echo $result['product_price_unit']; ?>" name="product_price_unit">
 
 
       </tr>

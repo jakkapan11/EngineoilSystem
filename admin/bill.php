@@ -17,6 +17,11 @@
     ?>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="shortcut icon" href="favicon.ico" />
+    <style type="text/css" media="print">
+        @page {
+            size: auto;
+        }
+    </style>
 </head>
 
 <body>
@@ -51,16 +56,16 @@
         $receipt_date = "";
     else $receipt_date = DateThai($receipt_data2['receipt_date']);
 
-  
+
 
     ?>
     <br>
-    <div class="container "style="border: 1pt solid black;">
+    <div class="container " style="border: 1pt solid black;">
         <h2 class="page-header text-center" style="padding-top:50px;">ใบเสร็จรับเงิน</h2>
         <h6 class="page-header text-center" style="padding-top:0px;">ร้านอู่ชัยยานยนต์</h6>
         <h6 class="page-header text-center" style="padding-top:0px;">32/2 หมู่ 2 ตำบลแหลมงอบ อำเภอแหลมงอบ จังหวัดตราด 23120</h6>
         <hr>
-        <form action="#" method="POST" >
+        <form action="#" method="POST">
             <table border="0" align="center" style="border:1px solid #C0C0C0;width:900px; ">
                 <tr>
                     <td colspan="4"><label for="select"></label>
@@ -77,7 +82,9 @@
                     <td width="25%" style="padding-left:20px;"><?php
                                                                 if ($invoice_data['invoice_id'] != "") {
                                                                     echo $invoice_data['invoice_id'];
-                                                                } else { echo " <left>-</left>"; } ?></td>
+                                                                } else {
+                                                                    echo " <left>-</left>";
+                                                                } ?></td>
 
                     <td width="250" align="right"><strong>วันที่สั่งซื้อ :</strong></td>
                     <td width="30%" style="padding-left:20px;"><?= DateThai($data['order_date']); ?></td>
@@ -101,7 +108,6 @@
                             echo "<span style='padding-left:20px;color:FF9999;'>บัตรเดบิต</span>";
                         } elseif ($receipt_data2['receipt_tye'] == 3) {
                             echo "<span style='padding-left:20px;color:0000DD;'>บัตรเครดิต</span>";
-
                         }
                         ?></td>
 
@@ -183,52 +189,47 @@
             </tr>
         </table>
 
-    
-
-    <table border="0" align="center" style="border:1px;">
-        <tr>
-            <td width="150" height="30" align="right"><strong>ชื่อพนักงาน :</strong></td>
-            <td width="30%" style="padding-left:20px;"><?php echo $emp_data['emp_name']; ?></td>
-
-            <td width="250" align="right"><strong></strong></td>
-            <td width="30%" style="padding-left:20px;"></td>
-        </tr>
 
 
-        <td width="150" height="30" align="right"><strong>วันที่พิมพ์ :</strong></td>
-        <td width="30%" style="padding-left:20px;">
-            <?php
-            echo "<meta charset='utf-8'>";
-            date_default_timezone_set("Asia/Bangkok");
-            function ThDate()
-            {
-                //วันภาษาไทย
-                $ThDay = array("อาทิตย์", "จันทร์", "อังคาร", "พุธ", "พฤหัส", "ศุกร์", "เสาร์");
-                //เดือนภาษาไทย
-                $ThMonth = array("มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฏาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม");
+        <table border="0" align="center" style="border:1px;">
+            <tr>
+                <td width="150" height="30" align="right"><strong>ชื่อพนักงาน :</strong></td>
+                <td width="30%" style="padding-left:20px;"><?php echo $emp_data['emp_name']; ?></td>
 
-                
-                //กำหนดคุณสมบัติ
-                $week = date("w"); // ค่าวันในสัปดาห์ (0-6)
-                $months = date("m") - 1; // ค่าเดือน (1-12)
-                $day = date("d"); // ค่าวันที่(1-31)
-                $years = date("Y") + 543; // ค่า ค.ศ.บวก 543 ทำให้เป็น ค.ศ.
+                <td width="250" align="right"><strong></strong></td>
+                <td width="30%" style="padding-left:20px;"></td>
+            </tr>
 
-                return "
+
+            <td width="150" height="30" align="right"><strong>วันที่พิมพ์ :</strong></td>
+            <td width="30%" style="padding-left:20px;">
+                <?php
+                echo "<meta charset='utf-8'>";
+                date_default_timezone_set("Asia/Bangkok");
+                function ThDate()
+                {
+                    //วันภาษาไทย
+                    $ThDay = array("อาทิตย์", "จันทร์", "อังคาร", "พุธ", "พฤหัส", "ศุกร์", "เสาร์");
+                    //เดือนภาษาไทย
+                    $ThMonth = array("มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฏาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม");
+
+
+                    //กำหนดคุณสมบัติ
+                    $week = date("w"); // ค่าวันในสัปดาห์ (0-6)
+                    $months = date("m") - 1; // ค่าเดือน (1-12)
+                    $day = date("d"); // ค่าวันที่(1-31)
+                    $years = date("Y") + 543; // ค่า ค.ศ.บวก 543 ทำให้เป็น ค.ศ.
+
+                    return "
                             $day $ThMonth[$months] พ.ศ. $years";
-            }
-            echo ThDate(); // วันที่แสดง
-            ?>
+                }
+                echo ThDate(); // วันที่แสดง
+                ?>
 
 
-        </td>
-        <td colspan="4"><label for="select"></label>
-      
-    </tr>
+            </td>
+            <td colspan="4"><label for="select"></label>
+
+                </tr>
     </div>
     </table>
-
-
-
-
-    

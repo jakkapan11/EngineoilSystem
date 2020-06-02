@@ -178,12 +178,7 @@
         <td align="right" style="color:9900FF;"><b><?= number_format($sum_k, 2) ?></b></td>
         <td align="right" colspan="3" style="color:9900FF;"><b><?= number_format($sum_a, 2) ?></b></td>
     </tr>
-    <tr>
-        <td colspan="6"></td>
-        <td align="right" colspan="2" style="color:54BD54;"><b>รวมชําระแล้วทั้งหมด(บาท)</b></td>
-        <td align="right" style="color:54BD54;"><b><?= number_format($sum_h, 2) ?></b></td>
-        <td align="right" style="color:54BD54;"><b><?= number_format($sum_m, 2) ?></b></td>
-        <td align="right" colspan="3" style="color:54BD54;"><b><?= number_format($sum_c, 2) ?></b></td>
+
     </tr>   
     <tr style="border-bottom:1px solid">
         <td colspan="6"></td>

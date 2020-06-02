@@ -11,7 +11,7 @@
   }
   ?>
   <script>
-    var endYear = new Date(new Date().getFullYear() - 15, 11, 32);
+    var endYear = new Date(new Date().getFullYear() - 18, 11, 32);
     var startYear = new Date(new Date().getFullYear() - 61, 11, 1);
     $(document).ready(function() {
       $('.datepicker').datepicker({
@@ -74,8 +74,8 @@
           emp_phone: {
             required: "<font color='red'>กรุณากรอกเบอร์โทรศัพท์</font>",
             digits: "<font color='red'>กรุณากรอกเบอร์โทรศัพท์</font>",
-            minlength: "<font color='red'>กรุณาระบุ ไม่น้อยกว่า 9 ตัวอักษร</font>",
-            maxlength: "<font color='red'>กรุณาระบุ ไม่เกิน 10 ตัวอักษร</font>",
+            minlength: "<font color='red'>กรุุณากรอก ให้ครบ 10 ตัวอักษร</font>",
+            maxlength: "<font color='red'>กรุุณากรอก ให้ครบ 10 ตัวอักษร</font>",
 
           },
 
@@ -141,14 +141,14 @@
         <td><label for="textfield2"></label>
           <input type="text" style="width:300px; padding-left:14px;" onfocus="$(this).blur();" class="form-control datepicker" onkeypress="return false;" name="emp_birthday" value="<?= tothaiyear($result['emp_birthday']) ?>" id="emp_birthday" required /></td>
         <td>
-          <font style="padding-left:40px; color:gray;">(เลือก วัน/เดือน/ปี ที่เกิดจากปฎิทิน)</font>
+          <font style="padding-left:40px; color:gray;">(เลือก วัน/เดือน/ปี จากปฎิทิน)</font>
       </tr>
       <tr>
         <td height="50" align="right"><strong>เบอร์โทรศัพท์</strong> :<span style="color:red;">*</span></td>
         <td><label for="textfield3"></label>
-          <input type="text" style="width:300px; " class="form-control" name="emp_phone" onkeypress="return isNumberKey(event)" minlength="9" maxlength="10" value="<?= $result['emp_phone'] ?>" id="emp_phone" required /></td>
+          <input type="text" style="width:300px; " class="form-control" name="emp_phone" onkeypress="return isNumberKey(event)" minlength="10" maxlength="10" value="<?= $result['emp_phone'] ?>" id="emp_phone" required /></td>
         <td>
-          <font style="padding-left:40px; color:gray;">(กรอกอย่างน้อย 9 ตัวอักษร)</font>
+          <font style="padding-left:40px; color:gray;">(กรอก 10 ตัวอักษร)</font>
       </tr>
       <tr>
         <td height="50" align="right"><strong>อีเมล</strong> :<span style="color:red;"></span></td>

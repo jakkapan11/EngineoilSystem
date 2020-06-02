@@ -95,8 +95,8 @@
               $product_amount = "<font color='red'>**สินค้าหมด**</font>";
             else
               $product_amount = $result['product_amount'];
-           
-           ?>
+
+        ?>
             <form action="add_basket.php" method="post">
               <tr>
                 <td align="right"><?= $result['product_id']; ?>
@@ -110,13 +110,15 @@
                 <td align="right"><?= number_format($result['product_price_unit'], 2); ?></td>
                 <td align="center" label for="textfield"></label>
                   <input type="text" name="product_id" id="product_id" value="<?= $result['product_id'] ?>" hidden />
-                  <input style="width:75px;"<?php if ($result['product_amount'] == 0) echo "readonly"; ?> class="form-control" autocomplete="off" onpaste="return false;" onchange="if(this.value <= 0) {alert('จำนวนไม่สามารถน้อยกว่า 1'); this.value='1'; } if (this.value > <?= $result['product_amount'] ?>) { alert('กรุณาตรวจสอบจำนวน'); this.value = '';}" type="number" name="qty" /></td>
+                  <input style="width:75px;" <?php if ($result['product_amount'] == 0) echo "readonly"; ?> class="form-control" autocomplete="off" onpaste="return false;" onchange="if(this.value <= 0) {alert('จำนวนไม่สามารถน้อยกว่า 1'); this.value='1'; } if (this.value > <?= $result['product_amount'] ?>) { alert('กรุณาตรวจสอบจำนวน'); this.value = '';}" type="number" name="qty" /></td>
 
-                <td class="text-center"><button type="submit" class="btn btn-info"><i class="fa fa-shopping-cart"></i> ตะกร้า</a></td>
+              
+                  <td <?php if ($result['product_amount'] != 0) { ?> class="text-center"><button type="submit" class="btn btn-info"><i class="fa fa-shopping-cart"></i> ตะกร้า</a></td>
+                <?php } ?>
               </tr>
             </form>
           <?php }
-          } else { ?>
+        } else { ?>
           <td align="center" bgcolor="#E4E3EA" colspan="10">ไม่พบข้อมูล</td>
         <?php  } ?>
       </tbody>

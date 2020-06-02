@@ -4,6 +4,8 @@
   <title>หน้าแรก | อู่ชัยยานยนต์ </title>
 </head>
 
+<link rel="shortcut icon" href="favicon.ico" />
+
 <body>
   <?php
   if (!isset($_SESSION)) {

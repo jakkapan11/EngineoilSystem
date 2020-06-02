@@ -18,11 +18,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		exit();
 	}
 	
-    $chk_phone	= mysqli_query($link, "SELECT * FROM customers WHERE cus_phone = '" . $phone . "'");   
-	if (mysqli_num_rows($chk_phone) != "0") {
-		echo "<script> alert('เบอร์โทรศัพท์ใช้งานแล้ว'); window.history.back();</script>";
-		exit();
-	}	
 	$chk_username = mysqli_query($link, "SELECT * FROM customers WHERE cus_username = '" . $username . "'");   
 	if (mysqli_num_rows($chk_username) != "0") {
 		echo "<script> alert('ชื่อผู้ใช้ถูกใช้ไปแล้ว'); window.history.back();</script>";

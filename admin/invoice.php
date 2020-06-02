@@ -17,6 +17,11 @@
     ?>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="shortcut icon" href="favicon.ico" />
+    <style type="text/css" media="print">
+        @page {
+            size: auto;
+        }
+    </style>
 </head>
 
 <body>
@@ -175,47 +180,47 @@
                     ?>
                 </td>
                 <td width="100" align="right"><strong></strong></td>
-                </tr>
+            </tr>
             <tr>
                 <td width="100" height="30" align="right"><strong>วันที่ชําระ :</strong></td>
                 <td width="25%" style="padding-left:20px;"><?php if ($invoice_date != "") {
-                                            echo $invoice_date;
-                                        } else {
-                                            echo " <left>-</left>";
-                                        } ?></td>
+                                                                echo $invoice_date;
+                                                            } else {
+                                                                echo " <left>-</left>";
+                                                            } ?></td>
 
                 <td width="100" align="right"><strong></strong></td>
                 <td width="25%" style="padding-left:20px;"></td>
             </tr>
 
             <tr>
-            <td width="100" height="30" align="right"><strong>วันที่พิมพ์ :</strong></td>
-            <td width="25%" style="padding-left:20px;">
-                <?php
-                echo "<meta charset='utf-8'>";
-                date_default_timezone_set("Asia/Bangkok");
-                function ThDate()
-                {
-                    //วันภาษาไทย
-                    $ThDay = array("อาทิตย์", "จันทร์", "อังคาร", "พุธ", "พฤหัส", "ศุกร์", "เสาร์");
-                    //เดือนภาษาไทย
-                    $ThMonth = array("มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฏาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม");
+                <td width="100" height="30" align="right"><strong>วันที่พิมพ์ :</strong></td>
+                <td width="25%" style="padding-left:20px;">
+                    <?php
+                    echo "<meta charset='utf-8'>";
+                    date_default_timezone_set("Asia/Bangkok");
+                    function ThDate()
+                    {
+                        //วันภาษาไทย
+                        $ThDay = array("อาทิตย์", "จันทร์", "อังคาร", "พุธ", "พฤหัส", "ศุกร์", "เสาร์");
+                        //เดือนภาษาไทย
+                        $ThMonth = array("มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน", "กรกฏาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม");
 
-                    //กำหนดคุณสมบัติ
-                    $week = date("w"); // ค่าวันในสัปดาห์ (0-6)
-                    $months = date("m") - 1; // ค่าเดือน (1-12)
-                    $day = date("d"); // ค่าวันที่(1-31)
-                    $years = date("Y") + 543; // ค่า ค.ศ.บวก 543 ทำให้เป็น ค.ศ.
+                        //กำหนดคุณสมบัติ
+                        $week = date("w"); // ค่าวันในสัปดาห์ (0-6)
+                        $months = date("m") - 1; // ค่าเดือน (1-12)
+                        $day = date("d"); // ค่าวันที่(1-31)
+                        $years = date("Y") + 543; // ค่า ค.ศ.บวก 543 ทำให้เป็น ค.ศ.
 
-                    return "
+                        return "
                             $day $ThMonth[$months] พ.ศ. $years";
-                }
-                echo ThDate(); // วันที่แสดง
-                ?>
+                    }
+                    echo ThDate(); // วันที่แสดง
+                    ?>
 
 
-            </td>
-            <td colspan="4"><label for="select"></label>
-                </tr>
+                </td>
+                <td colspan="4"><label for="select"></label>
+            </tr>
     </div>
     </table>

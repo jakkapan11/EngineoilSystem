@@ -223,7 +223,14 @@
                         <tr>
                             <!-- เช็คสถานะการเปลีย่น -->
                             <td align="center" label for="textfield4">
+                                <?php 
+                               if ($result_orderlist['od_status'] || ($today >= $strNewDate)) {
+
+                               } else {
+?>
+                                
                                 <input value="<?= $result_orderlist['od_id'] ?>" onchange='require_amount($(this).attr("id"))' type="checkbox" name="od_status[]" <?= ($result_orderlist['od_status']) || ($today >= $strNewDate) ? "disabled" : "" ?> id="od_status<?= $i ?>" style="margin-top:15px;" />
+           <?php         } ?>
                                 <input hidden type="text" name="od_id[]" id="od_id" value="<?php echo $result_orderlist['od_id'] ?>">
                                 <input name="products_id" hidden id="products_id_<?= $result_orderlist['od_id'] ?>" value="<?= $result_orderlist['product_id'] ?>" </td> <td style="padding-top:20px;" align="right"><?= $result_orderlist["product_id"]; ?></td>
                             <td style="padding-top:20px;"><?= $result["product_name"]; ?></td>
@@ -313,7 +320,7 @@
         var amount_check = parseInt(amount);
 
         if (cheange_amount < 1) {
-            alert('จำนวนที่กรอกต้องมากกว่า 1');
+            alert('จำนวนที่เปลี่ยนต้องไม่น้อยกว่า 1');
             $('#change_amount' + product_id).val('');
 
         } else {

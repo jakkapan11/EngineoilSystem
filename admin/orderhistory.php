@@ -46,8 +46,8 @@
         <thead>
             <tr>
                 <th style="text-align:center;width:140px">วันที่สั่งซื้อ</th>
-                <th style="text-align:center;width:150px">วันกําหนดชําระ</th>
                 <th style="text-align:center;width:150px;">รหัสการสั่งซื้อ</th>
+                <th style="text-align:center;width:150px">วันกําหนดชําระ</th>
                 <th style="text-align:left;width:240px;">ชื่อ-นามสกุล</th>
                 <th style="text-align:center;width:190px;">หลักฐานการชําระ</th>
                 <th style="text-align:right;width:150px;">รวมสุทธิ (บาท)</th>
@@ -78,7 +78,7 @@
             ?>
                     <tr>
                         <td align="center"><?= tothaiyear($result['order_date']); ?></td>
-
+                        <td align="center" style="text-decoration:underline;"><a href="description_emp.php?orderid=<?= $result['order_id'] ?>"><?= $result['order_id']; ?></a></td>
                         <?php if ($result_invoice_paymendate['invoice_paymendate'] != null) {
                         ?>
                             <td align="center"><?php echo tothaiyear($result_invoice_paymendate['invoice_paymendate']) ?></td>
@@ -86,7 +86,7 @@
                             echo "<td align='center'>-</td>";
                         } ?>
 
-                        <td align="center" style="text-decoration:underline;"><a href="description_emp.php?orderid=<?= $result['order_id'] ?>"><?= $result['order_id']; ?></a></td>
+                       
                         <td align="left"><?php echo $cus_data['cus_name']; ?></td>
                         <td class="text-center">
 

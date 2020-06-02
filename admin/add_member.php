@@ -12,7 +12,7 @@
   ?>
   <script>
     var endYear = new Date(new Date().getFullYear() - 15, 11, 32);
-    var startYear = new Date(new Date().getFullYear() - 61, 11, 1);
+    var startYear = new Date(new Date().getFullYear() - 200, 11, 1);
     $(document).ready(function() {
       $('.datepicker').datepicker({
         language: 'th-th', //เปลี่ยน label ต่างของ ปฏิทิน ให้เป็น ภาษาไทย   (ต้องใช้ไฟล์ bootstrap-datepicker.th.min.js นี้ด้วย)
@@ -74,8 +74,8 @@
           cus_phone: {
             required: "<font color='red'>กรุณากรอกเบอร์โทรศัพท์</font>",
             digits: "<font color='red'>กรุณากรอกเบอร์โทรศัพท์</font>",
-            minlength: "<font color='red'>กรุณาระบุ ไม่น้อยกว่า 9 ตัวอักษร</font>",
-            maxlength: "<font color='red'>กรุณาระบุ ไม่เกิน 10 ตัวอักษร</font>",
+            minlength: "<font color='red'>กรุุณากรอก ให้ครบ 10 ตัวอักษร</font>",
+            maxlength: "<font color='red'>กรุุณากรอก ให้ครบ 10 ตัวอักษร</font>",
 
           },
 
@@ -122,14 +122,14 @@
         <td><label for="textfield2"></label>
           <input type="text" onfocus="$(this).blur();" id="cus_birthday" name="cus_birthday" class="form-control datepicker" onkeypress="return false;" style="width:300; padding-left:13px" data-provide="datepicker" autocomplete="off" data-date-format="dd/mm//yyyy" /></td>
         <td>
-          <font style="padding-left:40px; color:gray;">(เลือก วัน/เดือน/ปี ที่เกิดจากปฎิทิน)</font>
+          <font style="padding-left:40px; color:gray;">(เลือก วัน/เดือน/ปี จากปฎิทิน)</font>
       </tr>
       <tr>
         <td height="50" align="right"><strong>เบอร์โทรศัพท์</strong> :<span style="color:red;">*</span></td>
         <td><label for="textfield3"></label>
-          <input type="text" style="width:300px;" class="form-control" name="cus_phone" onkeypress="return isNumberKey(event)" id="cus_phone" minlength="8" maxlength="10" required /></td>
+          <input type="text" style="width:300px;" class="form-control" name="cus_phone" onkeypress="return isNumberKey(event)" id="cus_phone" minlength="10" maxlength="10" required /></td>
         <td>
-          <font style="padding-left:40px; color:gray;">(กรอกอย่างน้อย 9 ตัวอักษร)</font>
+          <font style="padding-left:40px; color:gray;">(กรอก 10 ตัวอักษร)</font>
         </td>
       </tr>
       <tr>

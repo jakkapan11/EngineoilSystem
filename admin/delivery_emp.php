@@ -17,6 +17,11 @@
     ?>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="shortcut icon" href="favicon.ico" />
+    <style type="text/css" media="print">
+        @page {
+            size: auto;
+        }
+    </style>
 </head>
 
 <?php

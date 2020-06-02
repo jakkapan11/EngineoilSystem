@@ -44,8 +44,8 @@
         <thead>
             <tr>
                 <th style="text-align:center;width:270px;">เลขที่ใบเสร็จรับเงิน</th>
-                <th style="text-align:center;width:190px;">รหัสการสั่งซื้อ</th>
                 <th style="text-align:center;width:180px">วันที่ออกใบเสร็จ</th>
+                <th style="text-align:center;width:190px;">รหัสการสั่งซื้อ</th>
                 <th style="text-align:center;width:150px">วันที่สั่งซื้อ</th>
                 <th style="text-align:center;width:235px;">เลขที่ใบแจ้งหนี้</th>
                 <th style="text-align:center;width:190px;">วันกําหนดชําระ</th>
@@ -67,7 +67,7 @@
                     ON re.order_id = ord.order_id 
                     LEFT JOIN invoice AS inv
                     ON inv.order_id = re.order_id
-                    WHERE ord.order_status IN('2') AND re.receipt_id LIKE '%" . $strKeyword . "%' OR ord.order_id LIKE '%" . $strKeyword ."%' OR  inv.invoice_id LIKE '%" . $strKeyword ."%' 
+                    WHERE ord.order_status IN('2') AND re.receipt_id LIKE '%" . $strKeyword . "%' OR ord.order_id LIKE '%" . $strKeyword . "%' OR  inv.invoice_id LIKE '%" . $strKeyword . "%' 
                     ORDER BY receipt_id DESC";
             $query = mysqli_query($link, $sql) or die(mysqli_error($link));
             $num_rows = mysqli_num_rows($query);
@@ -95,8 +95,8 @@
 
                         ?>
                         <td align="center"><?php echo $result['receipt_id'] ?></td>
-                        <td align="center"><?= $result['order_id']; ?></td>
                         <td align="center"><?= tothaiyear($result['receipt_date']); ?>
+                        <td align="center"><?= $result['order_id']; ?></td>
                         <td align="center"><?= tothaiyear($result['order_date']); ?></td>
                         <td align="center"><?php
                                             if (!empty($result['invoice_id']))
@@ -167,7 +167,7 @@
                             if (($result['order_delivery_date'] == "0000-00-00") && $result['order_deliverynumber'] == "" && $result['order_type'] != 2) {
                                 echo "-";
                             } else {
-                           ?>
+                            ?>
                                 <a href="change.php?orderid=<?= $result['order_id'] ?>" class="btn btn-success"><i class="fa fa-wpforms"></i> เปลี่ยน</a>
                             <?php } ?>
                         </td>
@@ -179,9 +179,9 @@
                                 <ul class="dropdown-menu">
                                     <li><a class="dropdown-item" target="_blank" href="bill.php?orderid=<?= $result['order_id'] ?>">พิมพ์ใบเสร็จรับเงิน</a></li>
 
-                                   
-                                        <li><a class="dropdown-item" target="_blank" href="delivery_emp.php?orderid=<?= $result['order_id'] ?>">พิมพ์ใบส่งของ</a></li>
-                                    
+
+                                    <li><a class="dropdown-item" target="_blank" href="delivery_emp.php?orderid=<?= $result['order_id'] ?>">พิมพ์ใบส่งของ</a></li>
+
                                 </ul>
                             </div>
                         <?php }

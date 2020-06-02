@@ -6,13 +6,13 @@ include_once("config/etc_funct_admin.php");
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     require('config/connect.php');
-    $phone = $_POST['cus_phone'];
+    /*$phone = $_POST['cus_phone'];
     
     $chk_phone	= mysqli_query($link, "SELECT * FROM customers WHERE cus_phone = '" . $phone . "' AND cus_id != '" . $_POST['cus_id'] . "'");
         if (mysqli_num_rows($chk_phone) > 0) {
 		echo "<script> alert('เบอร์โทรศัพท์ถูกใช้แล้ว'); window.history.back();</script>";
 		exit();
-	}
+	}*/
 
 
 
